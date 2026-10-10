@@ -1,0 +1,28 @@
+{
+  "format_version": "1.2",
+  "terraform_version": "1.15.5",
+  "swift_account_id": "123456789012",
+  "planned_values": {
+    "root_module": {
+      "resources": [
+        {
+          "address": "aws_iam_role.mfa_boolean",
+          "mode": "managed",
+          "type": "aws_iam_role",
+          "name": "mfa_boolean",
+          "values": {
+            "name": "mfa-boolean",
+            "permissions_boundary": "arn:aws:iam::123456789012:policy/SwiftZoneBoundary",
+            "assume_role_policy": "{\"Version\": \"2012-10-17\", \"Statement\": [{\"Effect\": \"Allow\", \"Principal\": {\"AWS\": \"arn:aws:iam::123456789012:root\"}, \"Action\": \"sts:AssumeRole\", \"Condition\": {\"Bool\": {\"aws:MultiFactorAuthPresent\": true}}}]}",
+            "tags": {
+              "swift:zone": "secure"
+            },
+            "tags_all": {
+              "swift:zone": "secure"
+            }
+          }
+        }
+      ]
+    }
+  }
+}

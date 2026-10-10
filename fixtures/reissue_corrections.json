@@ -1,0 +1,144 @@
+{
+  "_comment": "Library 2.0.0 re-issue: one resource per correction, each evaluated under the archived 1.0.0 library and under 2.0.0 (tests/test_gate.py, REISSUE_CASES). Hand-written on purpose: every shape here is one the generated environments do not happen to contain.",
+  "format_version": "1.2",
+  "swift_vpc_id": "vpc-swift",
+  "swift_account_id": "123456789012",
+  "planned_values": {
+    "root_module": {
+      "resources": [
+        {
+          "address": "aws_kms_key.shared_services",
+          "mode": "managed",
+          "type": "aws_kms_key",
+          "name": "shared_services",
+          "values": {
+            "description": "Key owned by a non-Swift workload in the same account",
+            "enable_key_rotation": false,
+            "deletion_window_in_days": 30,
+            "tags": {
+              "Project": "shared-services"
+            }
+          }
+        },
+        {
+          "address": "aws_efs_file_system.swift",
+          "mode": "managed",
+          "type": "aws_efs_file_system",
+          "name": "swift",
+          "values": {
+            "id": "fs-swift",
+            "encrypted": true,
+            "tags": {
+              "swift:zone": "secure"
+            }
+          }
+        },
+        {
+          "address": "aws_efs_file_system_policy.swift",
+          "mode": "managed",
+          "type": "aws_efs_file_system_policy",
+          "name": "swift",
+          "values": {
+            "file_system_id": "fs-swift",
+            "policy": "{\"Version\":\"2012-10-17\",\"Statement\":[{\"Sid\":\"DenyNonTLS\",\"Effect\":\"Deny\",\"Principal\":{\"AWS\":\"*\"},\"Action\":\"*\",\"Resource\":\"*\",\"Condition\":{\"Bool\":{\"aws:SecureTransport\":false}}}]}"
+          }
+        },
+        {
+          "address": "aws_iam_role.trust_unknown",
+          "mode": "managed",
+          "type": "aws_iam_role",
+          "name": "trust_unknown",
+          "values": {
+            "name": "swift-trust-unknown",
+            "tags": {
+              "swift:zone": "secure"
+            }
+          }
+        },
+        {
+          "address": "aws_route_table.swift",
+          "mode": "managed",
+          "type": "aws_route_table",
+          "name": "swift",
+          "values": {
+            "id": "rtb-swift",
+            "vpc_id": "vpc-swift",
+            "tags": {
+              "swift:zone": "secure"
+            }
+          }
+        },
+        {
+          "address": "aws_route.to_peer",
+          "mode": "managed",
+          "type": "aws_route",
+          "name": "to_peer",
+          "values": {
+            "route_table_id": "rtb-swift",
+            "destination_cidr_block": "10.20.0.0/16",
+            "gateway_id": "vgw-0peer"
+          }
+        },
+        {
+          "address": "aws_internet_gateway.pending",
+          "mode": "managed",
+          "type": "aws_internet_gateway",
+          "name": "pending",
+          "values": {
+            "id": "",
+            "vpc_id": "vpc-other",
+            "tags": {
+              "Project": "shared-services"
+            }
+          }
+        },
+        {
+          "address": "aws_iam_role_policy_attachment.orphan_admin",
+          "mode": "managed",
+          "type": "aws_iam_role_policy_attachment",
+          "name": "orphan_admin",
+          "values": {
+            "role": "",
+            "policy_arn": "arn:aws:iam::aws:policy/PowerUserAccess"
+          }
+        },
+        {
+          "address": "aws_lambda_function.swift",
+          "mode": "managed",
+          "type": "aws_lambda_function",
+          "name": "swift",
+          "values": {
+            "function_name": "swift-fn",
+            "role": "arn:aws:iam::123456789012:role/swift-fn",
+            "tags": {
+              "swift:zone": "secure"
+            }
+          }
+        },
+        {
+          "address": "aws_iam_policy.single_statement",
+          "mode": "managed",
+          "type": "aws_iam_policy",
+          "name": "single_statement",
+          "values": {
+            "name": "single-statement",
+            "policy": "{\"Version\":\"2012-10-17\",\"Statement\":{\"Effect\":\"Allow\",\"Action\":\"*\",\"Resource\":\"arn:aws:s3:::swift-data/*\"}}"
+          }
+        },
+        {
+          "address": "aws_msk_cluster.swift",
+          "mode": "managed",
+          "type": "aws_msk_cluster",
+          "name": "swift",
+          "values": {
+            "cluster_name": "swift",
+            "encryption_info": [],
+            "tags": {
+              "swift:zone": "secure"
+            }
+          }
+        }
+      ]
+    }
+  }
+}

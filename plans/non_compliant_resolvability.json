@@ -1,0 +1,4401 @@
+{
+  "schema": "swift-cscf-resolvability/v1",
+  "account_id": "123456789012",
+  "region": "eu-west-1",
+  "swift_vpc": "aws_vpc.bad",
+  "swift_vpc_id": "aws_vpc-bad-id-known-after-apply",
+  "trust_boundary_accounts": [
+    "123456789012"
+  ],
+  "summary": {
+    "r2_resolved_by_reference": 51,
+    "r2_self_identity": 150,
+    "r3_unresolvable": 4,
+    "provider_computed": 733,
+    "null_attributes_dropped": 257
+  },
+  "r2_resolved_by_reference": [
+    {
+      "resource": "aws_cloudtrail.bad",
+      "attribute": "s3_bucket_name",
+      "class": "R2",
+      "reference": "aws_s3_bucket.bad_trail.id",
+      "substituted": "bad-trail-logs-123456789012"
+    },
+    {
+      "resource": "aws_db_instance.bad",
+      "attribute": "vpc_security_group_ids",
+      "class": "R2",
+      "reference": "aws_security_group.bad.id",
+      "substituted": [
+        "aws_security_group-bad-id-known-after-apply"
+      ]
+    },
+    {
+      "resource": "aws_db_subnet_group.bad",
+      "attribute": "subnet_ids",
+      "class": "R2",
+      "reference": "aws_subnet.bad1.id",
+      "substituted": [
+        "aws_subnet-bad1-id-known-after-apply"
+      ]
+    },
+    {
+      "resource": "aws_default_network_acl.bad",
+      "attribute": "default_network_acl_id",
+      "class": "R2",
+      "reference": "aws_vpc.bad.default_network_acl_id",
+      "substituted": "aws_vpc-bad-default_network_acl_id-known-after-apply"
+    },
+    {
+      "resource": "aws_default_security_group.bad",
+      "attribute": "vpc_id",
+      "class": "R2",
+      "reference": "aws_vpc.bad.id",
+      "substituted": "aws_vpc-bad-id-known-after-apply"
+    },
+    {
+      "resource": "aws_ec2_client_vpn_authorization_rule.bad",
+      "attribute": "client_vpn_endpoint_id",
+      "class": "R2",
+      "reference": "aws_ec2_client_vpn_endpoint.bad.id",
+      "substituted": "aws_ec2_client_vpn_endpoint-bad-id-known-after-apply"
+    },
+    {
+      "resource": "aws_ecs_task_definition.bad",
+      "attribute": "execution_role_arn",
+      "class": "R2",
+      "reference": "aws_iam_role.bad_ecs.arn",
+      "substituted": "arn:aws:iam:eu-west-1:123456789012:role/bad-ecs"
+    },
+    {
+      "resource": "aws_ecs_task_definition.bad",
+      "attribute": "task_role_arn",
+      "class": "R2",
+      "reference": "aws_iam_role.bad_ecs.arn",
+      "substituted": "arn:aws:iam:eu-west-1:123456789012:role/bad-ecs"
+    },
+    {
+      "resource": "aws_efs_file_system_policy.bad",
+      "attribute": "file_system_id",
+      "class": "R2",
+      "reference": "aws_efs_file_system.bad.id",
+      "substituted": "aws_efs_file_system-bad-id-known-after-apply"
+    },
+    {
+      "resource": "aws_egress_only_internet_gateway.bad",
+      "attribute": "vpc_id",
+      "class": "R2",
+      "reference": "aws_vpc.bad.id",
+      "substituted": "aws_vpc-bad-id-known-after-apply"
+    },
+    {
+      "resource": "aws_iam_role_policy.bad_jump",
+      "attribute": "role",
+      "class": "R2",
+      "reference": "aws_iam_role.bad_app.id",
+      "substituted": "bad-app-role"
+    },
+    {
+      "resource": "aws_instance.bad_jump",
+      "attribute": "subnet_id",
+      "class": "R2",
+      "reference": "aws_subnet.bad1.id",
+      "substituted": "aws_subnet-bad1-id-known-after-apply"
+    },
+    {
+      "resource": "aws_instance.bad_jump",
+      "attribute": "vpc_security_group_ids",
+      "class": "R2",
+      "reference": "aws_security_group.bad_browsing.id",
+      "substituted": [
+        "bad-browsing"
+      ]
+    },
+    {
+      "resource": "aws_internet_gateway.bad",
+      "attribute": "vpc_id",
+      "class": "R2",
+      "reference": "aws_vpc.bad.id",
+      "substituted": "aws_vpc-bad-id-known-after-apply"
+    },
+    {
+      "resource": "aws_lambda_function.bad",
+      "attribute": "role",
+      "class": "R2",
+      "reference": "aws_iam_role.bad_lambda.arn",
+      "substituted": "arn:aws:iam:eu-west-1:123456789012:role/bad-lambda"
+    },
+    {
+      "resource": "aws_lb.bad",
+      "attribute": "security_groups",
+      "class": "R2",
+      "reference": "aws_security_group.bad.id",
+      "substituted": [
+        "aws_security_group-bad-id-known-after-apply"
+      ]
+    },
+    {
+      "resource": "aws_lb.bad",
+      "attribute": "subnets",
+      "class": "R2",
+      "reference": "aws_subnet.bad1.id",
+      "substituted": [
+        "aws_subnet-bad1-id-known-after-apply"
+      ]
+    },
+    {
+      "resource": "aws_lb_listener.bad_http",
+      "attribute": "load_balancer_arn",
+      "class": "R2",
+      "reference": "aws_lb.bad.arn",
+      "substituted": "arn:aws:lb:eu-west-1:123456789012:lb/bad-alb"
+    },
+    {
+      "resource": "aws_lb_listener.bad_https",
+      "attribute": "load_balancer_arn",
+      "class": "R2",
+      "reference": "aws_lb.bad.arn",
+      "substituted": "arn:aws:lb:eu-west-1:123456789012:lb/bad-alb"
+    },
+    {
+      "resource": "aws_nat_gateway.bad",
+      "attribute": "allocation_id",
+      "class": "R2",
+      "reference": "aws_eip.bad_nat.id",
+      "substituted": "aws_eip-bad_nat-id-known-after-apply"
+    },
+    {
+      "resource": "aws_nat_gateway.bad",
+      "attribute": "subnet_id",
+      "class": "R2",
+      "reference": "aws_subnet.bad1.id",
+      "substituted": "aws_subnet-bad1-id-known-after-apply"
+    },
+    {
+      "resource": "aws_network_acl.bad",
+      "attribute": "vpc_id",
+      "class": "R2",
+      "reference": "aws_vpc.bad.id",
+      "substituted": "aws_vpc-bad-id-known-after-apply"
+    },
+    {
+      "resource": "aws_network_acl_rule.bad_inbound",
+      "attribute": "network_acl_id",
+      "class": "R2",
+      "reference": "aws_network_acl.bad.id",
+      "substituted": "aws_network_acl-bad-id-known-after-apply"
+    },
+    {
+      "resource": "aws_route.bad_eigw",
+      "attribute": "egress_only_gateway_id",
+      "class": "R2",
+      "reference": "aws_egress_only_internet_gateway.bad.id",
+      "substituted": "aws_egress_only_internet_gateway-bad-id-known-after-apply"
+    },
+    {
+      "resource": "aws_route.bad_eigw",
+      "attribute": "route_table_id",
+      "class": "R2",
+      "reference": "aws_route_table.bad.id",
+      "substituted": "aws_route_table-bad-id-known-after-apply"
+    },
+    {
+      "resource": "aws_route.bad_igw",
+      "attribute": "gateway_id",
+      "class": "R2",
+      "reference": "aws_internet_gateway.bad.id",
+      "substituted": "aws_internet_gateway-bad-id-known-after-apply"
+    },
+    {
+      "resource": "aws_route.bad_igw",
+      "attribute": "route_table_id",
+      "class": "R2",
+      "reference": "aws_route_table.bad.id",
+      "substituted": "aws_route_table-bad-id-known-after-apply"
+    },
+    {
+      "resource": "aws_route.bad_nat",
+      "attribute": "nat_gateway_id",
+      "class": "R2",
+      "reference": "aws_nat_gateway.bad.id",
+      "substituted": "aws_nat_gateway-bad-id-known-after-apply"
+    },
+    {
+      "resource": "aws_route.bad_nat",
+      "attribute": "route_table_id",
+      "class": "R2",
+      "reference": "aws_route_table.bad.id",
+      "substituted": "aws_route_table-bad-id-known-after-apply"
+    },
+    {
+      "resource": "aws_route_table.bad",
+      "attribute": "vpc_id",
+      "class": "R2",
+      "reference": "aws_vpc.bad.id",
+      "substituted": "aws_vpc-bad-id-known-after-apply"
+    },
+    {
+      "resource": "aws_s3_bucket_lifecycle_configuration.bad_trail",
+      "attribute": "bucket",
+      "class": "R2",
+      "reference": "aws_s3_bucket.bad_trail.id",
+      "substituted": "bad-trail-logs-123456789012"
+    },
+    {
+      "resource": "aws_s3_bucket_policy.bad_data",
+      "attribute": "bucket",
+      "class": "R2",
+      "reference": "aws_s3_bucket.bad_data.id",
+      "substituted": "bad-data-123456789012"
+    },
+    {
+      "resource": "aws_s3_bucket_policy.bad_open",
+      "attribute": "bucket",
+      "class": "R2",
+      "reference": "aws_s3_bucket.bad_open.id",
+      "substituted": "bad-open-123456789012"
+    },
+    {
+      "resource": "aws_s3_bucket_policy.bad_trail",
+      "attribute": "bucket",
+      "class": "R2",
+      "reference": "aws_s3_bucket.bad_trail.id",
+      "substituted": "bad-trail-logs-123456789012"
+    },
+    {
+      "resource": "aws_s3_bucket_public_access_block.bad_trail",
+      "attribute": "bucket",
+      "class": "R2",
+      "reference": "aws_s3_bucket.bad_trail.id",
+      "substituted": "bad-trail-logs-123456789012"
+    },
+    {
+      "resource": "aws_s3_bucket_server_side_encryption_configuration.bad_trail",
+      "attribute": "bucket",
+      "class": "R2",
+      "reference": "aws_s3_bucket.bad_trail.id",
+      "substituted": "bad-trail-logs-123456789012"
+    },
+    {
+      "resource": "aws_s3_bucket_versioning.bad_trail",
+      "attribute": "bucket",
+      "class": "R2",
+      "reference": "aws_s3_bucket.bad_trail.id",
+      "substituted": "bad-trail-logs-123456789012"
+    },
+    {
+      "resource": "aws_secretsmanager_secret_policy.bad_open",
+      "attribute": "secret_arn",
+      "class": "R2",
+      "reference": "aws_secretsmanager_secret.bad.arn",
+      "substituted": "arn:aws:secretsmanager:eu-west-1:123456789012:secret/bad/db/creds"
+    },
+    {
+      "resource": "aws_secretsmanager_secret_rotation.bad",
+      "attribute": "secret_id",
+      "class": "R2",
+      "reference": "aws_secretsmanager_secret.bad.id",
+      "substituted": "bad/db/creds"
+    },
+    {
+      "resource": "aws_security_group.bad",
+      "attribute": "vpc_id",
+      "class": "R2",
+      "reference": "aws_vpc.bad.id",
+      "substituted": "aws_vpc-bad-id-known-after-apply"
+    },
+    {
+      "resource": "aws_security_group.bad_browsing",
+      "attribute": "vpc_id",
+      "class": "R2",
+      "reference": "aws_vpc.bad.id",
+      "substituted": "aws_vpc-bad-id-known-after-apply"
+    },
+    {
+      "resource": "aws_security_group_rule.bad_legacy_ingress",
+      "attribute": "security_group_id",
+      "class": "R2",
+      "reference": "aws_security_group.bad.id",
+      "substituted": "aws_security_group-bad-id-known-after-apply"
+    },
+    {
+      "resource": "aws_subnet.bad1",
+      "attribute": "vpc_id",
+      "class": "R2",
+      "reference": "aws_vpc.bad.id",
+      "substituted": "aws_vpc-bad-id-known-after-apply"
+    },
+    {
+      "resource": "aws_subnet.bad2",
+      "attribute": "vpc_id",
+      "class": "R2",
+      "reference": "aws_vpc.bad.id",
+      "substituted": "aws_vpc-bad-id-known-after-apply"
+    },
+    {
+      "resource": "aws_vpc_security_group_egress_rule.bad_all",
+      "attribute": "security_group_id",
+      "class": "R2",
+      "reference": "aws_security_group.bad.id",
+      "substituted": "aws_security_group-bad-id-known-after-apply"
+    },
+    {
+      "resource": "aws_vpc_security_group_ingress_rule.bad_ssh",
+      "attribute": "security_group_id",
+      "class": "R2",
+      "reference": "aws_security_group.bad.id",
+      "substituted": "aws_security_group-bad-id-known-after-apply"
+    },
+    {
+      "resource": "aws_vpn_connection.bad_back_office",
+      "attribute": "customer_gateway_id",
+      "class": "R2",
+      "reference": "aws_customer_gateway.bad_back_office.id",
+      "substituted": "aws_customer_gateway-bad_back_office-id-known-after-apply"
+    },
+    {
+      "resource": "aws_vpn_connection.bad_back_office",
+      "attribute": "vpn_gateway_id",
+      "class": "R2",
+      "reference": "aws_vpn_gateway.bad.id",
+      "substituted": "aws_vpn_gateway-bad-id-known-after-apply"
+    },
+    {
+      "resource": "aws_vpn_gateway.bad",
+      "attribute": "vpc_id",
+      "class": "R2",
+      "reference": "aws_vpc.bad.id",
+      "substituted": "aws_vpc-bad-id-known-after-apply"
+    },
+    {
+      "resource": "aws_msk_cluster.bad",
+      "attribute": "broker_node_group_info.0.client_subnets",
+      "class": "R2",
+      "reference": "aws_subnet.bad1.id",
+      "substituted": [
+        "aws_subnet-bad1-id-known-after-apply"
+      ]
+    },
+    {
+      "resource": "aws_msk_cluster.bad",
+      "attribute": "broker_node_group_info.0.security_groups",
+      "class": "R2",
+      "reference": "aws_security_group.bad.id",
+      "substituted": [
+        "aws_security_group-bad-id-known-after-apply"
+      ]
+    }
+  ],
+  "r2_self_identity": [
+    {
+      "resource": "aws_api_gateway_domain_name.bad",
+      "attribute": "id",
+      "class": "R2",
+      "reference": "aws_api_gateway_domain_name.bad.id",
+      "substituted": "api.bad.example.com"
+    },
+    {
+      "resource": "aws_api_gateway_domain_name.bad",
+      "attribute": "arn",
+      "class": "R2",
+      "reference": "aws_api_gateway_domain_name.bad.arn",
+      "substituted": "arn:aws:api:eu-west-1:123456789012:gateway_domain_name/api.bad.example.com"
+    },
+    {
+      "resource": "aws_cloudtrail.bad",
+      "attribute": "id",
+      "class": "R2",
+      "reference": "aws_cloudtrail.bad.id",
+      "substituted": "bad-trail"
+    },
+    {
+      "resource": "aws_cloudtrail.bad",
+      "attribute": "arn",
+      "class": "R2",
+      "reference": "aws_cloudtrail.bad.arn",
+      "substituted": "arn:aws:cloudtrail:eu-west-1:123456789012:cloudtrail/bad-trail"
+    },
+    {
+      "resource": "aws_cloudwatch_log_group.bad",
+      "attribute": "id",
+      "class": "R2",
+      "reference": "aws_cloudwatch_log_group.bad.id",
+      "substituted": "/bad/logs"
+    },
+    {
+      "resource": "aws_cloudwatch_log_group.bad",
+      "attribute": "arn",
+      "class": "R2",
+      "reference": "aws_cloudwatch_log_group.bad.arn",
+      "substituted": "arn:aws:cloudwatch:eu-west-1:123456789012:log_group//bad/logs"
+    },
+    {
+      "resource": "aws_cloudwatch_metric_alarm.bad",
+      "attribute": "id",
+      "class": "R2",
+      "reference": "aws_cloudwatch_metric_alarm.bad.id",
+      "substituted": "aws_cloudwatch_metric_alarm-bad-id-known-after-apply"
+    },
+    {
+      "resource": "aws_cloudwatch_metric_alarm.bad",
+      "attribute": "arn",
+      "class": "R2",
+      "reference": "aws_cloudwatch_metric_alarm.bad.arn",
+      "substituted": "arn:aws:cloudwatch:eu-west-1:123456789012:metric_alarm/bad"
+    },
+    {
+      "resource": "aws_cognito_user_pool.bad",
+      "attribute": "id",
+      "class": "R2",
+      "reference": "aws_cognito_user_pool.bad.id",
+      "substituted": "bad-pool"
+    },
+    {
+      "resource": "aws_cognito_user_pool.bad",
+      "attribute": "arn",
+      "class": "R2",
+      "reference": "aws_cognito_user_pool.bad.arn",
+      "substituted": "arn:aws:cognito:eu-west-1:123456789012:user_pool/bad-pool"
+    },
+    {
+      "resource": "aws_customer_gateway.bad_back_office",
+      "attribute": "id",
+      "class": "R2",
+      "reference": "aws_customer_gateway.bad_back_office.id",
+      "substituted": "aws_customer_gateway-bad_back_office-id-known-after-apply"
+    },
+    {
+      "resource": "aws_customer_gateway.bad_back_office",
+      "attribute": "arn",
+      "class": "R2",
+      "reference": "aws_customer_gateway.bad_back_office.arn",
+      "substituted": "arn:aws:customer:eu-west-1:123456789012:gateway/bad_back_office"
+    },
+    {
+      "resource": "aws_db_instance.bad",
+      "attribute": "id",
+      "class": "R2",
+      "reference": "aws_db_instance.bad.id",
+      "substituted": "aws_db_instance-bad-id-known-after-apply"
+    },
+    {
+      "resource": "aws_db_instance.bad",
+      "attribute": "arn",
+      "class": "R2",
+      "reference": "aws_db_instance.bad.arn",
+      "substituted": "arn:aws:db:eu-west-1:123456789012:instance/bad"
+    },
+    {
+      "resource": "aws_db_parameter_group.bad_mysql",
+      "attribute": "id",
+      "class": "R2",
+      "reference": "aws_db_parameter_group.bad_mysql.id",
+      "substituted": "bad-mysql"
+    },
+    {
+      "resource": "aws_db_parameter_group.bad_mysql",
+      "attribute": "arn",
+      "class": "R2",
+      "reference": "aws_db_parameter_group.bad_mysql.arn",
+      "substituted": "arn:aws:db:eu-west-1:123456789012:parameter_group/bad-mysql"
+    },
+    {
+      "resource": "aws_db_parameter_group.bad_pg",
+      "attribute": "id",
+      "class": "R2",
+      "reference": "aws_db_parameter_group.bad_pg.id",
+      "substituted": "bad-postgres"
+    },
+    {
+      "resource": "aws_db_parameter_group.bad_pg",
+      "attribute": "arn",
+      "class": "R2",
+      "reference": "aws_db_parameter_group.bad_pg.arn",
+      "substituted": "arn:aws:db:eu-west-1:123456789012:parameter_group/bad-postgres"
+    },
+    {
+      "resource": "aws_db_subnet_group.bad",
+      "attribute": "id",
+      "class": "R2",
+      "reference": "aws_db_subnet_group.bad.id",
+      "substituted": "bad-db"
+    },
+    {
+      "resource": "aws_db_subnet_group.bad",
+      "attribute": "arn",
+      "class": "R2",
+      "reference": "aws_db_subnet_group.bad.arn",
+      "substituted": "arn:aws:db:eu-west-1:123456789012:subnet_group/bad-db"
+    },
+    {
+      "resource": "aws_default_network_acl.bad",
+      "attribute": "id",
+      "class": "R2",
+      "reference": "aws_default_network_acl.bad.id",
+      "substituted": "aws_default_network_acl-bad-id-known-after-apply"
+    },
+    {
+      "resource": "aws_default_network_acl.bad",
+      "attribute": "arn",
+      "class": "R2",
+      "reference": "aws_default_network_acl.bad.arn",
+      "substituted": "arn:aws:default:eu-west-1:123456789012:network_acl/bad"
+    },
+    {
+      "resource": "aws_default_security_group.bad",
+      "attribute": "id",
+      "class": "R2",
+      "reference": "aws_default_security_group.bad.id",
+      "substituted": "aws_default_security_group-bad-id-known-after-apply"
+    },
+    {
+      "resource": "aws_default_security_group.bad",
+      "attribute": "arn",
+      "class": "R2",
+      "reference": "aws_default_security_group.bad.arn",
+      "substituted": "arn:aws:default:eu-west-1:123456789012:security_group/bad"
+    },
+    {
+      "resource": "aws_dx_connection.bad_back_office",
+      "attribute": "id",
+      "class": "R2",
+      "reference": "aws_dx_connection.bad_back_office.id",
+      "substituted": "bad-back-office-dx"
+    },
+    {
+      "resource": "aws_dx_connection.bad_back_office",
+      "attribute": "arn",
+      "class": "R2",
+      "reference": "aws_dx_connection.bad_back_office.arn",
+      "substituted": "arn:aws:dx:eu-west-1:123456789012:connection/bad-back-office-dx"
+    },
+    {
+      "resource": "aws_ebs_volume.bad_data",
+      "attribute": "id",
+      "class": "R2",
+      "reference": "aws_ebs_volume.bad_data.id",
+      "substituted": "aws_ebs_volume-bad_data-id-known-after-apply"
+    },
+    {
+      "resource": "aws_ebs_volume.bad_data",
+      "attribute": "arn",
+      "class": "R2",
+      "reference": "aws_ebs_volume.bad_data.arn",
+      "substituted": "arn:aws:ebs:eu-west-1:123456789012:volume/bad_data"
+    },
+    {
+      "resource": "aws_ec2_client_vpn_authorization_rule.bad",
+      "attribute": "id",
+      "class": "R2",
+      "reference": "aws_ec2_client_vpn_authorization_rule.bad.id",
+      "substituted": "aws_ec2_client_vpn_authorization_rule-bad-id-known-after-apply"
+    },
+    {
+      "resource": "aws_ec2_client_vpn_endpoint.bad",
+      "attribute": "id",
+      "class": "R2",
+      "reference": "aws_ec2_client_vpn_endpoint.bad.id",
+      "substituted": "aws_ec2_client_vpn_endpoint-bad-id-known-after-apply"
+    },
+    {
+      "resource": "aws_ec2_client_vpn_endpoint.bad",
+      "attribute": "arn",
+      "class": "R2",
+      "reference": "aws_ec2_client_vpn_endpoint.bad.arn",
+      "substituted": "arn:aws:ec2:eu-west-1:123456789012:client_vpn_endpoint/bad"
+    },
+    {
+      "resource": "aws_ecs_task_definition.bad",
+      "attribute": "id",
+      "class": "R2",
+      "reference": "aws_ecs_task_definition.bad.id",
+      "substituted": "aws_ecs_task_definition-bad-id-known-after-apply"
+    },
+    {
+      "resource": "aws_ecs_task_definition.bad",
+      "attribute": "arn",
+      "class": "R2",
+      "reference": "aws_ecs_task_definition.bad.arn",
+      "substituted": "arn:aws:ecs:eu-west-1:123456789012:task_definition/bad"
+    },
+    {
+      "resource": "aws_ecs_task_definition.bad_privileged",
+      "attribute": "id",
+      "class": "R2",
+      "reference": "aws_ecs_task_definition.bad_privileged.id",
+      "substituted": "aws_ecs_task_definition-bad_privileged-id-known-after-apply"
+    },
+    {
+      "resource": "aws_ecs_task_definition.bad_privileged",
+      "attribute": "arn",
+      "class": "R2",
+      "reference": "aws_ecs_task_definition.bad_privileged.arn",
+      "substituted": "arn:aws:ecs:eu-west-1:123456789012:task_definition/bad_privileged"
+    },
+    {
+      "resource": "aws_efs_file_system.bad",
+      "attribute": "id",
+      "class": "R2",
+      "reference": "aws_efs_file_system.bad.id",
+      "substituted": "aws_efs_file_system-bad-id-known-after-apply"
+    },
+    {
+      "resource": "aws_efs_file_system.bad",
+      "attribute": "arn",
+      "class": "R2",
+      "reference": "aws_efs_file_system.bad.arn",
+      "substituted": "arn:aws:efs:eu-west-1:123456789012:file_system/bad"
+    },
+    {
+      "resource": "aws_efs_file_system_policy.bad",
+      "attribute": "id",
+      "class": "R2",
+      "reference": "aws_efs_file_system_policy.bad.id",
+      "substituted": "aws_efs_file_system_policy-bad-id-known-after-apply"
+    },
+    {
+      "resource": "aws_egress_only_internet_gateway.bad",
+      "attribute": "id",
+      "class": "R2",
+      "reference": "aws_egress_only_internet_gateway.bad.id",
+      "substituted": "aws_egress_only_internet_gateway-bad-id-known-after-apply"
+    },
+    {
+      "resource": "aws_eip.bad_nat",
+      "attribute": "id",
+      "class": "R2",
+      "reference": "aws_eip.bad_nat.id",
+      "substituted": "aws_eip-bad_nat-id-known-after-apply"
+    },
+    {
+      "resource": "aws_eip.bad_nat",
+      "attribute": "arn",
+      "class": "R2",
+      "reference": "aws_eip.bad_nat.arn",
+      "substituted": "arn:aws:eip:eu-west-1:123456789012:eip/bad_nat"
+    },
+    {
+      "resource": "aws_elasticache_replication_group.bad",
+      "attribute": "id",
+      "class": "R2",
+      "reference": "aws_elasticache_replication_group.bad.id",
+      "substituted": "aws_elasticache_replication_group-bad-id-known-after-apply"
+    },
+    {
+      "resource": "aws_elasticache_replication_group.bad",
+      "attribute": "arn",
+      "class": "R2",
+      "reference": "aws_elasticache_replication_group.bad.arn",
+      "substituted": "arn:aws:elasticache:eu-west-1:123456789012:replication_group/bad"
+    },
+    {
+      "resource": "aws_iam_access_key.bad",
+      "attribute": "id",
+      "class": "R2",
+      "reference": "aws_iam_access_key.bad.id",
+      "substituted": "aws_iam_access_key-bad-id-known-after-apply"
+    },
+    {
+      "resource": "aws_iam_account_password_policy.bad",
+      "attribute": "id",
+      "class": "R2",
+      "reference": "aws_iam_account_password_policy.bad.id",
+      "substituted": "aws_iam_account_password_policy-bad-id-known-after-apply"
+    },
+    {
+      "resource": "aws_iam_group.bad",
+      "attribute": "id",
+      "class": "R2",
+      "reference": "aws_iam_group.bad.id",
+      "substituted": "bad-admins"
+    },
+    {
+      "resource": "aws_iam_group.bad",
+      "attribute": "arn",
+      "class": "R2",
+      "reference": "aws_iam_group.bad.arn",
+      "substituted": "arn:aws:iam:eu-west-1:123456789012:group/bad-admins"
+    },
+    {
+      "resource": "aws_iam_group.bad_ops",
+      "attribute": "id",
+      "class": "R2",
+      "reference": "aws_iam_group.bad_ops.id",
+      "substituted": "bad-ops"
+    },
+    {
+      "resource": "aws_iam_group.bad_ops",
+      "attribute": "arn",
+      "class": "R2",
+      "reference": "aws_iam_group.bad_ops.arn",
+      "substituted": "arn:aws:iam:eu-west-1:123456789012:group/bad-ops"
+    },
+    {
+      "resource": "aws_iam_group_policy.bad_ops",
+      "attribute": "id",
+      "class": "R2",
+      "reference": "aws_iam_group_policy.bad_ops.id",
+      "substituted": "bad-ops-everything"
+    },
+    {
+      "resource": "aws_iam_group_policy_attachment.bad",
+      "attribute": "id",
+      "class": "R2",
+      "reference": "aws_iam_group_policy_attachment.bad.id",
+      "substituted": "aws_iam_group_policy_attachment-bad-id-known-after-apply"
+    },
+    {
+      "resource": "aws_iam_policy.bad_passrole",
+      "attribute": "id",
+      "class": "R2",
+      "reference": "aws_iam_policy.bad_passrole.id",
+      "substituted": "bad-passrole"
+    },
+    {
+      "resource": "aws_iam_policy.bad_passrole",
+      "attribute": "arn",
+      "class": "R2",
+      "reference": "aws_iam_policy.bad_passrole.arn",
+      "substituted": "arn:aws:iam:eu-west-1:123456789012:policy/bad-passrole"
+    },
+    {
+      "resource": "aws_iam_policy.bad_sod",
+      "attribute": "id",
+      "class": "R2",
+      "reference": "aws_iam_policy.bad_sod.id",
+      "substituted": "bad-sod"
+    },
+    {
+      "resource": "aws_iam_policy.bad_sod",
+      "attribute": "arn",
+      "class": "R2",
+      "reference": "aws_iam_policy.bad_sod.arn",
+      "substituted": "arn:aws:iam:eu-west-1:123456789012:policy/bad-sod"
+    },
+    {
+      "resource": "aws_iam_policy.bad_wildcard",
+      "attribute": "id",
+      "class": "R2",
+      "reference": "aws_iam_policy.bad_wildcard.id",
+      "substituted": "bad-wildcard"
+    },
+    {
+      "resource": "aws_iam_policy.bad_wildcard",
+      "attribute": "arn",
+      "class": "R2",
+      "reference": "aws_iam_policy.bad_wildcard.arn",
+      "substituted": "arn:aws:iam:eu-west-1:123456789012:policy/bad-wildcard"
+    },
+    {
+      "resource": "aws_iam_role.bad_app",
+      "attribute": "id",
+      "class": "R2",
+      "reference": "aws_iam_role.bad_app.id",
+      "substituted": "bad-app-role"
+    },
+    {
+      "resource": "aws_iam_role.bad_app",
+      "attribute": "arn",
+      "class": "R2",
+      "reference": "aws_iam_role.bad_app.arn",
+      "substituted": "arn:aws:iam:eu-west-1:123456789012:role/bad-app-role"
+    },
+    {
+      "resource": "aws_iam_role.bad_cross",
+      "attribute": "id",
+      "class": "R2",
+      "reference": "aws_iam_role.bad_cross.id",
+      "substituted": "bad-cross-account"
+    },
+    {
+      "resource": "aws_iam_role.bad_cross",
+      "attribute": "arn",
+      "class": "R2",
+      "reference": "aws_iam_role.bad_cross.arn",
+      "substituted": "arn:aws:iam:eu-west-1:123456789012:role/bad-cross-account"
+    },
+    {
+      "resource": "aws_iam_role.bad_ecs",
+      "attribute": "id",
+      "class": "R2",
+      "reference": "aws_iam_role.bad_ecs.id",
+      "substituted": "bad-ecs"
+    },
+    {
+      "resource": "aws_iam_role.bad_ecs",
+      "attribute": "arn",
+      "class": "R2",
+      "reference": "aws_iam_role.bad_ecs.arn",
+      "substituted": "arn:aws:iam:eu-west-1:123456789012:role/bad-ecs"
+    },
+    {
+      "resource": "aws_iam_role.bad_lambda",
+      "attribute": "id",
+      "class": "R2",
+      "reference": "aws_iam_role.bad_lambda.id",
+      "substituted": "bad-lambda"
+    },
+    {
+      "resource": "aws_iam_role.bad_lambda",
+      "attribute": "arn",
+      "class": "R2",
+      "reference": "aws_iam_role.bad_lambda.arn",
+      "substituted": "arn:aws:iam:eu-west-1:123456789012:role/bad-lambda"
+    },
+    {
+      "resource": "aws_iam_role.bad_wildcard_trust",
+      "attribute": "id",
+      "class": "R2",
+      "reference": "aws_iam_role.bad_wildcard_trust.id",
+      "substituted": "bad-wildcard-trust"
+    },
+    {
+      "resource": "aws_iam_role.bad_wildcard_trust",
+      "attribute": "arn",
+      "class": "R2",
+      "reference": "aws_iam_role.bad_wildcard_trust.arn",
+      "substituted": "arn:aws:iam:eu-west-1:123456789012:role/bad-wildcard-trust"
+    },
+    {
+      "resource": "aws_iam_role_policy.bad_jump",
+      "attribute": "id",
+      "class": "R2",
+      "reference": "aws_iam_role_policy.bad_jump.id",
+      "substituted": "bad-jump"
+    },
+    {
+      "resource": "aws_iam_role_policy_attachment.bad_admin",
+      "attribute": "id",
+      "class": "R2",
+      "reference": "aws_iam_role_policy_attachment.bad_admin.id",
+      "substituted": "aws_iam_role_policy_attachment-bad_admin-id-known-after-apply"
+    },
+    {
+      "resource": "aws_iam_role_policy_attachment.bad_ecs",
+      "attribute": "id",
+      "class": "R2",
+      "reference": "aws_iam_role_policy_attachment.bad_ecs.id",
+      "substituted": "aws_iam_role_policy_attachment-bad_ecs-id-known-after-apply"
+    },
+    {
+      "resource": "aws_iam_role_policy_attachment.bad_lambda",
+      "attribute": "id",
+      "class": "R2",
+      "reference": "aws_iam_role_policy_attachment.bad_lambda.id",
+      "substituted": "aws_iam_role_policy_attachment-bad_lambda-id-known-after-apply"
+    },
+    {
+      "resource": "aws_iam_role_policy_attachment.bad_power",
+      "attribute": "id",
+      "class": "R2",
+      "reference": "aws_iam_role_policy_attachment.bad_power.id",
+      "substituted": "aws_iam_role_policy_attachment-bad_power-id-known-after-apply"
+    },
+    {
+      "resource": "aws_iam_user.bad",
+      "attribute": "id",
+      "class": "R2",
+      "reference": "aws_iam_user.bad.id",
+      "substituted": "bad-service-user"
+    },
+    {
+      "resource": "aws_iam_user.bad",
+      "attribute": "arn",
+      "class": "R2",
+      "reference": "aws_iam_user.bad.arn",
+      "substituted": "arn:aws:iam:eu-west-1:123456789012:user/bad-service-user"
+    },
+    {
+      "resource": "aws_iam_user_policy.bad",
+      "attribute": "id",
+      "class": "R2",
+      "reference": "aws_iam_user_policy.bad.id",
+      "substituted": "bad-inline"
+    },
+    {
+      "resource": "aws_iam_user_policy_attachment.bad",
+      "attribute": "id",
+      "class": "R2",
+      "reference": "aws_iam_user_policy_attachment.bad.id",
+      "substituted": "aws_iam_user_policy_attachment-bad-id-known-after-apply"
+    },
+    {
+      "resource": "aws_instance.bad_jump",
+      "attribute": "id",
+      "class": "R2",
+      "reference": "aws_instance.bad_jump.id",
+      "substituted": "aws_instance-bad_jump-id-known-after-apply"
+    },
+    {
+      "resource": "aws_instance.bad_jump",
+      "attribute": "arn",
+      "class": "R2",
+      "reference": "aws_instance.bad_jump.arn",
+      "substituted": "arn:aws:instance:eu-west-1:123456789012:instance/bad_jump"
+    },
+    {
+      "resource": "aws_internet_gateway.bad",
+      "attribute": "id",
+      "class": "R2",
+      "reference": "aws_internet_gateway.bad.id",
+      "substituted": "aws_internet_gateway-bad-id-known-after-apply"
+    },
+    {
+      "resource": "aws_internet_gateway.bad",
+      "attribute": "arn",
+      "class": "R2",
+      "reference": "aws_internet_gateway.bad.arn",
+      "substituted": "arn:aws:internet:eu-west-1:123456789012:gateway/bad"
+    },
+    {
+      "resource": "aws_kms_key.bad",
+      "attribute": "id",
+      "class": "R2",
+      "reference": "aws_kms_key.bad.id",
+      "substituted": "aws_kms_key-bad-id-known-after-apply"
+    },
+    {
+      "resource": "aws_kms_key.bad",
+      "attribute": "arn",
+      "class": "R2",
+      "reference": "aws_kms_key.bad.arn",
+      "substituted": "arn:aws:kms:eu-west-1:123456789012:key/bad"
+    },
+    {
+      "resource": "aws_lambda_function.bad",
+      "attribute": "id",
+      "class": "R2",
+      "reference": "aws_lambda_function.bad.id",
+      "substituted": "bad-lambda"
+    },
+    {
+      "resource": "aws_lambda_function.bad",
+      "attribute": "arn",
+      "class": "R2",
+      "reference": "aws_lambda_function.bad.arn",
+      "substituted": "arn:aws:lambda:eu-west-1:123456789012:function/bad-lambda"
+    },
+    {
+      "resource": "aws_lb.bad",
+      "attribute": "id",
+      "class": "R2",
+      "reference": "aws_lb.bad.id",
+      "substituted": "bad-alb"
+    },
+    {
+      "resource": "aws_lb.bad",
+      "attribute": "arn",
+      "class": "R2",
+      "reference": "aws_lb.bad.arn",
+      "substituted": "arn:aws:lb:eu-west-1:123456789012:lb/bad-alb"
+    },
+    {
+      "resource": "aws_lb_listener.bad_http",
+      "attribute": "id",
+      "class": "R2",
+      "reference": "aws_lb_listener.bad_http.id",
+      "substituted": "aws_lb_listener-bad_http-id-known-after-apply"
+    },
+    {
+      "resource": "aws_lb_listener.bad_http",
+      "attribute": "arn",
+      "class": "R2",
+      "reference": "aws_lb_listener.bad_http.arn",
+      "substituted": "arn:aws:lb:eu-west-1:123456789012:listener/bad_http"
+    },
+    {
+      "resource": "aws_lb_listener.bad_https",
+      "attribute": "id",
+      "class": "R2",
+      "reference": "aws_lb_listener.bad_https.id",
+      "substituted": "aws_lb_listener-bad_https-id-known-after-apply"
+    },
+    {
+      "resource": "aws_lb_listener.bad_https",
+      "attribute": "arn",
+      "class": "R2",
+      "reference": "aws_lb_listener.bad_https.arn",
+      "substituted": "arn:aws:lb:eu-west-1:123456789012:listener/bad_https"
+    },
+    {
+      "resource": "aws_msk_cluster.bad",
+      "attribute": "id",
+      "class": "R2",
+      "reference": "aws_msk_cluster.bad.id",
+      "substituted": "bad-kafka"
+    },
+    {
+      "resource": "aws_msk_cluster.bad",
+      "attribute": "arn",
+      "class": "R2",
+      "reference": "aws_msk_cluster.bad.arn",
+      "substituted": "arn:aws:msk:eu-west-1:123456789012:cluster/bad-kafka"
+    },
+    {
+      "resource": "aws_nat_gateway.bad",
+      "attribute": "id",
+      "class": "R2",
+      "reference": "aws_nat_gateway.bad.id",
+      "substituted": "aws_nat_gateway-bad-id-known-after-apply"
+    },
+    {
+      "resource": "aws_network_acl.bad",
+      "attribute": "id",
+      "class": "R2",
+      "reference": "aws_network_acl.bad.id",
+      "substituted": "aws_network_acl-bad-id-known-after-apply"
+    },
+    {
+      "resource": "aws_network_acl.bad",
+      "attribute": "arn",
+      "class": "R2",
+      "reference": "aws_network_acl.bad.arn",
+      "substituted": "arn:aws:network:eu-west-1:123456789012:acl/bad"
+    },
+    {
+      "resource": "aws_network_acl_rule.bad_inbound",
+      "attribute": "id",
+      "class": "R2",
+      "reference": "aws_network_acl_rule.bad_inbound.id",
+      "substituted": "aws_network_acl_rule-bad_inbound-id-known-after-apply"
+    },
+    {
+      "resource": "aws_opensearch_domain.bad",
+      "attribute": "id",
+      "class": "R2",
+      "reference": "aws_opensearch_domain.bad.id",
+      "substituted": "bad-search"
+    },
+    {
+      "resource": "aws_opensearch_domain.bad",
+      "attribute": "arn",
+      "class": "R2",
+      "reference": "aws_opensearch_domain.bad.arn",
+      "substituted": "arn:aws:opensearch:eu-west-1:123456789012:domain/bad-search"
+    },
+    {
+      "resource": "aws_redshift_cluster.bad",
+      "attribute": "id",
+      "class": "R2",
+      "reference": "aws_redshift_cluster.bad.id",
+      "substituted": "aws_redshift_cluster-bad-id-known-after-apply"
+    },
+    {
+      "resource": "aws_redshift_cluster.bad",
+      "attribute": "arn",
+      "class": "R2",
+      "reference": "aws_redshift_cluster.bad.arn",
+      "substituted": "arn:aws:redshift:eu-west-1:123456789012:cluster/bad"
+    },
+    {
+      "resource": "aws_redshift_parameter_group.bad",
+      "attribute": "id",
+      "class": "R2",
+      "reference": "aws_redshift_parameter_group.bad.id",
+      "substituted": "bad-redshift"
+    },
+    {
+      "resource": "aws_redshift_parameter_group.bad",
+      "attribute": "arn",
+      "class": "R2",
+      "reference": "aws_redshift_parameter_group.bad.arn",
+      "substituted": "arn:aws:redshift:eu-west-1:123456789012:parameter_group/bad-redshift"
+    },
+    {
+      "resource": "aws_route.bad_eigw",
+      "attribute": "id",
+      "class": "R2",
+      "reference": "aws_route.bad_eigw.id",
+      "substituted": "aws_route-bad_eigw-id-known-after-apply"
+    },
+    {
+      "resource": "aws_route.bad_igw",
+      "attribute": "id",
+      "class": "R2",
+      "reference": "aws_route.bad_igw.id",
+      "substituted": "aws_route-bad_igw-id-known-after-apply"
+    },
+    {
+      "resource": "aws_route.bad_nat",
+      "attribute": "id",
+      "class": "R2",
+      "reference": "aws_route.bad_nat.id",
+      "substituted": "aws_route-bad_nat-id-known-after-apply"
+    },
+    {
+      "resource": "aws_route_table.bad",
+      "attribute": "id",
+      "class": "R2",
+      "reference": "aws_route_table.bad.id",
+      "substituted": "aws_route_table-bad-id-known-after-apply"
+    },
+    {
+      "resource": "aws_route_table.bad",
+      "attribute": "arn",
+      "class": "R2",
+      "reference": "aws_route_table.bad.arn",
+      "substituted": "arn:aws:route:eu-west-1:123456789012:table/bad"
+    },
+    {
+      "resource": "aws_s3_bucket.bad_data",
+      "attribute": "id",
+      "class": "R2",
+      "reference": "aws_s3_bucket.bad_data.id",
+      "substituted": "bad-data-123456789012"
+    },
+    {
+      "resource": "aws_s3_bucket.bad_data",
+      "attribute": "arn",
+      "class": "R2",
+      "reference": "aws_s3_bucket.bad_data.arn",
+      "substituted": "arn:aws:s3:eu-west-1:123456789012:bucket/bad-data-123456789012"
+    },
+    {
+      "resource": "aws_s3_bucket.bad_open",
+      "attribute": "id",
+      "class": "R2",
+      "reference": "aws_s3_bucket.bad_open.id",
+      "substituted": "bad-open-123456789012"
+    },
+    {
+      "resource": "aws_s3_bucket.bad_open",
+      "attribute": "arn",
+      "class": "R2",
+      "reference": "aws_s3_bucket.bad_open.arn",
+      "substituted": "arn:aws:s3:eu-west-1:123456789012:bucket/bad-open-123456789012"
+    },
+    {
+      "resource": "aws_s3_bucket.bad_trail",
+      "attribute": "id",
+      "class": "R2",
+      "reference": "aws_s3_bucket.bad_trail.id",
+      "substituted": "bad-trail-logs-123456789012"
+    },
+    {
+      "resource": "aws_s3_bucket.bad_trail",
+      "attribute": "arn",
+      "class": "R2",
+      "reference": "aws_s3_bucket.bad_trail.arn",
+      "substituted": "arn:aws:s3:eu-west-1:123456789012:bucket/bad-trail-logs-123456789012"
+    },
+    {
+      "resource": "aws_s3_bucket.partner_share",
+      "attribute": "id",
+      "class": "R2",
+      "reference": "aws_s3_bucket.partner_share.id",
+      "substituted": "partner-share-123456789012"
+    },
+    {
+      "resource": "aws_s3_bucket.partner_share",
+      "attribute": "arn",
+      "class": "R2",
+      "reference": "aws_s3_bucket.partner_share.arn",
+      "substituted": "arn:aws:s3:eu-west-1:123456789012:bucket/partner-share-123456789012"
+    },
+    {
+      "resource": "aws_s3_bucket_lifecycle_configuration.bad_trail",
+      "attribute": "id",
+      "class": "R2",
+      "reference": "aws_s3_bucket_lifecycle_configuration.bad_trail.id",
+      "substituted": "bad-trail-logs-123456789012"
+    },
+    {
+      "resource": "aws_s3_bucket_policy.bad_data",
+      "attribute": "id",
+      "class": "R2",
+      "reference": "aws_s3_bucket_policy.bad_data.id",
+      "substituted": "bad-data-123456789012"
+    },
+    {
+      "resource": "aws_s3_bucket_policy.bad_open",
+      "attribute": "id",
+      "class": "R2",
+      "reference": "aws_s3_bucket_policy.bad_open.id",
+      "substituted": "bad-open-123456789012"
+    },
+    {
+      "resource": "aws_s3_bucket_policy.bad_trail",
+      "attribute": "id",
+      "class": "R2",
+      "reference": "aws_s3_bucket_policy.bad_trail.id",
+      "substituted": "bad-trail-logs-123456789012"
+    },
+    {
+      "resource": "aws_s3_bucket_policy.partner_share",
+      "attribute": "id",
+      "class": "R2",
+      "reference": "aws_s3_bucket_policy.partner_share.id",
+      "substituted": "partner-share-123456789012"
+    },
+    {
+      "resource": "aws_s3_bucket_public_access_block.bad_trail",
+      "attribute": "id",
+      "class": "R2",
+      "reference": "aws_s3_bucket_public_access_block.bad_trail.id",
+      "substituted": "bad-trail-logs-123456789012"
+    },
+    {
+      "resource": "aws_s3_bucket_server_side_encryption_configuration.bad_trail",
+      "attribute": "id",
+      "class": "R2",
+      "reference": "aws_s3_bucket_server_side_encryption_configuration.bad_trail.id",
+      "substituted": "bad-trail-logs-123456789012"
+    },
+    {
+      "resource": "aws_s3_bucket_versioning.bad_trail",
+      "attribute": "id",
+      "class": "R2",
+      "reference": "aws_s3_bucket_versioning.bad_trail.id",
+      "substituted": "bad-trail-logs-123456789012"
+    },
+    {
+      "resource": "aws_secretsmanager_secret.bad",
+      "attribute": "id",
+      "class": "R2",
+      "reference": "aws_secretsmanager_secret.bad.id",
+      "substituted": "bad/db/creds"
+    },
+    {
+      "resource": "aws_secretsmanager_secret.bad",
+      "attribute": "arn",
+      "class": "R2",
+      "reference": "aws_secretsmanager_secret.bad.arn",
+      "substituted": "arn:aws:secretsmanager:eu-west-1:123456789012:secret/bad/db/creds"
+    },
+    {
+      "resource": "aws_secretsmanager_secret_policy.bad_open",
+      "attribute": "id",
+      "class": "R2",
+      "reference": "aws_secretsmanager_secret_policy.bad_open.id",
+      "substituted": "aws_secretsmanager_secret_policy-bad_open-id-known-after-apply"
+    },
+    {
+      "resource": "aws_secretsmanager_secret_rotation.bad",
+      "attribute": "id",
+      "class": "R2",
+      "reference": "aws_secretsmanager_secret_rotation.bad.id",
+      "substituted": "aws_secretsmanager_secret_rotation-bad-id-known-after-apply"
+    },
+    {
+      "resource": "aws_security_group.bad",
+      "attribute": "id",
+      "class": "R2",
+      "reference": "aws_security_group.bad.id",
+      "substituted": "aws_security_group-bad-id-known-after-apply"
+    },
+    {
+      "resource": "aws_security_group.bad",
+      "attribute": "arn",
+      "class": "R2",
+      "reference": "aws_security_group.bad.arn",
+      "substituted": "arn:aws:security:eu-west-1:123456789012:group/bad"
+    },
+    {
+      "resource": "aws_security_group.bad_browsing",
+      "attribute": "id",
+      "class": "R2",
+      "reference": "aws_security_group.bad_browsing.id",
+      "substituted": "bad-browsing"
+    },
+    {
+      "resource": "aws_security_group.bad_browsing",
+      "attribute": "arn",
+      "class": "R2",
+      "reference": "aws_security_group.bad_browsing.arn",
+      "substituted": "arn:aws:security:eu-west-1:123456789012:group/bad-browsing"
+    },
+    {
+      "resource": "aws_security_group_rule.bad_legacy_ingress",
+      "attribute": "id",
+      "class": "R2",
+      "reference": "aws_security_group_rule.bad_legacy_ingress.id",
+      "substituted": "aws_security_group_rule-bad_legacy_ingress-id-known-after-apply"
+    },
+    {
+      "resource": "aws_ssm_document.bad_session",
+      "attribute": "id",
+      "class": "R2",
+      "reference": "aws_ssm_document.bad_session.id",
+      "substituted": "SSM-SessionManagerRunShell"
+    },
+    {
+      "resource": "aws_ssm_document.bad_session",
+      "attribute": "arn",
+      "class": "R2",
+      "reference": "aws_ssm_document.bad_session.arn",
+      "substituted": "arn:aws:ssm:eu-west-1:123456789012:document/SSM-SessionManagerRunShell"
+    },
+    {
+      "resource": "aws_ssm_parameter.bad_password",
+      "attribute": "id",
+      "class": "R2",
+      "reference": "aws_ssm_parameter.bad_password.id",
+      "substituted": "/swift/app/db_password"
+    },
+    {
+      "resource": "aws_ssm_parameter.bad_password",
+      "attribute": "arn",
+      "class": "R2",
+      "reference": "aws_ssm_parameter.bad_password.arn",
+      "substituted": "arn:aws:ssm:eu-west-1:123456789012:parameter//swift/app/db_password"
+    },
+    {
+      "resource": "aws_subnet.bad1",
+      "attribute": "id",
+      "class": "R2",
+      "reference": "aws_subnet.bad1.id",
+      "substituted": "aws_subnet-bad1-id-known-after-apply"
+    },
+    {
+      "resource": "aws_subnet.bad1",
+      "attribute": "arn",
+      "class": "R2",
+      "reference": "aws_subnet.bad1.arn",
+      "substituted": "arn:aws:subnet:eu-west-1:123456789012:subnet/bad1"
+    },
+    {
+      "resource": "aws_subnet.bad2",
+      "attribute": "id",
+      "class": "R2",
+      "reference": "aws_subnet.bad2.id",
+      "substituted": "aws_subnet-bad2-id-known-after-apply"
+    },
+    {
+      "resource": "aws_subnet.bad2",
+      "attribute": "arn",
+      "class": "R2",
+      "reference": "aws_subnet.bad2.arn",
+      "substituted": "arn:aws:subnet:eu-west-1:123456789012:subnet/bad2"
+    },
+    {
+      "resource": "aws_vpc.bad",
+      "attribute": "id",
+      "class": "R2",
+      "reference": "aws_vpc.bad.id",
+      "substituted": "aws_vpc-bad-id-known-after-apply"
+    },
+    {
+      "resource": "aws_vpc.bad",
+      "attribute": "arn",
+      "class": "R2",
+      "reference": "aws_vpc.bad.arn",
+      "substituted": "arn:aws:vpc:eu-west-1:123456789012:vpc/bad"
+    },
+    {
+      "resource": "aws_vpc_security_group_egress_rule.bad_all",
+      "attribute": "id",
+      "class": "R2",
+      "reference": "aws_vpc_security_group_egress_rule.bad_all.id",
+      "substituted": "aws_vpc_security_group_egress_rule-bad_all-id-known-after-apply"
+    },
+    {
+      "resource": "aws_vpc_security_group_egress_rule.bad_all",
+      "attribute": "arn",
+      "class": "R2",
+      "reference": "aws_vpc_security_group_egress_rule.bad_all.arn",
+      "substituted": "arn:aws:vpc:eu-west-1:123456789012:security_group_egress_rule/bad_all"
+    },
+    {
+      "resource": "aws_vpc_security_group_ingress_rule.bad_ssh",
+      "attribute": "id",
+      "class": "R2",
+      "reference": "aws_vpc_security_group_ingress_rule.bad_ssh.id",
+      "substituted": "aws_vpc_security_group_ingress_rule-bad_ssh-id-known-after-apply"
+    },
+    {
+      "resource": "aws_vpc_security_group_ingress_rule.bad_ssh",
+      "attribute": "arn",
+      "class": "R2",
+      "reference": "aws_vpc_security_group_ingress_rule.bad_ssh.arn",
+      "substituted": "arn:aws:vpc:eu-west-1:123456789012:security_group_ingress_rule/bad_ssh"
+    },
+    {
+      "resource": "aws_vpn_connection.bad_back_office",
+      "attribute": "id",
+      "class": "R2",
+      "reference": "aws_vpn_connection.bad_back_office.id",
+      "substituted": "aws_vpn_connection-bad_back_office-id-known-after-apply"
+    },
+    {
+      "resource": "aws_vpn_connection.bad_back_office",
+      "attribute": "arn",
+      "class": "R2",
+      "reference": "aws_vpn_connection.bad_back_office.arn",
+      "substituted": "arn:aws:vpn:eu-west-1:123456789012:connection/bad_back_office"
+    },
+    {
+      "resource": "aws_vpn_gateway.bad",
+      "attribute": "id",
+      "class": "R2",
+      "reference": "aws_vpn_gateway.bad.id",
+      "substituted": "aws_vpn_gateway-bad-id-known-after-apply"
+    },
+    {
+      "resource": "aws_vpn_gateway.bad",
+      "attribute": "arn",
+      "class": "R2",
+      "reference": "aws_vpn_gateway.bad.arn",
+      "substituted": "arn:aws:vpn:eu-west-1:123456789012:gateway/bad"
+    }
+  ],
+  "r3_unresolvable": [
+    {
+      "resource": "aws_efs_file_system_policy.bad",
+      "attribute": "policy",
+      "class": "R3",
+      "reason": "document body unknown at plan time; JSON-parsing assertions over it cannot be evaluated",
+      "assigned_from": [
+        "aws_efs_file_system.bad.arn",
+        "aws_efs_file_system.bad"
+      ]
+    },
+    {
+      "resource": "aws_s3_bucket_policy.bad_data",
+      "attribute": "policy",
+      "class": "R3",
+      "reason": "document body unknown at plan time; JSON-parsing assertions over it cannot be evaluated",
+      "assigned_from": [
+        "aws_s3_bucket.bad_data.arn",
+        "aws_s3_bucket.bad_data"
+      ]
+    },
+    {
+      "resource": "aws_s3_bucket_policy.bad_open",
+      "attribute": "policy",
+      "class": "R3",
+      "reason": "document body unknown at plan time; JSON-parsing assertions over it cannot be evaluated",
+      "assigned_from": [
+        "aws_s3_bucket.bad_open.arn",
+        "aws_s3_bucket.bad_open"
+      ]
+    },
+    {
+      "resource": "aws_s3_bucket_policy.bad_trail",
+      "attribute": "policy",
+      "class": "R3",
+      "reason": "document body unknown at plan time; JSON-parsing assertions over it cannot be evaluated",
+      "assigned_from": [
+        "aws_s3_bucket.bad_trail.arn",
+        "aws_s3_bucket.bad_trail"
+      ]
+    }
+  ],
+  "provider_decided": [
+    {
+      "resource": "aws_api_gateway_domain_name.bad",
+      "type": "aws_api_gateway_domain_name",
+      "attribute": "certificate_upload_date"
+    },
+    {
+      "resource": "aws_api_gateway_domain_name.bad",
+      "type": "aws_api_gateway_domain_name",
+      "attribute": "cloudfront_domain_name"
+    },
+    {
+      "resource": "aws_api_gateway_domain_name.bad",
+      "type": "aws_api_gateway_domain_name",
+      "attribute": "cloudfront_zone_id"
+    },
+    {
+      "resource": "aws_api_gateway_domain_name.bad",
+      "type": "aws_api_gateway_domain_name",
+      "attribute": "domain_name_id"
+    },
+    {
+      "resource": "aws_api_gateway_domain_name.bad",
+      "type": "aws_api_gateway_domain_name",
+      "attribute": "ownership_verification_certificate_arn"
+    },
+    {
+      "resource": "aws_api_gateway_domain_name.bad",
+      "type": "aws_api_gateway_domain_name",
+      "attribute": "regional_domain_name"
+    },
+    {
+      "resource": "aws_api_gateway_domain_name.bad",
+      "type": "aws_api_gateway_domain_name",
+      "attribute": "regional_zone_id"
+    },
+    {
+      "resource": "aws_cloudtrail.bad",
+      "type": "aws_cloudtrail",
+      "attribute": "home_region"
+    },
+    {
+      "resource": "aws_cloudtrail.bad",
+      "type": "aws_cloudtrail",
+      "attribute": "sns_topic_arn"
+    },
+    {
+      "resource": "aws_cloudwatch_log_group.bad",
+      "type": "aws_cloudwatch_log_group",
+      "attribute": "log_group_class"
+    },
+    {
+      "resource": "aws_cloudwatch_log_group.bad",
+      "type": "aws_cloudwatch_log_group",
+      "attribute": "name_prefix"
+    },
+    {
+      "resource": "aws_cloudwatch_metric_alarm.bad",
+      "type": "aws_cloudwatch_metric_alarm",
+      "attribute": "evaluate_low_sample_count_percentiles"
+    },
+    {
+      "resource": "aws_cognito_user_pool.bad",
+      "type": "aws_cognito_user_pool",
+      "attribute": "admin_create_user_config"
+    },
+    {
+      "resource": "aws_cognito_user_pool.bad",
+      "type": "aws_cognito_user_pool",
+      "attribute": "creation_date"
+    },
+    {
+      "resource": "aws_cognito_user_pool.bad",
+      "type": "aws_cognito_user_pool",
+      "attribute": "custom_domain"
+    },
+    {
+      "resource": "aws_cognito_user_pool.bad",
+      "type": "aws_cognito_user_pool",
+      "attribute": "domain"
+    },
+    {
+      "resource": "aws_cognito_user_pool.bad",
+      "type": "aws_cognito_user_pool",
+      "attribute": "email_verification_message"
+    },
+    {
+      "resource": "aws_cognito_user_pool.bad",
+      "type": "aws_cognito_user_pool",
+      "attribute": "email_verification_subject"
+    },
+    {
+      "resource": "aws_cognito_user_pool.bad",
+      "type": "aws_cognito_user_pool",
+      "attribute": "endpoint"
+    },
+    {
+      "resource": "aws_cognito_user_pool.bad",
+      "type": "aws_cognito_user_pool",
+      "attribute": "estimated_number_of_users"
+    },
+    {
+      "resource": "aws_cognito_user_pool.bad",
+      "type": "aws_cognito_user_pool",
+      "attribute": "last_modified_date"
+    },
+    {
+      "resource": "aws_cognito_user_pool.bad",
+      "type": "aws_cognito_user_pool",
+      "attribute": "sign_in_policy"
+    },
+    {
+      "resource": "aws_cognito_user_pool.bad",
+      "type": "aws_cognito_user_pool",
+      "attribute": "sms_configuration"
+    },
+    {
+      "resource": "aws_cognito_user_pool.bad",
+      "type": "aws_cognito_user_pool",
+      "attribute": "sms_verification_message"
+    },
+    {
+      "resource": "aws_cognito_user_pool.bad",
+      "type": "aws_cognito_user_pool",
+      "attribute": "user_pool_tier"
+    },
+    {
+      "resource": "aws_cognito_user_pool.bad",
+      "type": "aws_cognito_user_pool",
+      "attribute": "username_configuration"
+    },
+    {
+      "resource": "aws_cognito_user_pool.bad",
+      "type": "aws_cognito_user_pool",
+      "attribute": "verification_message_template"
+    },
+    {
+      "resource": "aws_db_instance.bad",
+      "type": "aws_db_instance",
+      "attribute": "address"
+    },
+    {
+      "resource": "aws_db_instance.bad",
+      "type": "aws_db_instance",
+      "attribute": "availability_zone"
+    },
+    {
+      "resource": "aws_db_instance.bad",
+      "type": "aws_db_instance",
+      "attribute": "backup_retention_period"
+    },
+    {
+      "resource": "aws_db_instance.bad",
+      "type": "aws_db_instance",
+      "attribute": "backup_target"
+    },
+    {
+      "resource": "aws_db_instance.bad",
+      "type": "aws_db_instance",
+      "attribute": "backup_window"
+    },
+    {
+      "resource": "aws_db_instance.bad",
+      "type": "aws_db_instance",
+      "attribute": "ca_cert_identifier"
+    },
+    {
+      "resource": "aws_db_instance.bad",
+      "type": "aws_db_instance",
+      "attribute": "character_set_name"
+    },
+    {
+      "resource": "aws_db_instance.bad",
+      "type": "aws_db_instance",
+      "attribute": "database_insights_mode"
+    },
+    {
+      "resource": "aws_db_instance.bad",
+      "type": "aws_db_instance",
+      "attribute": "db_name"
+    },
+    {
+      "resource": "aws_db_instance.bad",
+      "type": "aws_db_instance",
+      "attribute": "domain_fqdn"
+    },
+    {
+      "resource": "aws_db_instance.bad",
+      "type": "aws_db_instance",
+      "attribute": "endpoint"
+    },
+    {
+      "resource": "aws_db_instance.bad",
+      "type": "aws_db_instance",
+      "attribute": "engine_lifecycle_support"
+    },
+    {
+      "resource": "aws_db_instance.bad",
+      "type": "aws_db_instance",
+      "attribute": "engine_version_actual"
+    },
+    {
+      "resource": "aws_db_instance.bad",
+      "type": "aws_db_instance",
+      "attribute": "hosted_zone_id"
+    },
+    {
+      "resource": "aws_db_instance.bad",
+      "type": "aws_db_instance",
+      "attribute": "identifier_prefix"
+    },
+    {
+      "resource": "aws_db_instance.bad",
+      "type": "aws_db_instance",
+      "attribute": "iops"
+    },
+    {
+      "resource": "aws_db_instance.bad",
+      "type": "aws_db_instance",
+      "attribute": "kms_key_id"
+    },
+    {
+      "resource": "aws_db_instance.bad",
+      "type": "aws_db_instance",
+      "attribute": "latest_restorable_time"
+    },
+    {
+      "resource": "aws_db_instance.bad",
+      "type": "aws_db_instance",
+      "attribute": "license_model"
+    },
+    {
+      "resource": "aws_db_instance.bad",
+      "type": "aws_db_instance",
+      "attribute": "listener_endpoint"
+    },
+    {
+      "resource": "aws_db_instance.bad",
+      "type": "aws_db_instance",
+      "attribute": "maintenance_window"
+    },
+    {
+      "resource": "aws_db_instance.bad",
+      "type": "aws_db_instance",
+      "attribute": "master_user_secret"
+    },
+    {
+      "resource": "aws_db_instance.bad",
+      "type": "aws_db_instance",
+      "attribute": "master_user_secret_kms_key_id"
+    },
+    {
+      "resource": "aws_db_instance.bad",
+      "type": "aws_db_instance",
+      "attribute": "monitoring_role_arn"
+    },
+    {
+      "resource": "aws_db_instance.bad",
+      "type": "aws_db_instance",
+      "attribute": "multi_az"
+    },
+    {
+      "resource": "aws_db_instance.bad",
+      "type": "aws_db_instance",
+      "attribute": "nchar_character_set_name"
+    },
+    {
+      "resource": "aws_db_instance.bad",
+      "type": "aws_db_instance",
+      "attribute": "network_type"
+    },
+    {
+      "resource": "aws_db_instance.bad",
+      "type": "aws_db_instance",
+      "attribute": "option_group_name"
+    },
+    {
+      "resource": "aws_db_instance.bad",
+      "type": "aws_db_instance",
+      "attribute": "parameter_group_name"
+    },
+    {
+      "resource": "aws_db_instance.bad",
+      "type": "aws_db_instance",
+      "attribute": "performance_insights_kms_key_id"
+    },
+    {
+      "resource": "aws_db_instance.bad",
+      "type": "aws_db_instance",
+      "attribute": "performance_insights_retention_period"
+    },
+    {
+      "resource": "aws_db_instance.bad",
+      "type": "aws_db_instance",
+      "attribute": "port"
+    },
+    {
+      "resource": "aws_db_instance.bad",
+      "type": "aws_db_instance",
+      "attribute": "replica_mode"
+    },
+    {
+      "resource": "aws_db_instance.bad",
+      "type": "aws_db_instance",
+      "attribute": "replicas"
+    },
+    {
+      "resource": "aws_db_instance.bad",
+      "type": "aws_db_instance",
+      "attribute": "resource_id"
+    },
+    {
+      "resource": "aws_db_instance.bad",
+      "type": "aws_db_instance",
+      "attribute": "snapshot_identifier"
+    },
+    {
+      "resource": "aws_db_instance.bad",
+      "type": "aws_db_instance",
+      "attribute": "status"
+    },
+    {
+      "resource": "aws_db_instance.bad",
+      "type": "aws_db_instance",
+      "attribute": "storage_throughput"
+    },
+    {
+      "resource": "aws_db_instance.bad",
+      "type": "aws_db_instance",
+      "attribute": "storage_type"
+    },
+    {
+      "resource": "aws_db_instance.bad",
+      "type": "aws_db_instance",
+      "attribute": "timezone"
+    },
+    {
+      "resource": "aws_db_parameter_group.bad_mysql",
+      "type": "aws_db_parameter_group",
+      "attribute": "name_prefix"
+    },
+    {
+      "resource": "aws_db_parameter_group.bad_pg",
+      "type": "aws_db_parameter_group",
+      "attribute": "name_prefix"
+    },
+    {
+      "resource": "aws_db_subnet_group.bad",
+      "type": "aws_db_subnet_group",
+      "attribute": "name_prefix"
+    },
+    {
+      "resource": "aws_db_subnet_group.bad",
+      "type": "aws_db_subnet_group",
+      "attribute": "supported_network_types"
+    },
+    {
+      "resource": "aws_db_subnet_group.bad",
+      "type": "aws_db_subnet_group",
+      "attribute": "vpc_id"
+    },
+    {
+      "resource": "aws_default_network_acl.bad",
+      "type": "aws_default_network_acl",
+      "attribute": "owner_id"
+    },
+    {
+      "resource": "aws_default_network_acl.bad",
+      "type": "aws_default_network_acl",
+      "attribute": "vpc_id"
+    },
+    {
+      "resource": "aws_default_security_group.bad",
+      "type": "aws_default_security_group",
+      "attribute": "description"
+    },
+    {
+      "resource": "aws_default_security_group.bad",
+      "type": "aws_default_security_group",
+      "attribute": "name"
+    },
+    {
+      "resource": "aws_default_security_group.bad",
+      "type": "aws_default_security_group",
+      "attribute": "name_prefix"
+    },
+    {
+      "resource": "aws_default_security_group.bad",
+      "type": "aws_default_security_group",
+      "attribute": "owner_id"
+    },
+    {
+      "resource": "aws_dx_connection.bad_back_office",
+      "type": "aws_dx_connection",
+      "attribute": "aws_device"
+    },
+    {
+      "resource": "aws_dx_connection.bad_back_office",
+      "type": "aws_dx_connection",
+      "attribute": "encryption_mode"
+    },
+    {
+      "resource": "aws_dx_connection.bad_back_office",
+      "type": "aws_dx_connection",
+      "attribute": "has_logical_redundancy"
+    },
+    {
+      "resource": "aws_dx_connection.bad_back_office",
+      "type": "aws_dx_connection",
+      "attribute": "jumbo_frame_capable"
+    },
+    {
+      "resource": "aws_dx_connection.bad_back_office",
+      "type": "aws_dx_connection",
+      "attribute": "macsec_capable"
+    },
+    {
+      "resource": "aws_dx_connection.bad_back_office",
+      "type": "aws_dx_connection",
+      "attribute": "owner_account_id"
+    },
+    {
+      "resource": "aws_dx_connection.bad_back_office",
+      "type": "aws_dx_connection",
+      "attribute": "partner_name"
+    },
+    {
+      "resource": "aws_dx_connection.bad_back_office",
+      "type": "aws_dx_connection",
+      "attribute": "port_encryption_status"
+    },
+    {
+      "resource": "aws_dx_connection.bad_back_office",
+      "type": "aws_dx_connection",
+      "attribute": "provider_name"
+    },
+    {
+      "resource": "aws_dx_connection.bad_back_office",
+      "type": "aws_dx_connection",
+      "attribute": "vlan_id"
+    },
+    {
+      "resource": "aws_ebs_volume.bad_data",
+      "type": "aws_ebs_volume",
+      "attribute": "create_time"
+    },
+    {
+      "resource": "aws_ebs_volume.bad_data",
+      "type": "aws_ebs_volume",
+      "attribute": "iops"
+    },
+    {
+      "resource": "aws_ebs_volume.bad_data",
+      "type": "aws_ebs_volume",
+      "attribute": "kms_key_id"
+    },
+    {
+      "resource": "aws_ebs_volume.bad_data",
+      "type": "aws_ebs_volume",
+      "attribute": "snapshot_id"
+    },
+    {
+      "resource": "aws_ebs_volume.bad_data",
+      "type": "aws_ebs_volume",
+      "attribute": "throughput"
+    },
+    {
+      "resource": "aws_ebs_volume.bad_data",
+      "type": "aws_ebs_volume",
+      "attribute": "type"
+    },
+    {
+      "resource": "aws_ec2_client_vpn_endpoint.bad",
+      "type": "aws_ec2_client_vpn_endpoint",
+      "attribute": "client_connect_options"
+    },
+    {
+      "resource": "aws_ec2_client_vpn_endpoint.bad",
+      "type": "aws_ec2_client_vpn_endpoint",
+      "attribute": "client_login_banner_options"
+    },
+    {
+      "resource": "aws_ec2_client_vpn_endpoint.bad",
+      "type": "aws_ec2_client_vpn_endpoint",
+      "attribute": "client_route_enforcement_options"
+    },
+    {
+      "resource": "aws_ec2_client_vpn_endpoint.bad",
+      "type": "aws_ec2_client_vpn_endpoint",
+      "attribute": "disconnect_on_session_timeout"
+    },
+    {
+      "resource": "aws_ec2_client_vpn_endpoint.bad",
+      "type": "aws_ec2_client_vpn_endpoint",
+      "attribute": "dns_name"
+    },
+    {
+      "resource": "aws_ec2_client_vpn_endpoint.bad",
+      "type": "aws_ec2_client_vpn_endpoint",
+      "attribute": "security_group_ids"
+    },
+    {
+      "resource": "aws_ec2_client_vpn_endpoint.bad",
+      "type": "aws_ec2_client_vpn_endpoint",
+      "attribute": "self_service_portal_url"
+    },
+    {
+      "resource": "aws_ec2_client_vpn_endpoint.bad",
+      "type": "aws_ec2_client_vpn_endpoint",
+      "attribute": "vpc_id"
+    },
+    {
+      "resource": "aws_ecs_task_definition.bad",
+      "type": "aws_ecs_task_definition",
+      "attribute": "arn_without_revision"
+    },
+    {
+      "resource": "aws_ecs_task_definition.bad",
+      "type": "aws_ecs_task_definition",
+      "attribute": "enable_fault_injection"
+    },
+    {
+      "resource": "aws_ecs_task_definition.bad",
+      "type": "aws_ecs_task_definition",
+      "attribute": "revision"
+    },
+    {
+      "resource": "aws_ecs_task_definition.bad_privileged",
+      "type": "aws_ecs_task_definition",
+      "attribute": "arn_without_revision"
+    },
+    {
+      "resource": "aws_ecs_task_definition.bad_privileged",
+      "type": "aws_ecs_task_definition",
+      "attribute": "enable_fault_injection"
+    },
+    {
+      "resource": "aws_ecs_task_definition.bad_privileged",
+      "type": "aws_ecs_task_definition",
+      "attribute": "network_mode"
+    },
+    {
+      "resource": "aws_ecs_task_definition.bad_privileged",
+      "type": "aws_ecs_task_definition",
+      "attribute": "revision"
+    },
+    {
+      "resource": "aws_efs_file_system.bad",
+      "type": "aws_efs_file_system",
+      "attribute": "availability_zone_id"
+    },
+    {
+      "resource": "aws_efs_file_system.bad",
+      "type": "aws_efs_file_system",
+      "attribute": "availability_zone_name"
+    },
+    {
+      "resource": "aws_efs_file_system.bad",
+      "type": "aws_efs_file_system",
+      "attribute": "creation_token"
+    },
+    {
+      "resource": "aws_efs_file_system.bad",
+      "type": "aws_efs_file_system",
+      "attribute": "dns_name"
+    },
+    {
+      "resource": "aws_efs_file_system.bad",
+      "type": "aws_efs_file_system",
+      "attribute": "encrypted"
+    },
+    {
+      "resource": "aws_efs_file_system.bad",
+      "type": "aws_efs_file_system",
+      "attribute": "kms_key_id"
+    },
+    {
+      "resource": "aws_efs_file_system.bad",
+      "type": "aws_efs_file_system",
+      "attribute": "name"
+    },
+    {
+      "resource": "aws_efs_file_system.bad",
+      "type": "aws_efs_file_system",
+      "attribute": "number_of_mount_targets"
+    },
+    {
+      "resource": "aws_efs_file_system.bad",
+      "type": "aws_efs_file_system",
+      "attribute": "owner_id"
+    },
+    {
+      "resource": "aws_efs_file_system.bad",
+      "type": "aws_efs_file_system",
+      "attribute": "performance_mode"
+    },
+    {
+      "resource": "aws_efs_file_system.bad",
+      "type": "aws_efs_file_system",
+      "attribute": "protection"
+    },
+    {
+      "resource": "aws_efs_file_system.bad",
+      "type": "aws_efs_file_system",
+      "attribute": "size_in_bytes"
+    },
+    {
+      "resource": "aws_eip.bad_nat",
+      "type": "aws_eip",
+      "attribute": "allocation_id"
+    },
+    {
+      "resource": "aws_eip.bad_nat",
+      "type": "aws_eip",
+      "attribute": "association_id"
+    },
+    {
+      "resource": "aws_eip.bad_nat",
+      "type": "aws_eip",
+      "attribute": "carrier_ip"
+    },
+    {
+      "resource": "aws_eip.bad_nat",
+      "type": "aws_eip",
+      "attribute": "customer_owned_ip"
+    },
+    {
+      "resource": "aws_eip.bad_nat",
+      "type": "aws_eip",
+      "attribute": "instance"
+    },
+    {
+      "resource": "aws_eip.bad_nat",
+      "type": "aws_eip",
+      "attribute": "ipam_pool_id"
+    },
+    {
+      "resource": "aws_eip.bad_nat",
+      "type": "aws_eip",
+      "attribute": "network_border_group"
+    },
+    {
+      "resource": "aws_eip.bad_nat",
+      "type": "aws_eip",
+      "attribute": "network_interface"
+    },
+    {
+      "resource": "aws_eip.bad_nat",
+      "type": "aws_eip",
+      "attribute": "private_dns"
+    },
+    {
+      "resource": "aws_eip.bad_nat",
+      "type": "aws_eip",
+      "attribute": "private_ip"
+    },
+    {
+      "resource": "aws_eip.bad_nat",
+      "type": "aws_eip",
+      "attribute": "ptr_record"
+    },
+    {
+      "resource": "aws_eip.bad_nat",
+      "type": "aws_eip",
+      "attribute": "public_dns"
+    },
+    {
+      "resource": "aws_eip.bad_nat",
+      "type": "aws_eip",
+      "attribute": "public_ip"
+    },
+    {
+      "resource": "aws_eip.bad_nat",
+      "type": "aws_eip",
+      "attribute": "public_ipv4_pool"
+    },
+    {
+      "resource": "aws_eip.bad_nat",
+      "type": "aws_eip",
+      "attribute": "vpc"
+    },
+    {
+      "resource": "aws_elasticache_replication_group.bad",
+      "type": "aws_elasticache_replication_group",
+      "attribute": "apply_immediately"
+    },
+    {
+      "resource": "aws_elasticache_replication_group.bad",
+      "type": "aws_elasticache_replication_group",
+      "attribute": "at_rest_encryption_enabled"
+    },
+    {
+      "resource": "aws_elasticache_replication_group.bad",
+      "type": "aws_elasticache_replication_group",
+      "attribute": "auto_minor_version_upgrade"
+    },
+    {
+      "resource": "aws_elasticache_replication_group.bad",
+      "type": "aws_elasticache_replication_group",
+      "attribute": "cluster_enabled"
+    },
+    {
+      "resource": "aws_elasticache_replication_group.bad",
+      "type": "aws_elasticache_replication_group",
+      "attribute": "cluster_mode"
+    },
+    {
+      "resource": "aws_elasticache_replication_group.bad",
+      "type": "aws_elasticache_replication_group",
+      "attribute": "configuration_endpoint_address"
+    },
+    {
+      "resource": "aws_elasticache_replication_group.bad",
+      "type": "aws_elasticache_replication_group",
+      "attribute": "data_tiering_enabled"
+    },
+    {
+      "resource": "aws_elasticache_replication_group.bad",
+      "type": "aws_elasticache_replication_group",
+      "attribute": "engine_version"
+    },
+    {
+      "resource": "aws_elasticache_replication_group.bad",
+      "type": "aws_elasticache_replication_group",
+      "attribute": "engine_version_actual"
+    },
+    {
+      "resource": "aws_elasticache_replication_group.bad",
+      "type": "aws_elasticache_replication_group",
+      "attribute": "global_replication_group_id"
+    },
+    {
+      "resource": "aws_elasticache_replication_group.bad",
+      "type": "aws_elasticache_replication_group",
+      "attribute": "ip_discovery"
+    },
+    {
+      "resource": "aws_elasticache_replication_group.bad",
+      "type": "aws_elasticache_replication_group",
+      "attribute": "maintenance_window"
+    },
+    {
+      "resource": "aws_elasticache_replication_group.bad",
+      "type": "aws_elasticache_replication_group",
+      "attribute": "member_clusters"
+    },
+    {
+      "resource": "aws_elasticache_replication_group.bad",
+      "type": "aws_elasticache_replication_group",
+      "attribute": "network_type"
+    },
+    {
+      "resource": "aws_elasticache_replication_group.bad",
+      "type": "aws_elasticache_replication_group",
+      "attribute": "num_node_groups"
+    },
+    {
+      "resource": "aws_elasticache_replication_group.bad",
+      "type": "aws_elasticache_replication_group",
+      "attribute": "parameter_group_name"
+    },
+    {
+      "resource": "aws_elasticache_replication_group.bad",
+      "type": "aws_elasticache_replication_group",
+      "attribute": "primary_endpoint_address"
+    },
+    {
+      "resource": "aws_elasticache_replication_group.bad",
+      "type": "aws_elasticache_replication_group",
+      "attribute": "reader_endpoint_address"
+    },
+    {
+      "resource": "aws_elasticache_replication_group.bad",
+      "type": "aws_elasticache_replication_group",
+      "attribute": "replicas_per_node_group"
+    },
+    {
+      "resource": "aws_elasticache_replication_group.bad",
+      "type": "aws_elasticache_replication_group",
+      "attribute": "security_group_ids"
+    },
+    {
+      "resource": "aws_elasticache_replication_group.bad",
+      "type": "aws_elasticache_replication_group",
+      "attribute": "security_group_names"
+    },
+    {
+      "resource": "aws_elasticache_replication_group.bad",
+      "type": "aws_elasticache_replication_group",
+      "attribute": "snapshot_window"
+    },
+    {
+      "resource": "aws_elasticache_replication_group.bad",
+      "type": "aws_elasticache_replication_group",
+      "attribute": "subnet_group_name"
+    },
+    {
+      "resource": "aws_elasticache_replication_group.bad",
+      "type": "aws_elasticache_replication_group",
+      "attribute": "transit_encryption_mode"
+    },
+    {
+      "resource": "aws_iam_access_key.bad",
+      "type": "aws_iam_access_key",
+      "attribute": "create_date"
+    },
+    {
+      "resource": "aws_iam_access_key.bad",
+      "type": "aws_iam_access_key",
+      "attribute": "encrypted_secret"
+    },
+    {
+      "resource": "aws_iam_access_key.bad",
+      "type": "aws_iam_access_key",
+      "attribute": "encrypted_ses_smtp_password_v4"
+    },
+    {
+      "resource": "aws_iam_access_key.bad",
+      "type": "aws_iam_access_key",
+      "attribute": "key_fingerprint"
+    },
+    {
+      "resource": "aws_iam_access_key.bad",
+      "type": "aws_iam_access_key",
+      "attribute": "secret"
+    },
+    {
+      "resource": "aws_iam_access_key.bad",
+      "type": "aws_iam_access_key",
+      "attribute": "ses_smtp_password_v4"
+    },
+    {
+      "resource": "aws_iam_account_password_policy.bad",
+      "type": "aws_iam_account_password_policy",
+      "attribute": "expire_passwords"
+    },
+    {
+      "resource": "aws_iam_group.bad",
+      "type": "aws_iam_group",
+      "attribute": "unique_id"
+    },
+    {
+      "resource": "aws_iam_group.bad_ops",
+      "type": "aws_iam_group",
+      "attribute": "unique_id"
+    },
+    {
+      "resource": "aws_iam_group_policy.bad_ops",
+      "type": "aws_iam_group_policy",
+      "attribute": "name_prefix"
+    },
+    {
+      "resource": "aws_iam_policy.bad_passrole",
+      "type": "aws_iam_policy",
+      "attribute": "attachment_count"
+    },
+    {
+      "resource": "aws_iam_policy.bad_passrole",
+      "type": "aws_iam_policy",
+      "attribute": "name_prefix"
+    },
+    {
+      "resource": "aws_iam_policy.bad_passrole",
+      "type": "aws_iam_policy",
+      "attribute": "policy_id"
+    },
+    {
+      "resource": "aws_iam_policy.bad_sod",
+      "type": "aws_iam_policy",
+      "attribute": "attachment_count"
+    },
+    {
+      "resource": "aws_iam_policy.bad_sod",
+      "type": "aws_iam_policy",
+      "attribute": "name_prefix"
+    },
+    {
+      "resource": "aws_iam_policy.bad_sod",
+      "type": "aws_iam_policy",
+      "attribute": "policy_id"
+    },
+    {
+      "resource": "aws_iam_policy.bad_wildcard",
+      "type": "aws_iam_policy",
+      "attribute": "attachment_count"
+    },
+    {
+      "resource": "aws_iam_policy.bad_wildcard",
+      "type": "aws_iam_policy",
+      "attribute": "name_prefix"
+    },
+    {
+      "resource": "aws_iam_policy.bad_wildcard",
+      "type": "aws_iam_policy",
+      "attribute": "policy_id"
+    },
+    {
+      "resource": "aws_iam_role.bad_app",
+      "type": "aws_iam_role",
+      "attribute": "create_date"
+    },
+    {
+      "resource": "aws_iam_role.bad_app",
+      "type": "aws_iam_role",
+      "attribute": "inline_policy"
+    },
+    {
+      "resource": "aws_iam_role.bad_app",
+      "type": "aws_iam_role",
+      "attribute": "managed_policy_arns"
+    },
+    {
+      "resource": "aws_iam_role.bad_app",
+      "type": "aws_iam_role",
+      "attribute": "name_prefix"
+    },
+    {
+      "resource": "aws_iam_role.bad_app",
+      "type": "aws_iam_role",
+      "attribute": "unique_id"
+    },
+    {
+      "resource": "aws_iam_role.bad_cross",
+      "type": "aws_iam_role",
+      "attribute": "create_date"
+    },
+    {
+      "resource": "aws_iam_role.bad_cross",
+      "type": "aws_iam_role",
+      "attribute": "inline_policy"
+    },
+    {
+      "resource": "aws_iam_role.bad_cross",
+      "type": "aws_iam_role",
+      "attribute": "managed_policy_arns"
+    },
+    {
+      "resource": "aws_iam_role.bad_cross",
+      "type": "aws_iam_role",
+      "attribute": "name_prefix"
+    },
+    {
+      "resource": "aws_iam_role.bad_cross",
+      "type": "aws_iam_role",
+      "attribute": "unique_id"
+    },
+    {
+      "resource": "aws_iam_role.bad_ecs",
+      "type": "aws_iam_role",
+      "attribute": "create_date"
+    },
+    {
+      "resource": "aws_iam_role.bad_ecs",
+      "type": "aws_iam_role",
+      "attribute": "inline_policy"
+    },
+    {
+      "resource": "aws_iam_role.bad_ecs",
+      "type": "aws_iam_role",
+      "attribute": "managed_policy_arns"
+    },
+    {
+      "resource": "aws_iam_role.bad_ecs",
+      "type": "aws_iam_role",
+      "attribute": "name_prefix"
+    },
+    {
+      "resource": "aws_iam_role.bad_ecs",
+      "type": "aws_iam_role",
+      "attribute": "unique_id"
+    },
+    {
+      "resource": "aws_iam_role.bad_lambda",
+      "type": "aws_iam_role",
+      "attribute": "create_date"
+    },
+    {
+      "resource": "aws_iam_role.bad_lambda",
+      "type": "aws_iam_role",
+      "attribute": "inline_policy"
+    },
+    {
+      "resource": "aws_iam_role.bad_lambda",
+      "type": "aws_iam_role",
+      "attribute": "managed_policy_arns"
+    },
+    {
+      "resource": "aws_iam_role.bad_lambda",
+      "type": "aws_iam_role",
+      "attribute": "name_prefix"
+    },
+    {
+      "resource": "aws_iam_role.bad_lambda",
+      "type": "aws_iam_role",
+      "attribute": "unique_id"
+    },
+    {
+      "resource": "aws_iam_role.bad_wildcard_trust",
+      "type": "aws_iam_role",
+      "attribute": "create_date"
+    },
+    {
+      "resource": "aws_iam_role.bad_wildcard_trust",
+      "type": "aws_iam_role",
+      "attribute": "inline_policy"
+    },
+    {
+      "resource": "aws_iam_role.bad_wildcard_trust",
+      "type": "aws_iam_role",
+      "attribute": "managed_policy_arns"
+    },
+    {
+      "resource": "aws_iam_role.bad_wildcard_trust",
+      "type": "aws_iam_role",
+      "attribute": "name_prefix"
+    },
+    {
+      "resource": "aws_iam_role.bad_wildcard_trust",
+      "type": "aws_iam_role",
+      "attribute": "unique_id"
+    },
+    {
+      "resource": "aws_iam_role_policy.bad_jump",
+      "type": "aws_iam_role_policy",
+      "attribute": "name_prefix"
+    },
+    {
+      "resource": "aws_iam_user.bad",
+      "type": "aws_iam_user",
+      "attribute": "unique_id"
+    },
+    {
+      "resource": "aws_iam_user_policy.bad",
+      "type": "aws_iam_user_policy",
+      "attribute": "name_prefix"
+    },
+    {
+      "resource": "aws_instance.bad_jump",
+      "type": "aws_instance",
+      "attribute": "availability_zone"
+    },
+    {
+      "resource": "aws_instance.bad_jump",
+      "type": "aws_instance",
+      "attribute": "capacity_reservation_specification"
+    },
+    {
+      "resource": "aws_instance.bad_jump",
+      "type": "aws_instance",
+      "attribute": "cpu_core_count"
+    },
+    {
+      "resource": "aws_instance.bad_jump",
+      "type": "aws_instance",
+      "attribute": "cpu_options"
+    },
+    {
+      "resource": "aws_instance.bad_jump",
+      "type": "aws_instance",
+      "attribute": "cpu_threads_per_core"
+    },
+    {
+      "resource": "aws_instance.bad_jump",
+      "type": "aws_instance",
+      "attribute": "disable_api_stop"
+    },
+    {
+      "resource": "aws_instance.bad_jump",
+      "type": "aws_instance",
+      "attribute": "disable_api_termination"
+    },
+    {
+      "resource": "aws_instance.bad_jump",
+      "type": "aws_instance",
+      "attribute": "ebs_block_device"
+    },
+    {
+      "resource": "aws_instance.bad_jump",
+      "type": "aws_instance",
+      "attribute": "ebs_optimized"
+    },
+    {
+      "resource": "aws_instance.bad_jump",
+      "type": "aws_instance",
+      "attribute": "enable_primary_ipv6"
+    },
+    {
+      "resource": "aws_instance.bad_jump",
+      "type": "aws_instance",
+      "attribute": "enclave_options"
+    },
+    {
+      "resource": "aws_instance.bad_jump",
+      "type": "aws_instance",
+      "attribute": "ephemeral_block_device"
+    },
+    {
+      "resource": "aws_instance.bad_jump",
+      "type": "aws_instance",
+      "attribute": "host_id"
+    },
+    {
+      "resource": "aws_instance.bad_jump",
+      "type": "aws_instance",
+      "attribute": "host_resource_group_arn"
+    },
+    {
+      "resource": "aws_instance.bad_jump",
+      "type": "aws_instance",
+      "attribute": "iam_instance_profile"
+    },
+    {
+      "resource": "aws_instance.bad_jump",
+      "type": "aws_instance",
+      "attribute": "instance_initiated_shutdown_behavior"
+    },
+    {
+      "resource": "aws_instance.bad_jump",
+      "type": "aws_instance",
+      "attribute": "instance_lifecycle"
+    },
+    {
+      "resource": "aws_instance.bad_jump",
+      "type": "aws_instance",
+      "attribute": "instance_market_options"
+    },
+    {
+      "resource": "aws_instance.bad_jump",
+      "type": "aws_instance",
+      "attribute": "instance_state"
+    },
+    {
+      "resource": "aws_instance.bad_jump",
+      "type": "aws_instance",
+      "attribute": "ipv6_address_count"
+    },
+    {
+      "resource": "aws_instance.bad_jump",
+      "type": "aws_instance",
+      "attribute": "ipv6_addresses"
+    },
+    {
+      "resource": "aws_instance.bad_jump",
+      "type": "aws_instance",
+      "attribute": "maintenance_options"
+    },
+    {
+      "resource": "aws_instance.bad_jump",
+      "type": "aws_instance",
+      "attribute": "monitoring"
+    },
+    {
+      "resource": "aws_instance.bad_jump",
+      "type": "aws_instance",
+      "attribute": "network_interface"
+    },
+    {
+      "resource": "aws_instance.bad_jump",
+      "type": "aws_instance",
+      "attribute": "outpost_arn"
+    },
+    {
+      "resource": "aws_instance.bad_jump",
+      "type": "aws_instance",
+      "attribute": "password_data"
+    },
+    {
+      "resource": "aws_instance.bad_jump",
+      "type": "aws_instance",
+      "attribute": "placement_group"
+    },
+    {
+      "resource": "aws_instance.bad_jump",
+      "type": "aws_instance",
+      "attribute": "placement_partition_number"
+    },
+    {
+      "resource": "aws_instance.bad_jump",
+      "type": "aws_instance",
+      "attribute": "primary_network_interface_id"
+    },
+    {
+      "resource": "aws_instance.bad_jump",
+      "type": "aws_instance",
+      "attribute": "private_dns"
+    },
+    {
+      "resource": "aws_instance.bad_jump",
+      "type": "aws_instance",
+      "attribute": "private_dns_name_options"
+    },
+    {
+      "resource": "aws_instance.bad_jump",
+      "type": "aws_instance",
+      "attribute": "private_ip"
+    },
+    {
+      "resource": "aws_instance.bad_jump",
+      "type": "aws_instance",
+      "attribute": "public_dns"
+    },
+    {
+      "resource": "aws_instance.bad_jump",
+      "type": "aws_instance",
+      "attribute": "public_ip"
+    },
+    {
+      "resource": "aws_instance.bad_jump",
+      "type": "aws_instance",
+      "attribute": "secondary_private_ips"
+    },
+    {
+      "resource": "aws_instance.bad_jump",
+      "type": "aws_instance",
+      "attribute": "security_groups"
+    },
+    {
+      "resource": "aws_instance.bad_jump",
+      "type": "aws_instance",
+      "attribute": "spot_instance_request_id"
+    },
+    {
+      "resource": "aws_instance.bad_jump",
+      "type": "aws_instance",
+      "attribute": "tenancy"
+    },
+    {
+      "resource": "aws_instance.bad_jump",
+      "type": "aws_instance",
+      "attribute": "user_data"
+    },
+    {
+      "resource": "aws_instance.bad_jump",
+      "type": "aws_instance",
+      "attribute": "user_data_base64"
+    },
+    {
+      "resource": "aws_internet_gateway.bad",
+      "type": "aws_internet_gateway",
+      "attribute": "owner_id"
+    },
+    {
+      "resource": "aws_kms_key.bad",
+      "type": "aws_kms_key",
+      "attribute": "key_id"
+    },
+    {
+      "resource": "aws_kms_key.bad",
+      "type": "aws_kms_key",
+      "attribute": "multi_region"
+    },
+    {
+      "resource": "aws_kms_key.bad",
+      "type": "aws_kms_key",
+      "attribute": "policy"
+    },
+    {
+      "resource": "aws_kms_key.bad",
+      "type": "aws_kms_key",
+      "attribute": "rotation_period_in_days"
+    },
+    {
+      "resource": "aws_lambda_function.bad",
+      "type": "aws_lambda_function",
+      "attribute": "architectures"
+    },
+    {
+      "resource": "aws_lambda_function.bad",
+      "type": "aws_lambda_function",
+      "attribute": "code_sha256"
+    },
+    {
+      "resource": "aws_lambda_function.bad",
+      "type": "aws_lambda_function",
+      "attribute": "ephemeral_storage"
+    },
+    {
+      "resource": "aws_lambda_function.bad",
+      "type": "aws_lambda_function",
+      "attribute": "invoke_arn"
+    },
+    {
+      "resource": "aws_lambda_function.bad",
+      "type": "aws_lambda_function",
+      "attribute": "last_modified"
+    },
+    {
+      "resource": "aws_lambda_function.bad",
+      "type": "aws_lambda_function",
+      "attribute": "logging_config"
+    },
+    {
+      "resource": "aws_lambda_function.bad",
+      "type": "aws_lambda_function",
+      "attribute": "qualified_arn"
+    },
+    {
+      "resource": "aws_lambda_function.bad",
+      "type": "aws_lambda_function",
+      "attribute": "qualified_invoke_arn"
+    },
+    {
+      "resource": "aws_lambda_function.bad",
+      "type": "aws_lambda_function",
+      "attribute": "signing_job_arn"
+    },
+    {
+      "resource": "aws_lambda_function.bad",
+      "type": "aws_lambda_function",
+      "attribute": "signing_profile_version_arn"
+    },
+    {
+      "resource": "aws_lambda_function.bad",
+      "type": "aws_lambda_function",
+      "attribute": "source_code_hash"
+    },
+    {
+      "resource": "aws_lambda_function.bad",
+      "type": "aws_lambda_function",
+      "attribute": "source_code_size"
+    },
+    {
+      "resource": "aws_lambda_function.bad",
+      "type": "aws_lambda_function",
+      "attribute": "tracing_config"
+    },
+    {
+      "resource": "aws_lambda_function.bad",
+      "type": "aws_lambda_function",
+      "attribute": "version"
+    },
+    {
+      "resource": "aws_lb.bad",
+      "type": "aws_lb",
+      "attribute": "arn_suffix"
+    },
+    {
+      "resource": "aws_lb.bad",
+      "type": "aws_lb",
+      "attribute": "dns_name"
+    },
+    {
+      "resource": "aws_lb.bad",
+      "type": "aws_lb",
+      "attribute": "enforce_security_group_inbound_rules_on_private_link_traffic"
+    },
+    {
+      "resource": "aws_lb.bad",
+      "type": "aws_lb",
+      "attribute": "ip_address_type"
+    },
+    {
+      "resource": "aws_lb.bad",
+      "type": "aws_lb",
+      "attribute": "name_prefix"
+    },
+    {
+      "resource": "aws_lb.bad",
+      "type": "aws_lb",
+      "attribute": "subnet_mapping"
+    },
+    {
+      "resource": "aws_lb.bad",
+      "type": "aws_lb",
+      "attribute": "vpc_id"
+    },
+    {
+      "resource": "aws_lb.bad",
+      "type": "aws_lb",
+      "attribute": "zone_id"
+    },
+    {
+      "resource": "aws_lb_listener.bad_http",
+      "type": "aws_lb_listener",
+      "attribute": "mutual_authentication"
+    },
+    {
+      "resource": "aws_lb_listener.bad_http",
+      "type": "aws_lb_listener",
+      "attribute": "routing_http_request_x_amzn_mtls_clientcert_header_name"
+    },
+    {
+      "resource": "aws_lb_listener.bad_http",
+      "type": "aws_lb_listener",
+      "attribute": "routing_http_request_x_amzn_mtls_clientcert_issuer_header_name"
+    },
+    {
+      "resource": "aws_lb_listener.bad_http",
+      "type": "aws_lb_listener",
+      "attribute": "routing_http_request_x_amzn_mtls_clientcert_leaf_header_name"
+    },
+    {
+      "resource": "aws_lb_listener.bad_http",
+      "type": "aws_lb_listener",
+      "attribute": "routing_http_request_x_amzn_mtls_clientcert_serial_number_header_name"
+    },
+    {
+      "resource": "aws_lb_listener.bad_http",
+      "type": "aws_lb_listener",
+      "attribute": "routing_http_request_x_amzn_mtls_clientcert_subject_header_name"
+    },
+    {
+      "resource": "aws_lb_listener.bad_http",
+      "type": "aws_lb_listener",
+      "attribute": "routing_http_request_x_amzn_mtls_clientcert_validity_header_name"
+    },
+    {
+      "resource": "aws_lb_listener.bad_http",
+      "type": "aws_lb_listener",
+      "attribute": "routing_http_request_x_amzn_tls_cipher_suite_header_name"
+    },
+    {
+      "resource": "aws_lb_listener.bad_http",
+      "type": "aws_lb_listener",
+      "attribute": "routing_http_request_x_amzn_tls_version_header_name"
+    },
+    {
+      "resource": "aws_lb_listener.bad_http",
+      "type": "aws_lb_listener",
+      "attribute": "routing_http_response_access_control_allow_credentials_header_value"
+    },
+    {
+      "resource": "aws_lb_listener.bad_http",
+      "type": "aws_lb_listener",
+      "attribute": "routing_http_response_access_control_allow_headers_header_value"
+    },
+    {
+      "resource": "aws_lb_listener.bad_http",
+      "type": "aws_lb_listener",
+      "attribute": "routing_http_response_access_control_allow_methods_header_value"
+    },
+    {
+      "resource": "aws_lb_listener.bad_http",
+      "type": "aws_lb_listener",
+      "attribute": "routing_http_response_access_control_allow_origin_header_value"
+    },
+    {
+      "resource": "aws_lb_listener.bad_http",
+      "type": "aws_lb_listener",
+      "attribute": "routing_http_response_access_control_expose_headers_header_value"
+    },
+    {
+      "resource": "aws_lb_listener.bad_http",
+      "type": "aws_lb_listener",
+      "attribute": "routing_http_response_access_control_max_age_header_value"
+    },
+    {
+      "resource": "aws_lb_listener.bad_http",
+      "type": "aws_lb_listener",
+      "attribute": "routing_http_response_content_security_policy_header_value"
+    },
+    {
+      "resource": "aws_lb_listener.bad_http",
+      "type": "aws_lb_listener",
+      "attribute": "routing_http_response_server_enabled"
+    },
+    {
+      "resource": "aws_lb_listener.bad_http",
+      "type": "aws_lb_listener",
+      "attribute": "routing_http_response_strict_transport_security_header_value"
+    },
+    {
+      "resource": "aws_lb_listener.bad_http",
+      "type": "aws_lb_listener",
+      "attribute": "routing_http_response_x_content_type_options_header_value"
+    },
+    {
+      "resource": "aws_lb_listener.bad_http",
+      "type": "aws_lb_listener",
+      "attribute": "routing_http_response_x_frame_options_header_value"
+    },
+    {
+      "resource": "aws_lb_listener.bad_http",
+      "type": "aws_lb_listener",
+      "attribute": "ssl_policy"
+    },
+    {
+      "resource": "aws_lb_listener.bad_http",
+      "type": "aws_lb_listener",
+      "attribute": "tcp_idle_timeout_seconds"
+    },
+    {
+      "resource": "aws_lb_listener.bad_https",
+      "type": "aws_lb_listener",
+      "attribute": "mutual_authentication"
+    },
+    {
+      "resource": "aws_lb_listener.bad_https",
+      "type": "aws_lb_listener",
+      "attribute": "routing_http_request_x_amzn_mtls_clientcert_header_name"
+    },
+    {
+      "resource": "aws_lb_listener.bad_https",
+      "type": "aws_lb_listener",
+      "attribute": "routing_http_request_x_amzn_mtls_clientcert_issuer_header_name"
+    },
+    {
+      "resource": "aws_lb_listener.bad_https",
+      "type": "aws_lb_listener",
+      "attribute": "routing_http_request_x_amzn_mtls_clientcert_leaf_header_name"
+    },
+    {
+      "resource": "aws_lb_listener.bad_https",
+      "type": "aws_lb_listener",
+      "attribute": "routing_http_request_x_amzn_mtls_clientcert_serial_number_header_name"
+    },
+    {
+      "resource": "aws_lb_listener.bad_https",
+      "type": "aws_lb_listener",
+      "attribute": "routing_http_request_x_amzn_mtls_clientcert_subject_header_name"
+    },
+    {
+      "resource": "aws_lb_listener.bad_https",
+      "type": "aws_lb_listener",
+      "attribute": "routing_http_request_x_amzn_mtls_clientcert_validity_header_name"
+    },
+    {
+      "resource": "aws_lb_listener.bad_https",
+      "type": "aws_lb_listener",
+      "attribute": "routing_http_request_x_amzn_tls_cipher_suite_header_name"
+    },
+    {
+      "resource": "aws_lb_listener.bad_https",
+      "type": "aws_lb_listener",
+      "attribute": "routing_http_request_x_amzn_tls_version_header_name"
+    },
+    {
+      "resource": "aws_lb_listener.bad_https",
+      "type": "aws_lb_listener",
+      "attribute": "routing_http_response_access_control_allow_credentials_header_value"
+    },
+    {
+      "resource": "aws_lb_listener.bad_https",
+      "type": "aws_lb_listener",
+      "attribute": "routing_http_response_access_control_allow_headers_header_value"
+    },
+    {
+      "resource": "aws_lb_listener.bad_https",
+      "type": "aws_lb_listener",
+      "attribute": "routing_http_response_access_control_allow_methods_header_value"
+    },
+    {
+      "resource": "aws_lb_listener.bad_https",
+      "type": "aws_lb_listener",
+      "attribute": "routing_http_response_access_control_allow_origin_header_value"
+    },
+    {
+      "resource": "aws_lb_listener.bad_https",
+      "type": "aws_lb_listener",
+      "attribute": "routing_http_response_access_control_expose_headers_header_value"
+    },
+    {
+      "resource": "aws_lb_listener.bad_https",
+      "type": "aws_lb_listener",
+      "attribute": "routing_http_response_access_control_max_age_header_value"
+    },
+    {
+      "resource": "aws_lb_listener.bad_https",
+      "type": "aws_lb_listener",
+      "attribute": "routing_http_response_content_security_policy_header_value"
+    },
+    {
+      "resource": "aws_lb_listener.bad_https",
+      "type": "aws_lb_listener",
+      "attribute": "routing_http_response_server_enabled"
+    },
+    {
+      "resource": "aws_lb_listener.bad_https",
+      "type": "aws_lb_listener",
+      "attribute": "routing_http_response_strict_transport_security_header_value"
+    },
+    {
+      "resource": "aws_lb_listener.bad_https",
+      "type": "aws_lb_listener",
+      "attribute": "routing_http_response_x_content_type_options_header_value"
+    },
+    {
+      "resource": "aws_lb_listener.bad_https",
+      "type": "aws_lb_listener",
+      "attribute": "routing_http_response_x_frame_options_header_value"
+    },
+    {
+      "resource": "aws_lb_listener.bad_https",
+      "type": "aws_lb_listener",
+      "attribute": "tcp_idle_timeout_seconds"
+    },
+    {
+      "resource": "aws_msk_cluster.bad",
+      "type": "aws_msk_cluster",
+      "attribute": "bootstrap_brokers"
+    },
+    {
+      "resource": "aws_msk_cluster.bad",
+      "type": "aws_msk_cluster",
+      "attribute": "bootstrap_brokers_public_sasl_iam"
+    },
+    {
+      "resource": "aws_msk_cluster.bad",
+      "type": "aws_msk_cluster",
+      "attribute": "bootstrap_brokers_public_sasl_scram"
+    },
+    {
+      "resource": "aws_msk_cluster.bad",
+      "type": "aws_msk_cluster",
+      "attribute": "bootstrap_brokers_public_tls"
+    },
+    {
+      "resource": "aws_msk_cluster.bad",
+      "type": "aws_msk_cluster",
+      "attribute": "bootstrap_brokers_sasl_iam"
+    },
+    {
+      "resource": "aws_msk_cluster.bad",
+      "type": "aws_msk_cluster",
+      "attribute": "bootstrap_brokers_sasl_scram"
+    },
+    {
+      "resource": "aws_msk_cluster.bad",
+      "type": "aws_msk_cluster",
+      "attribute": "bootstrap_brokers_tls"
+    },
+    {
+      "resource": "aws_msk_cluster.bad",
+      "type": "aws_msk_cluster",
+      "attribute": "bootstrap_brokers_vpc_connectivity_sasl_iam"
+    },
+    {
+      "resource": "aws_msk_cluster.bad",
+      "type": "aws_msk_cluster",
+      "attribute": "bootstrap_brokers_vpc_connectivity_sasl_scram"
+    },
+    {
+      "resource": "aws_msk_cluster.bad",
+      "type": "aws_msk_cluster",
+      "attribute": "bootstrap_brokers_vpc_connectivity_tls"
+    },
+    {
+      "resource": "aws_msk_cluster.bad",
+      "type": "aws_msk_cluster",
+      "attribute": "cluster_uuid"
+    },
+    {
+      "resource": "aws_msk_cluster.bad",
+      "type": "aws_msk_cluster",
+      "attribute": "current_version"
+    },
+    {
+      "resource": "aws_msk_cluster.bad",
+      "type": "aws_msk_cluster",
+      "attribute": "storage_mode"
+    },
+    {
+      "resource": "aws_msk_cluster.bad",
+      "type": "aws_msk_cluster",
+      "attribute": "zookeeper_connect_string"
+    },
+    {
+      "resource": "aws_msk_cluster.bad",
+      "type": "aws_msk_cluster",
+      "attribute": "zookeeper_connect_string_tls"
+    },
+    {
+      "resource": "aws_nat_gateway.bad",
+      "type": "aws_nat_gateway",
+      "attribute": "association_id"
+    },
+    {
+      "resource": "aws_nat_gateway.bad",
+      "type": "aws_nat_gateway",
+      "attribute": "network_interface_id"
+    },
+    {
+      "resource": "aws_nat_gateway.bad",
+      "type": "aws_nat_gateway",
+      "attribute": "private_ip"
+    },
+    {
+      "resource": "aws_nat_gateway.bad",
+      "type": "aws_nat_gateway",
+      "attribute": "public_ip"
+    },
+    {
+      "resource": "aws_nat_gateway.bad",
+      "type": "aws_nat_gateway",
+      "attribute": "secondary_private_ip_address_count"
+    },
+    {
+      "resource": "aws_nat_gateway.bad",
+      "type": "aws_nat_gateway",
+      "attribute": "secondary_private_ip_addresses"
+    },
+    {
+      "resource": "aws_network_acl.bad",
+      "type": "aws_network_acl",
+      "attribute": "owner_id"
+    },
+    {
+      "resource": "aws_network_acl.bad",
+      "type": "aws_network_acl",
+      "attribute": "subnet_ids"
+    },
+    {
+      "resource": "aws_opensearch_domain.bad",
+      "type": "aws_opensearch_domain",
+      "attribute": "access_policies"
+    },
+    {
+      "resource": "aws_opensearch_domain.bad",
+      "type": "aws_opensearch_domain",
+      "attribute": "advanced_options"
+    },
+    {
+      "resource": "aws_opensearch_domain.bad",
+      "type": "aws_opensearch_domain",
+      "attribute": "auto_tune_options"
+    },
+    {
+      "resource": "aws_opensearch_domain.bad",
+      "type": "aws_opensearch_domain",
+      "attribute": "dashboard_endpoint"
+    },
+    {
+      "resource": "aws_opensearch_domain.bad",
+      "type": "aws_opensearch_domain",
+      "attribute": "dashboard_endpoint_v2"
+    },
+    {
+      "resource": "aws_opensearch_domain.bad",
+      "type": "aws_opensearch_domain",
+      "attribute": "domain_endpoint_v2_hosted_zone_id"
+    },
+    {
+      "resource": "aws_opensearch_domain.bad",
+      "type": "aws_opensearch_domain",
+      "attribute": "domain_id"
+    },
+    {
+      "resource": "aws_opensearch_domain.bad",
+      "type": "aws_opensearch_domain",
+      "attribute": "encrypt_at_rest"
+    },
+    {
+      "resource": "aws_opensearch_domain.bad",
+      "type": "aws_opensearch_domain",
+      "attribute": "endpoint"
+    },
+    {
+      "resource": "aws_opensearch_domain.bad",
+      "type": "aws_opensearch_domain",
+      "attribute": "endpoint_v2"
+    },
+    {
+      "resource": "aws_opensearch_domain.bad",
+      "type": "aws_opensearch_domain",
+      "attribute": "ip_address_type"
+    },
+    {
+      "resource": "aws_opensearch_domain.bad",
+      "type": "aws_opensearch_domain",
+      "attribute": "kibana_endpoint"
+    },
+    {
+      "resource": "aws_opensearch_domain.bad",
+      "type": "aws_opensearch_domain",
+      "attribute": "off_peak_window_options"
+    },
+    {
+      "resource": "aws_opensearch_domain.bad",
+      "type": "aws_opensearch_domain",
+      "attribute": "software_update_options"
+    },
+    {
+      "resource": "aws_redshift_cluster.bad",
+      "type": "aws_redshift_cluster",
+      "attribute": "aqua_configuration_status"
+    },
+    {
+      "resource": "aws_redshift_cluster.bad",
+      "type": "aws_redshift_cluster",
+      "attribute": "availability_zone"
+    },
+    {
+      "resource": "aws_redshift_cluster.bad",
+      "type": "aws_redshift_cluster",
+      "attribute": "cluster_namespace_arn"
+    },
+    {
+      "resource": "aws_redshift_cluster.bad",
+      "type": "aws_redshift_cluster",
+      "attribute": "cluster_nodes"
+    },
+    {
+      "resource": "aws_redshift_cluster.bad",
+      "type": "aws_redshift_cluster",
+      "attribute": "cluster_parameter_group_name"
+    },
+    {
+      "resource": "aws_redshift_cluster.bad",
+      "type": "aws_redshift_cluster",
+      "attribute": "cluster_public_key"
+    },
+    {
+      "resource": "aws_redshift_cluster.bad",
+      "type": "aws_redshift_cluster",
+      "attribute": "cluster_revision_number"
+    },
+    {
+      "resource": "aws_redshift_cluster.bad",
+      "type": "aws_redshift_cluster",
+      "attribute": "cluster_subnet_group_name"
+    },
+    {
+      "resource": "aws_redshift_cluster.bad",
+      "type": "aws_redshift_cluster",
+      "attribute": "cluster_type"
+    },
+    {
+      "resource": "aws_redshift_cluster.bad",
+      "type": "aws_redshift_cluster",
+      "attribute": "default_iam_role_arn"
+    },
+    {
+      "resource": "aws_redshift_cluster.bad",
+      "type": "aws_redshift_cluster",
+      "attribute": "dns_name"
+    },
+    {
+      "resource": "aws_redshift_cluster.bad",
+      "type": "aws_redshift_cluster",
+      "attribute": "endpoint"
+    },
+    {
+      "resource": "aws_redshift_cluster.bad",
+      "type": "aws_redshift_cluster",
+      "attribute": "enhanced_vpc_routing"
+    },
+    {
+      "resource": "aws_redshift_cluster.bad",
+      "type": "aws_redshift_cluster",
+      "attribute": "iam_roles"
+    },
+    {
+      "resource": "aws_redshift_cluster.bad",
+      "type": "aws_redshift_cluster",
+      "attribute": "kms_key_id"
+    },
+    {
+      "resource": "aws_redshift_cluster.bad",
+      "type": "aws_redshift_cluster",
+      "attribute": "logging"
+    },
+    {
+      "resource": "aws_redshift_cluster.bad",
+      "type": "aws_redshift_cluster",
+      "attribute": "master_password_secret_arn"
+    },
+    {
+      "resource": "aws_redshift_cluster.bad",
+      "type": "aws_redshift_cluster",
+      "attribute": "master_password_secret_kms_key_id"
+    },
+    {
+      "resource": "aws_redshift_cluster.bad",
+      "type": "aws_redshift_cluster",
+      "attribute": "preferred_maintenance_window"
+    },
+    {
+      "resource": "aws_redshift_cluster.bad",
+      "type": "aws_redshift_cluster",
+      "attribute": "snapshot_copy"
+    },
+    {
+      "resource": "aws_redshift_cluster.bad",
+      "type": "aws_redshift_cluster",
+      "attribute": "vpc_security_group_ids"
+    },
+    {
+      "resource": "aws_route.bad_eigw",
+      "type": "aws_route",
+      "attribute": "instance_id"
+    },
+    {
+      "resource": "aws_route.bad_eigw",
+      "type": "aws_route",
+      "attribute": "instance_owner_id"
+    },
+    {
+      "resource": "aws_route.bad_eigw",
+      "type": "aws_route",
+      "attribute": "network_interface_id"
+    },
+    {
+      "resource": "aws_route.bad_eigw",
+      "type": "aws_route",
+      "attribute": "origin"
+    },
+    {
+      "resource": "aws_route.bad_eigw",
+      "type": "aws_route",
+      "attribute": "state"
+    },
+    {
+      "resource": "aws_route.bad_igw",
+      "type": "aws_route",
+      "attribute": "instance_id"
+    },
+    {
+      "resource": "aws_route.bad_igw",
+      "type": "aws_route",
+      "attribute": "instance_owner_id"
+    },
+    {
+      "resource": "aws_route.bad_igw",
+      "type": "aws_route",
+      "attribute": "network_interface_id"
+    },
+    {
+      "resource": "aws_route.bad_igw",
+      "type": "aws_route",
+      "attribute": "origin"
+    },
+    {
+      "resource": "aws_route.bad_igw",
+      "type": "aws_route",
+      "attribute": "state"
+    },
+    {
+      "resource": "aws_route.bad_nat",
+      "type": "aws_route",
+      "attribute": "instance_id"
+    },
+    {
+      "resource": "aws_route.bad_nat",
+      "type": "aws_route",
+      "attribute": "instance_owner_id"
+    },
+    {
+      "resource": "aws_route.bad_nat",
+      "type": "aws_route",
+      "attribute": "network_interface_id"
+    },
+    {
+      "resource": "aws_route.bad_nat",
+      "type": "aws_route",
+      "attribute": "origin"
+    },
+    {
+      "resource": "aws_route.bad_nat",
+      "type": "aws_route",
+      "attribute": "state"
+    },
+    {
+      "resource": "aws_route_table.bad",
+      "type": "aws_route_table",
+      "attribute": "owner_id"
+    },
+    {
+      "resource": "aws_route_table.bad",
+      "type": "aws_route_table",
+      "attribute": "propagating_vgws"
+    },
+    {
+      "resource": "aws_route_table.bad",
+      "type": "aws_route_table",
+      "attribute": "route"
+    },
+    {
+      "resource": "aws_s3_bucket.bad_data",
+      "type": "aws_s3_bucket",
+      "attribute": "acceleration_status"
+    },
+    {
+      "resource": "aws_s3_bucket.bad_data",
+      "type": "aws_s3_bucket",
+      "attribute": "acl"
+    },
+    {
+      "resource": "aws_s3_bucket.bad_data",
+      "type": "aws_s3_bucket",
+      "attribute": "bucket_domain_name"
+    },
+    {
+      "resource": "aws_s3_bucket.bad_data",
+      "type": "aws_s3_bucket",
+      "attribute": "bucket_prefix"
+    },
+    {
+      "resource": "aws_s3_bucket.bad_data",
+      "type": "aws_s3_bucket",
+      "attribute": "bucket_regional_domain_name"
+    },
+    {
+      "resource": "aws_s3_bucket.bad_data",
+      "type": "aws_s3_bucket",
+      "attribute": "cors_rule"
+    },
+    {
+      "resource": "aws_s3_bucket.bad_data",
+      "type": "aws_s3_bucket",
+      "attribute": "grant"
+    },
+    {
+      "resource": "aws_s3_bucket.bad_data",
+      "type": "aws_s3_bucket",
+      "attribute": "hosted_zone_id"
+    },
+    {
+      "resource": "aws_s3_bucket.bad_data",
+      "type": "aws_s3_bucket",
+      "attribute": "lifecycle_rule"
+    },
+    {
+      "resource": "aws_s3_bucket.bad_data",
+      "type": "aws_s3_bucket",
+      "attribute": "logging"
+    },
+    {
+      "resource": "aws_s3_bucket.bad_data",
+      "type": "aws_s3_bucket",
+      "attribute": "object_lock_configuration"
+    },
+    {
+      "resource": "aws_s3_bucket.bad_data",
+      "type": "aws_s3_bucket",
+      "attribute": "object_lock_enabled"
+    },
+    {
+      "resource": "aws_s3_bucket.bad_data",
+      "type": "aws_s3_bucket",
+      "attribute": "policy"
+    },
+    {
+      "resource": "aws_s3_bucket.bad_data",
+      "type": "aws_s3_bucket",
+      "attribute": "region"
+    },
+    {
+      "resource": "aws_s3_bucket.bad_data",
+      "type": "aws_s3_bucket",
+      "attribute": "replication_configuration"
+    },
+    {
+      "resource": "aws_s3_bucket.bad_data",
+      "type": "aws_s3_bucket",
+      "attribute": "request_payer"
+    },
+    {
+      "resource": "aws_s3_bucket.bad_data",
+      "type": "aws_s3_bucket",
+      "attribute": "server_side_encryption_configuration"
+    },
+    {
+      "resource": "aws_s3_bucket.bad_data",
+      "type": "aws_s3_bucket",
+      "attribute": "versioning"
+    },
+    {
+      "resource": "aws_s3_bucket.bad_data",
+      "type": "aws_s3_bucket",
+      "attribute": "website"
+    },
+    {
+      "resource": "aws_s3_bucket.bad_data",
+      "type": "aws_s3_bucket",
+      "attribute": "website_domain"
+    },
+    {
+      "resource": "aws_s3_bucket.bad_data",
+      "type": "aws_s3_bucket",
+      "attribute": "website_endpoint"
+    },
+    {
+      "resource": "aws_s3_bucket.bad_open",
+      "type": "aws_s3_bucket",
+      "attribute": "acceleration_status"
+    },
+    {
+      "resource": "aws_s3_bucket.bad_open",
+      "type": "aws_s3_bucket",
+      "attribute": "acl"
+    },
+    {
+      "resource": "aws_s3_bucket.bad_open",
+      "type": "aws_s3_bucket",
+      "attribute": "bucket_domain_name"
+    },
+    {
+      "resource": "aws_s3_bucket.bad_open",
+      "type": "aws_s3_bucket",
+      "attribute": "bucket_prefix"
+    },
+    {
+      "resource": "aws_s3_bucket.bad_open",
+      "type": "aws_s3_bucket",
+      "attribute": "bucket_regional_domain_name"
+    },
+    {
+      "resource": "aws_s3_bucket.bad_open",
+      "type": "aws_s3_bucket",
+      "attribute": "cors_rule"
+    },
+    {
+      "resource": "aws_s3_bucket.bad_open",
+      "type": "aws_s3_bucket",
+      "attribute": "grant"
+    },
+    {
+      "resource": "aws_s3_bucket.bad_open",
+      "type": "aws_s3_bucket",
+      "attribute": "hosted_zone_id"
+    },
+    {
+      "resource": "aws_s3_bucket.bad_open",
+      "type": "aws_s3_bucket",
+      "attribute": "lifecycle_rule"
+    },
+    {
+      "resource": "aws_s3_bucket.bad_open",
+      "type": "aws_s3_bucket",
+      "attribute": "logging"
+    },
+    {
+      "resource": "aws_s3_bucket.bad_open",
+      "type": "aws_s3_bucket",
+      "attribute": "object_lock_configuration"
+    },
+    {
+      "resource": "aws_s3_bucket.bad_open",
+      "type": "aws_s3_bucket",
+      "attribute": "object_lock_enabled"
+    },
+    {
+      "resource": "aws_s3_bucket.bad_open",
+      "type": "aws_s3_bucket",
+      "attribute": "policy"
+    },
+    {
+      "resource": "aws_s3_bucket.bad_open",
+      "type": "aws_s3_bucket",
+      "attribute": "region"
+    },
+    {
+      "resource": "aws_s3_bucket.bad_open",
+      "type": "aws_s3_bucket",
+      "attribute": "replication_configuration"
+    },
+    {
+      "resource": "aws_s3_bucket.bad_open",
+      "type": "aws_s3_bucket",
+      "attribute": "request_payer"
+    },
+    {
+      "resource": "aws_s3_bucket.bad_open",
+      "type": "aws_s3_bucket",
+      "attribute": "server_side_encryption_configuration"
+    },
+    {
+      "resource": "aws_s3_bucket.bad_open",
+      "type": "aws_s3_bucket",
+      "attribute": "versioning"
+    },
+    {
+      "resource": "aws_s3_bucket.bad_open",
+      "type": "aws_s3_bucket",
+      "attribute": "website"
+    },
+    {
+      "resource": "aws_s3_bucket.bad_open",
+      "type": "aws_s3_bucket",
+      "attribute": "website_domain"
+    },
+    {
+      "resource": "aws_s3_bucket.bad_open",
+      "type": "aws_s3_bucket",
+      "attribute": "website_endpoint"
+    },
+    {
+      "resource": "aws_s3_bucket.bad_trail",
+      "type": "aws_s3_bucket",
+      "attribute": "acceleration_status"
+    },
+    {
+      "resource": "aws_s3_bucket.bad_trail",
+      "type": "aws_s3_bucket",
+      "attribute": "acl"
+    },
+    {
+      "resource": "aws_s3_bucket.bad_trail",
+      "type": "aws_s3_bucket",
+      "attribute": "bucket_domain_name"
+    },
+    {
+      "resource": "aws_s3_bucket.bad_trail",
+      "type": "aws_s3_bucket",
+      "attribute": "bucket_prefix"
+    },
+    {
+      "resource": "aws_s3_bucket.bad_trail",
+      "type": "aws_s3_bucket",
+      "attribute": "bucket_regional_domain_name"
+    },
+    {
+      "resource": "aws_s3_bucket.bad_trail",
+      "type": "aws_s3_bucket",
+      "attribute": "cors_rule"
+    },
+    {
+      "resource": "aws_s3_bucket.bad_trail",
+      "type": "aws_s3_bucket",
+      "attribute": "grant"
+    },
+    {
+      "resource": "aws_s3_bucket.bad_trail",
+      "type": "aws_s3_bucket",
+      "attribute": "hosted_zone_id"
+    },
+    {
+      "resource": "aws_s3_bucket.bad_trail",
+      "type": "aws_s3_bucket",
+      "attribute": "lifecycle_rule"
+    },
+    {
+      "resource": "aws_s3_bucket.bad_trail",
+      "type": "aws_s3_bucket",
+      "attribute": "logging"
+    },
+    {
+      "resource": "aws_s3_bucket.bad_trail",
+      "type": "aws_s3_bucket",
+      "attribute": "object_lock_configuration"
+    },
+    {
+      "resource": "aws_s3_bucket.bad_trail",
+      "type": "aws_s3_bucket",
+      "attribute": "object_lock_enabled"
+    },
+    {
+      "resource": "aws_s3_bucket.bad_trail",
+      "type": "aws_s3_bucket",
+      "attribute": "policy"
+    },
+    {
+      "resource": "aws_s3_bucket.bad_trail",
+      "type": "aws_s3_bucket",
+      "attribute": "region"
+    },
+    {
+      "resource": "aws_s3_bucket.bad_trail",
+      "type": "aws_s3_bucket",
+      "attribute": "replication_configuration"
+    },
+    {
+      "resource": "aws_s3_bucket.bad_trail",
+      "type": "aws_s3_bucket",
+      "attribute": "request_payer"
+    },
+    {
+      "resource": "aws_s3_bucket.bad_trail",
+      "type": "aws_s3_bucket",
+      "attribute": "server_side_encryption_configuration"
+    },
+    {
+      "resource": "aws_s3_bucket.bad_trail",
+      "type": "aws_s3_bucket",
+      "attribute": "versioning"
+    },
+    {
+      "resource": "aws_s3_bucket.bad_trail",
+      "type": "aws_s3_bucket",
+      "attribute": "website"
+    },
+    {
+      "resource": "aws_s3_bucket.bad_trail",
+      "type": "aws_s3_bucket",
+      "attribute": "website_domain"
+    },
+    {
+      "resource": "aws_s3_bucket.bad_trail",
+      "type": "aws_s3_bucket",
+      "attribute": "website_endpoint"
+    },
+    {
+      "resource": "aws_s3_bucket.partner_share",
+      "type": "aws_s3_bucket",
+      "attribute": "acceleration_status"
+    },
+    {
+      "resource": "aws_s3_bucket.partner_share",
+      "type": "aws_s3_bucket",
+      "attribute": "acl"
+    },
+    {
+      "resource": "aws_s3_bucket.partner_share",
+      "type": "aws_s3_bucket",
+      "attribute": "bucket_domain_name"
+    },
+    {
+      "resource": "aws_s3_bucket.partner_share",
+      "type": "aws_s3_bucket",
+      "attribute": "bucket_prefix"
+    },
+    {
+      "resource": "aws_s3_bucket.partner_share",
+      "type": "aws_s3_bucket",
+      "attribute": "bucket_regional_domain_name"
+    },
+    {
+      "resource": "aws_s3_bucket.partner_share",
+      "type": "aws_s3_bucket",
+      "attribute": "cors_rule"
+    },
+    {
+      "resource": "aws_s3_bucket.partner_share",
+      "type": "aws_s3_bucket",
+      "attribute": "grant"
+    },
+    {
+      "resource": "aws_s3_bucket.partner_share",
+      "type": "aws_s3_bucket",
+      "attribute": "hosted_zone_id"
+    },
+    {
+      "resource": "aws_s3_bucket.partner_share",
+      "type": "aws_s3_bucket",
+      "attribute": "lifecycle_rule"
+    },
+    {
+      "resource": "aws_s3_bucket.partner_share",
+      "type": "aws_s3_bucket",
+      "attribute": "logging"
+    },
+    {
+      "resource": "aws_s3_bucket.partner_share",
+      "type": "aws_s3_bucket",
+      "attribute": "object_lock_configuration"
+    },
+    {
+      "resource": "aws_s3_bucket.partner_share",
+      "type": "aws_s3_bucket",
+      "attribute": "object_lock_enabled"
+    },
+    {
+      "resource": "aws_s3_bucket.partner_share",
+      "type": "aws_s3_bucket",
+      "attribute": "policy"
+    },
+    {
+      "resource": "aws_s3_bucket.partner_share",
+      "type": "aws_s3_bucket",
+      "attribute": "region"
+    },
+    {
+      "resource": "aws_s3_bucket.partner_share",
+      "type": "aws_s3_bucket",
+      "attribute": "replication_configuration"
+    },
+    {
+      "resource": "aws_s3_bucket.partner_share",
+      "type": "aws_s3_bucket",
+      "attribute": "request_payer"
+    },
+    {
+      "resource": "aws_s3_bucket.partner_share",
+      "type": "aws_s3_bucket",
+      "attribute": "server_side_encryption_configuration"
+    },
+    {
+      "resource": "aws_s3_bucket.partner_share",
+      "type": "aws_s3_bucket",
+      "attribute": "versioning"
+    },
+    {
+      "resource": "aws_s3_bucket.partner_share",
+      "type": "aws_s3_bucket",
+      "attribute": "website"
+    },
+    {
+      "resource": "aws_s3_bucket.partner_share",
+      "type": "aws_s3_bucket",
+      "attribute": "website_domain"
+    },
+    {
+      "resource": "aws_s3_bucket.partner_share",
+      "type": "aws_s3_bucket",
+      "attribute": "website_endpoint"
+    },
+    {
+      "resource": "aws_s3_bucket_lifecycle_configuration.bad_trail",
+      "type": "aws_s3_bucket_lifecycle_configuration",
+      "attribute": "expected_bucket_owner"
+    },
+    {
+      "resource": "aws_secretsmanager_secret.bad",
+      "type": "aws_secretsmanager_secret",
+      "attribute": "name_prefix"
+    },
+    {
+      "resource": "aws_secretsmanager_secret.bad",
+      "type": "aws_secretsmanager_secret",
+      "attribute": "policy"
+    },
+    {
+      "resource": "aws_secretsmanager_secret.bad",
+      "type": "aws_secretsmanager_secret",
+      "attribute": "replica"
+    },
+    {
+      "resource": "aws_secretsmanager_secret_rotation.bad",
+      "type": "aws_secretsmanager_secret_rotation",
+      "attribute": "rotation_enabled"
+    },
+    {
+      "resource": "aws_security_group.bad",
+      "type": "aws_security_group",
+      "attribute": "name"
+    },
+    {
+      "resource": "aws_security_group.bad",
+      "type": "aws_security_group",
+      "attribute": "owner_id"
+    },
+    {
+      "resource": "aws_security_group.bad_browsing",
+      "type": "aws_security_group",
+      "attribute": "ingress"
+    },
+    {
+      "resource": "aws_security_group.bad_browsing",
+      "type": "aws_security_group",
+      "attribute": "name_prefix"
+    },
+    {
+      "resource": "aws_security_group.bad_browsing",
+      "type": "aws_security_group",
+      "attribute": "owner_id"
+    },
+    {
+      "resource": "aws_security_group_rule.bad_legacy_ingress",
+      "type": "aws_security_group_rule",
+      "attribute": "security_group_rule_id"
+    },
+    {
+      "resource": "aws_security_group_rule.bad_legacy_ingress",
+      "type": "aws_security_group_rule",
+      "attribute": "source_security_group_id"
+    },
+    {
+      "resource": "aws_ssm_document.bad_session",
+      "type": "aws_ssm_document",
+      "attribute": "created_date"
+    },
+    {
+      "resource": "aws_ssm_document.bad_session",
+      "type": "aws_ssm_document",
+      "attribute": "default_version"
+    },
+    {
+      "resource": "aws_ssm_document.bad_session",
+      "type": "aws_ssm_document",
+      "attribute": "description"
+    },
+    {
+      "resource": "aws_ssm_document.bad_session",
+      "type": "aws_ssm_document",
+      "attribute": "document_version"
+    },
+    {
+      "resource": "aws_ssm_document.bad_session",
+      "type": "aws_ssm_document",
+      "attribute": "hash"
+    },
+    {
+      "resource": "aws_ssm_document.bad_session",
+      "type": "aws_ssm_document",
+      "attribute": "hash_type"
+    },
+    {
+      "resource": "aws_ssm_document.bad_session",
+      "type": "aws_ssm_document",
+      "attribute": "latest_version"
+    },
+    {
+      "resource": "aws_ssm_document.bad_session",
+      "type": "aws_ssm_document",
+      "attribute": "owner"
+    },
+    {
+      "resource": "aws_ssm_document.bad_session",
+      "type": "aws_ssm_document",
+      "attribute": "parameter"
+    },
+    {
+      "resource": "aws_ssm_document.bad_session",
+      "type": "aws_ssm_document",
+      "attribute": "platform_types"
+    },
+    {
+      "resource": "aws_ssm_document.bad_session",
+      "type": "aws_ssm_document",
+      "attribute": "schema_version"
+    },
+    {
+      "resource": "aws_ssm_document.bad_session",
+      "type": "aws_ssm_document",
+      "attribute": "status"
+    },
+    {
+      "resource": "aws_ssm_parameter.bad_password",
+      "type": "aws_ssm_parameter",
+      "attribute": "data_type"
+    },
+    {
+      "resource": "aws_ssm_parameter.bad_password",
+      "type": "aws_ssm_parameter",
+      "attribute": "has_value_wo"
+    },
+    {
+      "resource": "aws_ssm_parameter.bad_password",
+      "type": "aws_ssm_parameter",
+      "attribute": "insecure_value"
+    },
+    {
+      "resource": "aws_ssm_parameter.bad_password",
+      "type": "aws_ssm_parameter",
+      "attribute": "key_id"
+    },
+    {
+      "resource": "aws_ssm_parameter.bad_password",
+      "type": "aws_ssm_parameter",
+      "attribute": "tier"
+    },
+    {
+      "resource": "aws_ssm_parameter.bad_password",
+      "type": "aws_ssm_parameter",
+      "attribute": "version"
+    },
+    {
+      "resource": "aws_subnet.bad1",
+      "type": "aws_subnet",
+      "attribute": "availability_zone_id"
+    },
+    {
+      "resource": "aws_subnet.bad1",
+      "type": "aws_subnet",
+      "attribute": "ipv6_cidr_block_association_id"
+    },
+    {
+      "resource": "aws_subnet.bad1",
+      "type": "aws_subnet",
+      "attribute": "owner_id"
+    },
+    {
+      "resource": "aws_subnet.bad1",
+      "type": "aws_subnet",
+      "attribute": "private_dns_hostname_type_on_launch"
+    },
+    {
+      "resource": "aws_subnet.bad2",
+      "type": "aws_subnet",
+      "attribute": "availability_zone_id"
+    },
+    {
+      "resource": "aws_subnet.bad2",
+      "type": "aws_subnet",
+      "attribute": "ipv6_cidr_block_association_id"
+    },
+    {
+      "resource": "aws_subnet.bad2",
+      "type": "aws_subnet",
+      "attribute": "owner_id"
+    },
+    {
+      "resource": "aws_subnet.bad2",
+      "type": "aws_subnet",
+      "attribute": "private_dns_hostname_type_on_launch"
+    },
+    {
+      "resource": "aws_vpc.bad",
+      "type": "aws_vpc",
+      "attribute": "default_network_acl_id"
+    },
+    {
+      "resource": "aws_vpc.bad",
+      "type": "aws_vpc",
+      "attribute": "default_route_table_id"
+    },
+    {
+      "resource": "aws_vpc.bad",
+      "type": "aws_vpc",
+      "attribute": "default_security_group_id"
+    },
+    {
+      "resource": "aws_vpc.bad",
+      "type": "aws_vpc",
+      "attribute": "dhcp_options_id"
+    },
+    {
+      "resource": "aws_vpc.bad",
+      "type": "aws_vpc",
+      "attribute": "enable_dns_hostnames"
+    },
+    {
+      "resource": "aws_vpc.bad",
+      "type": "aws_vpc",
+      "attribute": "enable_network_address_usage_metrics"
+    },
+    {
+      "resource": "aws_vpc.bad",
+      "type": "aws_vpc",
+      "attribute": "ipv6_association_id"
+    },
+    {
+      "resource": "aws_vpc.bad",
+      "type": "aws_vpc",
+      "attribute": "ipv6_cidr_block"
+    },
+    {
+      "resource": "aws_vpc.bad",
+      "type": "aws_vpc",
+      "attribute": "ipv6_cidr_block_network_border_group"
+    },
+    {
+      "resource": "aws_vpc.bad",
+      "type": "aws_vpc",
+      "attribute": "main_route_table_id"
+    },
+    {
+      "resource": "aws_vpc.bad",
+      "type": "aws_vpc",
+      "attribute": "owner_id"
+    },
+    {
+      "resource": "aws_vpc_security_group_egress_rule.bad_all",
+      "type": "aws_vpc_security_group_egress_rule",
+      "attribute": "security_group_rule_id"
+    },
+    {
+      "resource": "aws_vpc_security_group_ingress_rule.bad_ssh",
+      "type": "aws_vpc_security_group_ingress_rule",
+      "attribute": "security_group_rule_id"
+    },
+    {
+      "resource": "aws_vpn_connection.bad_back_office",
+      "type": "aws_vpn_connection",
+      "attribute": "core_network_arn"
+    },
+    {
+      "resource": "aws_vpn_connection.bad_back_office",
+      "type": "aws_vpn_connection",
+      "attribute": "core_network_attachment_arn"
+    },
+    {
+      "resource": "aws_vpn_connection.bad_back_office",
+      "type": "aws_vpn_connection",
+      "attribute": "customer_gateway_configuration"
+    },
+    {
+      "resource": "aws_vpn_connection.bad_back_office",
+      "type": "aws_vpn_connection",
+      "attribute": "enable_acceleration"
+    },
+    {
+      "resource": "aws_vpn_connection.bad_back_office",
+      "type": "aws_vpn_connection",
+      "attribute": "local_ipv4_network_cidr"
+    },
+    {
+      "resource": "aws_vpn_connection.bad_back_office",
+      "type": "aws_vpn_connection",
+      "attribute": "local_ipv6_network_cidr"
+    },
+    {
+      "resource": "aws_vpn_connection.bad_back_office",
+      "type": "aws_vpn_connection",
+      "attribute": "outside_ip_address_type"
+    },
+    {
+      "resource": "aws_vpn_connection.bad_back_office",
+      "type": "aws_vpn_connection",
+      "attribute": "preshared_key_arn"
+    },
+    {
+      "resource": "aws_vpn_connection.bad_back_office",
+      "type": "aws_vpn_connection",
+      "attribute": "preshared_key_storage"
+    },
+    {
+      "resource": "aws_vpn_connection.bad_back_office",
+      "type": "aws_vpn_connection",
+      "attribute": "remote_ipv4_network_cidr"
+    },
+    {
+      "resource": "aws_vpn_connection.bad_back_office",
+      "type": "aws_vpn_connection",
+      "attribute": "remote_ipv6_network_cidr"
+    },
+    {
+      "resource": "aws_vpn_connection.bad_back_office",
+      "type": "aws_vpn_connection",
+      "attribute": "routes"
+    },
+    {
+      "resource": "aws_vpn_connection.bad_back_office",
+      "type": "aws_vpn_connection",
+      "attribute": "static_routes_only"
+    },
+    {
+      "resource": "aws_vpn_connection.bad_back_office",
+      "type": "aws_vpn_connection",
+      "attribute": "transit_gateway_attachment_id"
+    },
+    {
+      "resource": "aws_vpn_connection.bad_back_office",
+      "type": "aws_vpn_connection",
+      "attribute": "tunnel1_address"
+    },
+    {
+      "resource": "aws_vpn_connection.bad_back_office",
+      "type": "aws_vpn_connection",
+      "attribute": "tunnel1_bgp_asn"
+    },
+    {
+      "resource": "aws_vpn_connection.bad_back_office",
+      "type": "aws_vpn_connection",
+      "attribute": "tunnel1_bgp_holdtime"
+    },
+    {
+      "resource": "aws_vpn_connection.bad_back_office",
+      "type": "aws_vpn_connection",
+      "attribute": "tunnel1_cgw_inside_address"
+    },
+    {
+      "resource": "aws_vpn_connection.bad_back_office",
+      "type": "aws_vpn_connection",
+      "attribute": "tunnel1_inside_cidr"
+    },
+    {
+      "resource": "aws_vpn_connection.bad_back_office",
+      "type": "aws_vpn_connection",
+      "attribute": "tunnel1_inside_ipv6_cidr"
+    },
+    {
+      "resource": "aws_vpn_connection.bad_back_office",
+      "type": "aws_vpn_connection",
+      "attribute": "tunnel1_log_options"
+    },
+    {
+      "resource": "aws_vpn_connection.bad_back_office",
+      "type": "aws_vpn_connection",
+      "attribute": "tunnel1_preshared_key"
+    },
+    {
+      "resource": "aws_vpn_connection.bad_back_office",
+      "type": "aws_vpn_connection",
+      "attribute": "tunnel1_vgw_inside_address"
+    },
+    {
+      "resource": "aws_vpn_connection.bad_back_office",
+      "type": "aws_vpn_connection",
+      "attribute": "tunnel2_address"
+    },
+    {
+      "resource": "aws_vpn_connection.bad_back_office",
+      "type": "aws_vpn_connection",
+      "attribute": "tunnel2_bgp_asn"
+    },
+    {
+      "resource": "aws_vpn_connection.bad_back_office",
+      "type": "aws_vpn_connection",
+      "attribute": "tunnel2_bgp_holdtime"
+    },
+    {
+      "resource": "aws_vpn_connection.bad_back_office",
+      "type": "aws_vpn_connection",
+      "attribute": "tunnel2_cgw_inside_address"
+    },
+    {
+      "resource": "aws_vpn_connection.bad_back_office",
+      "type": "aws_vpn_connection",
+      "attribute": "tunnel2_inside_cidr"
+    },
+    {
+      "resource": "aws_vpn_connection.bad_back_office",
+      "type": "aws_vpn_connection",
+      "attribute": "tunnel2_inside_ipv6_cidr"
+    },
+    {
+      "resource": "aws_vpn_connection.bad_back_office",
+      "type": "aws_vpn_connection",
+      "attribute": "tunnel2_log_options"
+    },
+    {
+      "resource": "aws_vpn_connection.bad_back_office",
+      "type": "aws_vpn_connection",
+      "attribute": "tunnel2_preshared_key"
+    },
+    {
+      "resource": "aws_vpn_connection.bad_back_office",
+      "type": "aws_vpn_connection",
+      "attribute": "tunnel2_vgw_inside_address"
+    },
+    {
+      "resource": "aws_vpn_connection.bad_back_office",
+      "type": "aws_vpn_connection",
+      "attribute": "tunnel_inside_ip_version"
+    },
+    {
+      "resource": "aws_vpn_connection.bad_back_office",
+      "type": "aws_vpn_connection",
+      "attribute": "vgw_telemetry"
+    },
+    {
+      "resource": "aws_vpn_gateway.bad",
+      "type": "aws_vpn_gateway",
+      "attribute": "amazon_side_asn"
+    },
+    {
+      "resource": "aws_api_gateway_domain_name.bad",
+      "type": "aws_api_gateway_domain_name",
+      "attribute": "endpoint_configuration.0.ip_address_type"
+    },
+    {
+      "resource": "aws_ec2_client_vpn_endpoint.bad",
+      "type": "aws_ec2_client_vpn_endpoint",
+      "attribute": "connection_log_options.0.cloudwatch_log_stream"
+    },
+    {
+      "resource": "aws_instance.bad_jump",
+      "type": "aws_instance",
+      "attribute": "metadata_options.0.instance_metadata_tags"
+    },
+    {
+      "resource": "aws_instance.bad_jump",
+      "type": "aws_instance",
+      "attribute": "root_block_device.0.device_name"
+    },
+    {
+      "resource": "aws_instance.bad_jump",
+      "type": "aws_instance",
+      "attribute": "root_block_device.0.iops"
+    },
+    {
+      "resource": "aws_instance.bad_jump",
+      "type": "aws_instance",
+      "attribute": "root_block_device.0.kms_key_id"
+    },
+    {
+      "resource": "aws_instance.bad_jump",
+      "type": "aws_instance",
+      "attribute": "root_block_device.0.tags_all"
+    },
+    {
+      "resource": "aws_instance.bad_jump",
+      "type": "aws_instance",
+      "attribute": "root_block_device.0.throughput"
+    },
+    {
+      "resource": "aws_instance.bad_jump",
+      "type": "aws_instance",
+      "attribute": "root_block_device.0.volume_id"
+    },
+    {
+      "resource": "aws_lb_listener.bad_http",
+      "type": "aws_lb_listener",
+      "attribute": "default_action.0.order"
+    },
+    {
+      "resource": "aws_lb_listener.bad_https",
+      "type": "aws_lb_listener",
+      "attribute": "default_action.0.order"
+    },
+    {
+      "resource": "aws_msk_cluster.bad",
+      "type": "aws_msk_cluster",
+      "attribute": "broker_node_group_info.0.connectivity_info"
+    },
+    {
+      "resource": "aws_msk_cluster.bad",
+      "type": "aws_msk_cluster",
+      "attribute": "encryption_info.0.encryption_at_rest_kms_key_arn"
+    },
+    {
+      "resource": "aws_opensearch_domain.bad",
+      "type": "aws_opensearch_domain",
+      "attribute": "advanced_security_options.0.anonymous_auth_enabled"
+    },
+    {
+      "resource": "aws_opensearch_domain.bad",
+      "type": "aws_opensearch_domain",
+      "attribute": "cluster_config.0.cold_storage_options"
+    },
+    {
+      "resource": "aws_opensearch_domain.bad",
+      "type": "aws_opensearch_domain",
+      "attribute": "cluster_config.0.node_options"
+    },
+    {
+      "resource": "aws_opensearch_domain.bad",
+      "type": "aws_opensearch_domain",
+      "attribute": "ebs_options.0.iops"
+    },
+    {
+      "resource": "aws_opensearch_domain.bad",
+      "type": "aws_opensearch_domain",
+      "attribute": "ebs_options.0.throughput"
+    },
+    {
+      "resource": "aws_opensearch_domain.bad",
+      "type": "aws_opensearch_domain",
+      "attribute": "ebs_options.0.volume_type"
+    },
+    {
+      "resource": "aws_s3_bucket_versioning.bad_trail",
+      "type": "aws_s3_bucket_versioning",
+      "attribute": "versioning_configuration.0.mfa_delete"
+    }
+  ]
+}

@@ -1,0 +1,35 @@
+{
+  "format_version": "1.2",
+  "terraform_version": "1.15.5",
+  "swift_account_id": "111122223333",
+  "planned_values": {
+    "root_module": {
+      "resources": [
+        {
+          "address": "aws_ec2_client_vpn_endpoint.swift_vpn",
+          "mode": "managed",
+          "type": "aws_ec2_client_vpn_endpoint",
+          "name": "swift_vpn",
+          "values": {
+            "description": "swift operator remote access",
+            "session_timeout_hours": 8,
+            "tags": { "swift:zone": "secure", "Project": "swift-cscf" }
+          }
+        },
+        {
+          "address": "aws_ssm_document.session_prefs",
+          "mode": "managed",
+          "type": "aws_ssm_document",
+          "name": "session_prefs",
+          "values": {
+            "name": "SSM-SessionManagerRunShell",
+            "document_type": "Session",
+            "content": "{\"schemaVersion\":\"1.0\",\"sessionType\":\"Standard_Stream\",\"inputs\":{\"idleSessionTimeout\":\"20\",\"maxSessionDuration\":\"60\",\"kmsKeyId\":\"arn:aws:kms:eu-west-1:111122223333:key/swift-ssm-cmk\",\"cloudWatchLogGroupName\":\"/swift/ssm/sessions\"}}",
+            "tags": { "swift:zone": "secure", "Project": "swift-cscf" }
+          }
+        }
+      ],
+      "child_modules": []
+    }
+  }
+}

@@ -1,0 +1,545 @@
+{
+  "schema": "swift-cscf-evidence/v1",
+  "generated_at": "2026-10-10T04:23:45.033956+00:00",
+  "cscf_version": "v2026",
+  "plan_file": "non_compliant_resolved_plan.json",
+  "plan_sha256": "96f2360d45d789b6ab0d1054409aebb9d3dae22e9b26706fdbd65632c908e567",
+  "opa_version": "1.17.0",
+  "library": {
+    "version": "2.1.2",
+    "digest": "sha256:4661dd9ef9f0f5c727d775d014a3896a7bd286048bbfc6da09f10d676b75424e",
+    "files": 20
+  },
+  "controls": [
+    {
+      "control": "1.1",
+      "module": "ctrl_1_1",
+      "rules_fired": 15,
+      "violation_instances": 29,
+      "assertions": [
+        "1.1-A1",
+        "1.1-A10",
+        "1.1-A11",
+        "1.1-A12",
+        "1.1-A13",
+        "1.1-A14",
+        "1.1-A15",
+        "1.1-A2",
+        "1.1-A3",
+        "1.1-A4",
+        "1.1-A5",
+        "1.1-A6",
+        "1.1-A7",
+        "1.1-A8",
+        "1.1-A9"
+      ],
+      "violations": [
+        "CSCF 1.1 [1.1-A10]: Client VPN does not use certificate or directory-service auth. CSCF requires VPN authentication with MFA capability (\u00a7 d.2). (resource: aws_ec2_client_vpn_endpoint.bad)",
+        "CSCF 1.1 [1.1-A11]: VPN auth rule grants access to all networks without group restriction. Remote access must be scoped (\u00a7 d.2). (resource: aws_ec2_client_vpn_authorization_rule.bad)",
+        "CSCF 1.1 [1.1-A12]: IAM role does not enforce MFA in assume-role policy. CSCF requires separate auth with MFA for secure zone access (\u00a7 e, \u00a7 d.1). (resource: aws_iam_role.bad_app)",
+        "CSCF 1.1 [1.1-A12]: IAM role does not enforce MFA in assume-role policy. CSCF requires separate auth with MFA for secure zone access (\u00a7 e, \u00a7 d.1). (resource: aws_iam_role.bad_cross)",
+        "CSCF 1.1 [1.1-A12]: IAM role does not enforce MFA in assume-role policy. CSCF requires separate auth with MFA for secure zone access (\u00a7 e, \u00a7 d.1). (resource: aws_iam_role.bad_wildcard_trust)",
+        "CSCF 1.1 [1.1-A13]: IAM role has no permissions boundary. CSCF requires protection from privilege escalation beyond the secure zone (\u00a7 e). (resource: aws_iam_role.bad_app)",
+        "CSCF 1.1 [1.1-A13]: IAM role has no permissions boundary. CSCF requires protection from privilege escalation beyond the secure zone (\u00a7 e). (resource: aws_iam_role.bad_cross)",
+        "CSCF 1.1 [1.1-A13]: IAM role has no permissions boundary. CSCF requires protection from privilege escalation beyond the secure zone (\u00a7 e). (resource: aws_iam_role.bad_wildcard_trust)",
+        "CSCF 1.1 [1.1-A14]: IAM policy does not include Deny for non-MFA sessions. CSCF requires MFA for admin access to the secure zone (\u00a7 d.1). (resource: aws_iam_role_policy.bad_jump)",
+        "CSCF 1.1 [1.1-A15]: S3 bucket policy grants account 444455556666, outside the declared Swift trust boundary (\u00a7 Boundary Protection). (resource: aws_s3_bucket_policy.partner_share)",
+        "CSCF 1.1 [1.1-A1]: Default VPC security group has rules defined. All traffic must use explicit security groups (\u00a7 a, \u00a7 c). (resource: aws_default_security_group.bad)",
+        "CSCF 1.1 [1.1-A2]: Security group allows unrestricted inbound from 0.0.0.0/0. CSCF requires explicit allowlisting (\u00a7 c). (resource: aws_security_group.bad)",
+        "CSCF 1.1 [1.1-A2]: Security group allows unrestricted inbound from 0.0.0.0/0. CSCF requires explicit allowlisting (\u00a7 c). (resource: aws_security_group_rule.bad_legacy_ingress)",
+        "CSCF 1.1 [1.1-A2]: Security group allows unrestricted inbound from 0.0.0.0/0. CSCF requires explicit allowlisting (\u00a7 c). (resource: aws_vpc_security_group_ingress_rule.bad_ssh)",
+        "CSCF 1.1 [1.1-A2]: Security group allows unrestricted inbound from ::/0. CSCF requires explicit allowlisting (\u00a7 c). (resource: aws_security_group.bad)",
+        "CSCF 1.1 [1.1-A3]: Security group exposes admin port 22 to the internet (\u00a7 d.1). (resource: aws_security_group.bad)",
+        "CSCF 1.1 [1.1-A3]: Security group exposes admin port 22 to the internet (\u00a7 d.1). (resource: aws_vpc_security_group_ingress_rule.bad_ssh)",
+        "CSCF 1.1 [1.1-A3]: Security group exposes admin port 22 to the internet via IPv6 (\u00a7 d.1). (resource: aws_security_group.bad)",
+        "CSCF 1.1 [1.1-A3]: Security group exposes admin port 3389 to the internet (\u00a7 d.1). (resource: aws_security_group.bad)",
+        "CSCF 1.1 [1.1-A4]: Security group allows unrestricted outbound on all ports. CSCF requires outbound connectivity to be limited (\u00a7 c). (resource: aws_security_group.bad)",
+        "CSCF 1.1 [1.1-A4]: Security group allows unrestricted outbound on all ports. CSCF requires outbound connectivity to be limited (\u00a7 c). (resource: aws_vpc_security_group_egress_rule.bad_all)",
+        "CSCF 1.1 [1.1-A5]: Subnet auto-assigns public IPs. Swift subnets must not expose instances to the internet (\u00a7 a, \u00a7 c). (resource: aws_subnet.bad1)",
+        "CSCF 1.1 [1.1-A6]: Route table has a direct route to an Internet Gateway. Swift secure zone must not have direct internet connectivity (\u00a7 a, \u00a7 c). (resource: aws_route.bad_igw)",
+        "CSCF 1.1 [1.1-A7]: Default NACL allows all inbound traffic. CSCF requires explicit allowlisting (\u00a7 c). (resource: aws_default_network_acl.bad)",
+        "CSCF 1.1 [1.1-A7]: Network ACL allows all inbound traffic. CSCF requires explicit allowlisting (\u00a7 c). (resource: aws_network_acl.bad)",
+        "CSCF 1.1 [1.1-A7]: Network ACL allows all inbound traffic. CSCF requires explicit allowlisting (\u00a7 c). (resource: aws_network_acl_rule.bad_inbound)",
+        "CSCF 1.1 [1.1-A8]: Default NACL allows all outbound traffic. CSCF requires outbound connectivity limited (\u00a7 c). (resource: aws_default_network_acl.bad)",
+        "CSCF 1.1 [1.1-A8]: Network ACL allows all outbound traffic. CSCF requires outbound connectivity limited (\u00a7 c). (resource: aws_network_acl.bad)",
+        "CSCF 1.1 [1.1-A9]: No VPC Flow Log capturing ALL traffic is configured. CSCF requires boundary connections to be logged (\u00a7 c, cross-ref: 6.4)."
+      ]
+    },
+    {
+      "control": "1.2",
+      "module": "ctrl_1_2",
+      "rules_fired": 3,
+      "violation_instances": 3,
+      "assertions": [
+        "1.2-A1",
+        "1.2-A2",
+        "1.2-A3"
+      ],
+      "violations": [
+        "CSCF 1.2 [1.2-A1]: VM uses a static SSH key pair (key_name set); privileged access should go through SSM Session Manager, not a persistent shared credential (\u00a7 Control Statement). (resource: aws_instance.bad_jump)",
+        "CSCF 1.2 [1.2-A2]: VM has no IAM instance profile; SSM-managed, auditable admin access is not available (\u00a7 Control Statement). (resource: aws_instance.bad_jump)",
+        "CSCF 1.2 [1.2-A3]: SSM Session Manager preferences do not enable session logging (no CloudWatch log group or S3 bucket); privileged sessions are not monitored (\u00a7 guidelines, cross-ref 6.4). (resource: aws_ssm_document.bad_session)"
+      ]
+    },
+    {
+      "control": "1.3",
+      "module": "ctrl_1_3",
+      "rules_fired": 5,
+      "violation_instances": 5,
+      "assertions": [
+        "1.3-A1",
+        "1.3-A2",
+        "1.3-A3",
+        "1.3-A4",
+        "1.3-A5"
+      ],
+      "violations": [
+        "CSCF 1.3 [1.3-A1]: VM does not enforce IMDSv2 (token-required metadata). The instance metadata service is a credential-theft / lateral-movement vector (\u00a7 guidelines). (resource: aws_instance.bad_jump)",
+        "CSCF 1.3 [1.3-A2]: VM allows an IMDS hop limit of 2 (> 1), enabling metadata relay beyond the instance to containers/proxies (\u00a7 guidelines). (resource: aws_instance.bad_jump)",
+        "CSCF 1.3 [1.3-A3]: VM root volume is not encrypted at rest (\u00a7 guidelines). (resource: aws_instance.bad_jump)",
+        "CSCF 1.3 [1.3-A4]: Swift EBS volume is not encrypted at rest (\u00a7 guidelines). (resource: aws_ebs_volume.bad_data)",
+        "CSCF 1.3 [1.3-A5]: VM uses 'default' tenancy; platform-level VM isolation for the Swift secure zone requires dedicated or host tenancy (\u00a7 guidelines). (resource: aws_instance.bad_jump)"
+      ]
+    },
+    {
+      "control": "1.4",
+      "module": "ctrl_1_4",
+      "rules_fired": 6,
+      "violation_instances": 7,
+      "assertions": [
+        "1.4-A1",
+        "1.4-A2",
+        "1.4-A3",
+        "1.4-A4",
+        "1.4-A5",
+        "1.4-A6"
+      ],
+      "violations": [
+        "CSCF 1.4 [1.4-A1]: Secure-zone route sends all IPv4 traffic (0.0.0.0/0) to a NAT gateway. Internet access from the secure zone must be highly restricted or blocked (\u00a7 a). (resource: aws_route.bad_nat)",
+        "CSCF 1.4 [1.4-A2]: Secure-zone route sends all IPv6 traffic (::/0) to an egress-only Internet gateway (\u00a7 a). (resource: aws_route.bad_eigw)",
+        "CSCF 1.4 [1.4-A3]: Security group allows direct outbound port 443 to 0.0.0.0/0. Internet browsing/egress from the secure zone must go through a controlled proxy (\u00a7 a). (resource: aws_security_group.bad_browsing)",
+        "CSCF 1.4 [1.4-A3]: Security group allows direct outbound port 80 to 0.0.0.0/0. Internet browsing/egress from the secure zone must go through a controlled proxy (\u00a7 a). (resource: aws_security_group.bad_browsing)",
+        "CSCF 1.4 [1.4-A4]: No VPC endpoint is configured. AWS-service access from the secure zone should use VPC endpoints rather than egressing to the Internet (\u00a7 a, \u00a7 b).",
+        "CSCF 1.4 [1.4-A5]: Jump-server/operator instance auto-assigns a public IP. It must have no direct Internet exposure (\u00a7 a, \u00a7 b). (resource: aws_instance.bad_jump)",
+        "CSCF 1.4 [1.4-A6]: Jump server's security group permits outbound Internet access (0.0.0.0/0). The jump server must have no Internet access (\u00a7 a). (resource: aws_instance.bad_jump, sg: aws_security_group.bad_browsing)"
+      ]
+    },
+    {
+      "control": "2.1",
+      "module": "ctrl_2_1",
+      "rules_fired": 14,
+      "violation_instances": 14,
+      "assertions": [
+        "2.1-A1",
+        "2.1-A10",
+        "2.1-A11",
+        "2.1-A13",
+        "2.1-A14",
+        "2.1-A15",
+        "2.1-A2",
+        "2.1-A3",
+        "2.1-A4",
+        "2.1-A5",
+        "2.1-A6",
+        "2.1-A7",
+        "2.1-A8",
+        "2.1-A9"
+      ],
+      "violations": [
+        "CSCF 2.1 [2.1-A10]: OpenSearch TLS policy 'Policy-Min-TLS-1-0-2019-07' does not enforce TLS 1.2+ (\u00a7 Impl. Guidelines). (resource: aws_opensearch_domain.bad)",
+        "CSCF 2.1 [2.1-A11]: OpenSearch does not encrypt node-to-node traffic (\u00a7 Impl. Guidelines). (resource: aws_opensearch_domain.bad)",
+        "CSCF 2.1 [2.1-A13]: API Gateway domain does not enforce TLS 1.2 (\u00a7 Impl. Guidelines). (resource: aws_api_gateway_domain_name.bad)",
+        "CSCF 2.1 [2.1-A14]: KMS key does not have automatic rotation enabled (\u00a7 Impl. Guidelines). (resource: aws_kms_key.bad)",
+        "CSCF 2.1 [2.1-A15]: KMS key deletion window is 7 days, minimum 14 required (\u00a7 Impl. Guidelines). (resource: aws_kms_key.bad)",
+        "CSCF 2.1 [2.1-A1]: Load balancer listener uses unencrypted protocol 'HTTP'. All Swift data flows must use TLS (\u00a7 Impl. Guidelines). (resource: aws_lb_listener.bad_http)",
+        "CSCF 2.1 [2.1-A2]: SSL policy 'ELBSecurityPolicy-2016-08' does not enforce TLS 1.2+ with current algorithms (\u00a7 Impl. Guidelines). (resource: aws_lb_listener.bad_https)",
+        "CSCF 2.1 [2.1-A3]: PostgreSQL parameter group does not enforce SSL (rds.force_ssl != 1) (\u00a7 Impl. Guidelines). (resource: aws_db_parameter_group.bad_pg)",
+        "CSCF 2.1 [2.1-A4]: MySQL/MariaDB parameter group does not enforce SSL (require_secure_transport != 1) (\u00a7 Impl. Guidelines). (resource: aws_db_parameter_group.bad_mysql)",
+        "CSCF 2.1 [2.1-A5]: Redshift parameter group does not enforce SSL (require_ssl != true) (\u00a7 Impl. Guidelines). (resource: aws_redshift_parameter_group.bad)",
+        "CSCF 2.1 [2.1-A6]: ElastiCache does not enforce in-transit encryption (\u00a7 Impl. Guidelines). (resource: aws_elasticache_replication_group.bad)",
+        "CSCF 2.1 [2.1-A7]: MSK allows non-TLS client-broker communication ('TLS_PLAINTEXT'). Must be 'TLS' (\u00a7 Impl. Guidelines). (resource: aws_msk_cluster.bad)",
+        "CSCF 2.1 [2.1-A8]: MSK does not encrypt inter-broker traffic (\u00a7 Impl. Guidelines). (resource: aws_msk_cluster.bad)",
+        "CSCF 2.1 [2.1-A9]: OpenSearch does not enforce HTTPS (\u00a7 Impl. Guidelines). (resource: aws_opensearch_domain.bad)"
+      ]
+    },
+    {
+      "control": "2.2",
+      "module": "ctrl_2_2",
+      "rules_fired": 2,
+      "violation_instances": 2,
+      "assertions": [
+        "2.2-A1",
+        "2.2-A2"
+      ],
+      "violations": [
+        "CSCF 2.2 [2.2-A1]: No SSM Patch Manager baseline is configured; a security-update mechanism must be in place (\u00a7 mandatory software updates).",
+        "CSCF 2.2 [2.2-A2]: No SSM patch-automation association is scheduled; security updates must be applied on a defined schedule (\u00a7 security updates)."
+      ]
+    },
+    {
+      "control": "2.3",
+      "module": "ctrl_2_3",
+      "rules_fired": 4,
+      "violation_instances": 4,
+      "assertions": [
+        "2.3-A1",
+        "2.3-A2",
+        "2.3-A3",
+        "2.3-A4"
+      ],
+      "violations": [
+        "CSCF 2.3 [2.3-A1]: RDS instance is publicly accessible; attack surface must be minimised (\u00a7 adjust vulnerable defaults). (resource: aws_db_instance.bad)",
+        "CSCF 2.3 [2.3-A2]: S3 public-access block does not enable all four settings; public exposure is not fully blocked (\u00a7 adjust vulnerable defaults). (resource: aws_s3_bucket_public_access_block.bad_trail)",
+        "CSCF 2.3 [2.3-A3]: OpenSearch domain is not VPC-attached (public endpoint); attack surface must be minimised (\u00a7 adjust vulnerable defaults). (resource: aws_opensearch_domain.bad)",
+        "CSCF 2.3 [2.3-A4]: ECS task definition runs a privileged container ('bad-agent'); disable unnecessary capabilities (\u00a7 least privilege). (resource: aws_ecs_task_definition.bad_privileged)"
+      ]
+    },
+    {
+      "control": "2.4",
+      "module": "ctrl_2_4",
+      "rules_fired": 4,
+      "violation_instances": 4,
+      "assertions": [
+        "2.4-A1",
+        "2.4-A2",
+        "2.4-A3",
+        "2.4-A4"
+      ],
+      "violations": [
+        "CSCF 2.4 [2.4-A1]: Back-office VPN tunnel does not enforce AES-256 Phase-2 encryption on both tunnels (\u00a7 secure protocols). (resource: aws_vpn_connection.bad_back_office)",
+        "CSCF 2.4 [2.4-A2]: Back-office VPN tunnel permits IKEv1 (or leaves the IKE version unset); IKEv2 is required (\u00a7 secure protocols). (resource: aws_vpn_connection.bad_back_office)",
+        "CSCF 2.4 [2.4-A3]: Back-office API domain does not enforce mutual TLS; the connecting party's authenticity is not verified (\u00a7 authentication). (resource: aws_api_gateway_domain_name.bad)",
+        "CSCF 2.4 [2.4-A4]: Direct Connect does not enforce MACsec encryption (encryption_mode='no_encrypt'); back-office link confidentiality is not guaranteed (\u00a7 confidentiality). (resource: aws_dx_connection.bad_back_office)"
+      ]
+    },
+    {
+      "control": "2.6",
+      "module": "ctrl_2_6",
+      "rules_fired": 3,
+      "violation_instances": 3,
+      "assertions": [
+        "2.6-A1",
+        "2.6-A2",
+        "2.6-A3"
+      ],
+      "violations": [
+        "CSCF 2.6 [2.6-A1]: Client VPN session timeout exceeds the minimum (8h); operator sessions must be limited to the minimal necessary time frame (\u00a7 inactivity lock-out). (resource: aws_ec2_client_vpn_endpoint.bad)",
+        "CSCF 2.6 [2.6-A2]: SSM Session Manager does not enforce an idle-session timeout of 20 minutes or less (\u00a7 inactivity lock-out). (resource: aws_ssm_document.bad_session)",
+        "CSCF 2.6 [2.6-A3]: SSM Session Manager does not encrypt session data with a KMS key; operator-session confidentiality is not protected (\u00a7 Control Statement). (resource: aws_ssm_document.bad_session)"
+      ]
+    },
+    {
+      "control": "2.7",
+      "module": "ctrl_2_7",
+      "rules_fired": 1,
+      "violation_instances": 1,
+      "assertions": [
+        "2.7-A1"
+      ],
+      "violations": [
+        "CSCF 2.7 [2.7-A1]: Amazon Inspector is not enabled for EC2 vulnerability scanning; a continuous scanning mechanism must be in place (\u00a7 Control Statement)."
+      ]
+    },
+    {
+      "control": "4.1",
+      "module": "ctrl_4_1",
+      "rules_fired": 17,
+      "violation_instances": 17,
+      "assertions": [
+        "4.1-A10",
+        "4.1-A11",
+        "4.1-A12",
+        "4.1-A13",
+        "4.1-A14",
+        "4.1-A15",
+        "4.1-A16",
+        "4.1-A17",
+        "4.1-A19",
+        "4.1-A2",
+        "4.1-A3",
+        "4.1-A4",
+        "4.1-A5",
+        "4.1-A6",
+        "4.1-A7",
+        "4.1-A8",
+        "4.1-A9"
+      ],
+      "violations": [
+        "CSCF 4.1 [4.1-A10]: Users cannot change own passwords. Lockout remedy required (\u00a7 Impl. Guidelines). (resource: aws_iam_account_password_policy.bad)",
+        "CSCF 4.1 [4.1-A11]: Cognito password min length is 6, must be >= 14 (\u00a7 Impl. Guidelines). (resource: aws_cognito_user_pool.bad)",
+        "CSCF 4.1 [4.1-A12]: Cognito does not require all character types (\u00a7 Impl. Guidelines). (resource: aws_cognito_user_pool.bad)",
+        "CSCF 4.1 [4.1-A13]: Cognito temp password validity is 30 days, must be <= 7 (\u00a7 Impl. Guidelines). (resource: aws_cognito_user_pool.bad)",
+        "CSCF 4.1 [4.1-A14]: RDS not using Secrets Manager for master password (\u00a7 Impl. Guidelines). (resource: aws_db_instance.bad)",
+        "CSCF 4.1 [4.1-A15]: Redshift not using Secrets Manager for master password (\u00a7 Impl. Guidelines). (resource: aws_redshift_cluster.bad)",
+        "CSCF 4.1 [4.1-A16]: Secrets rotation is 180 days, must be <= 90 (\u00a7 Impl. Guidelines). (resource: aws_secretsmanager_secret_rotation.bad)",
+        "CSCF 4.1 [4.1-A17]: OpenSearch fine-grained access control not enabled (\u00a7 Impl. Guidelines). (resource: aws_opensearch_domain.bad)",
+        "CSCF 4.1 [4.1-A19]: Static IAM access key defined for user 'bad-service-user'. Use role-based credentials or Secrets Manager with rotation (\u00a7 Impl. Guidelines). (resource: aws_iam_access_key.bad)",
+        "CSCF 4.1 [4.1-A2]: Password min length is 8, must be >= 14 (\u00a7 Impl. Guidelines). (resource: aws_iam_account_password_policy.bad)",
+        "CSCF 4.1 [4.1-A3]: Password policy does not require uppercase (\u00a7 Impl. Guidelines). (resource: aws_iam_account_password_policy.bad)",
+        "CSCF 4.1 [4.1-A4]: Password policy does not require lowercase (\u00a7 Impl. Guidelines). (resource: aws_iam_account_password_policy.bad)",
+        "CSCF 4.1 [4.1-A5]: Password policy does not require numbers (\u00a7 Impl. Guidelines). (resource: aws_iam_account_password_policy.bad)",
+        "CSCF 4.1 [4.1-A6]: Password policy does not require symbols (\u00a7 Impl. Guidelines). (resource: aws_iam_account_password_policy.bad)",
+        "CSCF 4.1 [4.1-A7]: Password max age is 0 (never expires). Must be 1-90 days (\u00a7 Impl. Guidelines). (resource: aws_iam_account_password_policy.bad)",
+        "CSCF 4.1 [4.1-A8]: Password reuse prevention is 3, must be >= 12 (\u00a7 Impl. Guidelines). (resource: aws_iam_account_password_policy.bad)",
+        "CSCF 4.1 [4.1-A9]: Hard expiry not enforced. Expired passwords must force change (\u00a7 Impl. Guidelines). (resource: aws_iam_account_password_policy.bad)"
+      ]
+    },
+    {
+      "control": "4.2",
+      "module": "ctrl_4_2",
+      "rules_fired": 4,
+      "violation_instances": 4,
+      "assertions": [
+        "4.2-A1",
+        "4.2-A2",
+        "4.2-A3",
+        "4.2-A4"
+      ],
+      "violations": [
+        "CSCF 4.2 [4.2-A1]: Cognito user pool does not enforce MFA (mfa_configuration='OFF'); interactive user access requires MFA (\u00a7 Control Statement). (resource: aws_cognito_user_pool.bad)",
+        "CSCF 4.2 [4.2-A2]: Cognito user pool does not enable a TOTP software-token second factor; a strong possession factor is required (SMS-only is insufficient) (\u00a7 guidelines). (resource: aws_cognito_user_pool.bad)",
+        "CSCF 4.2 [4.2-A3]: RDS instance does not enable IAM database authentication; database login should not rely solely on a single static password (\u00a7 Control Statement). (resource: aws_db_instance.bad)",
+        "CSCF 4.2 [4.2-A4]: OpenSearch domain does not use federated (Cognito/SAML) authentication; dashboard access should be MFA-backed via an IdP, not an internal user database alone (\u00a7 Control Statement). (resource: aws_opensearch_domain.bad)"
+      ]
+    },
+    {
+      "control": "5.1",
+      "module": "ctrl_5_1",
+      "rules_fired": 17,
+      "violation_instances": 31,
+      "assertions": [
+        "5.1-A1",
+        "5.1-A10",
+        "5.1-A12",
+        "5.1-A13",
+        "5.1-A14",
+        "5.1-A15",
+        "5.1-A16",
+        "5.1-A17",
+        "5.1-A18",
+        "5.1-A2",
+        "5.1-A3",
+        "5.1-A4",
+        "5.1-A5",
+        "5.1-A6",
+        "5.1-A7",
+        "5.1-A8",
+        "5.1-A9"
+      ],
+      "violations": [
+        "CSCF 5.1 [5.1-A10]: iam:PassRole on Resource '*'. Must be scoped to specific role ARNs (\u00a7 Least Privilege, \u00a7 SoD). (resource: aws_iam_policy.bad_passrole)",
+        "CSCF 5.1 [5.1-A12]: Policy grants both user creation and policy attachment, SoD violation (\u00a7 Separation of Duties). (resource: aws_iam_policy.bad_sod)",
+        "CSCF 5.1 [5.1-A13]: Policy grants both role creation and role policy attachment, SoD violation (\u00a7 Separation of Duties). (resource: aws_iam_policy.bad_sod)",
+        "CSCF 5.1 [5.1-A14]: Policy grants both policy authoring and attachment, SoD violation (\u00a7 Separation of Duties). (resource: aws_iam_policy.bad_sod)",
+        "CSCF 5.1 [5.1-A15]: Policy grants both security config and user provisioning, SoD violation (\u00a7 Separation of Duties). (resource: aws_iam_policy.bad_sod)",
+        "CSCF 5.1 [5.1-A16]: Lambda execution role has arn:aws:iam::aws:policy/AdministratorAccess attached (\u00a7 Least Privilege). (resource: aws_iam_role_policy_attachment.bad_lambda, lambda: aws_lambda_function.bad)",
+        "CSCF 5.1 [5.1-A17]: ECS task role has arn:aws:iam::aws:policy/PowerUserAccess attached (\u00a7 Least Privilege). (resource: aws_iam_role_policy_attachment.bad_ecs, task: aws_ecs_task_definition.bad)",
+        "CSCF 5.1 [5.1-A18]: Cross-account trust without ExternalId condition. Prevents confused deputy (\u00a7 Account Review, \u00a7 Need-to-know). (resource: aws_iam_role.bad_cross)",
+        "CSCF 5.1 [5.1-A1]: IAM policy grants wildcard Action (*) with Allow (\u00a7 Need-to-know). (resource: aws_iam_group_policy.bad_ops)",
+        "CSCF 5.1 [5.1-A1]: IAM policy grants wildcard Action (*) with Allow (\u00a7 Need-to-know). (resource: aws_iam_policy.bad_wildcard)",
+        "CSCF 5.1 [5.1-A1]: IAM policy grants wildcard Action (*) with Allow (\u00a7 Need-to-know). (resource: aws_iam_role_policy.bad_jump)",
+        "CSCF 5.1 [5.1-A2]: IAM policy grants sensitive action 'iam:*' on Resource '*' (\u00a7 Need-to-know, \u00a7 Least Privilege). (resource: aws_iam_group_policy.bad_ops)",
+        "CSCF 5.1 [5.1-A2]: IAM policy grants sensitive action 'iam:AttachGroupPolicy' on Resource '*' (\u00a7 Need-to-know, \u00a7 Least Privilege). (resource: aws_iam_policy.bad_sod)",
+        "CSCF 5.1 [5.1-A2]: IAM policy grants sensitive action 'iam:AttachRolePolicy' on Resource '*' (\u00a7 Need-to-know, \u00a7 Least Privilege). (resource: aws_iam_policy.bad_sod)",
+        "CSCF 5.1 [5.1-A2]: IAM policy grants sensitive action 'iam:AttachUserPolicy' on Resource '*' (\u00a7 Need-to-know, \u00a7 Least Privilege). (resource: aws_iam_policy.bad_sod)",
+        "CSCF 5.1 [5.1-A2]: IAM policy grants sensitive action 'iam:CreatePolicy' on Resource '*' (\u00a7 Need-to-know, \u00a7 Least Privilege). (resource: aws_iam_policy.bad_sod)",
+        "CSCF 5.1 [5.1-A2]: IAM policy grants sensitive action 'iam:CreateRole' on Resource '*' (\u00a7 Need-to-know, \u00a7 Least Privilege). (resource: aws_iam_policy.bad_sod)",
+        "CSCF 5.1 [5.1-A2]: IAM policy grants sensitive action 'iam:CreateUser' on Resource '*' (\u00a7 Need-to-know, \u00a7 Least Privilege). (resource: aws_iam_policy.bad_sod)",
+        "CSCF 5.1 [5.1-A2]: IAM policy grants sensitive action 'iam:PassRole' on Resource '*' (\u00a7 Need-to-know, \u00a7 Least Privilege). (resource: aws_iam_policy.bad_passrole)",
+        "CSCF 5.1 [5.1-A2]: IAM policy grants sensitive action 'iam:UpdateAccountPasswordPolicy' on Resource '*' (\u00a7 Need-to-know, \u00a7 Least Privilege). (resource: aws_iam_policy.bad_sod)",
+        "CSCF 5.1 [5.1-A2]: IAM policy grants sensitive action 's3:*' on Resource '*' (\u00a7 Need-to-know, \u00a7 Least Privilege). (resource: aws_iam_user_policy.bad)",
+        "CSCF 5.1 [5.1-A2]: IAM policy grants sensitive action 'sts:AssumeRole' on Resource '*' (\u00a7 Need-to-know, \u00a7 Least Privilege). (resource: aws_iam_group_policy.bad_ops)",
+        "CSCF 5.1 [5.1-A3]: Managed policy directly attached to user 'bad-service-user'. Use IAM groups or role assumption (\u00a7 Need-to-know). (resource: aws_iam_user_policy_attachment.bad)",
+        "CSCF 5.1 [5.1-A4]: Inline policy on user 'bad-service-user'. Use groups with managed policies (\u00a7 Need-to-know). (resource: aws_iam_user_policy.bad)",
+        "CSCF 5.1 [5.1-A5]: AdministratorAccess attached to user (\u00a7 Least Privilege). (resource: aws_iam_user_policy_attachment.bad)",
+        "CSCF 5.1 [5.1-A6]: AdministratorAccess attached to role (\u00a7 Least Privilege). (resource: aws_iam_role_policy_attachment.bad_admin)",
+        "CSCF 5.1 [5.1-A6]: AdministratorAccess attached to role (\u00a7 Least Privilege). (resource: aws_iam_role_policy_attachment.bad_lambda)",
+        "CSCF 5.1 [5.1-A7]: AdministratorAccess attached to group (\u00a7 Least Privilege). (resource: aws_iam_group_policy_attachment.bad)",
+        "CSCF 5.1 [5.1-A8]: PowerUserAccess attached. Grants all actions except IAM: exceeds least privilege (\u00a7 Least Privilege). (resource: aws_iam_role_policy_attachment.bad_ecs)",
+        "CSCF 5.1 [5.1-A8]: PowerUserAccess attached. Grants all actions except IAM: exceeds least privilege (\u00a7 Least Privilege). (resource: aws_iam_role_policy_attachment.bad_power)",
+        "CSCF 5.1 [5.1-A9]: Trust policy allows any principal (Principal: '*'). Access must be scoped (\u00a7 Need-to-know). (resource: aws_iam_role.bad_wildcard_trust)"
+      ]
+    },
+    {
+      "control": "5.4",
+      "module": "ctrl_5_4",
+      "rules_fired": 5,
+      "violation_instances": 5,
+      "assertions": [
+        "5.4-A1",
+        "5.4-A2",
+        "5.4-A3",
+        "5.4-A4",
+        "5.4-A5"
+      ],
+      "violations": [
+        "CSCF 5.4 [5.4-A1]: Secret is not encrypted with a customer-managed KMS key; the password repository must use a controlled key (\u00a7 logical storage). (resource: aws_secretsmanager_secret.bad)",
+        "CSCF 5.4 [5.4-A2]: SSM parameter storing a credential is type 'String', not SecureString (plaintext storage) (\u00a7 logical storage). (resource: aws_ssm_parameter.bad_password)",
+        "CSCF 5.4 [5.4-A3]: Secret resource policy grants access to any principal ('*'); repository access must be need-to-know (\u00a7 Control Statement). (resource: aws_secretsmanager_secret_policy.bad_open)",
+        "CSCF 5.4 [5.4-A4]: RDS master password is hardcoded inline; use Secrets-Manager-managed credentials (manage_master_user_password) instead (\u00a7 no hardcoded passwords). (resource: aws_db_instance.bad)",
+        "CSCF 5.4 [5.4-A5]: Lambda environment variable 'DB_PASSWORD' hardcodes a password-like value; reference a Secrets Manager ARN instead (\u00a7 no hardcoded passwords). (resource: aws_lambda_function.bad)"
+      ]
+    },
+    {
+      "control": "6.4",
+      "module": "ctrl_6_4",
+      "rules_fired": 22,
+      "violation_instances": 22,
+      "assertions": [
+        "6.4-A1",
+        "6.4-A10",
+        "6.4-A11",
+        "6.4-A12",
+        "6.4-A13",
+        "6.4-A14",
+        "6.4-A15",
+        "6.4-A16",
+        "6.4-A18",
+        "6.4-A19",
+        "6.4-A2",
+        "6.4-A20",
+        "6.4-A21",
+        "6.4-A22",
+        "6.4-A23",
+        "6.4-A24",
+        "6.4-A3",
+        "6.4-A4",
+        "6.4-A5",
+        "6.4-A6",
+        "6.4-A7",
+        "6.4-A8"
+      ],
+      "violations": [
+        "CSCF 6.4 [6.4-A10]: CloudTrail log file validation disabled. Required for tamper-evident forensics (\u00a7 Log retention). (resource: aws_cloudtrail.bad)",
+        "CSCF 6.4 [6.4-A11]: CloudTrail logs not encrypted with KMS. Required to protect from enterprise admin compromise (\u00a7 Log retention). (resource: aws_cloudtrail.bad)",
+        "CSCF 6.4 [6.4-A12]: CloudWatch log group not KMS-encrypted. Audit logs must be protected from credential compromise (\u00a7 Log retention). (resource: aws_cloudwatch_log_group.bad)",
+        "CSCF 6.4 [6.4-A13]: S3 bucket does not block all public access. Audit logs must not be publicly accessible (\u00a7 Log retention). (resource: aws_s3_bucket_public_access_block.bad_trail)",
+        "CSCF 6.4 [6.4-A14]: S3 bucket versioning not enabled. Required for log recovery and forensic integrity (\u00a7 Log retention). (resource: aws_s3_bucket_versioning.bad_trail)",
+        "CSCF 6.4 [6.4-A15]: S3 log bucket Object Lock not enabled. Prevents log deletion during retention (\u00a7 Log retention). (resource: aws_s3_bucket.bad_trail)",
+        "CSCF 6.4 [6.4-A16]: S3 lifecycle expires objects in 30 days, need >= 365 (\u00a7 Log retention). (resource: aws_s3_bucket_lifecycle_configuration.bad_trail)",
+        "CSCF 6.4 [6.4-A18]: S3 bucket not using KMS encryption (algorithm: 'AES256'). Audit logs must be encrypted at rest (\u00a7 Log retention). (resource: aws_s3_bucket_server_side_encryption_configuration.bad_trail)",
+        "CSCF 6.4 [6.4-A19]: No CloudWatch metric filter for root account usage. CSCF requires monitoring of privileged account activity (\u00a7 Monitoring).",
+        "CSCF 6.4 [6.4-A1]: No multi-region CloudTrail configured. CSCF requires logging of security events across the entire Swift environment (\u00a7 Overall goals, \u00a7 Logging).",
+        "CSCF 6.4 [6.4-A20]: No CloudWatch metric filter for IAM policy changes. CSCF requires logging of changes to user groups and access (\u00a7 Logging, \u00a7 Monitoring).",
+        "CSCF 6.4 [6.4-A21]: No CloudWatch metric filter for console sign-in failures. CSCF requires logging of failed login attempts (\u00a7 Logging).",
+        "CSCF 6.4 [6.4-A22]: Alarm has no actions configured. Suspicious activity must be routed to the security team via SNS (\u00a7 Monitoring). (resource: aws_cloudwatch_metric_alarm.bad)",
+        "CSCF 6.4 [6.4-A23]: No GuardDuty detector enabled. CSCF requires continuous threat detection (\u00a7 Overall goals, \u00a7 Monitoring).",
+        "CSCF 6.4 [6.4-A24]: No AWS Config configuration recorder. CSCF requires continuous compliance monitoring (\u00a7 Logging, \u00a7 Monitoring).",
+        "CSCF 6.4 [6.4-A2]: CloudTrail logging disabled (\u00a7 Logging). (resource: aws_cloudtrail.bad)",
+        "CSCF 6.4 [6.4-A3]: CloudTrail does not capture global events (IAM, STS). Required for account usage traceability (\u00a7 Logging). (resource: aws_cloudtrail.bad)",
+        "CSCF 6.4 [6.4-A4]: CloudTrail event selector read_write_type is 'WriteOnly', must be 'All' (\u00a7 Logging). (resource: aws_cloudtrail.bad)",
+        "CSCF 6.4 [6.4-A5]: No VPC Flow Log capturing ALL traffic. CSCF requires firewall and network-level logging (\u00a7 Logging, cross-ref: 1.1).",
+        "CSCF 6.4 [6.4-A6]: RDS instance does not export any logs to CloudWatch. CSCF requires database logs (\u00a7 Logging). (resource: aws_db_instance.bad)",
+        "CSCF 6.4 [6.4-A7]: CloudTrail not forwarding to CloudWatch. Required for active monitoring and alerting (\u00a7 Overall goals, \u00a7 Monitoring). (resource: aws_cloudtrail.bad)",
+        "CSCF 6.4 [6.4-A8]: CloudWatch log group retention is 30 days, need >= 365 for audit logs (\u00a7 Log retention). (resource: aws_cloudwatch_log_group.bad)"
+      ]
+    }
+  ],
+  "summary": {
+    "total_violation_instances": 151,
+    "distinct_assertions_fired": 122,
+    "controls_with_violations": 15,
+    "result": "FAIL",
+    "undetermined_instances": 11,
+    "undetermined_assertions": 5
+  },
+  "plan_scope": "full",
+  "undetermined": [
+    {
+      "control": "1.1",
+      "assertion": "1.1-A15",
+      "resource": "aws_s3_bucket_policy.bad_data",
+      "attribute": "policy",
+      "kind": "unresolved-value",
+      "reason": "the attribute this assertion reads is unknown at plan time; the verdict changes when it is given a value, so the plan does not determine it"
+    },
+    {
+      "control": "1.1",
+      "assertion": "1.1-A15",
+      "resource": "aws_s3_bucket_policy.bad_open",
+      "attribute": "policy",
+      "kind": "unresolved-value",
+      "reason": "the attribute this assertion reads is unknown at plan time; the verdict changes when it is given a value, so the plan does not determine it"
+    },
+    {
+      "control": "1.1",
+      "assertion": "1.1-A15",
+      "resource": "aws_s3_bucket_policy.bad_trail",
+      "attribute": "policy",
+      "kind": "unresolved-value",
+      "reason": "the attribute this assertion reads is unknown at plan time; the verdict changes when it is given a value, so the plan does not determine it"
+    },
+    {
+      "control": "2.1",
+      "assertion": "2.1-A12",
+      "resource": "aws_efs_file_system_policy.bad",
+      "attribute": "policy",
+      "kind": "unresolved-value",
+      "reason": "the attribute this assertion reads is unknown at plan time; the verdict changes when it is given a value, so the plan does not determine it"
+    },
+    {
+      "control": "2.1",
+      "assertion": "2.1-A16",
+      "resource": "aws_s3_bucket_policy.bad_data",
+      "attribute": "policy",
+      "kind": "unresolved-value",
+      "reason": "the attribute this assertion reads is unknown at plan time; the verdict changes when it is given a value, so the plan does not determine it"
+    },
+    {
+      "control": "2.1",
+      "assertion": "2.1-A16",
+      "resource": "aws_s3_bucket_policy.bad_open",
+      "attribute": "policy",
+      "kind": "unresolved-value",
+      "reason": "the attribute this assertion reads is unknown at plan time; the verdict changes when it is given a value, so the plan does not determine it"
+    },
+    {
+      "control": "2.1",
+      "assertion": "2.1-A16",
+      "resource": "aws_s3_bucket_policy.bad_trail",
+      "attribute": "policy",
+      "kind": "unresolved-value",
+      "reason": "the attribute this assertion reads is unknown at plan time; the verdict changes when it is given a value, so the plan does not determine it"
+    },
+    {
+      "control": "5.1",
+      "assertion": "5.1-A11",
+      "resource": "aws_s3_bucket_policy.bad_data",
+      "attribute": "policy",
+      "kind": "unresolved-value",
+      "reason": "the attribute this assertion reads is unknown at plan time; the verdict changes when it is given a value, so the plan does not determine it"
+    },
+    {
+      "control": "5.1",
+      "assertion": "5.1-A11",
+      "resource": "aws_s3_bucket_policy.bad_open",
+      "attribute": "policy",
+      "kind": "unresolved-value",
+      "reason": "the attribute this assertion reads is unknown at plan time; the verdict changes when it is given a value, so the plan does not determine it"
+    },
+    {
+      "control": "5.1",
+      "assertion": "5.1-A11",
+      "resource": "aws_s3_bucket_policy.bad_trail",
+      "attribute": "policy",
+      "kind": "unresolved-value",
+      "reason": "the attribute this assertion reads is unknown at plan time; the verdict changes when it is given a value, so the plan does not determine it"
+    },
+    {
+      "control": "6.4",
+      "assertion": "6.4-A17",
+      "resource": "aws_s3_bucket_policy.bad_trail",
+      "attribute": "policy",
+      "kind": "unresolved-value",
+      "reason": "the attribute this assertion reads is unknown at plan time; the verdict changes when it is given a value, so the plan does not determine it"
+    }
+  ],
+  "signature": {
+    "algorithm": "Ed25519",
+    "key_id": "b922bdc0a6699e3e",
+    "canonicalisation": "json: sorted keys, compact separators, UTF-8, signature block removed",
+    "digest_sha256": "d2f6690ec22cdd7a3a2a0e8a033b975fd4818a449dd90b307c32886fa5736ee4",
+    "signed_at": "2026-10-10T04:23:47.610384+00:00",
+    "value": "rGIDz+OeoApBnksjU6oPrtgOD8rte4+NWfmaTeAe1cGXMo8Q3PASVubhEbm/ml/QMpH3l9oiHeT4BGxooTtaBQ=="
+  }
+}

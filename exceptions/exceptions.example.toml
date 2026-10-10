@@ -1,0 +1,24 @@
+# Example risk acceptance. The gate never loads this file: copy a record into
+# exceptions/exceptions.toml (the default path, or pass --exceptions) to use it.
+#
+# One record = one assertion on one exact Terraform address, for at most six
+# months. The finding stays visible: the gate reports it as EXCEPTED --
+# accepted risk, not passed -- in the console, the attestation and the signed
+# evidence, and as a violation again once expires_on has passed.
+#
+# A record covers its address in every plan checked with this file: keep one
+# file per environment (--exceptions) if environments share Terraform code.
+#
+# Name roles, not people, in risk_owner and approved_by: the evidence is signed
+# and kept. Approval is the pull request review required by .github/CODEOWNERS.
+
+[[exception]]
+id          = "EXC-2026-001"
+assertion   = "1.1-A15"
+resource    = "aws_s3_bucket_policy.reporting_partner"
+reason      = "Partner reconciliation feed until DR account onboarding completes."
+risk_owner  = "Head of Payments Operations"
+approved_by = "CISO"
+ticket      = "RISK-1432"
+approved_on = 2026-10-05
+expires_on  = 2027-04-05

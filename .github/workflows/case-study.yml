@@ -1,0 +1,98 @@
+name: Case study CR-2041
+
+# Runs the case study on demand: the CSCF gate on the CR-2041 change as the
+# developer submitted it (blocked) and after remediation (passes). Start it from
+# the Actions tab -> "Case study CR-2041" -> Run workflow.
+#
+# Each plan is its own job, so the run page shows the change blocked (red) next
+# to the remediation passing (green). Each job signs its evidence, verifies the
+# signature, writes the verdict and findings to the run summary, and attaches
+# the evidence and the HTML attestation.
+#
+# The plans are the case study's plan JSON (case_study/),
+# evaluated against the six controls the change touches -- see the README there.
+
+on:
+  workflow_dispatch:
+    inputs:
+      plan:
+        description: "Which CR-2041 plan to gate"
+        type: choice
+        options: [both, change, remediated]
+        default: both
+
+env:
+  OPA_VERSION: "1.17.0"
+  CONTROLS: ctrl_1_2,ctrl_1_3,ctrl_1_4,ctrl_2_3,ctrl_4_2,ctrl_5_4
+
+jobs:
+  gate:
+    name: "CR-2041: ${{ matrix.plan == 'change' && 'change as submitted' || 'after remediation' }}"
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        plan: ${{ fromJSON(inputs.plan == 'both' && '["change", "remediated"]' || format('["{0}"]', inputs.plan)) }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install OPA ${{ env.OPA_VERSION }} and the signing library
+        run: |
+          curl -sSL -o /usr/local/bin/opa \
+            "https://openpolicyagent.org/downloads/v${OPA_VERSION}/opa_linux_amd64_static"
+          chmod +x /usr/local/bin/opa
+          pip install cryptography
+
+      # The gate's exit status is the verdict. It is recorded here and applied
+      # as the job's result at the end, so the evidence is signed, summarised
+      # and uploaded whichever way the verdict goes.
+      - name: Run the CSCF gate on the ${{ matrix.plan }} plan
+        id: gate
+        env:
+          CSCF_EVIDENCE_SIGNING_KEY: ${{ secrets.CSCF_EVIDENCE_SIGNING_KEY }}
+        run: |
+          set +e
+          python pipeline/gate.py \
+            --plan "case_study/cr2041_${{ matrix.plan }}_plan.json" \
+            --controls "$CONTROLS" \
+            --evidence "out/cr2041_${{ matrix.plan }}_evidence.json"
+          echo "exit=$?" >> "$GITHUB_OUTPUT"
+
+      - name: Verify the evidence signature
+        run: |
+          python pipeline/evidence_signing.py verify --require \
+            --evidence "out/cr2041_${{ matrix.plan }}_evidence.json"
+
+      - name: Render the attestation and the run summary
+        run: |
+          python evidence/report.py \
+            --evidence "out/cr2041_${{ matrix.plan }}_evidence.json" \
+            --out "out/cr2041_${{ matrix.plan }}_report.html"
+          title="Case study CR-2041: ${{ matrix.plan == 'change' && 'change as submitted' || 'after remediation' }}"
+          python evidence/step_summary.py \
+            --evidence "out/cr2041_${{ matrix.plan }}_evidence.json" \
+            --title "$title" >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Upload evidence and attestation
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: cr2041-${{ matrix.plan }}-evidence
+          path: out/
+          if-no-files-found: warn
+
+      - name: Gate verdict
+        run: |
+          case "${{ steps.gate.outputs.exit }}" in
+            0) echo "PASS: the change may proceed." ;;
+            1) echo "::error::BLOCKED: the CSCF gate found violations in the ${{ matrix.plan }} plan (see the run summary)."
+               exit 1 ;;
+            *) echo "::error::The gate did not run to a verdict (exit ${{ steps.gate.outputs.exit }})."
+               exit 2 ;;
+          esac

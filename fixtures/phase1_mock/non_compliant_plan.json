@@ -1,0 +1,1012 @@
+{
+  "format_version": "1.2",
+  "terraform_version": "1.9.0",
+  "swift_account_id": "123456789012",
+  "planned_values": {
+    "root_module": {
+      "resources": [
+        {
+          "address": "aws_default_security_group.bad",
+          "mode": "managed",
+          "type": "aws_default_security_group",
+          "name": "bad",
+          "provider_name": "registry.terraform.io/hashicorp/aws",
+          "schema_version": 0,
+          "values": {
+            "vpc_id": "vpc-bad-001",
+            "ingress": [
+              {
+                "from_port": 0,
+                "to_port": 0,
+                "protocol": "-1",
+                "cidr_blocks": [
+                  "0.0.0.0/0"
+                ],
+                "ipv6_cidr_blocks": [],
+                "self": false,
+                "security_groups": [],
+                "prefix_list_ids": [],
+                "description": ""
+              }
+            ],
+            "egress": [
+              {
+                "from_port": 0,
+                "to_port": 0,
+                "protocol": "-1",
+                "cidr_blocks": [
+                  "0.0.0.0/0"
+                ],
+                "ipv6_cidr_blocks": [],
+                "self": false,
+                "security_groups": [],
+                "prefix_list_ids": [],
+                "description": ""
+              }
+            ],
+            "tags": {
+              "swift:zone": "secure",
+              "Project": "swift-cscf"
+            }
+          }
+        },
+        {
+          "address": "aws_security_group.bad",
+          "mode": "managed",
+          "type": "aws_security_group",
+          "name": "bad",
+          "provider_name": "registry.terraform.io/hashicorp/aws",
+          "schema_version": 0,
+          "values": {
+            "name": "bad-sg",
+            "vpc_id": "vpc-bad-001",
+            "ingress": [
+              {
+                "from_port": 0,
+                "to_port": 65535,
+                "protocol": "tcp",
+                "cidr_blocks": [
+                  "0.0.0.0/0"
+                ],
+                "ipv6_cidr_blocks": [],
+                "self": false,
+                "security_groups": [],
+                "prefix_list_ids": [],
+                "description": ""
+              },
+              {
+                "from_port": 22,
+                "to_port": 22,
+                "protocol": "tcp",
+                "cidr_blocks": [
+                  "0.0.0.0/0"
+                ],
+                "ipv6_cidr_blocks": [
+                  "::/0"
+                ],
+                "self": false,
+                "security_groups": [],
+                "prefix_list_ids": [],
+                "description": ""
+              },
+              {
+                "from_port": 3389,
+                "to_port": 3389,
+                "protocol": "tcp",
+                "cidr_blocks": [
+                  "0.0.0.0/0"
+                ],
+                "ipv6_cidr_blocks": [],
+                "self": false,
+                "security_groups": [],
+                "prefix_list_ids": [],
+                "description": ""
+              }
+            ],
+            "egress": [
+              {
+                "from_port": 0,
+                "to_port": 0,
+                "protocol": "-1",
+                "cidr_blocks": [
+                  "0.0.0.0/0"
+                ],
+                "ipv6_cidr_blocks": [],
+                "self": false,
+                "security_groups": [],
+                "prefix_list_ids": [],
+                "description": ""
+              }
+            ],
+            "tags": {
+              "swift:zone": "secure",
+              "Project": "swift-cscf"
+            }
+          }
+        },
+        {
+          "address": "aws_subnet.bad",
+          "mode": "managed",
+          "type": "aws_subnet",
+          "name": "bad",
+          "provider_name": "registry.terraform.io/hashicorp/aws",
+          "schema_version": 0,
+          "values": {
+            "vpc_id": "vpc-bad-001",
+            "cidr_block": "10.0.1.0/24",
+            "map_public_ip_on_launch": true,
+            "tags": {
+              "swift:zone": "secure",
+              "Project": "swift-cscf"
+            }
+          }
+        },
+        {
+          "address": "aws_internet_gateway.bad",
+          "mode": "managed",
+          "type": "aws_internet_gateway",
+          "name": "bad",
+          "provider_name": "registry.terraform.io/hashicorp/aws",
+          "schema_version": 0,
+          "values": {
+            "vpc_id": "vpc-bad-001",
+            "id": "igw-bad001",
+            "tags": {
+              "swift:zone": "secure",
+              "Project": "swift-cscf"
+            }
+          }
+        },
+        {
+          "address": "aws_route.bad_igw",
+          "mode": "managed",
+          "type": "aws_route",
+          "name": "bad_igw",
+          "provider_name": "registry.terraform.io/hashicorp/aws",
+          "schema_version": 0,
+          "values": {
+            "route_table_id": "rtb-bad",
+            "destination_cidr_block": "0.0.0.0/0",
+            "gateway_id": "igw-bad001"
+          }
+        },
+        {
+          "address": "aws_default_network_acl.bad",
+          "mode": "managed",
+          "type": "aws_default_network_acl",
+          "name": "bad",
+          "provider_name": "registry.terraform.io/hashicorp/aws",
+          "schema_version": 0,
+          "values": {
+            "default_network_acl_id": "acl-bad-001",
+            "ingress": [
+              {
+                "protocol": "-1",
+                "rule_no": 100,
+                "action": "allow",
+                "cidr_block": "0.0.0.0/0",
+                "from_port": 0,
+                "to_port": 0
+              }
+            ],
+            "egress": [
+              {
+                "protocol": "-1",
+                "rule_no": 100,
+                "action": "allow",
+                "cidr_block": "0.0.0.0/0",
+                "from_port": 0,
+                "to_port": 0
+              }
+            ],
+            "tags": {
+              "swift:zone": "secure",
+              "Project": "swift-cscf"
+            }
+          }
+        },
+        {
+          "address": "aws_ec2_client_vpn_endpoint.bad",
+          "mode": "managed",
+          "type": "aws_ec2_client_vpn_endpoint",
+          "name": "bad",
+          "provider_name": "registry.terraform.io/hashicorp/aws",
+          "schema_version": 0,
+          "values": {
+            "authentication_options": [
+              {
+                "type": "federated-authentication",
+                "saml_provider_arn": "arn:aws:iam::123456789012:saml-provider/bad"
+              }
+            ],
+            "tags": {
+              "swift:zone": "secure",
+              "Project": "swift-cscf"
+            }
+          }
+        },
+        {
+          "address": "aws_ec2_client_vpn_authorization_rule.bad",
+          "mode": "managed",
+          "type": "aws_ec2_client_vpn_authorization_rule",
+          "name": "bad",
+          "provider_name": "registry.terraform.io/hashicorp/aws",
+          "schema_version": 0,
+          "values": {
+            "client_vpn_endpoint_id": "cvpn-bad",
+            "target_network_cidr": "0.0.0.0/0",
+            "access_group_id": ""
+          }
+        },
+        {
+          "address": "aws_iam_role.bad_app",
+          "mode": "managed",
+          "type": "aws_iam_role",
+          "name": "bad_app",
+          "provider_name": "registry.terraform.io/hashicorp/aws",
+          "schema_version": 0,
+          "values": {
+            "name": "bad-app-role",
+            "permissions_boundary": "",
+            "assume_role_policy": "{\"Version\": \"2012-10-17\", \"Statement\": [{\"Effect\": \"Allow\", \"Principal\": {\"AWS\": \"arn:aws:iam::123456789012:root\"}, \"Action\": \"sts:AssumeRole\"}]}",
+            "tags": {
+              "swift:zone": "secure",
+              "Project": "swift-cscf"
+            }
+          }
+        },
+        {
+          "address": "aws_iam_role_policy.bad_jump",
+          "mode": "managed",
+          "type": "aws_iam_role_policy",
+          "name": "bad_jump",
+          "provider_name": "registry.terraform.io/hashicorp/aws",
+          "schema_version": 0,
+          "values": {
+            "name": "bad-jump",
+            "role": "bad-app-role",
+            "policy": "{\"Version\": \"2012-10-17\", \"Statement\": [{\"Effect\": \"Allow\", \"Action\": \"*\", \"Resource\": \"*\"}]}",
+            "tags": {
+              "swift:zone": "secure",
+              "Project": "swift-cscf"
+            }
+          }
+        },
+        {
+          "address": "aws_lb_listener.bad_http",
+          "mode": "managed",
+          "type": "aws_lb_listener",
+          "name": "bad_http",
+          "provider_name": "registry.terraform.io/hashicorp/aws",
+          "schema_version": 0,
+          "values": {
+            "port": 80,
+            "protocol": "HTTP",
+            "tags": {
+              "swift:zone": "secure",
+              "Project": "swift-cscf"
+            }
+          }
+        },
+        {
+          "address": "aws_lb_listener.bad_https",
+          "mode": "managed",
+          "type": "aws_lb_listener",
+          "name": "bad_https",
+          "provider_name": "registry.terraform.io/hashicorp/aws",
+          "schema_version": 0,
+          "values": {
+            "port": 443,
+            "protocol": "HTTPS",
+            "ssl_policy": "ELBSecurityPolicy-2016-08",
+            "tags": {
+              "swift:zone": "secure",
+              "Project": "swift-cscf"
+            }
+          }
+        },
+        {
+          "address": "aws_db_parameter_group.bad_pg",
+          "mode": "managed",
+          "type": "aws_db_parameter_group",
+          "name": "bad_pg",
+          "provider_name": "registry.terraform.io/hashicorp/aws",
+          "schema_version": 0,
+          "values": {
+            "name": "bad-pg",
+            "family": "postgres16",
+            "parameter": [],
+            "tags": {
+              "swift:zone": "secure",
+              "Project": "swift-cscf"
+            }
+          }
+        },
+        {
+          "address": "aws_db_parameter_group.bad_mysql",
+          "mode": "managed",
+          "type": "aws_db_parameter_group",
+          "name": "bad_mysql",
+          "provider_name": "registry.terraform.io/hashicorp/aws",
+          "schema_version": 0,
+          "values": {
+            "name": "bad-mysql",
+            "family": "mysql8.0",
+            "parameter": [],
+            "tags": {
+              "swift:zone": "secure",
+              "Project": "swift-cscf"
+            }
+          }
+        },
+        {
+          "address": "aws_redshift_parameter_group.bad",
+          "mode": "managed",
+          "type": "aws_redshift_parameter_group",
+          "name": "bad",
+          "provider_name": "registry.terraform.io/hashicorp/aws",
+          "schema_version": 0,
+          "values": {
+            "name": "bad-redshift",
+            "family": "redshift-1.0",
+            "parameter": [],
+            "tags": {
+              "swift:zone": "secure",
+              "Project": "swift-cscf"
+            }
+          }
+        },
+        {
+          "address": "aws_elasticache_replication_group.bad",
+          "mode": "managed",
+          "type": "aws_elasticache_replication_group",
+          "name": "bad",
+          "provider_name": "registry.terraform.io/hashicorp/aws",
+          "schema_version": 0,
+          "values": {
+            "replication_group_id": "bad",
+            "transit_encryption_enabled": false,
+            "tags": {
+              "swift:zone": "secure",
+              "Project": "swift-cscf"
+            }
+          }
+        },
+        {
+          "address": "aws_msk_cluster.bad",
+          "mode": "managed",
+          "type": "aws_msk_cluster",
+          "name": "bad",
+          "provider_name": "registry.terraform.io/hashicorp/aws",
+          "schema_version": 0,
+          "values": {
+            "cluster_name": "bad-kafka",
+            "encryption_info": [
+              {
+                "encryption_in_transit": [
+                  {
+                    "client_broker": "TLS_PLAINTEXT",
+                    "in_cluster": false
+                  }
+                ]
+              }
+            ],
+            "tags": {
+              "swift:zone": "secure",
+              "Project": "swift-cscf"
+            }
+          }
+        },
+        {
+          "address": "aws_opensearch_domain.bad",
+          "mode": "managed",
+          "type": "aws_opensearch_domain",
+          "name": "bad",
+          "provider_name": "registry.terraform.io/hashicorp/aws",
+          "schema_version": 0,
+          "values": {
+            "domain_name": "bad-search",
+            "domain_endpoint_options": [
+              {
+                "enforce_https": false,
+                "tls_security_policy": "Policy-Min-TLS-1-0-2019-07"
+              }
+            ],
+            "node_to_node_encryption": [
+              {
+                "enabled": false
+              }
+            ],
+            "advanced_security_options": [
+              {
+                "enabled": false
+              }
+            ],
+            "tags": {
+              "swift:zone": "secure",
+              "Project": "swift-cscf"
+            }
+          }
+        },
+        {
+          "address": "aws_efs_file_system_policy.bad",
+          "mode": "managed",
+          "type": "aws_efs_file_system_policy",
+          "name": "bad",
+          "provider_name": "registry.terraform.io/hashicorp/aws",
+          "schema_version": 0,
+          "values": {
+            "file_system_id": "fs-bad",
+            "policy": "{\"Version\": \"2012-10-17\", \"Statement\": [{\"Effect\": \"Allow\", \"Principal\": {\"AWS\": \"*\"}, \"Action\": \"*\", \"Resource\": \"*\"}]}",
+            "tags": {
+              "swift:zone": "secure",
+              "Project": "swift-cscf"
+            }
+          }
+        },
+        {
+          "address": "aws_api_gateway_domain_name.bad",
+          "mode": "managed",
+          "type": "aws_api_gateway_domain_name",
+          "name": "bad",
+          "provider_name": "registry.terraform.io/hashicorp/aws",
+          "schema_version": 0,
+          "values": {
+            "domain_name": "bad.example.com",
+            "security_policy": "TLS_1_0",
+            "tags": {
+              "swift:zone": "secure",
+              "Project": "swift-cscf"
+            }
+          }
+        },
+        {
+          "address": "aws_kms_key.bad",
+          "mode": "managed",
+          "type": "aws_kms_key",
+          "name": "bad",
+          "provider_name": "registry.terraform.io/hashicorp/aws",
+          "schema_version": 0,
+          "values": {
+            "enable_key_rotation": false,
+            "deletion_window_in_days": 7,
+            "tags": {
+              "swift:zone": "secure",
+              "Project": "swift-cscf"
+            }
+          }
+        },
+        {
+          "address": "aws_s3_bucket_policy.bad_data",
+          "mode": "managed",
+          "type": "aws_s3_bucket_policy",
+          "name": "bad_data",
+          "provider_name": "registry.terraform.io/hashicorp/aws",
+          "schema_version": 0,
+          "values": {
+            "bucket": "bad-data",
+            "policy": "{\"Version\": \"2012-10-17\", \"Statement\": [{\"Effect\": \"Allow\", \"Principal\": \"*\", \"Action\": \"s3:*\", \"Resource\": \"*\"}]}",
+            "tags": {
+              "swift:zone": "secure",
+              "Project": "swift-cscf"
+            }
+          }
+        },
+        {
+          "address": "aws_iam_account_password_policy.bad",
+          "mode": "managed",
+          "type": "aws_iam_account_password_policy",
+          "name": "bad",
+          "provider_name": "registry.terraform.io/hashicorp/aws",
+          "schema_version": 0,
+          "values": {
+            "minimum_password_length": 8,
+            "require_uppercase_characters": false,
+            "require_lowercase_characters": false,
+            "require_numbers": false,
+            "require_symbols": false,
+            "max_password_age": 0,
+            "password_reuse_prevention": 3,
+            "hard_expiry": false,
+            "allow_users_to_change_password": false
+          }
+        },
+        {
+          "address": "aws_cognito_user_pool.bad",
+          "mode": "managed",
+          "type": "aws_cognito_user_pool",
+          "name": "bad",
+          "provider_name": "registry.terraform.io/hashicorp/aws",
+          "schema_version": 0,
+          "values": {
+            "name": "bad-pool",
+            "password_policy": [
+              {
+                "minimum_length": 6,
+                "require_uppercase": false,
+                "require_lowercase": false,
+                "require_numbers": false,
+                "require_symbols": false,
+                "temporary_password_validity_days": 30
+              }
+            ],
+            "tags": {
+              "swift:zone": "secure",
+              "Project": "swift-cscf"
+            }
+          }
+        },
+        {
+          "address": "aws_db_instance.bad",
+          "mode": "managed",
+          "type": "aws_db_instance",
+          "name": "bad",
+          "provider_name": "registry.terraform.io/hashicorp/aws",
+          "schema_version": 0,
+          "values": {
+            "identifier": "bad-db",
+            "engine": "postgres",
+            "manage_master_user_password": false,
+            "enabled_cloudwatch_logs_exports": [],
+            "tags": {
+              "swift:zone": "secure",
+              "Project": "swift-cscf"
+            }
+          }
+        },
+        {
+          "address": "aws_redshift_cluster.bad",
+          "mode": "managed",
+          "type": "aws_redshift_cluster",
+          "name": "bad",
+          "provider_name": "registry.terraform.io/hashicorp/aws",
+          "schema_version": 0,
+          "values": {
+            "cluster_identifier": "bad-redshift",
+            "manage_master_password": false,
+            "tags": {
+              "swift:zone": "secure",
+              "Project": "swift-cscf"
+            }
+          }
+        },
+        {
+          "address": "aws_secretsmanager_secret_rotation.bad",
+          "mode": "managed",
+          "type": "aws_secretsmanager_secret_rotation",
+          "name": "bad",
+          "provider_name": "registry.terraform.io/hashicorp/aws",
+          "schema_version": 0,
+          "values": {
+            "secret_id": "bad/creds",
+            "rotation_rules": [
+              {
+                "automatically_after_days": 180
+              }
+            ]
+          }
+        },
+        {
+          "address": "aws_iam_access_key.bad",
+          "mode": "managed",
+          "type": "aws_iam_access_key",
+          "name": "bad",
+          "provider_name": "registry.terraform.io/hashicorp/aws",
+          "schema_version": 0,
+          "values": {
+            "user": "bad-service-user"
+          }
+        },
+        {
+          "address": "aws_iam_policy.bad_wildcard",
+          "mode": "managed",
+          "type": "aws_iam_policy",
+          "name": "bad_wildcard",
+          "provider_name": "registry.terraform.io/hashicorp/aws",
+          "schema_version": 0,
+          "values": {
+            "name": "bad-wildcard",
+            "policy": "{\"Version\": \"2012-10-17\", \"Statement\": [{\"Effect\": \"Allow\", \"Action\": \"*\", \"Resource\": \"*\"}]}",
+            "tags": {
+              "swift:zone": "secure",
+              "Project": "swift-cscf"
+            }
+          }
+        },
+        {
+          "address": "aws_iam_user_policy_attachment.bad",
+          "mode": "managed",
+          "type": "aws_iam_user_policy_attachment",
+          "name": "bad",
+          "provider_name": "registry.terraform.io/hashicorp/aws",
+          "schema_version": 0,
+          "values": {
+            "user": "bad-service-user",
+            "policy_arn": "arn:aws:iam::aws:policy/AdministratorAccess"
+          }
+        },
+        {
+          "address": "aws_iam_user_policy.bad",
+          "mode": "managed",
+          "type": "aws_iam_user_policy",
+          "name": "bad",
+          "provider_name": "registry.terraform.io/hashicorp/aws",
+          "schema_version": 0,
+          "values": {
+            "name": "bad-inline",
+            "user": "bad-service-user",
+            "policy": "{\"Version\": \"2012-10-17\", \"Statement\": [{\"Effect\": \"Allow\", \"Action\": \"s3:*\", \"Resource\": \"*\"}]}"
+          }
+        },
+        {
+          "address": "aws_iam_role_policy_attachment.bad_admin",
+          "mode": "managed",
+          "type": "aws_iam_role_policy_attachment",
+          "name": "bad_admin",
+          "provider_name": "registry.terraform.io/hashicorp/aws",
+          "schema_version": 0,
+          "values": {
+            "role": "bad-app-role",
+            "policy_arn": "arn:aws:iam::aws:policy/AdministratorAccess"
+          }
+        },
+        {
+          "address": "aws_iam_group_policy_attachment.bad_admin",
+          "mode": "managed",
+          "type": "aws_iam_group_policy_attachment",
+          "name": "bad_admin",
+          "provider_name": "registry.terraform.io/hashicorp/aws",
+          "schema_version": 0,
+          "values": {
+            "group": "bad-admins",
+            "policy_arn": "arn:aws:iam::aws:policy/AdministratorAccess"
+          }
+        },
+        {
+          "address": "aws_iam_role_policy_attachment.bad_power",
+          "mode": "managed",
+          "type": "aws_iam_role_policy_attachment",
+          "name": "bad_power",
+          "provider_name": "registry.terraform.io/hashicorp/aws",
+          "schema_version": 0,
+          "values": {
+            "role": "bad-app-role",
+            "policy_arn": "arn:aws:iam::aws:policy/PowerUserAccess"
+          }
+        },
+        {
+          "address": "aws_iam_role.bad_wildcard_trust",
+          "mode": "managed",
+          "type": "aws_iam_role",
+          "name": "bad_wildcard_trust",
+          "provider_name": "registry.terraform.io/hashicorp/aws",
+          "schema_version": 0,
+          "values": {
+            "name": "bad-wildcard-trust",
+            "assume_role_policy": "{\"Version\": \"2012-10-17\", \"Statement\": [{\"Effect\": \"Allow\", \"Principal\": \"*\", \"Action\": \"sts:AssumeRole\"}]}",
+            "tags": {
+              "swift:zone": "secure",
+              "Project": "swift-cscf"
+            }
+          }
+        },
+        {
+          "address": "aws_iam_policy.bad_passrole",
+          "mode": "managed",
+          "type": "aws_iam_policy",
+          "name": "bad_passrole",
+          "provider_name": "registry.terraform.io/hashicorp/aws",
+          "schema_version": 0,
+          "values": {
+            "name": "bad-passrole",
+            "policy": "{\"Version\": \"2012-10-17\", \"Statement\": [{\"Effect\": \"Allow\", \"Action\": \"iam:PassRole\", \"Resource\": \"*\"}]}",
+            "tags": {
+              "swift:zone": "secure",
+              "Project": "swift-cscf"
+            }
+          }
+        },
+        {
+          "address": "aws_s3_bucket_policy.bad_open",
+          "mode": "managed",
+          "type": "aws_s3_bucket_policy",
+          "name": "bad_open",
+          "provider_name": "registry.terraform.io/hashicorp/aws",
+          "schema_version": 0,
+          "values": {
+            "bucket": "bad-open",
+            "policy": "{\"Version\": \"2012-10-17\", \"Statement\": [{\"Effect\": \"Allow\", \"Principal\": \"*\", \"Action\": \"s3:GetObject\", \"Resource\": \"*\"}]}",
+            "tags": {
+              "swift:zone": "secure",
+              "Project": "swift-cscf"
+            }
+          }
+        },
+        {
+          "address": "aws_iam_policy.bad_sod",
+          "mode": "managed",
+          "type": "aws_iam_policy",
+          "name": "bad_sod",
+          "provider_name": "registry.terraform.io/hashicorp/aws",
+          "schema_version": 0,
+          "values": {
+            "name": "bad-sod",
+            "policy": "{\"Version\": \"2012-10-17\", \"Statement\": [{\"Effect\": \"Allow\", \"Action\": [\"iam:CreateUser\", \"iam:AttachUserPolicy\", \"iam:CreateRole\", \"iam:AttachRolePolicy\", \"iam:CreatePolicy\", \"iam:AttachGroupPolicy\", \"iam:UpdateAccountPasswordPolicy\"], \"Resource\": \"*\"}]}",
+            "tags": {
+              "swift:zone": "secure",
+              "Project": "swift-cscf"
+            }
+          }
+        },
+        {
+          "address": "aws_iam_role.bad_lambda",
+          "mode": "managed",
+          "type": "aws_iam_role",
+          "name": "bad_lambda",
+          "provider_name": "registry.terraform.io/hashicorp/aws",
+          "schema_version": 0,
+          "values": {
+            "name": "bad-lambda",
+            "assume_role_policy": "{\"Version\": \"2012-10-17\", \"Statement\": [{\"Effect\": \"Allow\", \"Principal\": {\"Service\": \"lambda.amazonaws.com\"}, \"Action\": \"sts:AssumeRole\"}]}",
+            "tags": {
+              "swift:zone": "secure",
+              "Project": "swift-cscf"
+            }
+          }
+        },
+        {
+          "address": "aws_iam_role_policy_attachment.bad_lambda",
+          "mode": "managed",
+          "type": "aws_iam_role_policy_attachment",
+          "name": "bad_lambda",
+          "provider_name": "registry.terraform.io/hashicorp/aws",
+          "schema_version": 0,
+          "values": {
+            "role": "bad-lambda",
+            "policy_arn": "arn:aws:iam::aws:policy/AdministratorAccess"
+          }
+        },
+        {
+          "address": "aws_lambda_function.bad",
+          "mode": "managed",
+          "type": "aws_lambda_function",
+          "name": "bad",
+          "provider_name": "registry.terraform.io/hashicorp/aws",
+          "schema_version": 0,
+          "values": {
+            "function_name": "bad-lambda",
+            "role": "arn:aws:iam::123456789012:role/bad-lambda",
+            "tags": {
+              "swift:zone": "secure",
+              "Project": "swift-cscf"
+            }
+          }
+        },
+        {
+          "address": "aws_iam_role.bad_ecs",
+          "mode": "managed",
+          "type": "aws_iam_role",
+          "name": "bad_ecs",
+          "provider_name": "registry.terraform.io/hashicorp/aws",
+          "schema_version": 0,
+          "values": {
+            "name": "bad-ecs",
+            "assume_role_policy": "{\"Version\": \"2012-10-17\", \"Statement\": [{\"Effect\": \"Allow\", \"Principal\": {\"Service\": \"ecs-tasks.amazonaws.com\"}, \"Action\": \"sts:AssumeRole\"}]}",
+            "tags": {
+              "swift:zone": "secure",
+              "Project": "swift-cscf"
+            }
+          }
+        },
+        {
+          "address": "aws_iam_role_policy_attachment.bad_ecs",
+          "mode": "managed",
+          "type": "aws_iam_role_policy_attachment",
+          "name": "bad_ecs",
+          "provider_name": "registry.terraform.io/hashicorp/aws",
+          "schema_version": 0,
+          "values": {
+            "role": "bad-ecs",
+            "policy_arn": "arn:aws:iam::aws:policy/PowerUserAccess"
+          }
+        },
+        {
+          "address": "aws_ecs_task_definition.bad",
+          "mode": "managed",
+          "type": "aws_ecs_task_definition",
+          "name": "bad",
+          "provider_name": "registry.terraform.io/hashicorp/aws",
+          "schema_version": 0,
+          "values": {
+            "family": "bad-task",
+            "execution_role_arn": "arn:aws:iam::123456789012:role/bad-ecs",
+            "task_role_arn": "arn:aws:iam::123456789012:role/bad-ecs",
+            "tags": {
+              "swift:zone": "secure",
+              "Project": "swift-cscf"
+            }
+          }
+        },
+        {
+          "address": "aws_iam_role.bad_cross",
+          "mode": "managed",
+          "type": "aws_iam_role",
+          "name": "bad_cross",
+          "provider_name": "registry.terraform.io/hashicorp/aws",
+          "schema_version": 0,
+          "values": {
+            "name": "bad-cross-account",
+            "assume_role_policy": "{\"Version\": \"2012-10-17\", \"Statement\": [{\"Effect\": \"Allow\", \"Principal\": {\"AWS\": \"arn:aws:iam::987654321098:root\"}, \"Action\": \"sts:AssumeRole\"}]}",
+            "tags": {
+              "swift:zone": "secure",
+              "Project": "swift-cscf"
+            }
+          }
+        },
+        {
+          "address": "aws_cloudtrail.bad",
+          "mode": "managed",
+          "type": "aws_cloudtrail",
+          "name": "bad",
+          "provider_name": "registry.terraform.io/hashicorp/aws",
+          "schema_version": 0,
+          "values": {
+            "name": "bad-trail",
+            "s3_bucket_name": "bad-trail-logs",
+            "is_multi_region_trail": false,
+            "enable_logging": false,
+            "include_global_service_events": false,
+            "enable_log_file_validation": false,
+            "kms_key_id": "",
+            "cloud_watch_logs_group_arn": "",
+            "event_selector": [
+              {
+                "read_write_type": "WriteOnly",
+                "include_management_events": true
+              }
+            ],
+            "tags": {
+              "swift:zone": "secure",
+              "Project": "swift-cscf"
+            }
+          }
+        },
+        {
+          "address": "aws_cloudwatch_log_group.bad",
+          "mode": "managed",
+          "type": "aws_cloudwatch_log_group",
+          "name": "bad",
+          "provider_name": "registry.terraform.io/hashicorp/aws",
+          "schema_version": 0,
+          "values": {
+            "name": "/bad/logs",
+            "retention_in_days": 30,
+            "kms_key_id": "",
+            "tags": {
+              "swift:zone": "secure",
+              "Project": "swift-cscf"
+            }
+          }
+        },
+        {
+          "address": "aws_s3_bucket_public_access_block.bad_trail",
+          "mode": "managed",
+          "type": "aws_s3_bucket_public_access_block",
+          "name": "bad_trail",
+          "provider_name": "registry.terraform.io/hashicorp/aws",
+          "schema_version": 0,
+          "values": {
+            "bucket": "bad-trail-logs",
+            "block_public_acls": false,
+            "block_public_policy": false,
+            "restrict_public_buckets": false,
+            "ignore_public_acls": false
+          }
+        },
+        {
+          "address": "aws_s3_bucket_versioning.bad_trail",
+          "mode": "managed",
+          "type": "aws_s3_bucket_versioning",
+          "name": "bad_trail",
+          "provider_name": "registry.terraform.io/hashicorp/aws",
+          "schema_version": 0,
+          "values": {
+            "bucket": "bad-trail-logs",
+            "versioning_configuration": [
+              {
+                "status": "Disabled"
+              }
+            ]
+          }
+        },
+        {
+          "address": "aws_s3_bucket.bad_trail",
+          "mode": "managed",
+          "type": "aws_s3_bucket",
+          "name": "bad_trail",
+          "provider_name": "registry.terraform.io/hashicorp/aws",
+          "schema_version": 0,
+          "values": {
+            "bucket": "bad-trail-logs",
+            "object_lock_enabled": false,
+            "tags": {
+              "swift:zone": "secure",
+              "Project": "swift-cscf"
+            }
+          }
+        },
+        {
+          "address": "aws_s3_bucket_lifecycle_configuration.bad_trail",
+          "mode": "managed",
+          "type": "aws_s3_bucket_lifecycle_configuration",
+          "name": "bad_trail",
+          "provider_name": "registry.terraform.io/hashicorp/aws",
+          "schema_version": 0,
+          "values": {
+            "bucket": "bad-trail-logs",
+            "rule": [
+              {
+                "id": "delete-fast",
+                "status": "Enabled",
+                "expiration": [
+                  {
+                    "days": 30
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "address": "aws_s3_bucket_policy.bad_trail",
+          "mode": "managed",
+          "type": "aws_s3_bucket_policy",
+          "name": "bad_trail",
+          "provider_name": "registry.terraform.io/hashicorp/aws",
+          "schema_version": 0,
+          "values": {
+            "bucket": "bad-trail-logs",
+            "policy": "{\"Version\": \"2012-10-17\", \"Statement\": [{\"Effect\": \"Allow\", \"Principal\": \"*\", \"Action\": \"s3:*\", \"Resource\": \"*\"}]}"
+          }
+        },
+        {
+          "address": "aws_s3_bucket_server_side_encryption_configuration.bad_trail",
+          "mode": "managed",
+          "type": "aws_s3_bucket_server_side_encryption_configuration",
+          "name": "bad_trail",
+          "provider_name": "registry.terraform.io/hashicorp/aws",
+          "schema_version": 0,
+          "values": {
+            "bucket": "bad-trail-logs",
+            "rule": [
+              {
+                "apply_server_side_encryption_by_default": [
+                  {
+                    "sse_algorithm": "AES256"
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "address": "aws_cloudwatch_metric_alarm.bad",
+          "mode": "managed",
+          "type": "aws_cloudwatch_metric_alarm",
+          "name": "bad",
+          "provider_name": "registry.terraform.io/hashicorp/aws",
+          "schema_version": 0,
+          "values": {
+            "alarm_name": "bad-alarm",
+            "alarm_actions": [],
+            "tags": {
+              "swift:zone": "secure",
+              "Project": "swift-cscf"
+            }
+          }
+        }
+      ],
+      "child_modules": []
+    }
+  }
+}

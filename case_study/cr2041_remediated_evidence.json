@@ -1,0 +1,64 @@
+{
+  "schema": "swift-cscf-evidence/v1",
+  "generated_at": "2026-09-09T02:30:14.668441+00:00",
+  "cscf_version": "v2026",
+  "plan_file": "cr2041_remediated_plan.json",
+  "plan_sha256": "fad7701f442c50fd91ab32f3d530ddc8bec10e97001cc3625cd524e9e6d2d624",
+  "opa_version": "1.17.0",
+  "controls": [
+    {
+      "control": "1.2",
+      "module": "ctrl_1_2",
+      "rules_fired": 0,
+      "violation_instances": 0,
+      "assertions": [],
+      "violations": []
+    },
+    {
+      "control": "1.3",
+      "module": "ctrl_1_3",
+      "rules_fired": 0,
+      "violation_instances": 0,
+      "assertions": [],
+      "violations": []
+    },
+    {
+      "control": "1.4",
+      "module": "ctrl_1_4",
+      "rules_fired": 0,
+      "violation_instances": 0,
+      "assertions": [],
+      "violations": []
+    },
+    {
+      "control": "2.3",
+      "module": "ctrl_2_3",
+      "rules_fired": 0,
+      "violation_instances": 0,
+      "assertions": [],
+      "violations": []
+    },
+    {
+      "control": "4.2",
+      "module": "ctrl_4_2",
+      "rules_fired": 0,
+      "violation_instances": 0,
+      "assertions": [],
+      "violations": []
+    },
+    {
+      "control": "5.4",
+      "module": "ctrl_5_4",
+      "rules_fired": 0,
+      "violation_instances": 0,
+      "assertions": [],
+      "violations": []
+    }
+  ],
+  "summary": {
+    "total_violation_instances": 0,
+    "distinct_assertions_fired": 0,
+    "controls_with_violations": 0,
+    "result": "PASS"
+  }
+}

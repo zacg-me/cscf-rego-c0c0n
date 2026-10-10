@@ -1,0 +1,111 @@
+{
+  "format_version": "1.2",
+  "terraform_version": "1.15.5",
+  "swift_account_id": "111122223333",
+  "planned_values": {
+    "root_module": {
+      "resources": [
+        {
+          "address": "aws_route.nat_default",
+          "mode": "managed",
+          "type": "aws_route",
+          "name": "nat_default",
+          "values": {
+            "destination_cidr_block": "0.0.0.0/0",
+            "nat_gateway_id": "nat-0123456789abcdef0",
+            "gateway_id": "",
+            "route_table_id": "rtb-swiftzone"
+          }
+        },
+        {
+          "address": "aws_route.eigw_default",
+          "mode": "managed",
+          "type": "aws_route",
+          "name": "eigw_default",
+          "values": {
+            "destination_ipv6_cidr_block": "::/0",
+            "egress_only_gateway_id": "eigw-0123456789abcdef0",
+            "route_table_id": "rtb-swiftzone"
+          }
+        },
+        {
+          "address": "aws_security_group.bad_egress",
+          "mode": "managed",
+          "type": "aws_security_group",
+          "name": "bad_egress",
+          "values": {
+            "name": "swift-jump-open",
+            "id": "sg-bad00000000001",
+            "vpc_id": "vpc-swift-001",
+            "ingress": [],
+            "egress": [
+              {
+                "from_port": 443,
+                "to_port": 443,
+                "protocol": "tcp",
+                "cidr_blocks": [
+                  "0.0.0.0/0"
+                ],
+                "ipv6_cidr_blocks": [],
+                "description": "Direct HTTPS to the Internet (violation)"
+              },
+              {
+                "from_port": 80,
+                "to_port": 80,
+                "protocol": "tcp",
+                "cidr_blocks": [],
+                "ipv6_cidr_blocks": [
+                  "::/0"
+                ],
+                "description": "Direct HTTP to the Internet over IPv6 (violation)"
+              }
+            ],
+            "tags": {
+              "swift:zone": "secure",
+              "Project": "swift-cscf"
+            }
+          }
+        },
+        {
+          "address": "aws_instance.jump",
+          "mode": "managed",
+          "type": "aws_instance",
+          "name": "jump",
+          "values": {
+            "associate_public_ip_address": true,
+            "subnet_id": "subnet-swift-pub-001",
+            "vpc_security_group_ids": [
+              "sg-bad00000000001"
+            ],
+            "tags": {
+              "swift:zone": "secure",
+              "swift:role": "jump_server",
+              "Project": "swift-cscf"
+            }
+          }
+        },
+        {
+          "address": "aws_route_table.zone",
+          "mode": "managed",
+          "type": "aws_route_table",
+          "name": "zone",
+          "provider_name": "registry.terraform.io/hashicorp/aws",
+          "schema_version": 0,
+          "values": {
+            "id": "rtb-swiftzone",
+            "vpc_id": "vpc-swiftzone",
+            "tags": {
+              "swift:zone": "secure",
+              "Name": "swift-zone-rt"
+            },
+            "tags_all": {
+              "swift:zone": "secure",
+              "Name": "swift-zone-rt"
+            }
+          }
+        }
+      ],
+      "child_modules": []
+    }
+  }
+}

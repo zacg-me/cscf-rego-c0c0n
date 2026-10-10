@@ -1,0 +1,1761 @@
+{
+  "assertions": {
+    "1.1-A1": {
+      "control": "1.1",
+      "statement": "",
+      "domain": "Network Isolation",
+      "sources": [
+        "1.1-S1",
+        "1.1-S4"
+      ],
+      "cscf_section": "§ a, § c",
+      "terraform_resource": "aws_default_security_group",
+      "scope_type": "SINGLE",
+      "scope_level": "VPC",
+      "variant": "A",
+      "coverage": "Full",
+      "register": "Phase I traceability register (research spreadsheet, not published)"
+    },
+    "1.1-A2": {
+      "control": "1.1",
+      "statement": "",
+      "domain": "Network Isolation",
+      "sources": [
+        "1.1-S4"
+      ],
+      "cscf_section": "§ c",
+      "terraform_resource": "aws_security_group",
+      "scope_type": "SINGLE",
+      "scope_level": "VPC",
+      "variant": "A",
+      "coverage": "Full",
+      "register": "Phase I traceability register (research spreadsheet, not published)"
+    },
+    "1.1-A3": {
+      "control": "1.1",
+      "statement": "",
+      "domain": "Network Isolation",
+      "sources": [
+        "1.1-S7"
+      ],
+      "cscf_section": "§ d.1",
+      "terraform_resource": "aws_security_group",
+      "scope_type": "SINGLE",
+      "scope_level": "VPC",
+      "variant": "A",
+      "coverage": "Full",
+      "register": "Phase I traceability register (research spreadsheet, not published)"
+    },
+    "1.1-A4": {
+      "control": "1.1",
+      "statement": "",
+      "domain": "Network Isolation",
+      "sources": [
+        "1.1-S4",
+        "1.1-S5"
+      ],
+      "cscf_section": "§ c",
+      "terraform_resource": "aws_security_group",
+      "scope_type": "SINGLE",
+      "scope_level": "VPC",
+      "variant": "A",
+      "coverage": "Full",
+      "register": "Phase I traceability register (research spreadsheet, not published)"
+    },
+    "1.1-A5": {
+      "control": "1.1",
+      "statement": "",
+      "domain": "Network Isolation",
+      "sources": [
+        "1.1-S1",
+        "1.1-S5"
+      ],
+      "cscf_section": "§ a, § c",
+      "terraform_resource": "aws_subnet",
+      "scope_type": "SINGLE",
+      "scope_level": "VPC",
+      "variant": "A",
+      "coverage": "Full",
+      "register": "Phase I traceability register (research spreadsheet, not published)"
+    },
+    "1.1-A6": {
+      "control": "1.1",
+      "statement": "",
+      "domain": "Network Isolation",
+      "sources": [
+        "1.1-S1",
+        "1.1-S5"
+      ],
+      "cscf_section": "§ a, § c",
+      "terraform_resource": "aws_route -> aws_internet_gateway",
+      "scope_type": "RELATION",
+      "scope_level": "VPC",
+      "variant": "E",
+      "coverage": "Full",
+      "register": "Phase I traceability register (research spreadsheet, not published)"
+    },
+    "1.1-A7": {
+      "control": "1.1",
+      "statement": "",
+      "domain": "Network Isolation",
+      "sources": [
+        "1.1-S3",
+        "1.1-S4"
+      ],
+      "cscf_section": "§ c",
+      "terraform_resource": "aws_default_network_acl",
+      "scope_type": "SINGLE",
+      "scope_level": "VPC",
+      "variant": "A",
+      "coverage": "Full",
+      "register": "Phase I traceability register (research spreadsheet, not published)"
+    },
+    "1.1-A8": {
+      "control": "1.1",
+      "statement": "",
+      "domain": "Network Isolation",
+      "sources": [
+        "1.1-S3",
+        "1.1-S4"
+      ],
+      "cscf_section": "§ c",
+      "terraform_resource": "aws_default_network_acl",
+      "scope_type": "SINGLE",
+      "scope_level": "VPC",
+      "variant": "A",
+      "coverage": "Full",
+      "register": "Phase I traceability register (research spreadsheet, not published)"
+    },
+    "1.1-A9": {
+      "control": "1.1",
+      "statement": "",
+      "domain": "Network Isolation",
+      "sources": [
+        "1.1-S6"
+      ],
+      "cscf_section": "§ c",
+      "terraform_resource": "aws_flow_log",
+      "scope_type": "PRESENCE",
+      "scope_level": "VPC",
+      "variant": "B",
+      "coverage": "Full",
+      "register": "Phase I traceability register (research spreadsheet, not published)"
+    },
+    "1.1-A10": {
+      "control": "1.1",
+      "statement": "",
+      "domain": "Network Isolation",
+      "sources": [
+        "1.1-S9"
+      ],
+      "cscf_section": "§ d.2",
+      "terraform_resource": "aws_ec2_client_vpn_endpoint",
+      "scope_type": "SINGLE",
+      "scope_level": "TAG",
+      "variant": "A",
+      "coverage": "Partial",
+      "register": "Phase I traceability register (research spreadsheet, not published)"
+    },
+    "1.1-A11": {
+      "control": "1.1",
+      "statement": "",
+      "domain": "Network Isolation",
+      "sources": [
+        "1.1-S9"
+      ],
+      "cscf_section": "§ d.2",
+      "terraform_resource": "aws_ec2_client_vpn_authorization_rule",
+      "scope_type": "SINGLE",
+      "scope_level": "TAG",
+      "variant": "A",
+      "coverage": "Full",
+      "register": "Phase I traceability register (research spreadsheet, not published)"
+    },
+    "1.1-A12": {
+      "control": "1.1",
+      "statement": "",
+      "domain": "Network Isolation",
+      "sources": [
+        "1.1-S10",
+        "1.1-S8"
+      ],
+      "cscf_section": "§ e, § d.1",
+      "terraform_resource": "aws_iam_role",
+      "scope_type": "JSON",
+      "scope_level": "TAG",
+      "variant": "C",
+      "coverage": "Partial",
+      "register": "Phase I traceability register (research spreadsheet, not published)"
+    },
+    "1.1-A13": {
+      "control": "1.1",
+      "statement": "",
+      "domain": "Network Isolation",
+      "sources": [
+        "1.1-S10",
+        "1.1-S11"
+      ],
+      "cscf_section": "§ e",
+      "terraform_resource": "aws_iam_role",
+      "scope_type": "SINGLE",
+      "scope_level": "TAG",
+      "variant": "A",
+      "coverage": "Partial",
+      "register": "Phase I traceability register (research spreadsheet, not published)"
+    },
+    "1.1-A14": {
+      "control": "1.1",
+      "statement": "",
+      "domain": "Network Isolation",
+      "sources": [
+        "1.1-S8"
+      ],
+      "cscf_section": "§ d.1",
+      "terraform_resource": "aws_iam_role_policy / aws_iam_policy",
+      "scope_type": "JSON",
+      "scope_level": "TAG",
+      "variant": "C",
+      "coverage": "Full",
+      "register": "Phase I traceability register (research spreadsheet, not published)"
+    },
+    "2.1-A1": {
+      "control": "2.1",
+      "statement": "",
+      "domain": "Encryption in Transit",
+      "sources": [
+        "2.1-S1",
+        "2.1-S5"
+      ],
+      "cscf_section": "§ Impl. Guidelines",
+      "terraform_resource": "aws_lb_listener",
+      "scope_type": "SINGLE",
+      "scope_level": "TAG",
+      "variant": "A",
+      "coverage": "Full",
+      "register": "Phase I traceability register (research spreadsheet, not published)"
+    },
+    "2.1-A2": {
+      "control": "2.1",
+      "statement": "",
+      "domain": "Encryption in Transit",
+      "sources": [
+        "2.1-S3"
+      ],
+      "cscf_section": "§ Impl. Guidelines",
+      "terraform_resource": "aws_lb_listener",
+      "scope_type": "SINGLE",
+      "scope_level": "TAG",
+      "variant": "F",
+      "coverage": "Full",
+      "register": "Phase I traceability register (research spreadsheet, not published)"
+    },
+    "2.1-A3": {
+      "control": "2.1",
+      "statement": "",
+      "domain": "Encryption in Transit",
+      "sources": [
+        "2.1-S1",
+        "2.1-S5"
+      ],
+      "cscf_section": "§ Impl. Guidelines",
+      "terraform_resource": "aws_db_parameter_group",
+      "scope_type": "SINGLE",
+      "scope_level": "TAG",
+      "variant": "A",
+      "coverage": "Full",
+      "register": "Phase I traceability register (research spreadsheet, not published)"
+    },
+    "2.1-A4": {
+      "control": "2.1",
+      "statement": "",
+      "domain": "Encryption in Transit",
+      "sources": [
+        "2.1-S1",
+        "2.1-S5"
+      ],
+      "cscf_section": "§ Impl. Guidelines",
+      "terraform_resource": "aws_db_parameter_group",
+      "scope_type": "SINGLE",
+      "scope_level": "TAG",
+      "variant": "A",
+      "coverage": "Full",
+      "register": "Phase I traceability register (research spreadsheet, not published)"
+    },
+    "2.1-A5": {
+      "control": "2.1",
+      "statement": "",
+      "domain": "Encryption in Transit",
+      "sources": [
+        "2.1-S1",
+        "2.1-S5"
+      ],
+      "cscf_section": "§ Impl. Guidelines",
+      "terraform_resource": "aws_redshift_parameter_group",
+      "scope_type": "SINGLE",
+      "scope_level": "TAG",
+      "variant": "A",
+      "coverage": "Full",
+      "register": "Phase I traceability register (research spreadsheet, not published)"
+    },
+    "2.1-A6": {
+      "control": "2.1",
+      "statement": "",
+      "domain": "Encryption in Transit",
+      "sources": [
+        "2.1-S1",
+        "2.1-S5"
+      ],
+      "cscf_section": "§ Impl. Guidelines",
+      "terraform_resource": "aws_elasticache_replication_group",
+      "scope_type": "SINGLE",
+      "scope_level": "TAG",
+      "variant": "A",
+      "coverage": "Full",
+      "register": "Phase I traceability register (research spreadsheet, not published)"
+    },
+    "2.1-A7": {
+      "control": "2.1",
+      "statement": "",
+      "domain": "Encryption in Transit",
+      "sources": [
+        "2.1-S1",
+        "2.1-S5"
+      ],
+      "cscf_section": "§ Impl. Guidelines",
+      "terraform_resource": "aws_msk_cluster",
+      "scope_type": "SINGLE",
+      "scope_level": "TAG",
+      "variant": "A",
+      "coverage": "Full",
+      "register": "Phase I traceability register (research spreadsheet, not published)"
+    },
+    "2.1-A8": {
+      "control": "2.1",
+      "statement": "",
+      "domain": "Encryption in Transit",
+      "sources": [
+        "2.1-S1",
+        "2.1-S2",
+        "2.1-S5"
+      ],
+      "cscf_section": "§ Impl. Guidelines",
+      "terraform_resource": "aws_msk_cluster",
+      "scope_type": "SINGLE",
+      "scope_level": "TAG",
+      "variant": "A",
+      "coverage": "Full",
+      "register": "Phase I traceability register (research spreadsheet, not published)"
+    },
+    "2.1-A9": {
+      "control": "2.1",
+      "statement": "",
+      "domain": "Encryption in Transit",
+      "sources": [
+        "2.1-S1",
+        "2.1-S5"
+      ],
+      "cscf_section": "§ Impl. Guidelines",
+      "terraform_resource": "aws_opensearch_domain",
+      "scope_type": "SINGLE",
+      "scope_level": "TAG",
+      "variant": "A",
+      "coverage": "Full",
+      "register": "Phase I traceability register (research spreadsheet, not published)"
+    },
+    "2.1-A10": {
+      "control": "2.1",
+      "statement": "",
+      "domain": "Encryption in Transit",
+      "sources": [
+        "2.1-S3"
+      ],
+      "cscf_section": "§ Impl. Guidelines",
+      "terraform_resource": "aws_opensearch_domain",
+      "scope_type": "SINGLE",
+      "scope_level": "TAG",
+      "variant": "A",
+      "coverage": "Full",
+      "register": "Phase I traceability register (research spreadsheet, not published)"
+    },
+    "2.1-A11": {
+      "control": "2.1",
+      "statement": "",
+      "domain": "Encryption in Transit",
+      "sources": [
+        "2.1-S1",
+        "2.1-S2",
+        "2.1-S5"
+      ],
+      "cscf_section": "§ Impl. Guidelines",
+      "terraform_resource": "aws_opensearch_domain",
+      "scope_type": "SINGLE",
+      "scope_level": "TAG",
+      "variant": "A",
+      "coverage": "Full",
+      "register": "Phase I traceability register (research spreadsheet, not published)"
+    },
+    "2.1-A12": {
+      "control": "2.1",
+      "statement": "",
+      "domain": "Encryption in Transit",
+      "sources": [
+        "2.1-S1",
+        "2.1-S5"
+      ],
+      "cscf_section": "§ Impl. Guidelines",
+      "terraform_resource": "aws_efs_file_system_policy",
+      "scope_type": "JSON",
+      "scope_level": "TAG",
+      "variant": "C",
+      "coverage": "Full",
+      "register": "Phase I traceability register (research spreadsheet, not published)"
+    },
+    "2.1-A13": {
+      "control": "2.1",
+      "statement": "",
+      "domain": "Encryption in Transit",
+      "sources": [
+        "2.1-S1",
+        "2.1-S3"
+      ],
+      "cscf_section": "§ Impl. Guidelines",
+      "terraform_resource": "aws_api_gateway_domain_name",
+      "scope_type": "SINGLE",
+      "scope_level": "TAG",
+      "variant": "A",
+      "coverage": "Full",
+      "register": "Phase I traceability register (research spreadsheet, not published)"
+    },
+    "2.1-A14": {
+      "control": "2.1",
+      "statement": "",
+      "domain": "Key Protection",
+      "sources": [
+        "2.1-S4"
+      ],
+      "cscf_section": "§ Impl. Guidelines",
+      "terraform_resource": "aws_kms_key",
+      "scope_type": "SINGLE",
+      "scope_level": "TAG",
+      "variant": "A",
+      "coverage": "Full",
+      "register": "Phase I traceability register (research spreadsheet, not published)"
+    },
+    "2.1-A15": {
+      "control": "2.1",
+      "statement": "",
+      "domain": "Key Protection",
+      "sources": [
+        "2.1-S4"
+      ],
+      "cscf_section": "§ Impl. Guidelines",
+      "terraform_resource": "aws_kms_key",
+      "scope_type": "SINGLE",
+      "scope_level": "TAG",
+      "variant": "A",
+      "coverage": "Full",
+      "register": "Phase I traceability register (research spreadsheet, not published)"
+    },
+    "2.1-A16": {
+      "control": "2.1",
+      "statement": "",
+      "domain": "Encryption in Transit",
+      "sources": [
+        "2.1-S1",
+        "2.1-S5"
+      ],
+      "cscf_section": "§ Impl. Guidelines",
+      "terraform_resource": "aws_s3_bucket_policy",
+      "scope_type": "JSON",
+      "scope_level": "TAG",
+      "variant": "C",
+      "coverage": "Partial",
+      "register": "Phase I traceability register (research spreadsheet, not published)"
+    },
+    "4.1-A1": {
+      "control": "4.1",
+      "statement": "",
+      "domain": "Access Control",
+      "sources": [
+        "4.1-S4",
+        "4.1-S7"
+      ],
+      "cscf_section": "§ Impl. Guidelines",
+      "terraform_resource": "aws_iam_account_password_policy",
+      "scope_type": "PRESENCE",
+      "scope_level": "ACCT",
+      "variant": "B",
+      "coverage": "Full",
+      "register": "Phase I traceability register (research spreadsheet, not published)"
+    },
+    "4.1-A2": {
+      "control": "4.1",
+      "statement": "",
+      "domain": "Access Control",
+      "sources": [
+        "4.1-S1",
+        "4.1-S3"
+      ],
+      "cscf_section": "§ Impl. Guidelines",
+      "terraform_resource": "aws_iam_account_password_policy",
+      "scope_type": "SINGLE",
+      "scope_level": "ACCT",
+      "variant": "A",
+      "coverage": "Full",
+      "register": "Phase I traceability register (research spreadsheet, not published)"
+    },
+    "4.1-A3": {
+      "control": "4.1",
+      "statement": "",
+      "domain": "Access Control",
+      "sources": [
+        "4.1-S1"
+      ],
+      "cscf_section": "§ Impl. Guidelines",
+      "terraform_resource": "aws_iam_account_password_policy",
+      "scope_type": "SINGLE",
+      "scope_level": "ACCT",
+      "variant": "A",
+      "coverage": "Full",
+      "register": "Phase I traceability register (research spreadsheet, not published)"
+    },
+    "4.1-A4": {
+      "control": "4.1",
+      "statement": "",
+      "domain": "Access Control",
+      "sources": [
+        "4.1-S1"
+      ],
+      "cscf_section": "§ Impl. Guidelines",
+      "terraform_resource": "aws_iam_account_password_policy",
+      "scope_type": "SINGLE",
+      "scope_level": "ACCT",
+      "variant": "A",
+      "coverage": "Full",
+      "register": "Phase I traceability register (research spreadsheet, not published)"
+    },
+    "4.1-A5": {
+      "control": "4.1",
+      "statement": "",
+      "domain": "Access Control",
+      "sources": [
+        "4.1-S1"
+      ],
+      "cscf_section": "§ Impl. Guidelines",
+      "terraform_resource": "aws_iam_account_password_policy",
+      "scope_type": "SINGLE",
+      "scope_level": "ACCT",
+      "variant": "A",
+      "coverage": "Full",
+      "register": "Phase I traceability register (research spreadsheet, not published)"
+    },
+    "4.1-A6": {
+      "control": "4.1",
+      "statement": "",
+      "domain": "Access Control",
+      "sources": [
+        "4.1-S1"
+      ],
+      "cscf_section": "§ Impl. Guidelines",
+      "terraform_resource": "aws_iam_account_password_policy",
+      "scope_type": "SINGLE",
+      "scope_level": "ACCT",
+      "variant": "A",
+      "coverage": "Full",
+      "register": "Phase I traceability register (research spreadsheet, not published)"
+    },
+    "4.1-A7": {
+      "control": "4.1",
+      "statement": "",
+      "domain": "Access Control",
+      "sources": [
+        "4.1-S1"
+      ],
+      "cscf_section": "§ Impl. Guidelines",
+      "terraform_resource": "aws_iam_account_password_policy",
+      "scope_type": "SINGLE",
+      "scope_level": "ACCT",
+      "variant": "A",
+      "coverage": "Full",
+      "register": "Phase I traceability register (research spreadsheet, not published)"
+    },
+    "4.1-A8": {
+      "control": "4.1",
+      "statement": "",
+      "domain": "Access Control",
+      "sources": [
+        "4.1-S1"
+      ],
+      "cscf_section": "§ Impl. Guidelines",
+      "terraform_resource": "aws_iam_account_password_policy",
+      "scope_type": "SINGLE",
+      "scope_level": "ACCT",
+      "variant": "A",
+      "coverage": "Full",
+      "register": "Phase I traceability register (research spreadsheet, not published)"
+    },
+    "4.1-A9": {
+      "control": "4.1",
+      "statement": "",
+      "domain": "Access Control",
+      "sources": [
+        "4.1-S1"
+      ],
+      "cscf_section": "§ Impl. Guidelines",
+      "terraform_resource": "aws_iam_account_password_policy",
+      "scope_type": "SINGLE",
+      "scope_level": "ACCT",
+      "variant": "A",
+      "coverage": "Full",
+      "register": "Phase I traceability register (research spreadsheet, not published)"
+    },
+    "4.1-A10": {
+      "control": "4.1",
+      "statement": "",
+      "domain": "Access Control",
+      "sources": [
+        "4.1-S1"
+      ],
+      "cscf_section": "§ Impl. Guidelines",
+      "terraform_resource": "aws_iam_account_password_policy",
+      "scope_type": "SINGLE",
+      "scope_level": "ACCT",
+      "variant": "A",
+      "coverage": "Full",
+      "register": "Phase I traceability register (research spreadsheet, not published)"
+    },
+    "4.1-A11": {
+      "control": "4.1",
+      "statement": "",
+      "domain": "Access Control",
+      "sources": [
+        "4.1-S2",
+        "4.1-S7"
+      ],
+      "cscf_section": "§ Impl. Guidelines",
+      "terraform_resource": "aws_cognito_user_pool",
+      "scope_type": "SINGLE",
+      "scope_level": "TAG",
+      "variant": "A",
+      "coverage": "Full",
+      "register": "Phase I traceability register (research spreadsheet, not published)"
+    },
+    "4.1-A12": {
+      "control": "4.1",
+      "statement": "",
+      "domain": "Access Control",
+      "sources": [
+        "4.1-S1",
+        "4.1-S2"
+      ],
+      "cscf_section": "§ Impl. Guidelines",
+      "terraform_resource": "aws_cognito_user_pool",
+      "scope_type": "SINGLE",
+      "scope_level": "TAG",
+      "variant": "A",
+      "coverage": "Full",
+      "register": "Phase I traceability register (research spreadsheet, not published)"
+    },
+    "4.1-A13": {
+      "control": "4.1",
+      "statement": "",
+      "domain": "Access Control",
+      "sources": [
+        "4.1-S1",
+        "4.1-S2"
+      ],
+      "cscf_section": "§ Impl. Guidelines",
+      "terraform_resource": "aws_cognito_user_pool",
+      "scope_type": "SINGLE",
+      "scope_level": "TAG",
+      "variant": "A",
+      "coverage": "Full",
+      "register": "Phase I traceability register (research spreadsheet, not published)"
+    },
+    "4.1-A14": {
+      "control": "4.1",
+      "statement": "",
+      "domain": "Access Control",
+      "sources": [
+        "4.1-S2",
+        "4.1-S5",
+        "4.1-S6"
+      ],
+      "cscf_section": "§ Impl. Guidelines",
+      "terraform_resource": "aws_db_instance",
+      "scope_type": "SINGLE",
+      "scope_level": "TAG",
+      "variant": "A",
+      "coverage": "Full",
+      "register": "Phase I traceability register (research spreadsheet, not published)"
+    },
+    "4.1-A15": {
+      "control": "4.1",
+      "statement": "",
+      "domain": "Access Control",
+      "sources": [
+        "4.1-S2",
+        "4.1-S5",
+        "4.1-S6"
+      ],
+      "cscf_section": "§ Impl. Guidelines",
+      "terraform_resource": "aws_redshift_cluster",
+      "scope_type": "SINGLE",
+      "scope_level": "TAG",
+      "variant": "A",
+      "coverage": "Full",
+      "register": "Phase I traceability register (research spreadsheet, not published)"
+    },
+    "4.1-A16": {
+      "control": "4.1",
+      "statement": "",
+      "domain": "Access Control",
+      "sources": [
+        "4.1-S1",
+        "4.1-S2"
+      ],
+      "cscf_section": "§ Impl. Guidelines",
+      "terraform_resource": "aws_secretsmanager_secret_rotation",
+      "scope_type": "SINGLE",
+      "scope_level": "TAG",
+      "variant": "A",
+      "coverage": "Full",
+      "register": "Phase I traceability register (research spreadsheet, not published)"
+    },
+    "4.1-A17": {
+      "control": "4.1",
+      "statement": "",
+      "domain": "Access Control",
+      "sources": [
+        "4.1-S2",
+        "4.1-S4",
+        "4.1-S7"
+      ],
+      "cscf_section": "§ Impl. Guidelines",
+      "terraform_resource": "aws_opensearch_domain",
+      "scope_type": "SINGLE",
+      "scope_level": "TAG",
+      "variant": "A",
+      "coverage": "Full",
+      "register": "Phase I traceability register (research spreadsheet, not published)"
+    },
+    "4.1-A18": {
+      "control": "4.1",
+      "statement": "",
+      "domain": "Access Control",
+      "sources": [
+        "4.1-S2",
+        "4.1-S7"
+      ],
+      "cscf_section": "§ Impl. Guidelines",
+      "terraform_resource": "aws_opensearch_domain",
+      "scope_type": "SINGLE",
+      "scope_level": "TAG",
+      "variant": "F",
+      "coverage": "Full",
+      "register": "Phase I traceability register (research spreadsheet, not published)"
+    },
+    "4.1-A19": {
+      "control": "4.1",
+      "statement": "",
+      "domain": "Access Control",
+      "sources": [
+        "4.1-S1",
+        "4.1-S5"
+      ],
+      "cscf_section": "§ Impl. Guidelines",
+      "terraform_resource": "aws_iam_access_key",
+      "scope_type": "PRESENCE",
+      "scope_level": "ACCT",
+      "variant": "B",
+      "coverage": "Full",
+      "register": "Phase I traceability register (research spreadsheet, not published)"
+    },
+    "5.1-A1": {
+      "control": "5.1",
+      "statement": "",
+      "domain": "Identity & Privileges",
+      "sources": [
+        "5.1-S2"
+      ],
+      "cscf_section": "§ Need-to-know",
+      "terraform_resource": "aws_iam_policy / aws_iam_role_policy",
+      "scope_type": "JSON",
+      "scope_level": "ACCT",
+      "variant": "C",
+      "coverage": "Full",
+      "register": "Phase I traceability register (research spreadsheet, not published)"
+    },
+    "5.1-A2": {
+      "control": "5.1",
+      "statement": "",
+      "domain": "Identity & Privileges",
+      "sources": [
+        "5.1-S2"
+      ],
+      "cscf_section": "§ Need-to-know, § Least Privilege",
+      "terraform_resource": "aws_iam_policy / aws_iam_role_policy",
+      "scope_type": "JSON",
+      "scope_level": "ACCT",
+      "variant": "C",
+      "coverage": "Full",
+      "register": "Phase I traceability register (research spreadsheet, not published)"
+    },
+    "5.1-A3": {
+      "control": "5.1",
+      "statement": "",
+      "domain": "Identity & Privileges",
+      "sources": [
+        "5.1-S1",
+        "5.1-S3"
+      ],
+      "cscf_section": "§ Need-to-know",
+      "terraform_resource": "aws_iam_user_policy_attachment",
+      "scope_type": "PRESENCE",
+      "scope_level": "ACCT",
+      "variant": "B",
+      "coverage": "Full",
+      "register": "Phase I traceability register (research spreadsheet, not published)"
+    },
+    "5.1-A4": {
+      "control": "5.1",
+      "statement": "",
+      "domain": "Identity & Privileges",
+      "sources": [
+        "5.1-S1",
+        "5.1-S3"
+      ],
+      "cscf_section": "§ Need-to-know",
+      "terraform_resource": "aws_iam_user_policy",
+      "scope_type": "PRESENCE",
+      "scope_level": "ACCT",
+      "variant": "B",
+      "coverage": "Full",
+      "register": "Phase I traceability register (research spreadsheet, not published)"
+    },
+    "5.1-A5": {
+      "control": "5.1",
+      "statement": "",
+      "domain": "Identity & Privileges",
+      "sources": [
+        "5.1-S4"
+      ],
+      "cscf_section": "§ Least Privilege",
+      "terraform_resource": "aws_iam_user_policy_attachment",
+      "scope_type": "SINGLE",
+      "scope_level": "ACCT",
+      "variant": "A",
+      "coverage": "Full",
+      "register": "Phase I traceability register (research spreadsheet, not published)"
+    },
+    "5.1-A6": {
+      "control": "5.1",
+      "statement": "",
+      "domain": "Identity & Privileges",
+      "sources": [
+        "5.1-S4"
+      ],
+      "cscf_section": "§ Least Privilege",
+      "terraform_resource": "aws_iam_role_policy_attachment",
+      "scope_type": "SINGLE",
+      "scope_level": "ACCT",
+      "variant": "A",
+      "coverage": "Full",
+      "register": "Phase I traceability register (research spreadsheet, not published)"
+    },
+    "5.1-A7": {
+      "control": "5.1",
+      "statement": "",
+      "domain": "Identity & Privileges",
+      "sources": [
+        "5.1-S4"
+      ],
+      "cscf_section": "§ Least Privilege",
+      "terraform_resource": "aws_iam_group_policy_attachment",
+      "scope_type": "SINGLE",
+      "scope_level": "ACCT",
+      "variant": "A",
+      "coverage": "Full",
+      "register": "Phase I traceability register (research spreadsheet, not published)"
+    },
+    "5.1-A8": {
+      "control": "5.1",
+      "statement": "",
+      "domain": "Identity & Privileges",
+      "sources": [
+        "5.1-S4"
+      ],
+      "cscf_section": "§ Least Privilege",
+      "terraform_resource": "aws_iam_*_policy_attachment",
+      "scope_type": "SINGLE",
+      "scope_level": "ACCT",
+      "variant": "A",
+      "coverage": "Full",
+      "register": "Phase I traceability register (research spreadsheet, not published)"
+    },
+    "5.1-A9": {
+      "control": "5.1",
+      "statement": "",
+      "domain": "Identity & Privileges",
+      "sources": [
+        "5.1-S1",
+        "5.1-S2"
+      ],
+      "cscf_section": "§ Need-to-know",
+      "terraform_resource": "aws_iam_role",
+      "scope_type": "JSON",
+      "scope_level": "ACCT",
+      "variant": "C",
+      "coverage": "Full",
+      "register": "Phase I traceability register (research spreadsheet, not published)"
+    },
+    "5.1-A10": {
+      "control": "5.1",
+      "statement": "",
+      "domain": "Identity & Privileges",
+      "sources": [
+        "5.1-S4",
+        "5.1-S6"
+      ],
+      "cscf_section": "§ Least Privilege, § SoD",
+      "terraform_resource": "aws_iam_policy / aws_iam_role_policy",
+      "scope_type": "JSON",
+      "scope_level": "ACCT",
+      "variant": "C",
+      "coverage": "Full",
+      "register": "Phase I traceability register (research spreadsheet, not published)"
+    },
+    "5.1-A11": {
+      "control": "5.1",
+      "statement": "",
+      "domain": "Identity & Privileges",
+      "sources": [
+        "5.1-S2"
+      ],
+      "cscf_section": "§ Need-to-know",
+      "terraform_resource": "aws_s3_bucket_policy",
+      "scope_type": "JSON",
+      "scope_level": "TAG",
+      "variant": "C",
+      "coverage": "Full",
+      "register": "Phase I traceability register (research spreadsheet, not published)"
+    },
+    "5.1-A12": {
+      "control": "5.1",
+      "statement": "",
+      "domain": "Identity & Privileges",
+      "sources": [
+        "5.1-S5",
+        "5.1-S6"
+      ],
+      "cscf_section": "§ Separation of Duties",
+      "terraform_resource": "aws_iam_policy / aws_iam_role_policy",
+      "scope_type": "INTRA+JSON",
+      "scope_level": "ACCT",
+      "variant": "D",
+      "coverage": "Full",
+      "register": "Phase I traceability register (research spreadsheet, not published)"
+    },
+    "5.1-A13": {
+      "control": "5.1",
+      "statement": "",
+      "domain": "Identity & Privileges",
+      "sources": [
+        "5.1-S5",
+        "5.1-S6"
+      ],
+      "cscf_section": "§ Separation of Duties",
+      "terraform_resource": "aws_iam_policy / aws_iam_role_policy",
+      "scope_type": "INTRA+JSON",
+      "scope_level": "ACCT",
+      "variant": "D",
+      "coverage": "Full",
+      "register": "Phase I traceability register (research spreadsheet, not published)"
+    },
+    "5.1-A14": {
+      "control": "5.1",
+      "statement": "",
+      "domain": "Identity & Privileges",
+      "sources": [
+        "5.1-S5",
+        "5.1-S6"
+      ],
+      "cscf_section": "§ Separation of Duties",
+      "terraform_resource": "aws_iam_policy / aws_iam_role_policy",
+      "scope_type": "INTRA+JSON",
+      "scope_level": "ACCT",
+      "variant": "D",
+      "coverage": "Full",
+      "register": "Phase I traceability register (research spreadsheet, not published)"
+    },
+    "5.1-A15": {
+      "control": "5.1",
+      "statement": "",
+      "domain": "Identity & Privileges",
+      "sources": [
+        "5.1-S5",
+        "5.1-S6"
+      ],
+      "cscf_section": "§ Separation of Duties",
+      "terraform_resource": "aws_iam_policy / aws_iam_role_policy",
+      "scope_type": "INTRA+JSON",
+      "scope_level": "ACCT",
+      "variant": "D",
+      "coverage": "Full",
+      "register": "Phase I traceability register (research spreadsheet, not published)"
+    },
+    "5.1-A16": {
+      "control": "5.1",
+      "statement": "",
+      "domain": "Identity & Privileges",
+      "sources": [
+        "5.1-S4"
+      ],
+      "cscf_section": "§ Least Privilege",
+      "terraform_resource": "aws_iam_role_policy_attachment -> aws_lambda_function",
+      "scope_type": "RELATION",
+      "scope_level": "TAG",
+      "variant": "E",
+      "coverage": "Full",
+      "register": "Phase I traceability register (research spreadsheet, not published)"
+    },
+    "5.1-A17": {
+      "control": "5.1",
+      "statement": "",
+      "domain": "Identity & Privileges",
+      "sources": [
+        "5.1-S4"
+      ],
+      "cscf_section": "§ Least Privilege",
+      "terraform_resource": "aws_iam_role_policy_attachment -> aws_ecs_task_definition",
+      "scope_type": "RELATION",
+      "scope_level": "TAG",
+      "variant": "E",
+      "coverage": "Full",
+      "register": "Phase I traceability register (research spreadsheet, not published)"
+    },
+    "5.1-A18": {
+      "control": "5.1",
+      "statement": "",
+      "domain": "Identity & Privileges",
+      "sources": [
+        "5.1-S7",
+        "5.1-S10"
+      ],
+      "cscf_section": "§ Account Review",
+      "terraform_resource": "aws_iam_role",
+      "scope_type": "JSON",
+      "scope_level": "ACCT",
+      "variant": "C",
+      "coverage": "Full",
+      "register": "Phase I traceability register (research spreadsheet, not published)"
+    },
+    "6.4-A1": {
+      "control": "6.4",
+      "statement": "",
+      "domain": "Audit & Detection",
+      "sources": [
+        "6.4-S1",
+        "6.4-S4"
+      ],
+      "cscf_section": "§ Overall goals, § Logging",
+      "terraform_resource": "aws_cloudtrail",
+      "scope_type": "PRESENCE",
+      "scope_level": "ACCT",
+      "variant": "B",
+      "coverage": "Full",
+      "register": "Phase I traceability register (research spreadsheet, not published)"
+    },
+    "6.4-A2": {
+      "control": "6.4",
+      "statement": "",
+      "domain": "Audit & Detection",
+      "sources": [
+        "6.4-S1",
+        "6.4-S4"
+      ],
+      "cscf_section": "§ Overall goals, § Logging",
+      "terraform_resource": "aws_cloudtrail",
+      "scope_type": "SINGLE",
+      "scope_level": "ACCT",
+      "variant": "A",
+      "coverage": "Full",
+      "register": "Phase I traceability register (research spreadsheet, not published)"
+    },
+    "6.4-A3": {
+      "control": "6.4",
+      "statement": "",
+      "domain": "Audit & Detection",
+      "sources": [
+        "6.4-S5",
+        "6.4-S6"
+      ],
+      "cscf_section": "§ Logging",
+      "terraform_resource": "aws_cloudtrail",
+      "scope_type": "SINGLE",
+      "scope_level": "ACCT",
+      "variant": "A",
+      "coverage": "Full",
+      "register": "Phase I traceability register (research spreadsheet, not published)"
+    },
+    "6.4-A4": {
+      "control": "6.4",
+      "statement": "",
+      "domain": "Audit & Detection",
+      "sources": [
+        "6.4-S4",
+        "6.4-S6"
+      ],
+      "cscf_section": "§ Logging",
+      "terraform_resource": "aws_cloudtrail",
+      "scope_type": "SINGLE",
+      "scope_level": "ACCT",
+      "variant": "A",
+      "coverage": "Full",
+      "register": "Phase I traceability register (research spreadsheet, not published)"
+    },
+    "6.4-A5": {
+      "control": "6.4",
+      "statement": "",
+      "domain": "Audit & Detection",
+      "sources": [
+        "6.4-S6",
+        "6.4-S9"
+      ],
+      "cscf_section": "§ Logging, § Monitoring",
+      "terraform_resource": "aws_flow_log",
+      "scope_type": "PRESENCE",
+      "scope_level": "VPC",
+      "variant": "B",
+      "coverage": "Full",
+      "register": "Phase I traceability register (research spreadsheet, not published)"
+    },
+    "6.4-A6": {
+      "control": "6.4",
+      "statement": "",
+      "domain": "Audit & Detection",
+      "sources": [
+        "6.4-S6"
+      ],
+      "cscf_section": "§ Logging: database",
+      "terraform_resource": "aws_db_instance",
+      "scope_type": "SINGLE",
+      "scope_level": "TAG",
+      "variant": "A",
+      "coverage": "Full",
+      "register": "Phase I traceability register (research spreadsheet, not published)"
+    },
+    "6.4-A7": {
+      "control": "6.4",
+      "statement": "",
+      "domain": "Audit & Detection",
+      "sources": [
+        "6.4-S1",
+        "6.4-S2",
+        "6.4-S8"
+      ],
+      "cscf_section": "§ Overall goals, § Monitoring",
+      "terraform_resource": "aws_cloudtrail",
+      "scope_type": "SINGLE",
+      "scope_level": "ACCT",
+      "variant": "A",
+      "coverage": "Full",
+      "register": "Phase I traceability register (research spreadsheet, not published)"
+    },
+    "6.4-A8": {
+      "control": "6.4",
+      "statement": "",
+      "domain": "Audit & Detection",
+      "sources": [
+        "6.4-S11",
+        "6.4-S13"
+      ],
+      "cscf_section": "§ Log retention (12 mo)",
+      "terraform_resource": "aws_cloudwatch_log_group",
+      "scope_type": "SINGLE",
+      "scope_level": "XREF",
+      "variant": "E",
+      "coverage": "Full",
+      "register": "Phase I traceability register (research spreadsheet, not published)"
+    },
+    "6.4-A9": {
+      "control": "6.4",
+      "statement": "",
+      "domain": "Audit & Detection",
+      "sources": [
+        "6.4-S12"
+      ],
+      "cscf_section": "§ Log retention (31+ days)",
+      "terraform_resource": "aws_cloudwatch_log_group",
+      "scope_type": "SINGLE",
+      "scope_level": "XREF",
+      "variant": "E",
+      "coverage": "Full",
+      "register": "Phase I traceability register (research spreadsheet, not published)"
+    },
+    "6.4-A10": {
+      "control": "6.4",
+      "statement": "",
+      "domain": "Audit & Detection",
+      "sources": [
+        "6.4-S3",
+        "6.4-S11"
+      ],
+      "cscf_section": "§ Log retention, forensics",
+      "terraform_resource": "aws_cloudtrail",
+      "scope_type": "SINGLE",
+      "scope_level": "ACCT",
+      "variant": "A",
+      "coverage": "Full",
+      "register": "Phase I traceability register (research spreadsheet, not published)"
+    },
+    "6.4-A11": {
+      "control": "6.4",
+      "statement": "",
+      "domain": "Audit & Detection",
+      "sources": [
+        "6.4-S11"
+      ],
+      "cscf_section": "§ Log protection: encryption",
+      "terraform_resource": "aws_cloudtrail",
+      "scope_type": "SINGLE",
+      "scope_level": "ACCT",
+      "variant": "A",
+      "coverage": "Full",
+      "register": "Phase I traceability register (research spreadsheet, not published)"
+    },
+    "6.4-A12": {
+      "control": "6.4",
+      "statement": "",
+      "domain": "Audit & Detection",
+      "sources": [
+        "6.4-S11"
+      ],
+      "cscf_section": "§ Log protection: encryption",
+      "terraform_resource": "aws_cloudwatch_log_group",
+      "scope_type": "SINGLE",
+      "scope_level": "XREF",
+      "variant": "E",
+      "coverage": "Full",
+      "register": "Phase I traceability register (research spreadsheet, not published)"
+    },
+    "6.4-A13": {
+      "control": "6.4",
+      "statement": "",
+      "domain": "Audit & Detection",
+      "sources": [
+        "6.4-S11"
+      ],
+      "cscf_section": "§ Log protection: access",
+      "terraform_resource": "aws_s3_bucket_public_access_block",
+      "scope_type": "SINGLE",
+      "scope_level": "XREF",
+      "variant": "E",
+      "coverage": "Full",
+      "register": "Phase I traceability register (research spreadsheet, not published)"
+    },
+    "6.4-A14": {
+      "control": "6.4",
+      "statement": "",
+      "domain": "Audit & Detection",
+      "sources": [
+        "6.4-S3",
+        "6.4-S14"
+      ],
+      "cscf_section": "§ Log protection: recovery",
+      "terraform_resource": "aws_s3_bucket_versioning",
+      "scope_type": "SINGLE",
+      "scope_level": "XREF",
+      "variant": "E",
+      "coverage": "Full",
+      "register": "Phase I traceability register (research spreadsheet, not published)"
+    },
+    "6.4-A15": {
+      "control": "6.4",
+      "statement": "",
+      "domain": "Audit & Detection",
+      "sources": [
+        "6.4-S11",
+        "6.4-S14"
+      ],
+      "cscf_section": "§ Log protection: immutability",
+      "terraform_resource": "aws_s3_bucket",
+      "scope_type": "SINGLE",
+      "scope_level": "XREF",
+      "variant": "E",
+      "coverage": "Full",
+      "register": "Phase I traceability register (research spreadsheet, not published)"
+    },
+    "6.4-A16": {
+      "control": "6.4",
+      "statement": "",
+      "domain": "Audit & Detection",
+      "sources": [
+        "6.4-S11",
+        "6.4-S13",
+        "6.4-S14"
+      ],
+      "cscf_section": "§ Log retention: lifecycle",
+      "terraform_resource": "aws_s3_bucket_lifecycle_configuration",
+      "scope_type": "SINGLE",
+      "scope_level": "XREF",
+      "variant": "E",
+      "coverage": "Full",
+      "register": "Phase I traceability register (research spreadsheet, not published)"
+    },
+    "6.4-A17": {
+      "control": "6.4",
+      "statement": "",
+      "domain": "Audit & Detection",
+      "sources": [
+        "6.4-S11"
+      ],
+      "cscf_section": "§ Log protection: deletion",
+      "terraform_resource": "aws_s3_bucket_policy",
+      "scope_type": "JSON",
+      "scope_level": "XREF",
+      "variant": "C+E",
+      "coverage": "Full",
+      "register": "Phase I traceability register (research spreadsheet, not published)"
+    },
+    "6.4-A18": {
+      "control": "6.4",
+      "statement": "",
+      "domain": "Audit & Detection",
+      "sources": [
+        "6.4-S11"
+      ],
+      "cscf_section": "§ Log protection: encryption",
+      "terraform_resource": "aws_s3_bucket_server_side_encryption_configuration",
+      "scope_type": "SINGLE",
+      "scope_level": "XREF",
+      "variant": "E",
+      "coverage": "Full",
+      "register": "Phase I traceability register (research spreadsheet, not published)"
+    },
+    "6.4-A19": {
+      "control": "6.4",
+      "statement": "",
+      "domain": "Audit & Detection",
+      "sources": [
+        "6.4-S1",
+        "6.4-S7"
+      ],
+      "cscf_section": "§ Monitoring: privileged",
+      "terraform_resource": "aws_cloudwatch_log_metric_filter",
+      "scope_type": "SINGLE",
+      "scope_level": "XREF",
+      "variant": "B",
+      "coverage": "Full",
+      "register": "Phase I traceability register (research spreadsheet, not published)"
+    },
+    "6.4-A20": {
+      "control": "6.4",
+      "statement": "",
+      "domain": "Audit & Detection",
+      "sources": [
+        "6.4-S1",
+        "6.4-S6",
+        "6.4-S7"
+      ],
+      "cscf_section": "§ Monitoring: config changes",
+      "terraform_resource": "aws_cloudwatch_log_metric_filter",
+      "scope_type": "SINGLE",
+      "scope_level": "XREF",
+      "variant": "B",
+      "coverage": "Full",
+      "register": "Phase I traceability register (research spreadsheet, not published)"
+    },
+    "6.4-A21": {
+      "control": "6.4",
+      "statement": "",
+      "domain": "Audit & Detection",
+      "sources": [
+        "6.4-S1",
+        "6.4-S6",
+        "6.4-S7"
+      ],
+      "cscf_section": "§ Monitoring: failed auth",
+      "terraform_resource": "aws_cloudwatch_log_metric_filter",
+      "scope_type": "SINGLE",
+      "scope_level": "XREF",
+      "variant": "B",
+      "coverage": "Full",
+      "register": "Phase I traceability register (research spreadsheet, not published)"
+    },
+    "6.4-A22": {
+      "control": "6.4",
+      "statement": "",
+      "domain": "Audit & Detection",
+      "sources": [
+        "6.4-S2",
+        "6.4-S10"
+      ],
+      "cscf_section": "§ Monitoring: alerting",
+      "terraform_resource": "aws_cloudwatch_metric_alarm",
+      "scope_type": "SINGLE",
+      "scope_level": "XREF",
+      "variant": "A",
+      "coverage": "Full",
+      "register": "Phase I traceability register (research spreadsheet, not published)"
+    },
+    "6.4-A23": {
+      "control": "6.4",
+      "statement": "",
+      "domain": "Audit & Detection",
+      "sources": [
+        "6.4-S4",
+        "6.4-S8"
+      ],
+      "cscf_section": "§ Monitoring: threat detect",
+      "terraform_resource": "aws_guardduty_detector",
+      "scope_type": "PRESENCE",
+      "scope_level": "ACCT",
+      "variant": "B",
+      "coverage": "Full",
+      "register": "Phase I traceability register (research spreadsheet, not published)"
+    },
+    "6.4-A24": {
+      "control": "6.4",
+      "statement": "",
+      "domain": "Audit & Detection",
+      "sources": [
+        "6.4-S4",
+        "6.4-S8"
+      ],
+      "cscf_section": "§ Monitoring: compliance",
+      "terraform_resource": "aws_config_configuration_recorder",
+      "scope_type": "PRESENCE",
+      "scope_level": "ACCT",
+      "variant": "B",
+      "coverage": "Full",
+      "register": "Phase I traceability register (research spreadsheet, not published)"
+    }
+  },
+  "exclusions": [
+    {
+      "ref": "1.1-X1",
+      "control": "1.1",
+      "source": "§ c) Boundary Protection",
+      "sources": [],
+      "category": "PROC",
+      "rationale": "Firewall rules reviewed annually: periodic review activity",
+      "partial_coverage": "-"
+    },
+    {
+      "ref": "1.1-X2",
+      "control": "1.1",
+      "source": "§ d.1) Local Operator Access",
+      "sources": [],
+      "category": "ONPREM",
+      "rationale": "Dedicated operator PC configuration: outside Terraform",
+      "partial_coverage": "-"
+    },
+    {
+      "ref": "1.1-X3",
+      "control": "1.1",
+      "source": "§ d.1) Local Operator Access",
+      "sources": [],
+      "category": "RUNTIME",
+      "rationale": "Installed software on jump server: not in plan output",
+      "partial_coverage": "-"
+    },
+    {
+      "ref": "1.1-X4",
+      "control": "1.1",
+      "source": "§ d.1) Local Operator Access",
+      "sources": [],
+      "category": "RUNTIME",
+      "rationale": "Restrict risky activity (email) on jump server: runtime control",
+      "partial_coverage": "-"
+    },
+    {
+      "ref": "1.1-X5",
+      "control": "1.1",
+      "source": "§ d.2) Remote Operator Access",
+      "sources": [],
+      "category": "PROC",
+      "rationale": "Risk assessment for remote access: documented artifact",
+      "partial_coverage": "-"
+    },
+    {
+      "ref": "1.1-X6",
+      "control": "1.1",
+      "source": "§ c) Boundary Protection",
+      "sources": [],
+      "category": "PLATLIM",
+      "rationale": "Firewall dedication cannot be determined from plan",
+      "partial_coverage": "A1 (default SG lockdown)"
+    },
+    {
+      "ref": "1.1-X7",
+      "control": "1.1",
+      "source": "§ c) Boundary Protection",
+      "sources": [],
+      "category": "PLATLIM",
+      "rationale": "Network device admin access: AWS-managed control plane",
+      "partial_coverage": "-"
+    },
+    {
+      "ref": "1.1-X8",
+      "control": "1.1",
+      "source": "§ b) Scope of secure zone",
+      "sources": [],
+      "category": "PROC",
+      "rationale": "Architectural scoping decision for middleware/back-office",
+      "partial_coverage": "-"
+    },
+    {
+      "ref": "1.1-X9",
+      "control": "1.1",
+      "source": "§ d.1) Local Operator Access",
+      "sources": [],
+      "category": "XREF",
+      "rationale": "Logging on jump server: covered by Control 6.4",
+      "partial_coverage": "A9 (VPC Flow Logs)"
+    },
+    {
+      "ref": "1.1-X10",
+      "control": "1.1",
+      "source": "§ e) Enterprise IT Separation",
+      "sources": [],
+      "category": "PROC",
+      "rationale": "Credential storage analysis: process/architectural review",
+      "partial_coverage": "A12 (MFA), A13 (boundary)"
+    },
+    {
+      "ref": "2.1-X1",
+      "control": "2.1",
+      "source": "§ Impl. Guidelines",
+      "sources": [],
+      "category": "PLATLIM",
+      "rationale": "Mutual TLS: not exposed in Terraform plan for ALBs",
+      "partial_coverage": "A1, A2 (protocol/cipher)"
+    },
+    {
+      "ref": "2.1-X2",
+      "control": "2.1",
+      "source": "§ Impl. Guidelines",
+      "sources": [],
+      "category": "VENDOR",
+      "rationale": "Swift application-layer flows (RMA, GUI, interfaces)",
+      "partial_coverage": "-"
+    },
+    {
+      "ref": "2.1-X3",
+      "control": "2.1",
+      "source": "§ Impl. Guidelines",
+      "sources": [],
+      "category": "VENDOR",
+      "rationale": "Swift KB article 5021566 dynamic cipher guidance",
+      "partial_coverage": "A2, A10, A13 (AWS policies)"
+    },
+    {
+      "ref": "2.1-X4",
+      "control": "2.1",
+      "source": "§ Impl. Guidelines",
+      "sources": [],
+      "category": "PROC",
+      "rationale": "Secure coding guidelines for credential protection",
+      "partial_coverage": "A14 (KMS rotation)"
+    },
+    {
+      "ref": "2.1-X5",
+      "control": "2.1",
+      "source": "§ Control Statement",
+      "sources": [],
+      "category": "RUNTIME",
+      "rationale": "Runtime TLS verification: not in terraform plan",
+      "partial_coverage": "-"
+    },
+    {
+      "ref": "4.1-X1",
+      "control": "4.1",
+      "source": "§ Impl. Guidelines",
+      "sources": [],
+      "category": "PROC",
+      "rationale": "Password policy reviewed annually",
+      "partial_coverage": "-"
+    },
+    {
+      "ref": "4.1-X2",
+      "control": "4.1",
+      "source": "§ Impl. Guidelines",
+      "sources": [],
+      "category": "PROC",
+      "rationale": "Conditional password relaxation when MFA in use",
+      "partial_coverage": "-"
+    },
+    {
+      "ref": "4.1-X3",
+      "control": "4.1",
+      "source": "§ Impl. Guidelines",
+      "sources": [],
+      "category": "PLATLIM",
+      "rationale": "IAM lockout threshold/duration: not configurable in Terraform",
+      "partial_coverage": "-"
+    },
+    {
+      "ref": "4.1-X4",
+      "control": "4.1",
+      "source": "§ Impl. Guidelines",
+      "sources": [],
+      "category": "RUNTIME",
+      "rationale": "NoLMHash registry setting: OS runtime config",
+      "partial_coverage": "-"
+    },
+    {
+      "ref": "4.1-X5",
+      "control": "4.1",
+      "source": "§ Impl. Guidelines",
+      "sources": [],
+      "category": "PROC",
+      "rationale": "Password storage location within secure zone",
+      "partial_coverage": "A14, A15 (Secrets Mgr)"
+    },
+    {
+      "ref": "4.1-X6",
+      "control": "4.1",
+      "source": "§ Impl. Guidelines",
+      "sources": [],
+      "category": "ONPREM",
+      "rationale": "PIN settings for tokens/mobile devices/HSMs",
+      "partial_coverage": "-"
+    },
+    {
+      "ref": "4.1-X7",
+      "control": "4.1",
+      "source": "§ Impl. Guidelines",
+      "sources": [],
+      "category": "VENDOR",
+      "rationale": "LAU key configuration: Swift application credentials",
+      "partial_coverage": "-"
+    },
+    {
+      "ref": "5.1-X1",
+      "control": "5.1",
+      "source": "§ Account Review",
+      "sources": [],
+      "category": "PROC",
+      "rationale": "Annual account review: periodic review activity",
+      "partial_coverage": "-"
+    },
+    {
+      "ref": "5.1-X2",
+      "control": "5.1",
+      "source": "§ Account Review",
+      "sources": [],
+      "category": "PROC",
+      "rationale": "Prompt privilege revocation: HR/process control",
+      "partial_coverage": "A3, A4 (group-based access)"
+    },
+    {
+      "ref": "5.1-X3",
+      "control": "5.1",
+      "source": "§ Account Review",
+      "sources": [],
+      "category": "PROC",
+      "rationale": "Break-glass procedure documentation and logging",
+      "partial_coverage": "Control 6.4 (CloudTrail)"
+    },
+    {
+      "ref": "5.1-X4",
+      "control": "5.1",
+      "source": "§ Separation of Duties",
+      "sources": [],
+      "category": "VENDOR",
+      "rationale": "Vendor role separation guidance (Alliance Access)",
+      "partial_coverage": "-"
+    },
+    {
+      "ref": "5.1-X5",
+      "control": "5.1",
+      "source": "§ Separation of Duties",
+      "sources": [],
+      "category": "VENDOR",
+      "rationale": "Transaction submission/approval separation, Swift app logic",
+      "partial_coverage": "-"
+    },
+    {
+      "ref": "5.1-X6",
+      "control": "5.1",
+      "source": "§ Note (In-scope)",
+      "sources": [],
+      "category": "PROC",
+      "rationale": "Credential sharing scope governance: not a technical control",
+      "partial_coverage": "A3, A4"
+    },
+    {
+      "ref": "5.1-X7",
+      "control": "5.1",
+      "source": "§ Separation of Duties",
+      "sources": [],
+      "category": "RUNTIME",
+      "rationale": "Network/OS admin separation requires HR/identity data",
+      "partial_coverage": "A12-A15 (SoD patterns)"
+    },
+    {
+      "ref": "6.4-X1",
+      "control": "6.4",
+      "source": "§ Logging",
+      "sources": [],
+      "category": "RUNTIME",
+      "rationale": "Command-line history (bash_history): EC2 runtime config",
+      "partial_coverage": "CloudTrail API-level"
+    },
+    {
+      "ref": "6.4-X2",
+      "control": "6.4",
+      "source": "§ Monitoring",
+      "sources": [],
+      "category": "PROC",
+      "rationale": "Procedures for suspicious login identification",
+      "partial_coverage": "A19-A21 (metric filters)"
+    },
+    {
+      "ref": "6.4-X3",
+      "control": "6.4",
+      "source": "§ Monitoring",
+      "sources": [],
+      "category": "PROC",
+      "rationale": "Daily review cadence: human/automated review process",
+      "partial_coverage": "A22 (SNS), A23 (GuardDuty)"
+    },
+    {
+      "ref": "6.4-X4",
+      "control": "6.4",
+      "source": "§ Monitoring",
+      "sources": [],
+      "category": "PROC",
+      "rationale": "Incident reporting to security team: workflow/organisational",
+      "partial_coverage": "A22 (SNS notification)"
+    },
+    {
+      "ref": "6.4-X5",
+      "control": "6.4",
+      "source": "§ Log retention",
+      "sources": [],
+      "category": "LEGAL",
+      "rationale": "Compliance with applicable laws and regulations",
+      "partial_coverage": "-"
+    },
+    {
+      "ref": "6.4-X6",
+      "control": "6.4",
+      "source": "§ Logging",
+      "sources": [],
+      "category": "VENDOR",
+      "rationale": "Swift application logs (Alliance Access/Gateway)",
+      "partial_coverage": "CloudTrail + CloudWatch"
+    },
+    {
+      "ref": "6.4-X7",
+      "control": "6.4",
+      "source": "§ Log retention",
+      "sources": [],
+      "category": "PLATLIM",
+      "rationale": "Separate credentials for log protection: IAM design detail",
+      "partial_coverage": "A11 (KMS), A17 (deny policy)"
+    }
+  ]
+}

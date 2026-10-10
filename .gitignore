@@ -1,0 +1,28 @@
+# Python
+__pycache__/
+*.pyc
+.pytest_cache/
+
+# Terraform
+**/.terraform/
+*.tfstate
+*.tfstate.*
+*.tfplan
+tfplan.binary
+plan.out
+
+# plans/ IS tracked: the live `terraform show -json` output of the reference
+# environments and its signed gate evidence are the reference artefacts.
+
+# Gate evidence written by CI and local runs
+evidence_out/
+
+# IDE
+.idea/
+.vscode/
+
+# Evidence-signing private keys never belong in the repository; the signing key
+# lives only in the CSCF_EVIDENCE_SIGNING_KEY Actions secret. The public key
+# (keys/evidence_signing_public.pem) is committed on purpose.
+*private*.pem
+*.key

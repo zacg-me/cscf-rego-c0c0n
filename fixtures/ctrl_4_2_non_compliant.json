@@ -1,0 +1,46 @@
+{
+  "format_version": "1.2",
+  "terraform_version": "1.15.5",
+  "swift_account_id": "111122223333",
+  "planned_values": {
+    "root_module": {
+      "resources": [
+        {
+          "address": "aws_cognito_user_pool.swift_users",
+          "mode": "managed",
+          "type": "aws_cognito_user_pool",
+          "name": "swift_users",
+          "values": {
+            "name": "swift-operators",
+            "mfa_configuration": "OFF",
+            "software_token_mfa_configuration": [{ "enabled": false }],
+            "tags": { "swift:zone": "secure", "Project": "swift-cscf" }
+          }
+        },
+        {
+          "address": "aws_db_instance.swift_db",
+          "mode": "managed",
+          "type": "aws_db_instance",
+          "name": "swift_db",
+          "values": {
+            "engine": "postgres",
+            "iam_database_authentication_enabled": false,
+            "tags": { "swift:zone": "secure", "Project": "swift-cscf" }
+          }
+        },
+        {
+          "address": "aws_opensearch_domain.swift_search",
+          "mode": "managed",
+          "type": "aws_opensearch_domain",
+          "name": "swift_search",
+          "values": {
+            "domain_name": "swift-search",
+            "cognito_options": [{ "enabled": false }],
+            "tags": { "swift:zone": "secure", "Project": "swift-cscf" }
+          }
+        }
+      ],
+      "child_modules": []
+    }
+  }
+}

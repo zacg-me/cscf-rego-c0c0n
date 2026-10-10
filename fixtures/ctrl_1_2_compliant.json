@@ -1,0 +1,36 @@
+{
+  "format_version": "1.2",
+  "terraform_version": "1.15.5",
+  "swift_account_id": "111122223333",
+  "planned_values": {
+    "root_module": {
+      "resources": [
+        {
+          "address": "aws_instance.swift_jump",
+          "mode": "managed",
+          "type": "aws_instance",
+          "name": "swift_jump",
+          "values": {
+            "instance_type": "m5.large",
+            "key_name": "",
+            "iam_instance_profile": "swift-ssm-managed-profile",
+            "tags": { "swift:zone": "secure", "swift:role": "jump_server", "Project": "swift-cscf" }
+          }
+        },
+        {
+          "address": "aws_ssm_document.session_prefs",
+          "mode": "managed",
+          "type": "aws_ssm_document",
+          "name": "session_prefs",
+          "values": {
+            "name": "SSM-SessionManagerRunShell",
+            "document_type": "Session",
+            "content": "{\"schemaVersion\":\"1.0\",\"description\":\"Session Manager preferences\",\"sessionType\":\"Standard_Stream\",\"inputs\":{\"s3BucketName\":\"\",\"cloudWatchLogGroupName\":\"/swift/ssm/sessions\",\"cloudWatchEncryptionEnabled\":true}}",
+            "tags": { "swift:zone": "secure", "Project": "swift-cscf" }
+          }
+        }
+      ],
+      "child_modules": []
+    }
+  }
+}

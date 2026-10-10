@@ -1,0 +1,74 @@
+{
+  "format_version": "1.2",
+  "terraform_version": "1.15.5",
+  "swift_account_id": "111122223333",
+  "planned_values": {
+    "root_module": {
+      "resources": [
+        {
+          "address": "aws_secretsmanager_secret.swift_creds",
+          "mode": "managed",
+          "type": "aws_secretsmanager_secret",
+          "name": "swift_creds",
+          "values": {
+            "name": "swift/ops/credentials",
+            "kms_key_id": "arn:aws:kms:eu-west-1:111122223333:key/swift-secrets-cmk",
+            "tags": { "swift:zone": "secure", "Project": "swift-cscf" }
+          }
+        },
+        {
+          "address": "aws_secretsmanager_secret_policy.swift_creds",
+          "mode": "managed",
+          "type": "aws_secretsmanager_secret_policy",
+          "name": "swift_creds",
+          "values": {
+            "policy": "{\"Version\":\"2012-10-17\",\"Statement\":[{\"Effect\":\"Allow\",\"Principal\":{\"AWS\":\"arn:aws:iam::111122223333:role/swift-ops\"},\"Action\":\"secretsmanager:GetSecretValue\",\"Resource\":\"*\"}]}"
+          }
+        },
+        {
+          "address": "aws_ssm_parameter.swift_db_password",
+          "mode": "managed",
+          "type": "aws_ssm_parameter",
+          "name": "swift_db_password",
+          "values": {
+            "name": "/swift/db/password",
+            "type": "SecureString",
+            "key_id": "arn:aws:kms:eu-west-1:111122223333:key/swift-secrets-cmk",
+            "tags": { "swift:zone": "secure", "Project": "swift-cscf" }
+          }
+        },
+        {
+          "address": "aws_db_instance.swift_db",
+          "mode": "managed",
+          "type": "aws_db_instance",
+          "name": "swift_db",
+          "values": {
+            "engine": "postgres",
+            "username": "swiftadmin",
+            "manage_master_user_password": true,
+            "tags": { "swift:zone": "secure", "Project": "swift-cscf" }
+          }
+        },
+        {
+          "address": "aws_lambda_function.swift_fn",
+          "mode": "managed",
+          "type": "aws_lambda_function",
+          "name": "swift_fn",
+          "values": {
+            "function_name": "swift-reconciler",
+            "environment": [
+              {
+                "variables": {
+                  "LOG_LEVEL": "info",
+                  "DB_SECRET_ARN": "arn:aws:secretsmanager:eu-west-1:111122223333:secret:swift/ops/credentials"
+                }
+              }
+            ],
+            "tags": { "swift:zone": "secure", "Project": "swift-cscf" }
+          }
+        }
+      ],
+      "child_modules": []
+    }
+  }
+}

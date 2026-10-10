@@ -1,0 +1,56 @@
+{
+  "format_version": "1.2",
+  "terraform_version": "1.15.5",
+  "swift_account_id": "111122223333",
+  "planned_values": {
+    "root_module": {
+      "resources": [
+        {
+          "address": "aws_instance.swift_messaging",
+          "mode": "managed",
+          "type": "aws_instance",
+          "name": "swift_messaging",
+          "values": {
+            "instance_type": "m5.large",
+            "subnet_id": "subnet-swift-priv-001",
+            "tenancy": "default",
+            "associate_public_ip_address": false,
+            "vpc_security_group_ids": ["sg-swiftvm00000001"],
+            "metadata_options": [
+              {
+                "http_endpoint": "enabled",
+                "http_tokens": "optional",
+                "http_put_response_hop_limit": 3
+              }
+            ],
+            "root_block_device": [
+              {
+                "encrypted": false,
+                "volume_type": "gp3"
+              }
+            ],
+            "tags": {
+              "swift:zone": "secure",
+              "swift:role": "messaging_interface",
+              "Project": "swift-cscf"
+            }
+          }
+        },
+        {
+          "address": "aws_ebs_volume.swift_data",
+          "mode": "managed",
+          "type": "aws_ebs_volume",
+          "name": "swift_data",
+          "values": {
+            "availability_zone": "eu-west-1a",
+            "size": 100,
+            "type": "gp3",
+            "encrypted": false,
+            "tags": { "swift:zone": "secure", "Project": "swift-cscf" }
+          }
+        }
+      ],
+      "child_modules": []
+    }
+  }
+}

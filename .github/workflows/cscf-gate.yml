@@ -1,0 +1,424 @@
+name: SWIFT CSCF Compliance Gate
+
+# Pre-deployment enforcement of SWIFT CSCF v2026 controls.
+# The gate evaluates a Terraform plan JSON against the CSCF OPA/Rego policy
+# library (policies/) and blocks the pipeline on any control violation.
+#
+# cscf-gate job: drives the gate with the committed fixtures, proving
+#   the enforcement mechanism end-to-end on known-good / known-bad input.
+# live-plan-gate job: runs `terraform plan` on the repaired
+#   fixtures, passes the plan through the resolvability pass, and gates the
+#   result -- so the gate runs on plans Terraform actually produced.
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+env:
+  OPA_VERSION: "1.17.0"
+  LIBRARY: policies
+  GATE: pipeline/gate.py
+  CTRL14_COMPLIANT: fixtures/ctrl_1_4_compliant.json
+  CTRL14_NONCOMPLIANT: fixtures/ctrl_1_4_non_compliant.json
+  CTRL13_COMPLIANT: fixtures/ctrl_1_3_compliant.json
+  CTRL13_NONCOMPLIANT: fixtures/ctrl_1_3_non_compliant.json
+  CTRL54_COMPLIANT: fixtures/ctrl_5_4_compliant.json
+  CTRL54_NONCOMPLIANT: fixtures/ctrl_5_4_non_compliant.json
+  CTRL42_COMPLIANT: fixtures/ctrl_4_2_compliant.json
+  CTRL42_NONCOMPLIANT: fixtures/ctrl_4_2_non_compliant.json
+  CTRL24_COMPLIANT: fixtures/ctrl_2_4_compliant.json
+  CTRL24_NONCOMPLIANT: fixtures/ctrl_2_4_non_compliant.json
+  CTRL12_COMPLIANT: fixtures/ctrl_1_2_compliant.json
+  CTRL12_NONCOMPLIANT: fixtures/ctrl_1_2_non_compliant.json
+  CTRL26_COMPLIANT: fixtures/ctrl_2_6_compliant.json
+  CTRL26_NONCOMPLIANT: fixtures/ctrl_2_6_non_compliant.json
+  CTRL23_COMPLIANT: fixtures/ctrl_2_3_compliant.json
+  CTRL23_NONCOMPLIANT: fixtures/ctrl_2_3_non_compliant.json
+  CTRL22_COMPLIANT: fixtures/ctrl_2_2_compliant.json
+  CTRL22_NONCOMPLIANT: fixtures/ctrl_2_2_non_compliant.json
+  CTRL27_COMPLIANT: fixtures/ctrl_2_7_compliant.json
+  CTRL27_NONCOMPLIANT: fixtures/ctrl_2_7_non_compliant.json
+  CTRL41V27_COMPLIANT: fixtures/ctrl_4_1_v2027_compliant.json
+  CTRL41V27_NONCOMPLIANT: fixtures/ctrl_4_1_v2027_non_compliant.json
+  CTRL11A15_COMPLIANT: fixtures/ctrl_1_1_a15_compliant.json
+  CTRL11A15_NONCOMPLIANT: fixtures/ctrl_1_1_a15_non_compliant.json
+
+jobs:
+  cscf-gate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install OPA ${{ env.OPA_VERSION }}
+        run: |
+          curl -sSL -o /usr/local/bin/opa \
+            "https://openpolicyagent.org/downloads/v${OPA_VERSION}/opa_linux_amd64_static"
+          chmod +x /usr/local/bin/opa
+          opa version
+
+      # ---- Conformance suite: false positives, coverage symmetry,
+      #      95/88/108 reconciliation, and performance ----
+      - name: Install pytest
+        run: pip install pytest cryptography
+
+      - name: Conformance suite
+        run: python -m pytest tests -v
+
+      # ---- Scope conformance: no rule may declare a scope it does not apply.
+      #      Library 1.0.0 had 39 such rules; 2.0.0 has none, so any mismatch
+      #      fails the build (docs/failure-modes.md, section 2).
+      - name: Scope conformance audit
+        run: python pipeline/audit/scope_audit.py
+
+      # ---- Per-control fixtures, library 2.0.0 ----
+      # ---- Control 1.4 (Restriction of Internet Access) ----
+      - name: Control 1.4 gate (compliant fixture must pass)
+        run: |
+          python "$GATE" \
+            --plan "$CTRL14_COMPLIANT" \
+            --policies "$LIBRARY" \
+            --controls ctrl_1_4 \
+            --evidence evidence_out/ctrl_1_4_compliant_evidence.json
+
+      - name: Control 1.4 detection self-test (non-compliant fixture must be blocked)
+        run: |
+          if python "$GATE" \
+               --plan "$CTRL14_NONCOMPLIANT" \
+               --policies "$LIBRARY" \
+               --controls ctrl_1_4 \
+               --evidence evidence_out/ctrl_1_4_non_compliant_evidence.json; then
+            echo "::error::Gate did NOT flag the non-compliant 1.4 fixture, detection broken"
+            exit 1
+          else
+            echo "Detection self-test OK: gate correctly blocked the non-compliant 1.4 fixture"
+          fi
+
+      # ---- Phase II: Control 1.3 (Virtualisation or Cloud Platform Protection) ----
+      - name: Control 1.3 gate (compliant fixture must pass)
+        run: |
+          python "$GATE" \
+            --plan "$CTRL13_COMPLIANT" \
+            --policies "$LIBRARY" \
+            --controls ctrl_1_3 \
+            --evidence evidence_out/ctrl_1_3_compliant_evidence.json
+
+      - name: Control 1.3 detection self-test (non-compliant fixture must be blocked)
+        run: |
+          if python "$GATE" \
+               --plan "$CTRL13_NONCOMPLIANT" \
+               --policies "$LIBRARY" \
+               --controls ctrl_1_3 \
+               --evidence evidence_out/ctrl_1_3_non_compliant_evidence.json; then
+            echo "::error::Gate did NOT flag the non-compliant 1.3 fixture, detection broken"
+            exit 1
+          else
+            echo "Detection self-test OK: gate correctly blocked the non-compliant 1.3 fixture"
+          fi
+
+      # ---- Phase II: Control 5.4 (Password Repository Protection) ----
+      - name: Control 5.4 gate (compliant fixture must pass)
+        run: |
+          python "$GATE" \
+            --plan "$CTRL54_COMPLIANT" \
+            --policies "$LIBRARY" \
+            --controls ctrl_5_4 \
+            --evidence evidence_out/ctrl_5_4_compliant_evidence.json
+
+      - name: Control 5.4 detection self-test (non-compliant fixture must be blocked)
+        run: |
+          if python "$GATE" \
+               --plan "$CTRL54_NONCOMPLIANT" \
+               --policies "$LIBRARY" \
+               --controls ctrl_5_4 \
+               --evidence evidence_out/ctrl_5_4_non_compliant_evidence.json; then
+            echo "::error::Gate did NOT flag the non-compliant 5.4 fixture, detection broken"
+            exit 1
+          else
+            echo "Detection self-test OK: gate correctly blocked the non-compliant 5.4 fixture"
+          fi
+
+      # ---- Phase II: Control 4.2 (Multi-Factor Authentication) ----
+      - name: Control 4.2 gate (compliant fixture must pass)
+        run: |
+          python "$GATE" \
+            --plan "$CTRL42_COMPLIANT" \
+            --policies "$LIBRARY" \
+            --controls ctrl_4_2 \
+            --evidence evidence_out/ctrl_4_2_compliant_evidence.json
+
+      - name: Control 4.2 detection self-test (non-compliant fixture must be blocked)
+        run: |
+          if python "$GATE" \
+               --plan "$CTRL42_NONCOMPLIANT" \
+               --policies "$LIBRARY" \
+               --controls ctrl_4_2 \
+               --evidence evidence_out/ctrl_4_2_non_compliant_evidence.json; then
+            echo "::error::Gate did NOT flag the non-compliant 4.2 fixture, detection broken"
+            exit 1
+          else
+            echo "Detection self-test OK: gate correctly blocked the non-compliant 4.2 fixture"
+          fi
+
+      # ---- Phase II: Control 2.4 (Back Office Data Flow Security) ----
+      - name: Control 2.4 gate (compliant fixture must pass)
+        run: |
+          python "$GATE" \
+            --plan "$CTRL24_COMPLIANT" \
+            --policies "$LIBRARY" \
+            --controls ctrl_2_4 \
+            --evidence evidence_out/ctrl_2_4_compliant_evidence.json
+
+      - name: Control 2.4 detection self-test (non-compliant fixture must be blocked)
+        run: |
+          if python "$GATE" \
+               --plan "$CTRL24_NONCOMPLIANT" \
+               --policies "$LIBRARY" \
+               --controls ctrl_2_4 \
+               --evidence evidence_out/ctrl_2_4_non_compliant_evidence.json; then
+            echo "::error::Gate did NOT flag the non-compliant 2.4 fixture, detection broken"
+            exit 1
+          else
+            echo "Detection self-test OK: gate correctly blocked the non-compliant 2.4 fixture"
+          fi
+
+      # ---- Phase II: Control 1.2 (OS Privileged Account Control) ----
+      - name: Control 1.2 gate (compliant fixture must pass)
+        run: |
+          python "$GATE" \
+            --plan "$CTRL12_COMPLIANT" \
+            --policies "$LIBRARY" \
+            --controls ctrl_1_2 \
+            --evidence evidence_out/ctrl_1_2_compliant_evidence.json
+
+      - name: Control 1.2 detection self-test (non-compliant fixture must be blocked)
+        run: |
+          if python "$GATE" \
+               --plan "$CTRL12_NONCOMPLIANT" \
+               --policies "$LIBRARY" \
+               --controls ctrl_1_2 \
+               --evidence evidence_out/ctrl_1_2_non_compliant_evidence.json; then
+            echo "::error::Gate did NOT flag the non-compliant 1.2 fixture, detection broken"
+            exit 1
+          else
+            echo "Detection self-test OK: gate correctly blocked the non-compliant 1.2 fixture"
+          fi
+
+      # ---- Phase II: Control 2.6 (Operator Session Confidentiality and Integrity) ----
+      - name: Control 2.6 gate (compliant fixture must pass)
+        run: |
+          python "$GATE" \
+            --plan "$CTRL26_COMPLIANT" \
+            --policies "$LIBRARY" \
+            --controls ctrl_2_6 \
+            --evidence evidence_out/ctrl_2_6_compliant_evidence.json
+
+      - name: Control 2.6 detection self-test (non-compliant fixture must be blocked)
+        run: |
+          if python "$GATE" \
+               --plan "$CTRL26_NONCOMPLIANT" \
+               --policies "$LIBRARY" \
+               --controls ctrl_2_6 \
+               --evidence evidence_out/ctrl_2_6_non_compliant_evidence.json; then
+            echo "::error::Gate did NOT flag the non-compliant 2.6 fixture, detection broken"
+            exit 1
+          else
+            echo "Detection self-test OK: gate correctly blocked the non-compliant 2.6 fixture"
+          fi
+
+      # ---- Phase II: Control 2.3 (System Hardening) ----
+      - name: Control 2.3 gate (compliant fixture must pass)
+        run: |
+          python "$GATE" \
+            --plan "$CTRL23_COMPLIANT" \
+            --policies "$LIBRARY" \
+            --controls ctrl_2_3 \
+            --evidence evidence_out/ctrl_2_3_compliant_evidence.json
+
+      - name: Control 2.3 detection self-test (non-compliant fixture must be blocked)
+        run: |
+          if python "$GATE" \
+               --plan "$CTRL23_NONCOMPLIANT" \
+               --policies "$LIBRARY" \
+               --controls ctrl_2_3 \
+               --evidence evidence_out/ctrl_2_3_non_compliant_evidence.json; then
+            echo "::error::Gate did NOT flag the non-compliant 2.3 fixture, detection broken"
+            exit 1
+          else
+            echo "Detection self-test OK: gate correctly blocked the non-compliant 2.3 fixture"
+          fi
+
+      # ---- Phase II: Controls 2.2 (Security Updates) and 2.7 (Vulnerability Scanning) ----
+      - name: Control 2.2 gate (compliant fixture must pass)
+        run: |
+          python "$GATE" --plan "$CTRL22_COMPLIANT" --policies "$LIBRARY" \
+            --controls ctrl_2_2 --evidence evidence_out/ctrl_2_2_compliant_evidence.json
+
+      - name: Control 2.2 detection self-test (non-compliant fixture must be blocked)
+        run: |
+          if python "$GATE" --plan "$CTRL22_NONCOMPLIANT" --policies "$LIBRARY" \
+               --controls ctrl_2_2 --evidence evidence_out/ctrl_2_2_non_compliant_evidence.json; then
+            echo "::error::Gate did NOT flag the non-compliant 2.2 fixture, detection broken"; exit 1
+          else
+            echo "Detection self-test OK: gate correctly blocked the non-compliant 2.2 fixture"
+          fi
+
+      - name: Control 2.7 gate (compliant fixture must pass)
+        run: |
+          python "$GATE" --plan "$CTRL27_COMPLIANT" --policies "$LIBRARY" \
+            --controls ctrl_2_7 --evidence evidence_out/ctrl_2_7_compliant_evidence.json
+
+      - name: Control 2.7 detection self-test (non-compliant fixture must be blocked)
+        run: |
+          if python "$GATE" --plan "$CTRL27_NONCOMPLIANT" --policies "$LIBRARY" \
+               --controls ctrl_2_7 --evidence evidence_out/ctrl_2_7_non_compliant_evidence.json; then
+            echo "::error::Gate did NOT flag the non-compliant 2.7 fixture, detection broken"; exit 1
+          else
+            echo "Detection self-test OK: gate correctly blocked the non-compliant 2.7 fixture"
+          fi
+
+      # ---- Phase II: CSCF v2027 delta, Control 4.1 failed-authentication alerting ----
+      - name: Control 4.1 (v2027) gate (compliant fixture must pass)
+        run: |
+          python "$GATE" --plan "$CTRL41V27_COMPLIANT" --policies "$LIBRARY" \
+            --controls ctrl_4_1 --cscf-version v2027 \
+            --evidence evidence_out/ctrl_4_1_v2027_compliant_evidence.json
+
+      - name: Control 4.1 (v2027) detection self-test (non-compliant fixture must be blocked)
+        run: |
+          if python "$GATE" --plan "$CTRL41V27_NONCOMPLIANT" --policies "$LIBRARY" \
+               --controls ctrl_4_1 --cscf-version v2027 \
+               --evidence evidence_out/ctrl_4_1_v2027_non_compliant_evidence.json; then
+            echo "::error::Gate did NOT flag the non-compliant v2027 4.1 fixture, detection broken"; exit 1
+          else
+            echo "Detection self-test OK: gate correctly blocked the non-compliant v2027 4.1 fixture"
+          fi
+
+      # ---- 2.1.0: Control 1.1-A15 (bucket policy principal outside the trust boundary) ----
+      - name: Control 1.1-A15 gate (compliant fixture must pass)
+        run: |
+          python "$GATE" --plan "$CTRL11A15_COMPLIANT" --policies "$LIBRARY" \
+            --controls ctrl_1_1 --evidence evidence_out/ctrl_1_1_a15_compliant_evidence.json
+
+      - name: Control 1.1-A15 detection self-test (non-compliant fixture must be blocked)
+        run: |
+          if python "$GATE" --plan "$CTRL11A15_NONCOMPLIANT" --policies "$LIBRARY" \
+               --controls ctrl_1_1 --evidence evidence_out/ctrl_1_1_a15_non_compliant_evidence.json; then
+            echo "::error::Gate did NOT flag the non-compliant 1.1-A15 fixture, detection broken"; exit 1
+          else
+            echo "Detection self-test OK: gate correctly blocked the non-compliant 1.1-A15 fixture"
+          fi
+
+      # ---- Plan completeness: a change plan cannot decide an absence ----
+      # The case study's remediated plan is clean for the controls it touches,
+      # but account-level assertions ("no CloudTrail configured") cannot be
+      # decided from a plan that only adds a service. --plan-scope incremental
+      # reports those as undetermined instead of failing the change.
+      - name: Plan-completeness check (incremental change plan)
+        run: |
+          python "$GATE" \
+            --plan case_study/cr2041_remediated_plan.json \
+            --policies "$LIBRARY" \
+            --controls ctrl_6_4,ctrl_1_1 \
+            --plan-scope incremental \
+            --evidence evidence_out/cr2041_incremental_evidence.json || true
+          python tests/assert_incremental_scope.py \
+            evidence_out/cr2041_incremental_evidence.json
+
+      - name: Upload compliance evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: cscf-evidence
+          path: evidence_out/
+          if-no-files-found: warn
+
+  # ---- The gate on a real `terraform plan -json` ----
+  # No AWS account is used: the fixtures configure mock credentials and skip
+  # every credential, account and metadata lookup, so `terraform plan` runs
+  # offline. The compliant fixture must pass and the non-compliant one must be
+  # blocked; plan_and_gate.sh enforces both directions.
+  live-plan-gate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Set up Terraform
+        uses: hashicorp/setup-terraform@v3
+        with:
+          terraform_version: "1.15.5"
+          terraform_wrapper: false
+
+      - name: Install OPA ${{ env.OPA_VERSION }}
+        run: |
+          curl -sSL -o /usr/local/bin/opa             "https://openpolicyagent.org/downloads/v${OPA_VERSION}/opa_linux_amd64_static"
+          chmod +x /usr/local/bin/opa
+
+      - name: terraform validate (both fixtures)
+        run: |
+          for fixture in compliant non_compliant; do
+            dir="terraform/$fixture"
+            terraform -chdir="$dir" init -input=false -no-color >/dev/null
+            terraform -chdir="$dir" validate -no-color
+          done
+
+      # ---- Gate B admissibility: no rule may read an attribute the provider
+      #      does not define on that resource type. Library 1.0.0 had three such
+      #      reads; 2.0.0 has none, so any inadmissible read fails the build.
+      - name: Gate B admissibility check
+        run: |
+          terraform -chdir=terraform/compliant \
+            providers schema -json > /tmp/aws_schema.json
+          python pipeline/audit/gate_b_admissibility.py /tmp/aws_schema.json
+
+      - name: Install the evidence-signing library
+        run: pip install cryptography
+
+      # The signing key exists only as this secret: no developer machine holds
+      # it, so evidence cannot be edited and re-signed outside CI.
+      - name: Plan, resolve, gate and sign
+        env:
+          CSCF_EVIDENCE_SIGNING_KEY: ${{ secrets.CSCF_EVIDENCE_SIGNING_KEY }}
+        run: bash pipeline/plan_and_gate.sh
+
+      # The findings table on the check page, so a blocked pull request shows why.
+      - name: Findings summary
+        if: always()
+        run: |
+          for fixture in compliant non_compliant; do
+            f="plans/${fixture}_resolved_evidence.json"
+            if [ -f "$f" ]; then
+              python evidence/step_summary.py --evidence "$f" \
+                --title "CSCF gate: ${fixture} estate" >> "$GITHUB_STEP_SUMMARY"
+            fi
+          done
+
+      # The evidence must verify against the published public key.
+      # --require makes an unsigned artefact a failure, not just an invalid one.
+      - name: Verify evidence signatures
+        run: |
+          for fixture in compliant non_compliant; do
+            python pipeline/evidence_signing.py verify --require \
+              --evidence "plans/${fixture}_resolved_evidence.json"
+          done
+
+      - name: Upload live-plan evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: cscf-live-plan-evidence
+          path: plans/
+          if-no-files-found: warn

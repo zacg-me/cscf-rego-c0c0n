@@ -1,0 +1,46 @@
+{
+  "format_version": "1.2",
+  "terraform_version": "1.15.5",
+  "swift_account_id": "111122223333",
+  "swift_trust_boundary_accounts": ["111122223333", "210987654321"],
+  "planned_values": {
+    "root_module": {
+      "resources": [
+        {
+          "address": "aws_flow_log.swift",
+          "mode": "managed",
+          "type": "aws_flow_log",
+          "name": "swift",
+          "values": {
+            "traffic_type": "ALL",
+            "vpc_id": "vpc-0swift",
+            "tags": {"swift:zone": "secure"},
+            "tags_all": {"swift:zone": "secure"}
+          }
+        },
+        {
+          "address": "aws_s3_bucket.dr_exchange",
+          "mode": "managed",
+          "type": "aws_s3_bucket",
+          "name": "dr_exchange",
+          "values": {
+            "bucket": "swift-dr-exchange",
+            "tags": {"swift:zone": "secure"},
+            "tags_all": {"swift:zone": "secure"}
+          }
+        },
+        {
+          "address": "aws_s3_bucket_policy.dr_exchange",
+          "mode": "managed",
+          "type": "aws_s3_bucket_policy",
+          "name": "dr_exchange",
+          "values": {
+            "bucket": "swift-dr-exchange",
+            "policy": "{\"Version\":\"2012-10-17\",\"Statement\":[{\"Sid\":\"DrReplicaRead\",\"Effect\":\"Allow\",\"Principal\":{\"AWS\":\"arn:aws:iam::210987654321:root\"},\"Action\":\"s3:GetObject\",\"Resource\":\"arn:aws:s3:::swift-dr-exchange/*\"}]}"
+          }
+        }
+      ],
+      "child_modules": []
+    }
+  }
+}

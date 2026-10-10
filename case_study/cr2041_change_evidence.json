@@ -1,0 +1,104 @@
+{
+  "schema": "swift-cscf-evidence/v1",
+  "generated_at": "2026-09-09T02:30:13.984706+00:00",
+  "cscf_version": "v2026",
+  "plan_file": "cr2041_change_plan.json",
+  "plan_sha256": "85486d5acb94654086a06e5928ee1a0b8eb71d5b4a906ae1eb164b6f5e647c82",
+  "opa_version": "1.17.0",
+  "controls": [
+    {
+      "control": "1.2",
+      "module": "ctrl_1_2",
+      "rules_fired": 2,
+      "violation_instances": 2,
+      "assertions": [
+        "1.2-A1",
+        "1.2-A2"
+      ],
+      "violations": [
+        "CSCF 1.2 [1.2-A1]: VM uses a static SSH key pair (key_name set); privileged access should go through SSM Session Manager, not a persistent shared credential (\u00a7 Control Statement). (resource: aws_instance.reporting_host)",
+        "CSCF 1.2 [1.2-A2]: VM has no IAM instance profile; SSM-managed, auditable admin access is not available (\u00a7 Control Statement). (resource: aws_instance.reporting_host)"
+      ]
+    },
+    {
+      "control": "1.3",
+      "module": "ctrl_1_3",
+      "rules_fired": 4,
+      "violation_instances": 4,
+      "assertions": [
+        "1.3-A1",
+        "1.3-A2",
+        "1.3-A3",
+        "1.3-A5"
+      ],
+      "violations": [
+        "CSCF 1.3 [1.3-A1]: VM does not enforce IMDSv2 (token-required metadata). The instance metadata service is a credential-theft / lateral-movement vector (\u00a7 guidelines). (resource: aws_instance.reporting_host)",
+        "CSCF 1.3 [1.3-A2]: VM allows an IMDS hop limit of 2 (> 1), enabling metadata relay beyond the instance to containers/proxies (\u00a7 guidelines). (resource: aws_instance.reporting_host)",
+        "CSCF 1.3 [1.3-A3]: VM root volume is not encrypted at rest (\u00a7 guidelines). (resource: aws_instance.reporting_host)",
+        "CSCF 1.3 [1.3-A5]: VM uses 'default' tenancy; platform-level VM isolation for the Swift secure zone requires dedicated or host tenancy (\u00a7 guidelines). (resource: aws_instance.reporting_host)"
+      ]
+    },
+    {
+      "control": "1.4",
+      "module": "ctrl_1_4",
+      "rules_fired": 2,
+      "violation_instances": 2,
+      "assertions": [
+        "1.4-A1",
+        "1.4-A4"
+      ],
+      "violations": [
+        "CSCF 1.4 [1.4-A1]: Secure-zone route sends all IPv4 traffic (0.0.0.0/0) to a NAT gateway. Internet access from the secure zone must be highly restricted or blocked (\u00a7 a). (resource: aws_route.pkg_downloads)",
+        "CSCF 1.4 [1.4-A4]: No VPC endpoint is configured. AWS-service access from the secure zone should use VPC endpoints rather than egressing to the Internet (\u00a7 a, \u00a7 b)."
+      ]
+    },
+    {
+      "control": "2.3",
+      "module": "ctrl_2_3",
+      "rules_fired": 2,
+      "violation_instances": 2,
+      "assertions": [
+        "2.3-A1",
+        "2.3-A2"
+      ],
+      "violations": [
+        "CSCF 2.3 [2.3-A1]: RDS instance is publicly accessible; attack surface must be minimised (\u00a7 adjust vulnerable defaults). (resource: aws_db_instance.reporting_db)",
+        "CSCF 2.3 [2.3-A2]: S3 public-access block does not enable all four settings; public exposure is not fully blocked (\u00a7 adjust vulnerable defaults). (resource: aws_s3_bucket_public_access_block.exports)"
+      ]
+    },
+    {
+      "control": "4.2",
+      "module": "ctrl_4_2",
+      "rules_fired": 1,
+      "violation_instances": 1,
+      "assertions": [
+        "4.2-A3"
+      ],
+      "violations": [
+        "CSCF 4.2 [4.2-A3]: RDS instance does not enable IAM database authentication; database login should not rely solely on a single static password (\u00a7 Control Statement). (resource: aws_db_instance.reporting_db)"
+      ]
+    },
+    {
+      "control": "5.4",
+      "module": "ctrl_5_4",
+      "rules_fired": 3,
+      "violation_instances": 3,
+      "assertions": [
+        "5.4-A1",
+        "5.4-A4",
+        "5.4-A5"
+      ],
+      "violations": [
+        "CSCF 5.4 [5.4-A1]: Secret is not encrypted with a customer-managed KMS key; the password repository must use a controlled key (\u00a7 logical storage). (resource: aws_secretsmanager_secret.reporting)",
+        "CSCF 5.4 [5.4-A4]: RDS master password is hardcoded inline; use Secrets-Manager-managed credentials (manage_master_user_password) instead (\u00a7 no hardcoded passwords). (resource: aws_db_instance.reporting_db)",
+        "CSCF 5.4 [5.4-A5]: Lambda environment variable 'DB_PASSWORD' hardcodes a password-like value; reference a Secrets Manager ARN instead (\u00a7 no hardcoded passwords). (resource: aws_lambda_function.exporter)"
+      ]
+    }
+  ],
+  "summary": {
+    "total_violation_instances": 14,
+    "distinct_assertions_fired": 14,
+    "controls_with_violations": 6,
+    "result": "FAIL"
+  }
+}

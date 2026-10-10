@@ -1,0 +1,10 @@
+cscf-rego
+Copyright 2026 Zachariah George
+
+This product is licensed under the Apache License, Version 2.0 (LICENSE).
+
+SWIFT, Swift and CSCF are trademarks of S.W.I.F.T. SC. This project is not
+affiliated with, endorsed by, or sponsored by Swift. Control text quoted from
+the Customer Security Controls Framework remains the property of S.W.I.F.T. SC;
+obtain the framework itself from Swift. Nothing in this repository is a Swift
+attestation or an independent assessment; see README, "Limits".

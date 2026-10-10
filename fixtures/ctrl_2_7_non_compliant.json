@@ -1,0 +1,22 @@
+{
+  "format_version": "1.2",
+  "terraform_version": "1.15.5",
+  "swift_account_id": "111122223333",
+  "planned_values": {
+    "root_module": {
+      "resources": [
+        {
+          "address": "aws_inspector2_enabler.swift",
+          "mode": "managed",
+          "type": "aws_inspector2_enabler",
+          "name": "swift",
+          "values": {
+            "account_ids": ["111122223333"],
+            "resource_types": ["ECR"]
+          }
+        }
+      ],
+      "child_modules": []
+    }
+  }
+}

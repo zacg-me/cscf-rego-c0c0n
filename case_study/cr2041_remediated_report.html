@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>CSCF v2026 Compliance Attestation: cr2041_remediated_plan.json</title>
+<style>
+  :root {
+    --ink:#1a1f29; --muted:#5b6472; --line:#dfe3ea; --bg:#f6f7f9;
+    --pass:#1a7f4b; --pass-bg:#e7f5ec; --fail:#b3261e; --fail-bg:#fbeceb;
+    --warn:#8a5a00; --warn-bg:#fdf3e0;
+    --accent:#0b3d6b;
+  }
+  * { box-sizing:border-box; }
+  body { margin:0; background:var(--bg); color:var(--ink);
+    font:14px/1.55 -apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif; }
+  .page { max-width:960px; margin:24px auto; background:#fff; padding:40px 48px;
+    border:1px solid var(--line); border-radius:8px; }
+  header.doc { border-bottom:3px solid var(--accent); padding-bottom:16px; margin-bottom:24px; }
+  header.doc .eyebrow { color:var(--accent); font-weight:700; letter-spacing:.08em;
+    text-transform:uppercase; font-size:11px; }
+  header.doc h1 { margin:6px 0 2px; font-size:22px; }
+  header.doc .sub { color:var(--muted); font-size:13px; }
+  .verdict { display:flex; align-items:center; gap:16px; padding:16px 20px;
+    border-radius:8px; margin:24px 0; }
+  .verdict.pass { background:var(--pass-bg); border:1px solid var(--pass); }
+  .verdict.fail { background:var(--fail-bg); border:1px solid var(--fail); }
+  .verdict.warn { background:var(--warn-bg); border:1px solid var(--warn); }
+  .verdict.warn .tag { color:var(--warn); }
+  .verdict .tag { font-size:20px; font-weight:800; letter-spacing:.02em; }
+  .verdict.pass .tag { color:var(--pass); }
+  .verdict.fail .tag { color:var(--fail); }
+  .verdict .detail { color:var(--ink); font-size:13px; }
+  h2 { font-size:15px; text-transform:uppercase; letter-spacing:.05em;
+    color:var(--accent); border-bottom:1px solid var(--line); padding-bottom:6px;
+    margin:32px 0 12px; }
+  table { border-collapse:collapse; width:100%; font-size:13px; }
+  .meta th { text-align:left; color:var(--muted); font-weight:600; width:180px;
+    padding:5px 12px 5px 0; vertical-align:top; }
+  .meta td { padding:5px 0; }
+  table.grid th, table.grid td { border:1px solid var(--line); padding:8px 10px; text-align:left; }
+  table.grid thead th { background:#f0f2f5; font-size:12px; text-transform:uppercase;
+    letter-spacing:.03em; color:var(--muted); }
+  td.num, th.num { text-align:right; width:90px; }
+  .badge { display:inline-block; padding:2px 10px; border-radius:20px; font-size:11px;
+    font-weight:700; }
+  .badge.pass { background:var(--pass-bg); color:var(--pass); }
+  .badge.fail { background:var(--fail-bg); color:var(--fail); }
+  .badge.warn { background:var(--warn-bg); color:var(--warn); }
+  .mono { font-family:ui-monospace,SFMono-Regular,Consolas,monospace; font-size:12px; }
+  .nowrap { white-space:nowrap; }
+  .control-detail { margin:20px 0; }
+  .control-detail h3 { font-size:14px; margin:18px 0 8px; }
+  .control-detail h3 .count { color:var(--fail); font-weight:600; font-size:12px; margin-left:8px; }
+  table.findings th, table.findings td { border:1px solid var(--line); padding:7px 9px;
+    vertical-align:top; font-size:12.5px; }
+  table.findings thead th { background:#f0f2f5; text-transform:uppercase; font-size:11px;
+    color:var(--muted); }
+  .clean { color:var(--pass); font-weight:600; }
+  footer.doc { margin-top:36px; padding-top:16px; border-top:1px solid var(--line);
+    color:var(--muted); font-size:11.5px; }
+  @media print { body { background:#fff; } .page { border:none; margin:0; max-width:none; } }
+</style>
+</head>
+<body>
+<div class="page">
+  <header class="doc">
+    <div class="eyebrow">Pre-Deployment Compliance Attestation</div>
+    <h1>SWIFT CSCF v2026: Terraform Plan Evaluation</h1>
+    <div class="sub">Automated Policy-as-Code assessment with Open Policy Agent (Rego).
+      Plan: <span class="mono">cr2041_remediated_plan.json</span></div>
+  </header>
+
+  <div class="verdict pass">
+    <div class="tag">COMPLIANT</div>
+    <div class="detail">No CSCF control violations detected. The plan may proceed to deployment.</div>
+  </div>
+
+  <h2>Attestation Metadata</h2>
+  <table class="meta">
+    <tbody>
+      <tr><th>CSCF version</th><td class='mono'>v2026</td></tr>
+      <tr><th>Terraform plan</th><td class='mono'>cr2041_remediated_plan.json</td></tr>
+      <tr><th>Plan SHA-256</th><td class='mono'>fad7701f442c50fd91ab32f3d530ddc8bec10e97001cc3625cd524e9e6d2d624</td></tr>
+      <tr><th>OPA engine</th><td class='mono'>1.17.0</td></tr>
+      <tr><th>Policy library</th><td class='mono'>not recorded (evidence predates library versioning)</td></tr>
+      <tr><th>Evidence schema</th><td class='mono'>swift-cscf-evidence/v1</td></tr>
+      <tr><th>Signature</th><td class='mono'>UNSIGNED. This evidence carries no signature.</td></tr>
+      <tr><th>Plan evaluated at</th><td class='mono'>09 Sep 2026, 02:30:14 UTC</td></tr>
+      <tr><th>Report rendered at</th><td class='mono'>09 Oct 2026, 14:34:29 UTC</td></tr>
+    </tbody>
+  </table>
+
+  <h2>Control Summary</h2>
+  <table class="grid">
+    <thead>
+      <tr><th>Control</th><th>Title</th><th class="num">Violations</th>
+        <th class="num">Distinct assertions</th><th class="num">Undetermined</th>
+        <th>Result</th></tr>
+    </thead>
+    <tbody>
+      <tr><td class='mono'>1.2</td><td>Operating System Privileged Account Control</td><td class='num'>0</td><td class='num'>0</td><td class='num'></td><td><span class='badge pass'>PASS</span></td></tr>
+      <tr><td class='mono'>1.3</td><td>Virtualisation or Cloud Platform Protection</td><td class='num'>0</td><td class='num'>0</td><td class='num'></td><td><span class='badge pass'>PASS</span></td></tr>
+      <tr><td class='mono'>1.4</td><td>Restriction of Internet Access</td><td class='num'>0</td><td class='num'>0</td><td class='num'></td><td><span class='badge pass'>PASS</span></td></tr>
+      <tr><td class='mono'>2.3</td><td>System Hardening</td><td class='num'>0</td><td class='num'>0</td><td class='num'></td><td><span class='badge pass'>PASS</span></td></tr>
+      <tr><td class='mono'>4.2</td><td>Multi-Factor Authentication</td><td class='num'>0</td><td class='num'>0</td><td class='num'></td><td><span class='badge pass'>PASS</span></td></tr>
+      <tr><td class='mono'>5.4</td><td>Password Repository Protection</td><td class='num'>0</td><td class='num'>0</td><td class='num'></td><td><span class='badge pass'>PASS</span></td></tr>
+    </tbody>
+  </table>
+  <p style="color:var(--muted);font-size:12px;margin-top:10px;">
+    Totals: 0 violation instance(s),
+    0 distinct assertion(s) fired across
+    0 control(s) with findings;
+    0 check(s) undetermined.
+  </p>
+
+  <h2>Detailed Findings</h2>
+    <section class='control-detail'><p class='clean'>No control violations were detected. All assertions across the five controls in scope evaluated to compliant.</p></section>
+
+
+
+
+  <footer class="doc">
+    <p><strong>Integrity.</strong> This attestation was rendered from a
+    machine-generated evidence artefact (schema
+    <span class="mono">swift-cscf-evidence/v1</span>). The evaluated
+    Terraform plan is identified by SHA-256
+    <span class="mono">fad7701f442c50fd91ab32f3d530ddc8bec10e97001cc3625cd524e9e6d2d624</span>; any change to the
+    plan changes this digest. Findings are produced by deterministic OPA/Rego policy
+    evaluation, not manual inspection.</p>
+    <p>Generated by the SWIFT CSCF Phase II attestation pipeline
+    (<span class="mono">gate.py</span>, then <span class="mono">report.py</span>).
+    For independent assessor review; not a substitute for a formal SWIFT CSP assessment.</p>
+  </footer>
+</div>
+</body>
+</html>

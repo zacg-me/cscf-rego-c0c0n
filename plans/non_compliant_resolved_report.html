@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>CSCF v2026 Compliance Attestation: non_compliant_resolved_plan.json</title>
+<style>
+  :root {
+    --ink:#1a1f29; --muted:#5b6472; --line:#dfe3ea; --bg:#f6f7f9;
+    --pass:#1a7f4b; --pass-bg:#e7f5ec; --fail:#b3261e; --fail-bg:#fbeceb;
+    --warn:#8a5a00; --warn-bg:#fdf3e0;
+    --accent:#0b3d6b;
+  }
+  * { box-sizing:border-box; }
+  body { margin:0; background:var(--bg); color:var(--ink);
+    font:14px/1.55 -apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif; }
+  .page { max-width:960px; margin:24px auto; background:#fff; padding:40px 48px;
+    border:1px solid var(--line); border-radius:8px; }
+  header.doc { border-bottom:3px solid var(--accent); padding-bottom:16px; margin-bottom:24px; }
+  header.doc .eyebrow { color:var(--accent); font-weight:700; letter-spacing:.08em;
+    text-transform:uppercase; font-size:11px; }
+  header.doc h1 { margin:6px 0 2px; font-size:22px; }
+  header.doc .sub { color:var(--muted); font-size:13px; }
+  .verdict { display:flex; align-items:center; gap:16px; padding:16px 20px;
+    border-radius:8px; margin:24px 0; }
+  .verdict.pass { background:var(--pass-bg); border:1px solid var(--pass); }
+  .verdict.fail { background:var(--fail-bg); border:1px solid var(--fail); }
+  .verdict.warn { background:var(--warn-bg); border:1px solid var(--warn); }
+  .verdict.warn .tag { color:var(--warn); }
+  .verdict .tag { font-size:20px; font-weight:800; letter-spacing:.02em; }
+  .verdict.pass .tag { color:var(--pass); }
+  .verdict.fail .tag { color:var(--fail); }
+  .verdict .detail { color:var(--ink); font-size:13px; }
+  h2 { font-size:15px; text-transform:uppercase; letter-spacing:.05em;
+    color:var(--accent); border-bottom:1px solid var(--line); padding-bottom:6px;
+    margin:32px 0 12px; }
+  table { border-collapse:collapse; width:100%; font-size:13px; }
+  .meta th { text-align:left; color:var(--muted); font-weight:600; width:180px;
+    padding:5px 12px 5px 0; vertical-align:top; }
+  .meta td { padding:5px 0; }
+  table.grid th, table.grid td { border:1px solid var(--line); padding:8px 10px; text-align:left; }
+  table.grid thead th { background:#f0f2f5; font-size:12px; text-transform:uppercase;
+    letter-spacing:.03em; color:var(--muted); }
+  td.num, th.num { text-align:right; width:90px; }
+  .badge { display:inline-block; padding:2px 10px; border-radius:20px; font-size:11px;
+    font-weight:700; }
+  .badge.pass { background:var(--pass-bg); color:var(--pass); }
+  .badge.fail { background:var(--fail-bg); color:var(--fail); }
+  .badge.warn { background:var(--warn-bg); color:var(--warn); }
+  .mono { font-family:ui-monospace,SFMono-Regular,Consolas,monospace; font-size:12px; }
+  .nowrap { white-space:nowrap; }
+  .control-detail { margin:20px 0; }
+  .control-detail h3 { font-size:14px; margin:18px 0 8px; }
+  .control-detail h3 .count { color:var(--fail); font-weight:600; font-size:12px; margin-left:8px; }
+  table.findings th, table.findings td { border:1px solid var(--line); padding:7px 9px;
+    vertical-align:top; font-size:12.5px; }
+  table.findings thead th { background:#f0f2f5; text-transform:uppercase; font-size:11px;
+    color:var(--muted); }
+  .clean { color:var(--pass); font-weight:600; }
+  footer.doc { margin-top:36px; padding-top:16px; border-top:1px solid var(--line);
+    color:var(--muted); font-size:11.5px; }
+  @media print { body { background:#fff; } .page { border:none; margin:0; max-width:none; } }
+</style>
+</head>
+<body>
+<div class="page">
+  <header class="doc">
+    <div class="eyebrow">Pre-Deployment Compliance Attestation</div>
+    <h1>SWIFT CSCF v2026: Terraform Plan Evaluation</h1>
+    <div class="sub">Automated Policy-as-Code assessment with Open Policy Agent (Rego).
+      Plan: <span class="mono">non_compliant_resolved_plan.json</span></div>
+  </header>
+
+  <div class="verdict fail">
+    <div class="tag">NON-COMPLIANT</div>
+    <div class="detail">151 violation instance(s) across 15 control(s). Deployment is blocked.</div>
+  </div>
+
+  <h2>Attestation Metadata</h2>
+  <table class="meta">
+    <tbody>
+      <tr><th>CSCF version</th><td class='mono'>v2026</td></tr>
+      <tr><th>Terraform plan</th><td class='mono'>non_compliant_resolved_plan.json</td></tr>
+      <tr><th>Plan SHA-256</th><td class='mono'>96f2360d45d789b6ab0d1054409aebb9d3dae22e9b26706fdbd65632c908e567</td></tr>
+      <tr><th>OPA engine</th><td class='mono'>1.17.0</td></tr>
+      <tr><th>Policy library</th><td class='mono'>2.1.2  (sha256:4661dd9ef9f0f5c727d775d014a3896a7bd286048bbfc6da09f10d676b75424e)</td></tr>
+      <tr><th>Evidence schema</th><td class='mono'>swift-cscf-evidence/v1</td></tr>
+      <tr><th>Signature</th><td class='mono'>VALID. Ed25519 signature by key b922bdc0a6699e3e, signed 2026-10-10T04:23:47.610384+00:00</td></tr>
+      <tr><th>Plan evaluated at</th><td class='mono'>10 Oct 2026, 04:23:45 UTC</td></tr>
+      <tr><th>Report rendered at</th><td class='mono'>10 Oct 2026, 04:23:47 UTC</td></tr>
+    </tbody>
+  </table>
+
+  <h2>Control Summary</h2>
+  <table class="grid">
+    <thead>
+      <tr><th>Control</th><th>Title</th><th class="num">Violations</th>
+        <th class="num">Distinct assertions</th><th class="num">Undetermined</th>
+        <th>Result</th></tr>
+    </thead>
+    <tbody>
+      <tr><td class='mono'>1.1</td><td>SWIFT Environment Protection</td><td class='num'>29</td><td class='num'>15</td><td class='num'>3</td><td><span class='badge fail'>FAIL</span></td></tr>
+      <tr><td class='mono'>1.2</td><td>Operating System Privileged Account Control</td><td class='num'>3</td><td class='num'>3</td><td class='num'></td><td><span class='badge fail'>FAIL</span></td></tr>
+      <tr><td class='mono'>1.3</td><td>Virtualisation or Cloud Platform Protection</td><td class='num'>5</td><td class='num'>5</td><td class='num'></td><td><span class='badge fail'>FAIL</span></td></tr>
+      <tr><td class='mono'>1.4</td><td>Restriction of Internet Access</td><td class='num'>7</td><td class='num'>6</td><td class='num'></td><td><span class='badge fail'>FAIL</span></td></tr>
+      <tr><td class='mono'>2.1</td><td>Internal Data Flow Security</td><td class='num'>14</td><td class='num'>14</td><td class='num'>4</td><td><span class='badge fail'>FAIL</span></td></tr>
+      <tr><td class='mono'>2.2</td><td>Security Updates</td><td class='num'>2</td><td class='num'>2</td><td class='num'></td><td><span class='badge fail'>FAIL</span></td></tr>
+      <tr><td class='mono'>2.3</td><td>System Hardening</td><td class='num'>4</td><td class='num'>4</td><td class='num'></td><td><span class='badge fail'>FAIL</span></td></tr>
+      <tr><td class='mono'>2.4</td><td>Back Office Data Flow Security</td><td class='num'>4</td><td class='num'>4</td><td class='num'></td><td><span class='badge fail'>FAIL</span></td></tr>
+      <tr><td class='mono'>2.6</td><td>Operator Session Confidentiality and Integrity</td><td class='num'>3</td><td class='num'>3</td><td class='num'></td><td><span class='badge fail'>FAIL</span></td></tr>
+      <tr><td class='mono'>2.7</td><td>Vulnerability Scanning</td><td class='num'>1</td><td class='num'>1</td><td class='num'></td><td><span class='badge fail'>FAIL</span></td></tr>
+      <tr><td class='mono'>4.1</td><td>Password Policy</td><td class='num'>17</td><td class='num'>17</td><td class='num'></td><td><span class='badge fail'>FAIL</span></td></tr>
+      <tr><td class='mono'>4.2</td><td>Multi-Factor Authentication</td><td class='num'>4</td><td class='num'>4</td><td class='num'></td><td><span class='badge fail'>FAIL</span></td></tr>
+      <tr><td class='mono'>5.1</td><td>Logical Access Control</td><td class='num'>31</td><td class='num'>17</td><td class='num'>3</td><td><span class='badge fail'>FAIL</span></td></tr>
+      <tr><td class='mono'>5.4</td><td>Password Repository Protection</td><td class='num'>5</td><td class='num'>5</td><td class='num'></td><td><span class='badge fail'>FAIL</span></td></tr>
+      <tr><td class='mono'>6.4</td><td>Logging and Monitoring</td><td class='num'>22</td><td class='num'>22</td><td class='num'>1</td><td><span class='badge fail'>FAIL</span></td></tr>
+    </tbody>
+  </table>
+  <p style="color:var(--muted);font-size:12px;margin-top:10px;">
+    Totals: 151 violation instance(s),
+    122 distinct assertion(s) fired across
+    15 control(s) with findings;
+    11 check(s) undetermined.
+  </p>
+
+  <h2>Detailed Findings</h2>
+    <section class="control-detail">
+      <h3>Control 1.1: SWIFT Environment Protection
+        <span class="count">29 finding(s)</span></h3>
+      <table class="findings">
+        <thead><tr><th>Assertion</th><th>Finding</th><th>Resource</th></tr></thead>
+        <tbody>
+          <tr><td class='mono nowrap'>1.1-A10</td><td>Client VPN does not use certificate or directory-service auth. CSCF requires VPN authentication with MFA capability (§ d.2).</td><td class='mono'>aws_ec2_client_vpn_endpoint.bad</td></tr>
+          <tr><td class='mono nowrap'>1.1-A11</td><td>VPN auth rule grants access to all networks without group restriction. Remote access must be scoped (§ d.2).</td><td class='mono'>aws_ec2_client_vpn_authorization_rule.bad</td></tr>
+          <tr><td class='mono nowrap'>1.1-A12</td><td>IAM role does not enforce MFA in assume-role policy. CSCF requires separate auth with MFA for secure zone access (§ e, § d.1).</td><td class='mono'>aws_iam_role.bad_app</td></tr>
+          <tr><td class='mono nowrap'>1.1-A12</td><td>IAM role does not enforce MFA in assume-role policy. CSCF requires separate auth with MFA for secure zone access (§ e, § d.1).</td><td class='mono'>aws_iam_role.bad_cross</td></tr>
+          <tr><td class='mono nowrap'>1.1-A12</td><td>IAM role does not enforce MFA in assume-role policy. CSCF requires separate auth with MFA for secure zone access (§ e, § d.1).</td><td class='mono'>aws_iam_role.bad_wildcard_trust</td></tr>
+          <tr><td class='mono nowrap'>1.1-A13</td><td>IAM role has no permissions boundary. CSCF requires protection from privilege escalation beyond the secure zone (§ e).</td><td class='mono'>aws_iam_role.bad_app</td></tr>
+          <tr><td class='mono nowrap'>1.1-A13</td><td>IAM role has no permissions boundary. CSCF requires protection from privilege escalation beyond the secure zone (§ e).</td><td class='mono'>aws_iam_role.bad_cross</td></tr>
+          <tr><td class='mono nowrap'>1.1-A13</td><td>IAM role has no permissions boundary. CSCF requires protection from privilege escalation beyond the secure zone (§ e).</td><td class='mono'>aws_iam_role.bad_wildcard_trust</td></tr>
+          <tr><td class='mono nowrap'>1.1-A14</td><td>IAM policy does not include Deny for non-MFA sessions. CSCF requires MFA for admin access to the secure zone (§ d.1).</td><td class='mono'>aws_iam_role_policy.bad_jump</td></tr>
+          <tr><td class='mono nowrap'>1.1-A15</td><td>S3 bucket policy grants account 444455556666, outside the declared Swift trust boundary (§ Boundary Protection).</td><td class='mono'>aws_s3_bucket_policy.partner_share</td></tr>
+          <tr><td class='mono nowrap'>1.1-A1</td><td>Default VPC security group has rules defined. All traffic must use explicit security groups (§ a, § c).</td><td class='mono'>aws_default_security_group.bad</td></tr>
+          <tr><td class='mono nowrap'>1.1-A2</td><td>Security group allows unrestricted inbound from 0.0.0.0/0. CSCF requires explicit allowlisting (§ c).</td><td class='mono'>aws_security_group.bad</td></tr>
+          <tr><td class='mono nowrap'>1.1-A2</td><td>Security group allows unrestricted inbound from 0.0.0.0/0. CSCF requires explicit allowlisting (§ c).</td><td class='mono'>aws_security_group_rule.bad_legacy_ingress</td></tr>
+          <tr><td class='mono nowrap'>1.1-A2</td><td>Security group allows unrestricted inbound from 0.0.0.0/0. CSCF requires explicit allowlisting (§ c).</td><td class='mono'>aws_vpc_security_group_ingress_rule.bad_ssh</td></tr>
+          <tr><td class='mono nowrap'>1.1-A2</td><td>Security group allows unrestricted inbound from ::/0. CSCF requires explicit allowlisting (§ c).</td><td class='mono'>aws_security_group.bad</td></tr>
+          <tr><td class='mono nowrap'>1.1-A3</td><td>Security group exposes admin port 22 to the internet (§ d.1).</td><td class='mono'>aws_security_group.bad</td></tr>
+          <tr><td class='mono nowrap'>1.1-A3</td><td>Security group exposes admin port 22 to the internet (§ d.1).</td><td class='mono'>aws_vpc_security_group_ingress_rule.bad_ssh</td></tr>
+          <tr><td class='mono nowrap'>1.1-A3</td><td>Security group exposes admin port 22 to the internet via IPv6 (§ d.1).</td><td class='mono'>aws_security_group.bad</td></tr>
+          <tr><td class='mono nowrap'>1.1-A3</td><td>Security group exposes admin port 3389 to the internet (§ d.1).</td><td class='mono'>aws_security_group.bad</td></tr>
+          <tr><td class='mono nowrap'>1.1-A4</td><td>Security group allows unrestricted outbound on all ports. CSCF requires outbound connectivity to be limited (§ c).</td><td class='mono'>aws_security_group.bad</td></tr>
+          <tr><td class='mono nowrap'>1.1-A4</td><td>Security group allows unrestricted outbound on all ports. CSCF requires outbound connectivity to be limited (§ c).</td><td class='mono'>aws_vpc_security_group_egress_rule.bad_all</td></tr>
+          <tr><td class='mono nowrap'>1.1-A5</td><td>Subnet auto-assigns public IPs. Swift subnets must not expose instances to the internet (§ a, § c).</td><td class='mono'>aws_subnet.bad1</td></tr>
+          <tr><td class='mono nowrap'>1.1-A6</td><td>Route table has a direct route to an Internet Gateway. Swift secure zone must not have direct internet connectivity (§ a, § c).</td><td class='mono'>aws_route.bad_igw</td></tr>
+          <tr><td class='mono nowrap'>1.1-A7</td><td>Default NACL allows all inbound traffic. CSCF requires explicit allowlisting (§ c).</td><td class='mono'>aws_default_network_acl.bad</td></tr>
+          <tr><td class='mono nowrap'>1.1-A7</td><td>Network ACL allows all inbound traffic. CSCF requires explicit allowlisting (§ c).</td><td class='mono'>aws_network_acl.bad</td></tr>
+          <tr><td class='mono nowrap'>1.1-A7</td><td>Network ACL allows all inbound traffic. CSCF requires explicit allowlisting (§ c).</td><td class='mono'>aws_network_acl_rule.bad_inbound</td></tr>
+          <tr><td class='mono nowrap'>1.1-A8</td><td>Default NACL allows all outbound traffic. CSCF requires outbound connectivity limited (§ c).</td><td class='mono'>aws_default_network_acl.bad</td></tr>
+          <tr><td class='mono nowrap'>1.1-A8</td><td>Network ACL allows all outbound traffic. CSCF requires outbound connectivity limited (§ c).</td><td class='mono'>aws_network_acl.bad</td></tr>
+          <tr><td class='mono nowrap'>1.1-A9</td><td>No VPC Flow Log capturing ALL traffic is configured. CSCF requires boundary connections to be logged (§ c, cross-ref: 6.4).</td><td class='mono'></td></tr>
+        </tbody>
+      </table>
+    </section>
+    <section class="control-detail">
+      <h3>Control 1.2: Operating System Privileged Account Control
+        <span class="count">3 finding(s)</span></h3>
+      <table class="findings">
+        <thead><tr><th>Assertion</th><th>Finding</th><th>Resource</th></tr></thead>
+        <tbody>
+          <tr><td class='mono nowrap'>1.2-A1</td><td>VM uses a static SSH key pair (key_name set); privileged access should go through SSM Session Manager, not a persistent shared credential (§ Control Statement).</td><td class='mono'>aws_instance.bad_jump</td></tr>
+          <tr><td class='mono nowrap'>1.2-A2</td><td>VM has no IAM instance profile; SSM-managed, auditable admin access is not available (§ Control Statement).</td><td class='mono'>aws_instance.bad_jump</td></tr>
+          <tr><td class='mono nowrap'>1.2-A3</td><td>SSM Session Manager preferences do not enable session logging (no CloudWatch log group or S3 bucket); privileged sessions are not monitored (§ guidelines, cross-ref 6.4).</td><td class='mono'>aws_ssm_document.bad_session</td></tr>
+        </tbody>
+      </table>
+    </section>
+    <section class="control-detail">
+      <h3>Control 1.3: Virtualisation or Cloud Platform Protection
+        <span class="count">5 finding(s)</span></h3>
+      <table class="findings">
+        <thead><tr><th>Assertion</th><th>Finding</th><th>Resource</th></tr></thead>
+        <tbody>
+          <tr><td class='mono nowrap'>1.3-A1</td><td>VM does not enforce IMDSv2 (token-required metadata). The instance metadata service is a credential-theft / lateral-movement vector (§ guidelines).</td><td class='mono'>aws_instance.bad_jump</td></tr>
+          <tr><td class='mono nowrap'>1.3-A2</td><td>VM allows an IMDS hop limit of 2 (&gt; 1), enabling metadata relay beyond the instance to containers/proxies (§ guidelines).</td><td class='mono'>aws_instance.bad_jump</td></tr>
+          <tr><td class='mono nowrap'>1.3-A3</td><td>VM root volume is not encrypted at rest (§ guidelines).</td><td class='mono'>aws_instance.bad_jump</td></tr>
+          <tr><td class='mono nowrap'>1.3-A4</td><td>Swift EBS volume is not encrypted at rest (§ guidelines).</td><td class='mono'>aws_ebs_volume.bad_data</td></tr>
+          <tr><td class='mono nowrap'>1.3-A5</td><td>VM uses &#x27;default&#x27; tenancy; platform-level VM isolation for the Swift secure zone requires dedicated or host tenancy (§ guidelines).</td><td class='mono'>aws_instance.bad_jump</td></tr>
+        </tbody>
+      </table>
+    </section>
+    <section class="control-detail">
+      <h3>Control 1.4: Restriction of Internet Access
+        <span class="count">7 finding(s)</span></h3>
+      <table class="findings">
+        <thead><tr><th>Assertion</th><th>Finding</th><th>Resource</th></tr></thead>
+        <tbody>
+          <tr><td class='mono nowrap'>1.4-A1</td><td>Secure-zone route sends all IPv4 traffic (0.0.0.0/0) to a NAT gateway. Internet access from the secure zone must be highly restricted or blocked (§ a).</td><td class='mono'>aws_route.bad_nat</td></tr>
+          <tr><td class='mono nowrap'>1.4-A2</td><td>Secure-zone route sends all IPv6 traffic (::/0) to an egress-only Internet gateway (§ a).</td><td class='mono'>aws_route.bad_eigw</td></tr>
+          <tr><td class='mono nowrap'>1.4-A3</td><td>Security group allows direct outbound port 443 to 0.0.0.0/0. Internet browsing/egress from the secure zone must go through a controlled proxy (§ a).</td><td class='mono'>aws_security_group.bad_browsing</td></tr>
+          <tr><td class='mono nowrap'>1.4-A3</td><td>Security group allows direct outbound port 80 to 0.0.0.0/0. Internet browsing/egress from the secure zone must go through a controlled proxy (§ a).</td><td class='mono'>aws_security_group.bad_browsing</td></tr>
+          <tr><td class='mono nowrap'>1.4-A4</td><td>No VPC endpoint is configured. AWS-service access from the secure zone should use VPC endpoints rather than egressing to the Internet (§ a, § b).</td><td class='mono'></td></tr>
+          <tr><td class='mono nowrap'>1.4-A5</td><td>Jump-server/operator instance auto-assigns a public IP. It must have no direct Internet exposure (§ a, § b).</td><td class='mono'>aws_instance.bad_jump</td></tr>
+          <tr><td class='mono nowrap'>1.4-A6</td><td>Jump server&#x27;s security group permits outbound Internet access (0.0.0.0/0). The jump server must have no Internet access (§ a).</td><td class='mono'>aws_instance.bad_jump, sg: aws_security_group.bad_browsing</td></tr>
+        </tbody>
+      </table>
+    </section>
+    <section class="control-detail">
+      <h3>Control 2.1: Internal Data Flow Security
+        <span class="count">14 finding(s)</span></h3>
+      <table class="findings">
+        <thead><tr><th>Assertion</th><th>Finding</th><th>Resource</th></tr></thead>
+        <tbody>
+          <tr><td class='mono nowrap'>2.1-A10</td><td>OpenSearch TLS policy &#x27;Policy-Min-TLS-1-0-2019-07&#x27; does not enforce TLS 1.2+ (§ Impl. Guidelines).</td><td class='mono'>aws_opensearch_domain.bad</td></tr>
+          <tr><td class='mono nowrap'>2.1-A11</td><td>OpenSearch does not encrypt node-to-node traffic (§ Impl. Guidelines).</td><td class='mono'>aws_opensearch_domain.bad</td></tr>
+          <tr><td class='mono nowrap'>2.1-A13</td><td>API Gateway domain does not enforce TLS 1.2 (§ Impl. Guidelines).</td><td class='mono'>aws_api_gateway_domain_name.bad</td></tr>
+          <tr><td class='mono nowrap'>2.1-A14</td><td>KMS key does not have automatic rotation enabled (§ Impl. Guidelines).</td><td class='mono'>aws_kms_key.bad</td></tr>
+          <tr><td class='mono nowrap'>2.1-A15</td><td>KMS key deletion window is 7 days, minimum 14 required (§ Impl. Guidelines).</td><td class='mono'>aws_kms_key.bad</td></tr>
+          <tr><td class='mono nowrap'>2.1-A1</td><td>Load balancer listener uses unencrypted protocol &#x27;HTTP&#x27;. All Swift data flows must use TLS (§ Impl. Guidelines).</td><td class='mono'>aws_lb_listener.bad_http</td></tr>
+          <tr><td class='mono nowrap'>2.1-A2</td><td>SSL policy &#x27;ELBSecurityPolicy-2016-08&#x27; does not enforce TLS 1.2+ with current algorithms (§ Impl. Guidelines).</td><td class='mono'>aws_lb_listener.bad_https</td></tr>
+          <tr><td class='mono nowrap'>2.1-A3</td><td>PostgreSQL parameter group does not enforce SSL (rds.force_ssl != 1) (§ Impl. Guidelines).</td><td class='mono'>aws_db_parameter_group.bad_pg</td></tr>
+          <tr><td class='mono nowrap'>2.1-A4</td><td>MySQL/MariaDB parameter group does not enforce SSL (require_secure_transport != 1) (§ Impl. Guidelines).</td><td class='mono'>aws_db_parameter_group.bad_mysql</td></tr>
+          <tr><td class='mono nowrap'>2.1-A5</td><td>Redshift parameter group does not enforce SSL (require_ssl != true) (§ Impl. Guidelines).</td><td class='mono'>aws_redshift_parameter_group.bad</td></tr>
+          <tr><td class='mono nowrap'>2.1-A6</td><td>ElastiCache does not enforce in-transit encryption (§ Impl. Guidelines).</td><td class='mono'>aws_elasticache_replication_group.bad</td></tr>
+          <tr><td class='mono nowrap'>2.1-A7</td><td>MSK allows non-TLS client-broker communication (&#x27;TLS_PLAINTEXT&#x27;). Must be &#x27;TLS&#x27; (§ Impl. Guidelines).</td><td class='mono'>aws_msk_cluster.bad</td></tr>
+          <tr><td class='mono nowrap'>2.1-A8</td><td>MSK does not encrypt inter-broker traffic (§ Impl. Guidelines).</td><td class='mono'>aws_msk_cluster.bad</td></tr>
+          <tr><td class='mono nowrap'>2.1-A9</td><td>OpenSearch does not enforce HTTPS (§ Impl. Guidelines).</td><td class='mono'>aws_opensearch_domain.bad</td></tr>
+        </tbody>
+      </table>
+    </section>
+    <section class="control-detail">
+      <h3>Control 2.2: Security Updates
+        <span class="count">2 finding(s)</span></h3>
+      <table class="findings">
+        <thead><tr><th>Assertion</th><th>Finding</th><th>Resource</th></tr></thead>
+        <tbody>
+          <tr><td class='mono nowrap'>2.2-A1</td><td>No SSM Patch Manager baseline is configured; a security-update mechanism must be in place (§ mandatory software updates).</td><td class='mono'></td></tr>
+          <tr><td class='mono nowrap'>2.2-A2</td><td>No SSM patch-automation association is scheduled; security updates must be applied on a defined schedule (§ security updates).</td><td class='mono'></td></tr>
+        </tbody>
+      </table>
+    </section>
+    <section class="control-detail">
+      <h3>Control 2.3: System Hardening
+        <span class="count">4 finding(s)</span></h3>
+      <table class="findings">
+        <thead><tr><th>Assertion</th><th>Finding</th><th>Resource</th></tr></thead>
+        <tbody>
+          <tr><td class='mono nowrap'>2.3-A1</td><td>RDS instance is publicly accessible; attack surface must be minimised (§ adjust vulnerable defaults).</td><td class='mono'>aws_db_instance.bad</td></tr>
+          <tr><td class='mono nowrap'>2.3-A2</td><td>S3 public-access block does not enable all four settings; public exposure is not fully blocked (§ adjust vulnerable defaults).</td><td class='mono'>aws_s3_bucket_public_access_block.bad_trail</td></tr>
+          <tr><td class='mono nowrap'>2.3-A3</td><td>OpenSearch domain is not VPC-attached (public endpoint); attack surface must be minimised (§ adjust vulnerable defaults).</td><td class='mono'>aws_opensearch_domain.bad</td></tr>
+          <tr><td class='mono nowrap'>2.3-A4</td><td>ECS task definition runs a privileged container (&#x27;bad-agent&#x27;); disable unnecessary capabilities (§ least privilege).</td><td class='mono'>aws_ecs_task_definition.bad_privileged</td></tr>
+        </tbody>
+      </table>
+    </section>
+    <section class="control-detail">
+      <h3>Control 2.4: Back Office Data Flow Security
+        <span class="count">4 finding(s)</span></h3>
+      <table class="findings">
+        <thead><tr><th>Assertion</th><th>Finding</th><th>Resource</th></tr></thead>
+        <tbody>
+          <tr><td class='mono nowrap'>2.4-A1</td><td>Back-office VPN tunnel does not enforce AES-256 Phase-2 encryption on both tunnels (§ secure protocols).</td><td class='mono'>aws_vpn_connection.bad_back_office</td></tr>
+          <tr><td class='mono nowrap'>2.4-A2</td><td>Back-office VPN tunnel permits IKEv1 (or leaves the IKE version unset); IKEv2 is required (§ secure protocols).</td><td class='mono'>aws_vpn_connection.bad_back_office</td></tr>
+          <tr><td class='mono nowrap'>2.4-A3</td><td>Back-office API domain does not enforce mutual TLS; the connecting party&#x27;s authenticity is not verified (§ authentication).</td><td class='mono'>aws_api_gateway_domain_name.bad</td></tr>
+          <tr><td class='mono nowrap'>2.4-A4</td><td>Direct Connect does not enforce MACsec encryption (encryption_mode=&#x27;no_encrypt&#x27;); back-office link confidentiality is not guaranteed (§ confidentiality).</td><td class='mono'>aws_dx_connection.bad_back_office</td></tr>
+        </tbody>
+      </table>
+    </section>
+    <section class="control-detail">
+      <h3>Control 2.6: Operator Session Confidentiality and Integrity
+        <span class="count">3 finding(s)</span></h3>
+      <table class="findings">
+        <thead><tr><th>Assertion</th><th>Finding</th><th>Resource</th></tr></thead>
+        <tbody>
+          <tr><td class='mono nowrap'>2.6-A1</td><td>Client VPN session timeout exceeds the minimum (8h); operator sessions must be limited to the minimal necessary time frame (§ inactivity lock-out).</td><td class='mono'>aws_ec2_client_vpn_endpoint.bad</td></tr>
+          <tr><td class='mono nowrap'>2.6-A2</td><td>SSM Session Manager does not enforce an idle-session timeout of 20 minutes or less (§ inactivity lock-out).</td><td class='mono'>aws_ssm_document.bad_session</td></tr>
+          <tr><td class='mono nowrap'>2.6-A3</td><td>SSM Session Manager does not encrypt session data with a KMS key; operator-session confidentiality is not protected (§ Control Statement).</td><td class='mono'>aws_ssm_document.bad_session</td></tr>
+        </tbody>
+      </table>
+    </section>
+    <section class="control-detail">
+      <h3>Control 2.7: Vulnerability Scanning
+        <span class="count">1 finding(s)</span></h3>
+      <table class="findings">
+        <thead><tr><th>Assertion</th><th>Finding</th><th>Resource</th></tr></thead>
+        <tbody>
+          <tr><td class='mono nowrap'>2.7-A1</td><td>Amazon Inspector is not enabled for EC2 vulnerability scanning; a continuous scanning mechanism must be in place (§ Control Statement).</td><td class='mono'></td></tr>
+        </tbody>
+      </table>
+    </section>
+    <section class="control-detail">
+      <h3>Control 4.1: Password Policy
+        <span class="count">17 finding(s)</span></h3>
+      <table class="findings">
+        <thead><tr><th>Assertion</th><th>Finding</th><th>Resource</th></tr></thead>
+        <tbody>
+          <tr><td class='mono nowrap'>4.1-A10</td><td>Users cannot change own passwords. Lockout remedy required (§ Impl. Guidelines).</td><td class='mono'>aws_iam_account_password_policy.bad</td></tr>
+          <tr><td class='mono nowrap'>4.1-A11</td><td>Cognito password min length is 6, must be &gt;= 14 (§ Impl. Guidelines).</td><td class='mono'>aws_cognito_user_pool.bad</td></tr>
+          <tr><td class='mono nowrap'>4.1-A12</td><td>Cognito does not require all character types (§ Impl. Guidelines).</td><td class='mono'>aws_cognito_user_pool.bad</td></tr>
+          <tr><td class='mono nowrap'>4.1-A13</td><td>Cognito temp password validity is 30 days, must be &lt;= 7 (§ Impl. Guidelines).</td><td class='mono'>aws_cognito_user_pool.bad</td></tr>
+          <tr><td class='mono nowrap'>4.1-A14</td><td>RDS not using Secrets Manager for master password (§ Impl. Guidelines).</td><td class='mono'>aws_db_instance.bad</td></tr>
+          <tr><td class='mono nowrap'>4.1-A15</td><td>Redshift not using Secrets Manager for master password (§ Impl. Guidelines).</td><td class='mono'>aws_redshift_cluster.bad</td></tr>
+          <tr><td class='mono nowrap'>4.1-A16</td><td>Secrets rotation is 180 days, must be &lt;= 90 (§ Impl. Guidelines).</td><td class='mono'>aws_secretsmanager_secret_rotation.bad</td></tr>
+          <tr><td class='mono nowrap'>4.1-A17</td><td>OpenSearch fine-grained access control not enabled (§ Impl. Guidelines).</td><td class='mono'>aws_opensearch_domain.bad</td></tr>
+          <tr><td class='mono nowrap'>4.1-A19</td><td>Static IAM access key defined for user &#x27;bad-service-user&#x27;. Use role-based credentials or Secrets Manager with rotation (§ Impl. Guidelines).</td><td class='mono'>aws_iam_access_key.bad</td></tr>
+          <tr><td class='mono nowrap'>4.1-A2</td><td>Password min length is 8, must be &gt;= 14 (§ Impl. Guidelines).</td><td class='mono'>aws_iam_account_password_policy.bad</td></tr>
+          <tr><td class='mono nowrap'>4.1-A3</td><td>Password policy does not require uppercase (§ Impl. Guidelines).</td><td class='mono'>aws_iam_account_password_policy.bad</td></tr>
+          <tr><td class='mono nowrap'>4.1-A4</td><td>Password policy does not require lowercase (§ Impl. Guidelines).</td><td class='mono'>aws_iam_account_password_policy.bad</td></tr>
+          <tr><td class='mono nowrap'>4.1-A5</td><td>Password policy does not require numbers (§ Impl. Guidelines).</td><td class='mono'>aws_iam_account_password_policy.bad</td></tr>
+          <tr><td class='mono nowrap'>4.1-A6</td><td>Password policy does not require symbols (§ Impl. Guidelines).</td><td class='mono'>aws_iam_account_password_policy.bad</td></tr>
+          <tr><td class='mono nowrap'>4.1-A7</td><td>Password max age is 0 (never expires). Must be 1-90 days (§ Impl. Guidelines).</td><td class='mono'>aws_iam_account_password_policy.bad</td></tr>
+          <tr><td class='mono nowrap'>4.1-A8</td><td>Password reuse prevention is 3, must be &gt;= 12 (§ Impl. Guidelines).</td><td class='mono'>aws_iam_account_password_policy.bad</td></tr>
+          <tr><td class='mono nowrap'>4.1-A9</td><td>Hard expiry not enforced. Expired passwords must force change (§ Impl. Guidelines).</td><td class='mono'>aws_iam_account_password_policy.bad</td></tr>
+        </tbody>
+      </table>
+    </section>
+    <section class="control-detail">
+      <h3>Control 4.2: Multi-Factor Authentication
+        <span class="count">4 finding(s)</span></h3>
+      <table class="findings">
+        <thead><tr><th>Assertion</th><th>Finding</th><th>Resource</th></tr></thead>
+        <tbody>
+          <tr><td class='mono nowrap'>4.2-A1</td><td>Cognito user pool does not enforce MFA (mfa_configuration=&#x27;OFF&#x27;); interactive user access requires MFA (§ Control Statement).</td><td class='mono'>aws_cognito_user_pool.bad</td></tr>
+          <tr><td class='mono nowrap'>4.2-A2</td><td>Cognito user pool does not enable a TOTP software-token second factor; a strong possession factor is required (SMS-only is insufficient) (§ guidelines).</td><td class='mono'>aws_cognito_user_pool.bad</td></tr>
+          <tr><td class='mono nowrap'>4.2-A3</td><td>RDS instance does not enable IAM database authentication; database login should not rely solely on a single static password (§ Control Statement).</td><td class='mono'>aws_db_instance.bad</td></tr>
+          <tr><td class='mono nowrap'>4.2-A4</td><td>OpenSearch domain does not use federated (Cognito/SAML) authentication; dashboard access should be MFA-backed via an IdP, not an internal user database alone (§ Control Statement).</td><td class='mono'>aws_opensearch_domain.bad</td></tr>
+        </tbody>
+      </table>
+    </section>
+    <section class="control-detail">
+      <h3>Control 5.1: Logical Access Control
+        <span class="count">31 finding(s)</span></h3>
+      <table class="findings">
+        <thead><tr><th>Assertion</th><th>Finding</th><th>Resource</th></tr></thead>
+        <tbody>
+          <tr><td class='mono nowrap'>5.1-A10</td><td>iam:PassRole on Resource &#x27;*&#x27;. Must be scoped to specific role ARNs (§ Least Privilege, § SoD).</td><td class='mono'>aws_iam_policy.bad_passrole</td></tr>
+          <tr><td class='mono nowrap'>5.1-A12</td><td>Policy grants both user creation and policy attachment, SoD violation (§ Separation of Duties).</td><td class='mono'>aws_iam_policy.bad_sod</td></tr>
+          <tr><td class='mono nowrap'>5.1-A13</td><td>Policy grants both role creation and role policy attachment, SoD violation (§ Separation of Duties).</td><td class='mono'>aws_iam_policy.bad_sod</td></tr>
+          <tr><td class='mono nowrap'>5.1-A14</td><td>Policy grants both policy authoring and attachment, SoD violation (§ Separation of Duties).</td><td class='mono'>aws_iam_policy.bad_sod</td></tr>
+          <tr><td class='mono nowrap'>5.1-A15</td><td>Policy grants both security config and user provisioning, SoD violation (§ Separation of Duties).</td><td class='mono'>aws_iam_policy.bad_sod</td></tr>
+          <tr><td class='mono nowrap'>5.1-A16</td><td>Lambda execution role has arn:aws:iam::aws:policy/AdministratorAccess attached (§ Least Privilege).</td><td class='mono'>aws_iam_role_policy_attachment.bad_lambda, lambda: aws_lambda_function.bad</td></tr>
+          <tr><td class='mono nowrap'>5.1-A17</td><td>ECS task role has arn:aws:iam::aws:policy/PowerUserAccess attached (§ Least Privilege).</td><td class='mono'>aws_iam_role_policy_attachment.bad_ecs, task: aws_ecs_task_definition.bad</td></tr>
+          <tr><td class='mono nowrap'>5.1-A18</td><td>Cross-account trust without ExternalId condition. Prevents confused deputy (§ Account Review, § Need-to-know).</td><td class='mono'>aws_iam_role.bad_cross</td></tr>
+          <tr><td class='mono nowrap'>5.1-A1</td><td>IAM policy grants wildcard Action (*) with Allow (§ Need-to-know).</td><td class='mono'>aws_iam_group_policy.bad_ops</td></tr>
+          <tr><td class='mono nowrap'>5.1-A1</td><td>IAM policy grants wildcard Action (*) with Allow (§ Need-to-know).</td><td class='mono'>aws_iam_policy.bad_wildcard</td></tr>
+          <tr><td class='mono nowrap'>5.1-A1</td><td>IAM policy grants wildcard Action (*) with Allow (§ Need-to-know).</td><td class='mono'>aws_iam_role_policy.bad_jump</td></tr>
+          <tr><td class='mono nowrap'>5.1-A2</td><td>IAM policy grants sensitive action &#x27;iam:*&#x27; on Resource &#x27;*&#x27; (§ Need-to-know, § Least Privilege).</td><td class='mono'>aws_iam_group_policy.bad_ops</td></tr>
+          <tr><td class='mono nowrap'>5.1-A2</td><td>IAM policy grants sensitive action &#x27;iam:AttachGroupPolicy&#x27; on Resource &#x27;*&#x27; (§ Need-to-know, § Least Privilege).</td><td class='mono'>aws_iam_policy.bad_sod</td></tr>
+          <tr><td class='mono nowrap'>5.1-A2</td><td>IAM policy grants sensitive action &#x27;iam:AttachRolePolicy&#x27; on Resource &#x27;*&#x27; (§ Need-to-know, § Least Privilege).</td><td class='mono'>aws_iam_policy.bad_sod</td></tr>
+          <tr><td class='mono nowrap'>5.1-A2</td><td>IAM policy grants sensitive action &#x27;iam:AttachUserPolicy&#x27; on Resource &#x27;*&#x27; (§ Need-to-know, § Least Privilege).</td><td class='mono'>aws_iam_policy.bad_sod</td></tr>
+          <tr><td class='mono nowrap'>5.1-A2</td><td>IAM policy grants sensitive action &#x27;iam:CreatePolicy&#x27; on Resource &#x27;*&#x27; (§ Need-to-know, § Least Privilege).</td><td class='mono'>aws_iam_policy.bad_sod</td></tr>
+          <tr><td class='mono nowrap'>5.1-A2</td><td>IAM policy grants sensitive action &#x27;iam:CreateRole&#x27; on Resource &#x27;*&#x27; (§ Need-to-know, § Least Privilege).</td><td class='mono'>aws_iam_policy.bad_sod</td></tr>
+          <tr><td class='mono nowrap'>5.1-A2</td><td>IAM policy grants sensitive action &#x27;iam:CreateUser&#x27; on Resource &#x27;*&#x27; (§ Need-to-know, § Least Privilege).</td><td class='mono'>aws_iam_policy.bad_sod</td></tr>
+          <tr><td class='mono nowrap'>5.1-A2</td><td>IAM policy grants sensitive action &#x27;iam:PassRole&#x27; on Resource &#x27;*&#x27; (§ Need-to-know, § Least Privilege).</td><td class='mono'>aws_iam_policy.bad_passrole</td></tr>
+          <tr><td class='mono nowrap'>5.1-A2</td><td>IAM policy grants sensitive action &#x27;iam:UpdateAccountPasswordPolicy&#x27; on Resource &#x27;*&#x27; (§ Need-to-know, § Least Privilege).</td><td class='mono'>aws_iam_policy.bad_sod</td></tr>
+          <tr><td class='mono nowrap'>5.1-A2</td><td>IAM policy grants sensitive action &#x27;s3:*&#x27; on Resource &#x27;*&#x27; (§ Need-to-know, § Least Privilege).</td><td class='mono'>aws_iam_user_policy.bad</td></tr>
+          <tr><td class='mono nowrap'>5.1-A2</td><td>IAM policy grants sensitive action &#x27;sts:AssumeRole&#x27; on Resource &#x27;*&#x27; (§ Need-to-know, § Least Privilege).</td><td class='mono'>aws_iam_group_policy.bad_ops</td></tr>
+          <tr><td class='mono nowrap'>5.1-A3</td><td>Managed policy directly attached to user &#x27;bad-service-user&#x27;. Use IAM groups or role assumption (§ Need-to-know).</td><td class='mono'>aws_iam_user_policy_attachment.bad</td></tr>
+          <tr><td class='mono nowrap'>5.1-A4</td><td>Inline policy on user &#x27;bad-service-user&#x27;. Use groups with managed policies (§ Need-to-know).</td><td class='mono'>aws_iam_user_policy.bad</td></tr>
+          <tr><td class='mono nowrap'>5.1-A5</td><td>AdministratorAccess attached to user (§ Least Privilege).</td><td class='mono'>aws_iam_user_policy_attachment.bad</td></tr>
+          <tr><td class='mono nowrap'>5.1-A6</td><td>AdministratorAccess attached to role (§ Least Privilege).</td><td class='mono'>aws_iam_role_policy_attachment.bad_admin</td></tr>
+          <tr><td class='mono nowrap'>5.1-A6</td><td>AdministratorAccess attached to role (§ Least Privilege).</td><td class='mono'>aws_iam_role_policy_attachment.bad_lambda</td></tr>
+          <tr><td class='mono nowrap'>5.1-A7</td><td>AdministratorAccess attached to group (§ Least Privilege).</td><td class='mono'>aws_iam_group_policy_attachment.bad</td></tr>
+          <tr><td class='mono nowrap'>5.1-A8</td><td>PowerUserAccess attached. Grants all actions except IAM: exceeds least privilege (§ Least Privilege).</td><td class='mono'>aws_iam_role_policy_attachment.bad_ecs</td></tr>
+          <tr><td class='mono nowrap'>5.1-A8</td><td>PowerUserAccess attached. Grants all actions except IAM: exceeds least privilege (§ Least Privilege).</td><td class='mono'>aws_iam_role_policy_attachment.bad_power</td></tr>
+          <tr><td class='mono nowrap'>5.1-A9</td><td>Trust policy allows any principal (Principal: &#x27;*&#x27;). Access must be scoped (§ Need-to-know).</td><td class='mono'>aws_iam_role.bad_wildcard_trust</td></tr>
+        </tbody>
+      </table>
+    </section>
+    <section class="control-detail">
+      <h3>Control 5.4: Password Repository Protection
+        <span class="count">5 finding(s)</span></h3>
+      <table class="findings">
+        <thead><tr><th>Assertion</th><th>Finding</th><th>Resource</th></tr></thead>
+        <tbody>
+          <tr><td class='mono nowrap'>5.4-A1</td><td>Secret is not encrypted with a customer-managed KMS key; the password repository must use a controlled key (§ logical storage).</td><td class='mono'>aws_secretsmanager_secret.bad</td></tr>
+          <tr><td class='mono nowrap'>5.4-A2</td><td>SSM parameter storing a credential is type &#x27;String&#x27;, not SecureString (plaintext storage) (§ logical storage).</td><td class='mono'>aws_ssm_parameter.bad_password</td></tr>
+          <tr><td class='mono nowrap'>5.4-A3</td><td>Secret resource policy grants access to any principal (&#x27;*&#x27;); repository access must be need-to-know (§ Control Statement).</td><td class='mono'>aws_secretsmanager_secret_policy.bad_open</td></tr>
+          <tr><td class='mono nowrap'>5.4-A4</td><td>RDS master password is hardcoded inline; use Secrets-Manager-managed credentials (manage_master_user_password) instead (§ no hardcoded passwords).</td><td class='mono'>aws_db_instance.bad</td></tr>
+          <tr><td class='mono nowrap'>5.4-A5</td><td>Lambda environment variable &#x27;DB_PASSWORD&#x27; hardcodes a password-like value; reference a Secrets Manager ARN instead (§ no hardcoded passwords).</td><td class='mono'>aws_lambda_function.bad</td></tr>
+        </tbody>
+      </table>
+    </section>
+    <section class="control-detail">
+      <h3>Control 6.4: Logging and Monitoring
+        <span class="count">22 finding(s)</span></h3>
+      <table class="findings">
+        <thead><tr><th>Assertion</th><th>Finding</th><th>Resource</th></tr></thead>
+        <tbody>
+          <tr><td class='mono nowrap'>6.4-A10</td><td>CloudTrail log file validation disabled. Required for tamper-evident forensics (§ Log retention).</td><td class='mono'>aws_cloudtrail.bad</td></tr>
+          <tr><td class='mono nowrap'>6.4-A11</td><td>CloudTrail logs not encrypted with KMS. Required to protect from enterprise admin compromise (§ Log retention).</td><td class='mono'>aws_cloudtrail.bad</td></tr>
+          <tr><td class='mono nowrap'>6.4-A12</td><td>CloudWatch log group not KMS-encrypted. Audit logs must be protected from credential compromise (§ Log retention).</td><td class='mono'>aws_cloudwatch_log_group.bad</td></tr>
+          <tr><td class='mono nowrap'>6.4-A13</td><td>S3 bucket does not block all public access. Audit logs must not be publicly accessible (§ Log retention).</td><td class='mono'>aws_s3_bucket_public_access_block.bad_trail</td></tr>
+          <tr><td class='mono nowrap'>6.4-A14</td><td>S3 bucket versioning not enabled. Required for log recovery and forensic integrity (§ Log retention).</td><td class='mono'>aws_s3_bucket_versioning.bad_trail</td></tr>
+          <tr><td class='mono nowrap'>6.4-A15</td><td>S3 log bucket Object Lock not enabled. Prevents log deletion during retention (§ Log retention).</td><td class='mono'>aws_s3_bucket.bad_trail</td></tr>
+          <tr><td class='mono nowrap'>6.4-A16</td><td>S3 lifecycle expires objects in 30 days, need &gt;= 365 (§ Log retention).</td><td class='mono'>aws_s3_bucket_lifecycle_configuration.bad_trail</td></tr>
+          <tr><td class='mono nowrap'>6.4-A18</td><td>S3 bucket not using KMS encryption (algorithm: &#x27;AES256&#x27;). Audit logs must be encrypted at rest (§ Log retention).</td><td class='mono'>aws_s3_bucket_server_side_encryption_configuration.bad_trail</td></tr>
+          <tr><td class='mono nowrap'>6.4-A19</td><td>No CloudWatch metric filter for root account usage. CSCF requires monitoring of privileged account activity (§ Monitoring).</td><td class='mono'></td></tr>
+          <tr><td class='mono nowrap'>6.4-A1</td><td>No multi-region CloudTrail configured. CSCF requires logging of security events across the entire Swift environment (§ Overall goals, § Logging).</td><td class='mono'></td></tr>
+          <tr><td class='mono nowrap'>6.4-A20</td><td>No CloudWatch metric filter for IAM policy changes. CSCF requires logging of changes to user groups and access (§ Logging, § Monitoring).</td><td class='mono'></td></tr>
+          <tr><td class='mono nowrap'>6.4-A21</td><td>No CloudWatch metric filter for console sign-in failures. CSCF requires logging of failed login attempts (§ Logging).</td><td class='mono'></td></tr>
+          <tr><td class='mono nowrap'>6.4-A22</td><td>Alarm has no actions configured. Suspicious activity must be routed to the security team via SNS (§ Monitoring).</td><td class='mono'>aws_cloudwatch_metric_alarm.bad</td></tr>
+          <tr><td class='mono nowrap'>6.4-A23</td><td>No GuardDuty detector enabled. CSCF requires continuous threat detection (§ Overall goals, § Monitoring).</td><td class='mono'></td></tr>
+          <tr><td class='mono nowrap'>6.4-A24</td><td>No AWS Config configuration recorder. CSCF requires continuous compliance monitoring (§ Logging, § Monitoring).</td><td class='mono'></td></tr>
+          <tr><td class='mono nowrap'>6.4-A2</td><td>CloudTrail logging disabled (§ Logging).</td><td class='mono'>aws_cloudtrail.bad</td></tr>
+          <tr><td class='mono nowrap'>6.4-A3</td><td>CloudTrail does not capture global events (IAM, STS). Required for account usage traceability (§ Logging).</td><td class='mono'>aws_cloudtrail.bad</td></tr>
+          <tr><td class='mono nowrap'>6.4-A4</td><td>CloudTrail event selector read_write_type is &#x27;WriteOnly&#x27;, must be &#x27;All&#x27; (§ Logging).</td><td class='mono'>aws_cloudtrail.bad</td></tr>
+          <tr><td class='mono nowrap'>6.4-A5</td><td>No VPC Flow Log capturing ALL traffic. CSCF requires firewall and network-level logging (§ Logging, cross-ref: 1.1).</td><td class='mono'></td></tr>
+          <tr><td class='mono nowrap'>6.4-A6</td><td>RDS instance does not export any logs to CloudWatch. CSCF requires database logs (§ Logging).</td><td class='mono'>aws_db_instance.bad</td></tr>
+          <tr><td class='mono nowrap'>6.4-A7</td><td>CloudTrail not forwarding to CloudWatch. Required for active monitoring and alerting (§ Overall goals, § Monitoring).</td><td class='mono'>aws_cloudtrail.bad</td></tr>
+          <tr><td class='mono nowrap'>6.4-A8</td><td>CloudWatch log group retention is 30 days, need &gt;= 365 for audit logs (§ Log retention).</td><td class='mono'>aws_cloudwatch_log_group.bad</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+  <h2>Undetermined Checks</h2>
+    <section class="control-detail">
+      <p>The following assertions could not be evaluated against this plan: the
+      plan neither satisfies nor violates them. The cause is given for each, a
+      value Terraform does not resolve until apply, a resource whose scope comes
+      from a parent the plan does not contain, or an absence that a plan
+      describing only a change cannot decide. They are recorded here as
+      <strong>undetermined</strong>: an assessor must verify them against the
+      deployed environment. Treating them as passes would overstate what a
+      pre-deployment gate can attest.</p>
+      <table class="findings">
+        <thead><tr><th>Assertion</th><th>Control</th><th>Resource</th>
+          <th>Unresolved attribute</th><th>Cause</th></tr></thead>
+        <tbody>
+          <tr><td class='mono nowrap'>1.1-A15</td><td class='mono'>1.1</td><td class='mono'>aws_s3_bucket_policy.bad_data</td><td class='mono'>policy</td><td>value unknown until apply</td></tr>
+          <tr><td class='mono nowrap'>1.1-A15</td><td class='mono'>1.1</td><td class='mono'>aws_s3_bucket_policy.bad_open</td><td class='mono'>policy</td><td>value unknown until apply</td></tr>
+          <tr><td class='mono nowrap'>1.1-A15</td><td class='mono'>1.1</td><td class='mono'>aws_s3_bucket_policy.bad_trail</td><td class='mono'>policy</td><td>value unknown until apply</td></tr>
+          <tr><td class='mono nowrap'>2.1-A12</td><td class='mono'>2.1</td><td class='mono'>aws_efs_file_system_policy.bad</td><td class='mono'>policy</td><td>value unknown until apply</td></tr>
+          <tr><td class='mono nowrap'>2.1-A16</td><td class='mono'>2.1</td><td class='mono'>aws_s3_bucket_policy.bad_data</td><td class='mono'>policy</td><td>value unknown until apply</td></tr>
+          <tr><td class='mono nowrap'>2.1-A16</td><td class='mono'>2.1</td><td class='mono'>aws_s3_bucket_policy.bad_open</td><td class='mono'>policy</td><td>value unknown until apply</td></tr>
+          <tr><td class='mono nowrap'>2.1-A16</td><td class='mono'>2.1</td><td class='mono'>aws_s3_bucket_policy.bad_trail</td><td class='mono'>policy</td><td>value unknown until apply</td></tr>
+          <tr><td class='mono nowrap'>5.1-A11</td><td class='mono'>5.1</td><td class='mono'>aws_s3_bucket_policy.bad_data</td><td class='mono'>policy</td><td>value unknown until apply</td></tr>
+          <tr><td class='mono nowrap'>5.1-A11</td><td class='mono'>5.1</td><td class='mono'>aws_s3_bucket_policy.bad_open</td><td class='mono'>policy</td><td>value unknown until apply</td></tr>
+          <tr><td class='mono nowrap'>5.1-A11</td><td class='mono'>5.1</td><td class='mono'>aws_s3_bucket_policy.bad_trail</td><td class='mono'>policy</td><td>value unknown until apply</td></tr>
+          <tr><td class='mono nowrap'>6.4-A17</td><td class='mono'>6.4</td><td class='mono'>aws_s3_bucket_policy.bad_trail</td><td class='mono'>policy</td><td>value unknown until apply</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+
+  <footer class="doc">
+    <p><strong>Integrity.</strong> This attestation was rendered from a
+    machine-generated evidence artefact (schema
+    <span class="mono">swift-cscf-evidence/v1</span>). The evaluated
+    Terraform plan is identified by SHA-256
+    <span class="mono">96f2360d45d789b6ab0d1054409aebb9d3dae22e9b26706fdbd65632c908e567</span>; any change to the
+    plan changes this digest. Findings are produced by deterministic OPA/Rego policy
+    evaluation, not manual inspection.</p>
+    <p>Generated by the SWIFT CSCF Phase II attestation pipeline
+    (<span class="mono">gate.py</span>, then <span class="mono">report.py</span>).
+    For independent assessor review; not a substitute for a formal SWIFT CSP assessment.</p>
+  </footer>
+</div>
+</body>
+</html>

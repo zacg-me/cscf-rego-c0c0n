@@ -1,0 +1,35 @@
+{
+  "format_version": "1.2",
+  "terraform_version": "1.15.5",
+  "swift_account_id": "111122223333",
+  "planned_values": {
+    "root_module": {
+      "resources": [
+        {
+          "address": "aws_ssm_patch_baseline.swift",
+          "mode": "managed",
+          "type": "aws_ssm_patch_baseline",
+          "name": "swift",
+          "values": {
+            "name": "swift-linux-baseline",
+            "operating_system": "AMAZON_LINUX_2",
+            "approved_patches_compliance_level": "CRITICAL",
+            "tags": { "swift:zone": "secure", "Project": "swift-cscf" }
+          }
+        },
+        {
+          "address": "aws_ssm_association.patch_scan",
+          "mode": "managed",
+          "type": "aws_ssm_association",
+          "name": "patch_scan",
+          "values": {
+            "name": "AWS-RunPatchBaseline",
+            "schedule_expression": "cron(0 2 ? * SUN *)",
+            "tags": { "swift:zone": "secure", "Project": "swift-cscf" }
+          }
+        }
+      ],
+      "child_modules": []
+    }
+  }
+}

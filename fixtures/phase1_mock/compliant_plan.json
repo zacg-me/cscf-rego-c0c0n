@@ -1,0 +1,1169 @@
+{
+  "format_version": "1.2",
+  "terraform_version": "1.9.0",
+  "swift_account_id": "123456789012",
+  "planned_values": {
+    "root_module": {
+      "resources": [
+        {
+          "address": "aws_default_security_group.swift",
+          "mode": "managed",
+          "type": "aws_default_security_group",
+          "name": "swift",
+          "provider_name": "registry.terraform.io/hashicorp/aws",
+          "schema_version": 0,
+          "values": {
+            "vpc_id": "vpc-swift-001",
+            "ingress": [],
+            "egress": [],
+            "tags": {
+              "swift:zone": "secure",
+              "Project": "swift-cscf"
+            }
+          }
+        },
+        {
+          "address": "aws_security_group.swift_app",
+          "mode": "managed",
+          "type": "aws_security_group",
+          "name": "swift_app",
+          "provider_name": "registry.terraform.io/hashicorp/aws",
+          "schema_version": 0,
+          "values": {
+            "name": "swift-app",
+            "vpc_id": "vpc-swift-001",
+            "ingress": [
+              {
+                "from_port": 22,
+                "to_port": 22,
+                "protocol": "tcp",
+                "cidr_blocks": [
+                  "10.200.0.0/16"
+                ],
+                "ipv6_cidr_blocks": [],
+                "description": "SSH from admin",
+                "self": false,
+                "security_groups": [],
+                "prefix_list_ids": []
+              },
+              {
+                "from_port": 443,
+                "to_port": 443,
+                "protocol": "tcp",
+                "cidr_blocks": [
+                  "10.100.0.0/16"
+                ],
+                "ipv6_cidr_blocks": [],
+                "description": "HTTPS internal",
+                "self": false,
+                "security_groups": [],
+                "prefix_list_ids": []
+              }
+            ],
+            "egress": [
+              {
+                "from_port": 443,
+                "to_port": 443,
+                "protocol": "tcp",
+                "cidr_blocks": [
+                  "10.100.0.0/16"
+                ],
+                "ipv6_cidr_blocks": [],
+                "description": "HTTPS outbound",
+                "self": false,
+                "security_groups": [],
+                "prefix_list_ids": []
+              }
+            ],
+            "tags": {
+              "swift:zone": "secure",
+              "Project": "swift-cscf"
+            }
+          }
+        },
+        {
+          "address": "aws_subnet.swift_1",
+          "mode": "managed",
+          "type": "aws_subnet",
+          "name": "swift_1",
+          "provider_name": "registry.terraform.io/hashicorp/aws",
+          "schema_version": 0,
+          "values": {
+            "vpc_id": "vpc-swift-001",
+            "cidr_block": "10.100.1.0/24",
+            "map_public_ip_on_launch": false,
+            "tags": {
+              "swift:zone": "secure",
+              "Project": "swift-cscf"
+            }
+          }
+        },
+        {
+          "address": "aws_route_table.swift",
+          "mode": "managed",
+          "type": "aws_route_table",
+          "name": "swift",
+          "provider_name": "registry.terraform.io/hashicorp/aws",
+          "schema_version": 0,
+          "values": {
+            "vpc_id": "vpc-swift-001",
+            "tags": {
+              "swift:zone": "secure",
+              "Project": "swift-cscf"
+            }
+          }
+        },
+        {
+          "address": "aws_default_network_acl.swift",
+          "mode": "managed",
+          "type": "aws_default_network_acl",
+          "name": "swift",
+          "provider_name": "registry.terraform.io/hashicorp/aws",
+          "schema_version": 0,
+          "values": {
+            "default_network_acl_id": "acl-swift-001",
+            "ingress": [
+              {
+                "protocol": "tcp",
+                "rule_no": 100,
+                "action": "allow",
+                "cidr_block": "10.100.0.0/16",
+                "from_port": 443,
+                "to_port": 443
+              }
+            ],
+            "egress": [
+              {
+                "protocol": "tcp",
+                "rule_no": 100,
+                "action": "allow",
+                "cidr_block": "10.100.0.0/16",
+                "from_port": 443,
+                "to_port": 443
+              }
+            ],
+            "tags": {
+              "swift:zone": "secure",
+              "Project": "swift-cscf"
+            }
+          }
+        },
+        {
+          "address": "aws_flow_log.swift",
+          "mode": "managed",
+          "type": "aws_flow_log",
+          "name": "swift",
+          "provider_name": "registry.terraform.io/hashicorp/aws",
+          "schema_version": 0,
+          "values": {
+            "vpc_id": "vpc-swift-001",
+            "traffic_type": "ALL",
+            "log_destination_type": "cloud-watch-logs",
+            "tags": {
+              "swift:zone": "secure",
+              "Project": "swift-cscf"
+            }
+          }
+        },
+        {
+          "address": "aws_ec2_client_vpn_endpoint.swift",
+          "mode": "managed",
+          "type": "aws_ec2_client_vpn_endpoint",
+          "name": "swift",
+          "provider_name": "registry.terraform.io/hashicorp/aws",
+          "schema_version": 0,
+          "values": {
+            "description": "Swift VPN",
+            "authentication_options": [
+              {
+                "type": "certificate-authentication",
+                "root_certificate_chain_arn": "arn:aws:acm:eu-west-1:123456789012:certificate/root"
+              }
+            ],
+            "tags": {
+              "swift:zone": "secure",
+              "Project": "swift-cscf"
+            }
+          }
+        },
+        {
+          "address": "aws_ec2_client_vpn_authorization_rule.swift",
+          "mode": "managed",
+          "type": "aws_ec2_client_vpn_authorization_rule",
+          "name": "swift",
+          "provider_name": "registry.terraform.io/hashicorp/aws",
+          "schema_version": 0,
+          "values": {
+            "client_vpn_endpoint_id": "cvpn-endpoint-swift",
+            "target_network_cidr": "10.100.0.0/16",
+            "access_group_id": "swift-admins"
+          }
+        },
+        {
+          "address": "aws_iam_role.swift_app",
+          "mode": "managed",
+          "type": "aws_iam_role",
+          "name": "swift_app",
+          "provider_name": "registry.terraform.io/hashicorp/aws",
+          "schema_version": 0,
+          "values": {
+            "name": "swift-app-role",
+            "permissions_boundary": "arn:aws:iam::123456789012:policy/SwiftZoneBoundary",
+            "assume_role_policy": "{\"Version\": \"2012-10-17\", \"Statement\": [{\"Effect\": \"Allow\", \"Principal\": {\"AWS\": \"arn:aws:iam::123456789012:root\"}, \"Action\": \"sts:AssumeRole\", \"Condition\": {\"Bool\": {\"aws:MultiFactorAuthPresent\": \"true\"}}}]}",
+            "tags": {
+              "swift:zone": "secure",
+              "Project": "swift-cscf"
+            }
+          }
+        },
+        {
+          "address": "aws_iam_role.jump_server",
+          "mode": "managed",
+          "type": "aws_iam_role",
+          "name": "jump_server",
+          "provider_name": "registry.terraform.io/hashicorp/aws",
+          "schema_version": 0,
+          "values": {
+            "name": "swift-jump-server",
+            "permissions_boundary": "arn:aws:iam::123456789012:policy/SwiftZoneBoundary",
+            "assume_role_policy": "{\"Version\": \"2012-10-17\", \"Statement\": [{\"Effect\": \"Allow\", \"Principal\": {\"Service\": \"ec2.amazonaws.com\"}, \"Action\": \"sts:AssumeRole\", \"Condition\": {\"BoolIfExists\": {\"aws:MultiFactorAuthPresent\": \"true\"}}}]}",
+            "tags": {
+              "swift:zone": "secure",
+              "Project": "swift-cscf"
+            }
+          }
+        },
+        {
+          "address": "aws_iam_role_policy.jump_mfa_deny",
+          "mode": "managed",
+          "type": "aws_iam_role_policy",
+          "name": "jump_mfa_deny",
+          "provider_name": "registry.terraform.io/hashicorp/aws",
+          "schema_version": 0,
+          "values": {
+            "name": "swift-jump-mfa-deny",
+            "role": "swift-jump-server",
+            "policy": "{\"Version\": \"2012-10-17\", \"Statement\": [{\"Sid\": \"DenyWithoutMFA\", \"Effect\": \"Deny\", \"Action\": \"*\", \"Resource\": \"*\", \"Condition\": {\"BoolIfExists\": {\"aws:MultiFactorAuthPresent\": \"false\"}}}, {\"Sid\": \"AllowSSM\", \"Effect\": \"Allow\", \"Action\": [\"ssm:StartSession\", \"ec2:DescribeInstances\"], \"Resource\": \"arn:aws:ec2:*:123456789012:instance/*\"}]}",
+            "tags": {
+              "swift:zone": "secure",
+              "Project": "swift-cscf"
+            }
+          }
+        },
+        {
+          "address": "aws_lb_listener.swift_https",
+          "mode": "managed",
+          "type": "aws_lb_listener",
+          "name": "swift_https",
+          "provider_name": "registry.terraform.io/hashicorp/aws",
+          "schema_version": 0,
+          "values": {
+            "load_balancer_arn": "arn:aws:elasticloadbalancing:eu-west-1:123456789012:loadbalancer/app/swift/1",
+            "port": 443,
+            "protocol": "HTTPS",
+            "ssl_policy": "ELBSecurityPolicy-TLS13-1-2-2021-06",
+            "certificate_arn": "arn:aws:acm:eu-west-1:123456789012:certificate/swift-alb",
+            "tags": {
+              "swift:zone": "secure",
+              "Project": "swift-cscf"
+            }
+          }
+        },
+        {
+          "address": "aws_db_parameter_group.postgres",
+          "mode": "managed",
+          "type": "aws_db_parameter_group",
+          "name": "postgres",
+          "provider_name": "registry.terraform.io/hashicorp/aws",
+          "schema_version": 0,
+          "values": {
+            "name": "swift-postgres",
+            "family": "postgres16",
+            "parameter": [
+              {
+                "name": "rds.force_ssl",
+                "value": "1"
+              }
+            ],
+            "tags": {
+              "swift:zone": "secure",
+              "Project": "swift-cscf"
+            }
+          }
+        },
+        {
+          "address": "aws_db_parameter_group.mysql",
+          "mode": "managed",
+          "type": "aws_db_parameter_group",
+          "name": "mysql",
+          "provider_name": "registry.terraform.io/hashicorp/aws",
+          "schema_version": 0,
+          "values": {
+            "name": "swift-mysql",
+            "family": "mysql8.0",
+            "parameter": [
+              {
+                "name": "require_secure_transport",
+                "value": "1"
+              }
+            ],
+            "tags": {
+              "swift:zone": "secure",
+              "Project": "swift-cscf"
+            }
+          }
+        },
+        {
+          "address": "aws_redshift_parameter_group.swift",
+          "mode": "managed",
+          "type": "aws_redshift_parameter_group",
+          "name": "swift",
+          "provider_name": "registry.terraform.io/hashicorp/aws",
+          "schema_version": 0,
+          "values": {
+            "name": "swift-redshift",
+            "family": "redshift-1.0",
+            "parameter": [
+              {
+                "name": "require_ssl",
+                "value": "true"
+              }
+            ],
+            "tags": {
+              "swift:zone": "secure",
+              "Project": "swift-cscf"
+            }
+          }
+        },
+        {
+          "address": "aws_elasticache_replication_group.swift",
+          "mode": "managed",
+          "type": "aws_elasticache_replication_group",
+          "name": "swift",
+          "provider_name": "registry.terraform.io/hashicorp/aws",
+          "schema_version": 0,
+          "values": {
+            "replication_group_id": "swift-cache",
+            "transit_encryption_enabled": true,
+            "at_rest_encryption_enabled": true,
+            "tags": {
+              "swift:zone": "secure",
+              "Project": "swift-cscf"
+            }
+          }
+        },
+        {
+          "address": "aws_msk_cluster.swift",
+          "mode": "managed",
+          "type": "aws_msk_cluster",
+          "name": "swift",
+          "provider_name": "registry.terraform.io/hashicorp/aws",
+          "schema_version": 0,
+          "values": {
+            "cluster_name": "swift-kafka",
+            "encryption_info": [
+              {
+                "encryption_in_transit": [
+                  {
+                    "client_broker": "TLS",
+                    "in_cluster": true
+                  }
+                ]
+              }
+            ],
+            "tags": {
+              "swift:zone": "secure",
+              "Project": "swift-cscf"
+            }
+          }
+        },
+        {
+          "address": "aws_opensearch_domain.swift",
+          "mode": "managed",
+          "type": "aws_opensearch_domain",
+          "name": "swift",
+          "provider_name": "registry.terraform.io/hashicorp/aws",
+          "schema_version": 0,
+          "values": {
+            "domain_name": "swift-logs",
+            "domain_endpoint_options": [
+              {
+                "enforce_https": true,
+                "tls_security_policy": "Policy-Min-TLS-1-2-2019-07"
+              }
+            ],
+            "node_to_node_encryption": [
+              {
+                "enabled": true
+              }
+            ],
+            "encrypt_at_rest": [
+              {
+                "enabled": true
+              }
+            ],
+            "advanced_security_options": [
+              {
+                "enabled": true,
+                "internal_user_database_enabled": true,
+                "master_user_options": [
+                  {
+                    "master_user_name": "swiftadmin",
+                    "master_user_password": "test"
+                  }
+                ]
+              }
+            ],
+            "tags": {
+              "swift:zone": "secure",
+              "Project": "swift-cscf"
+            }
+          }
+        },
+        {
+          "address": "aws_efs_file_system_policy.swift",
+          "mode": "managed",
+          "type": "aws_efs_file_system_policy",
+          "name": "swift",
+          "provider_name": "registry.terraform.io/hashicorp/aws",
+          "schema_version": 0,
+          "values": {
+            "file_system_id": "fs-swift-001",
+            "policy": "{\"Version\": \"2012-10-17\", \"Statement\": [{\"Sid\": \"DenyNonTLS\", \"Effect\": \"Deny\", \"Principal\": {\"AWS\": \"*\"}, \"Action\": \"*\", \"Resource\": \"arn:aws:elasticfilesystem:eu-west-1:123456789012:file-system/fs-swift-001\", \"Condition\": {\"Bool\": {\"aws:SecureTransport\": \"false\"}}}]}",
+            "tags": {
+              "swift:zone": "secure",
+              "Project": "swift-cscf"
+            }
+          }
+        },
+        {
+          "address": "aws_api_gateway_domain_name.swift",
+          "mode": "managed",
+          "type": "aws_api_gateway_domain_name",
+          "name": "swift",
+          "provider_name": "registry.terraform.io/hashicorp/aws",
+          "schema_version": 0,
+          "values": {
+            "domain_name": "api.swift.example.com",
+            "security_policy": "TLS_1_2",
+            "tags": {
+              "swift:zone": "secure",
+              "Project": "swift-cscf"
+            }
+          }
+        },
+        {
+          "address": "aws_kms_key.swift_data",
+          "mode": "managed",
+          "type": "aws_kms_key",
+          "name": "swift_data",
+          "provider_name": "registry.terraform.io/hashicorp/aws",
+          "schema_version": 0,
+          "values": {
+            "description": "Swift data flow encryption",
+            "enable_key_rotation": true,
+            "deletion_window_in_days": 30,
+            "tags": {
+              "swift:zone": "secure",
+              "Project": "swift-cscf"
+            }
+          }
+        },
+        {
+          "address": "aws_s3_bucket_policy.swift_data_tls",
+          "mode": "managed",
+          "type": "aws_s3_bucket_policy",
+          "name": "swift_data_tls",
+          "provider_name": "registry.terraform.io/hashicorp/aws",
+          "schema_version": 0,
+          "values": {
+            "bucket": "swift-data-exchange-123456789012",
+            "policy": "{\"Version\": \"2012-10-17\", \"Statement\": [{\"Sid\": \"DenyNonTLS\", \"Effect\": \"Deny\", \"Principal\": \"*\", \"Action\": \"s3:*\", \"Resource\": [\"arn:aws:s3:::swift-data-exchange/*\"], \"Condition\": {\"Bool\": {\"aws:SecureTransport\": \"false\"}}}]}",
+            "tags": {
+              "swift:zone": "secure",
+              "Project": "swift-cscf"
+            }
+          }
+        },
+        {
+          "address": "aws_iam_account_password_policy.swift",
+          "mode": "managed",
+          "type": "aws_iam_account_password_policy",
+          "name": "swift",
+          "provider_name": "registry.terraform.io/hashicorp/aws",
+          "schema_version": 0,
+          "values": {
+            "minimum_password_length": 15,
+            "require_uppercase_characters": true,
+            "require_lowercase_characters": true,
+            "require_numbers": true,
+            "require_symbols": true,
+            "max_password_age": 90,
+            "password_reuse_prevention": 24,
+            "hard_expiry": true,
+            "allow_users_to_change_password": true
+          }
+        },
+        {
+          "address": "aws_cognito_user_pool.swift",
+          "mode": "managed",
+          "type": "aws_cognito_user_pool",
+          "name": "swift",
+          "provider_name": "registry.terraform.io/hashicorp/aws",
+          "schema_version": 0,
+          "values": {
+            "name": "swift-operators",
+            "password_policy": [
+              {
+                "minimum_length": 15,
+                "require_uppercase": true,
+                "require_lowercase": true,
+                "require_numbers": true,
+                "require_symbols": true,
+                "temporary_password_validity_days": 3
+              }
+            ],
+            "tags": {
+              "swift:zone": "secure",
+              "Project": "swift-cscf"
+            }
+          }
+        },
+        {
+          "address": "aws_db_instance.swift",
+          "mode": "managed",
+          "type": "aws_db_instance",
+          "name": "swift",
+          "provider_name": "registry.terraform.io/hashicorp/aws",
+          "schema_version": 0,
+          "values": {
+            "identifier": "swift-db",
+            "engine": "postgres",
+            "manage_master_user_password": true,
+            "enabled_cloudwatch_logs_exports": [
+              "postgresql",
+              "upgrade"
+            ],
+            "tags": {
+              "swift:zone": "secure",
+              "Project": "swift-cscf"
+            }
+          }
+        },
+        {
+          "address": "aws_redshift_cluster.swift",
+          "mode": "managed",
+          "type": "aws_redshift_cluster",
+          "name": "swift",
+          "provider_name": "registry.terraform.io/hashicorp/aws",
+          "schema_version": 0,
+          "values": {
+            "cluster_identifier": "swift-analytics",
+            "manage_master_password": true,
+            "tags": {
+              "swift:zone": "secure",
+              "Project": "swift-cscf"
+            }
+          }
+        },
+        {
+          "address": "aws_secretsmanager_secret_rotation.swift",
+          "mode": "managed",
+          "type": "aws_secretsmanager_secret_rotation",
+          "name": "swift",
+          "provider_name": "registry.terraform.io/hashicorp/aws",
+          "schema_version": 0,
+          "values": {
+            "secret_id": "swift/db/master",
+            "rotation_rules": [
+              {
+                "automatically_after_days": 60
+              }
+            ]
+          }
+        },
+        {
+          "address": "aws_iam_policy.swift_operator",
+          "mode": "managed",
+          "type": "aws_iam_policy",
+          "name": "swift_operator",
+          "provider_name": "registry.terraform.io/hashicorp/aws",
+          "schema_version": 0,
+          "values": {
+            "name": "swift-operator",
+            "policy": "{\"Version\": \"2012-10-17\", \"Statement\": [{\"Sid\": \"S3Access\", \"Effect\": \"Allow\", \"Action\": [\"s3:GetObject\", \"s3:PutObject\", \"s3:ListBucket\"], \"Resource\": [\"arn:aws:s3:::swift-data-exchange-123456789012/*\"]}]}",
+            "tags": {
+              "swift:zone": "secure",
+              "Project": "swift-cscf"
+            }
+          }
+        },
+        {
+          "address": "aws_iam_group_policy_attachment.swift_ops",
+          "mode": "managed",
+          "type": "aws_iam_group_policy_attachment",
+          "name": "swift_ops",
+          "provider_name": "registry.terraform.io/hashicorp/aws",
+          "schema_version": 0,
+          "values": {
+            "group": "swift-operators",
+            "policy_arn": "arn:aws:iam::123456789012:policy/swift-operator"
+          }
+        },
+        {
+          "address": "aws_iam_role_policy_attachment.swift_app",
+          "mode": "managed",
+          "type": "aws_iam_role_policy_attachment",
+          "name": "swift_app",
+          "provider_name": "registry.terraform.io/hashicorp/aws",
+          "schema_version": 0,
+          "values": {
+            "role": "swift-app-role",
+            "policy_arn": "arn:aws:iam::123456789012:policy/swift-operator"
+          }
+        },
+        {
+          "address": "aws_iam_policy.swift_deploy",
+          "mode": "managed",
+          "type": "aws_iam_policy",
+          "name": "swift_deploy",
+          "provider_name": "registry.terraform.io/hashicorp/aws",
+          "schema_version": 0,
+          "values": {
+            "name": "swift-deploy",
+            "policy": "{\"Version\": \"2012-10-17\", \"Statement\": [{\"Effect\": \"Allow\", \"Action\": \"iam:PassRole\", \"Resource\": \"arn:aws:iam::123456789012:role/swift-app-role\"}]}",
+            "tags": {
+              "swift:zone": "secure",
+              "Project": "swift-cscf"
+            }
+          }
+        },
+        {
+          "address": "aws_iam_policy.swift_provisioner",
+          "mode": "managed",
+          "type": "aws_iam_policy",
+          "name": "swift_provisioner",
+          "provider_name": "registry.terraform.io/hashicorp/aws",
+          "schema_version": 0,
+          "values": {
+            "name": "swift-provisioner",
+            "policy": "{\"Version\": \"2012-10-17\", \"Statement\": [{\"Effect\": \"Allow\", \"Action\": [\"iam:CreateUser\", \"iam:DeleteUser\", \"iam:AddUserToGroup\"], \"Resource\": \"arn:aws:iam::123456789012:user/swift-*\"}]}",
+            "tags": {
+              "swift:zone": "secure",
+              "Project": "swift-cscf"
+            }
+          }
+        },
+        {
+          "address": "aws_iam_policy.swift_security_officer",
+          "mode": "managed",
+          "type": "aws_iam_policy",
+          "name": "swift_security_officer",
+          "provider_name": "registry.terraform.io/hashicorp/aws",
+          "schema_version": 0,
+          "values": {
+            "name": "swift-security-officer",
+            "policy": "{\"Version\": \"2012-10-17\", \"Statement\": [{\"Effect\": \"Allow\", \"Action\": [\"iam:AttachGroupPolicy\", \"iam:DetachGroupPolicy\", \"iam:UpdateAccountPasswordPolicy\"], \"Resource\": \"arn:aws:iam::123456789012:*\"}]}",
+            "tags": {
+              "swift:zone": "secure",
+              "Project": "swift-cscf"
+            }
+          }
+        },
+        {
+          "address": "aws_iam_policy.swift_policy_manager",
+          "mode": "managed",
+          "type": "aws_iam_policy",
+          "name": "swift_policy_manager",
+          "provider_name": "registry.terraform.io/hashicorp/aws",
+          "schema_version": 0,
+          "values": {
+            "name": "swift-policy-manager",
+            "policy": "{\"Version\": \"2012-10-17\", \"Statement\": [{\"Effect\": \"Allow\", \"Action\": [\"iam:CreatePolicy\", \"iam:DeletePolicy\", \"iam:ListPolicies\", \"iam:GetPolicy\"], \"Resource\": \"arn:aws:iam::123456789012:policy/swift-*\"}]}",
+            "tags": {
+              "swift:zone": "secure",
+              "Project": "swift-cscf"
+            }
+          }
+        },
+        {
+          "address": "aws_iam_role.swift_lambda",
+          "mode": "managed",
+          "type": "aws_iam_role",
+          "name": "swift_lambda",
+          "provider_name": "registry.terraform.io/hashicorp/aws",
+          "schema_version": 0,
+          "values": {
+            "name": "swift-lambda",
+            "assume_role_policy": "{\"Version\": \"2012-10-17\", \"Statement\": [{\"Effect\": \"Allow\", \"Principal\": {\"Service\": \"lambda.amazonaws.com\"}, \"Action\": \"sts:AssumeRole\"}]}",
+            "tags": {
+              "swift:zone": "secure",
+              "Project": "swift-cscf"
+            }
+          }
+        },
+        {
+          "address": "aws_iam_role_policy_attachment.swift_lambda",
+          "mode": "managed",
+          "type": "aws_iam_role_policy_attachment",
+          "name": "swift_lambda",
+          "provider_name": "registry.terraform.io/hashicorp/aws",
+          "schema_version": 0,
+          "values": {
+            "role": "swift-lambda",
+            "policy_arn": "arn:aws:iam::aws:policy/service-role/AWSLambdaBasicExecutionRole"
+          }
+        },
+        {
+          "address": "aws_lambda_function.swift",
+          "mode": "managed",
+          "type": "aws_lambda_function",
+          "name": "swift",
+          "provider_name": "registry.terraform.io/hashicorp/aws",
+          "schema_version": 0,
+          "values": {
+            "function_name": "swift-processor",
+            "role": "arn:aws:iam::123456789012:role/swift-lambda",
+            "tags": {
+              "swift:zone": "secure",
+              "Project": "swift-cscf"
+            }
+          }
+        },
+        {
+          "address": "aws_iam_role.swift_ecs",
+          "mode": "managed",
+          "type": "aws_iam_role",
+          "name": "swift_ecs",
+          "provider_name": "registry.terraform.io/hashicorp/aws",
+          "schema_version": 0,
+          "values": {
+            "name": "swift-ecs-task",
+            "assume_role_policy": "{\"Version\": \"2012-10-17\", \"Statement\": [{\"Effect\": \"Allow\", \"Principal\": {\"Service\": \"ecs-tasks.amazonaws.com\"}, \"Action\": \"sts:AssumeRole\"}]}",
+            "tags": {
+              "swift:zone": "secure",
+              "Project": "swift-cscf"
+            }
+          }
+        },
+        {
+          "address": "aws_iam_role_policy_attachment.swift_ecs",
+          "mode": "managed",
+          "type": "aws_iam_role_policy_attachment",
+          "name": "swift_ecs",
+          "provider_name": "registry.terraform.io/hashicorp/aws",
+          "schema_version": 0,
+          "values": {
+            "role": "swift-ecs-task",
+            "policy_arn": "arn:aws:iam::123456789012:policy/swift-operator"
+          }
+        },
+        {
+          "address": "aws_ecs_task_definition.swift",
+          "mode": "managed",
+          "type": "aws_ecs_task_definition",
+          "name": "swift",
+          "provider_name": "registry.terraform.io/hashicorp/aws",
+          "schema_version": 0,
+          "values": {
+            "family": "swift-worker",
+            "execution_role_arn": "arn:aws:iam::123456789012:role/swift-ecs-task",
+            "task_role_arn": "arn:aws:iam::123456789012:role/swift-ecs-task",
+            "tags": {
+              "swift:zone": "secure",
+              "Project": "swift-cscf"
+            }
+          }
+        },
+        {
+          "address": "aws_iam_role.swift_cross",
+          "mode": "managed",
+          "type": "aws_iam_role",
+          "name": "swift_cross",
+          "provider_name": "registry.terraform.io/hashicorp/aws",
+          "schema_version": 0,
+          "values": {
+            "name": "swift-cross-account",
+            "permissions_boundary": "arn:aws:iam::123456789012:policy/SwiftZoneBoundary",
+            "assume_role_policy": "{\"Version\": \"2012-10-17\", \"Statement\": [{\"Effect\": \"Allow\", \"Principal\": {\"AWS\": \"arn:aws:iam::987654321098:root\"}, \"Action\": \"sts:AssumeRole\", \"Condition\": {\"StringEquals\": {\"sts:ExternalId\": \"swift-audit-2024\"}, \"Bool\": {\"aws:MultiFactorAuthPresent\": \"true\"}}}]}",
+            "tags": {
+              "swift:zone": "secure",
+              "Project": "swift-cscf"
+            }
+          }
+        },
+        {
+          "address": "aws_cloudtrail.swift",
+          "mode": "managed",
+          "type": "aws_cloudtrail",
+          "name": "swift",
+          "provider_name": "registry.terraform.io/hashicorp/aws",
+          "schema_version": 0,
+          "values": {
+            "name": "swift-audit-trail",
+            "s3_bucket_name": "swift-audit-trail-logs-123456789012",
+            "is_multi_region_trail": true,
+            "enable_logging": true,
+            "include_global_service_events": true,
+            "enable_log_file_validation": true,
+            "kms_key_id": "arn:aws:kms:eu-west-1:123456789012:key/swift-logs",
+            "cloud_watch_logs_group_arn": "arn:aws:logs:eu-west-1:123456789012:log-group:/swift/cloudtrail:*",
+            "event_selector": [
+              {
+                "read_write_type": "All",
+                "include_management_events": true
+              }
+            ],
+            "tags": {
+              "swift:zone": "secure",
+              "Project": "swift-cscf"
+            }
+          }
+        },
+        {
+          "address": "aws_cloudwatch_log_group.trail",
+          "mode": "managed",
+          "type": "aws_cloudwatch_log_group",
+          "name": "trail",
+          "provider_name": "registry.terraform.io/hashicorp/aws",
+          "schema_version": 0,
+          "values": {
+            "name": "/swift/cloudtrail",
+            "retention_in_days": 400,
+            "kms_key_id": "arn:aws:kms:eu-west-1:123456789012:key/swift-logs",
+            "tags": {
+              "swift:zone": "secure",
+              "Project": "swift-cscf"
+            }
+          }
+        },
+        {
+          "address": "aws_cloudwatch_log_group.flow_logs",
+          "mode": "managed",
+          "type": "aws_cloudwatch_log_group",
+          "name": "flow_logs",
+          "provider_name": "registry.terraform.io/hashicorp/aws",
+          "schema_version": 0,
+          "values": {
+            "name": "/swift/vpc-flow-logs",
+            "retention_in_days": 365,
+            "kms_key_id": "arn:aws:kms:eu-west-1:123456789012:key/swift-logs",
+            "tags": {
+              "swift:zone": "secure",
+              "Project": "swift-cscf"
+            }
+          }
+        },
+        {
+          "address": "aws_s3_bucket_public_access_block.trail",
+          "mode": "managed",
+          "type": "aws_s3_bucket_public_access_block",
+          "name": "trail",
+          "provider_name": "registry.terraform.io/hashicorp/aws",
+          "schema_version": 0,
+          "values": {
+            "bucket": "swift-audit-trail-logs-123456789012",
+            "block_public_acls": true,
+            "block_public_policy": true,
+            "restrict_public_buckets": true,
+            "ignore_public_acls": true
+          }
+        },
+        {
+          "address": "aws_s3_bucket_versioning.trail",
+          "mode": "managed",
+          "type": "aws_s3_bucket_versioning",
+          "name": "trail",
+          "provider_name": "registry.terraform.io/hashicorp/aws",
+          "schema_version": 0,
+          "values": {
+            "bucket": "swift-audit-trail-logs-123456789012",
+            "versioning_configuration": [
+              {
+                "status": "Enabled"
+              }
+            ]
+          }
+        },
+        {
+          "address": "aws_s3_bucket.trail",
+          "mode": "managed",
+          "type": "aws_s3_bucket",
+          "name": "trail",
+          "provider_name": "registry.terraform.io/hashicorp/aws",
+          "schema_version": 0,
+          "values": {
+            "bucket": "swift-audit-trail-logs-123456789012",
+            "object_lock_enabled": true,
+            "tags": {
+              "swift:zone": "secure",
+              "Project": "swift-cscf"
+            }
+          }
+        },
+        {
+          "address": "aws_s3_bucket_lifecycle_configuration.trail",
+          "mode": "managed",
+          "type": "aws_s3_bucket_lifecycle_configuration",
+          "name": "trail",
+          "provider_name": "registry.terraform.io/hashicorp/aws",
+          "schema_version": 0,
+          "values": {
+            "bucket": "swift-audit-trail-logs-123456789012",
+            "rule": [
+              {
+                "id": "archive",
+                "status": "Enabled",
+                "transition": [
+                  {
+                    "days": 90,
+                    "storage_class": "GLACIER"
+                  }
+                ],
+                "expiration": [
+                  {
+                    "days": 730
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "address": "aws_s3_bucket_policy.trail",
+          "mode": "managed",
+          "type": "aws_s3_bucket_policy",
+          "name": "trail",
+          "provider_name": "registry.terraform.io/hashicorp/aws",
+          "schema_version": 0,
+          "values": {
+            "bucket": "swift-audit-trail-logs-123456789012",
+            "policy": "{\"Version\": \"2012-10-17\", \"Statement\": [{\"Sid\": \"TrailWrite\", \"Effect\": \"Allow\", \"Principal\": {\"Service\": \"cloudtrail.amazonaws.com\"}, \"Action\": \"s3:PutObject\", \"Resource\": \"arn:aws:s3:::swift-audit-trail-logs-123456789012/*\"}, {\"Sid\": \"DenyDeletion\", \"Effect\": \"Deny\", \"Principal\": \"*\", \"Action\": [\"s3:DeleteObject\", \"s3:DeleteObjectVersion\", \"s3:DeleteBucket\"], \"Resource\": [\"arn:aws:s3:::swift-audit-trail-logs-123456789012\", \"arn:aws:s3:::swift-audit-trail-logs-123456789012/*\"]}]}"
+          }
+        },
+        {
+          "address": "aws_s3_bucket_server_side_encryption_configuration.trail",
+          "mode": "managed",
+          "type": "aws_s3_bucket_server_side_encryption_configuration",
+          "name": "trail",
+          "provider_name": "registry.terraform.io/hashicorp/aws",
+          "schema_version": 0,
+          "values": {
+            "bucket": "swift-audit-trail-logs-123456789012",
+            "rule": [
+              {
+                "apply_server_side_encryption_by_default": [
+                  {
+                    "sse_algorithm": "aws:kms",
+                    "kms_master_key_id": "arn:aws:kms:eu-west-1:123456789012:key/swift-logs"
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "address": "aws_cloudwatch_log_metric_filter.root_usage",
+          "mode": "managed",
+          "type": "aws_cloudwatch_log_metric_filter",
+          "name": "root_usage",
+          "provider_name": "registry.terraform.io/hashicorp/aws",
+          "schema_version": 0,
+          "values": {
+            "name": "swift-root-usage",
+            "log_group_name": "/swift/cloudtrail",
+            "pattern": "{ $.userIdentity.type = \"Root\" && $.userIdentity.invokedBy NOT EXISTS }",
+            "metric_transformation": [
+              {
+                "name": "RootAccountUsage",
+                "namespace": "SwiftCSCF",
+                "value": "1"
+              }
+            ]
+          }
+        },
+        {
+          "address": "aws_cloudwatch_log_metric_filter.iam_changes",
+          "mode": "managed",
+          "type": "aws_cloudwatch_log_metric_filter",
+          "name": "iam_changes",
+          "provider_name": "registry.terraform.io/hashicorp/aws",
+          "schema_version": 0,
+          "values": {
+            "name": "swift-iam-changes",
+            "log_group_name": "/swift/cloudtrail",
+            "pattern": "{ ($.eventName = \"CreatePolicy\") || ($.eventName = \"AttachRolePolicy\") || ($.eventName = \"PutGroupPolicy\") || ($.eventName = \"DeletePolicy\") }",
+            "metric_transformation": [
+              {
+                "name": "IAMPolicyChanges",
+                "namespace": "SwiftCSCF",
+                "value": "1"
+              }
+            ]
+          }
+        },
+        {
+          "address": "aws_cloudwatch_log_metric_filter.signin_failures",
+          "mode": "managed",
+          "type": "aws_cloudwatch_log_metric_filter",
+          "name": "signin_failures",
+          "provider_name": "registry.terraform.io/hashicorp/aws",
+          "schema_version": 0,
+          "values": {
+            "name": "swift-signin-failures",
+            "log_group_name": "/swift/cloudtrail",
+            "pattern": "{ ($.eventName = \"ConsoleLogin\") && ($.errorMessage = \"Failed authentication\") }",
+            "metric_transformation": [
+              {
+                "name": "ConsoleSignInFailures",
+                "namespace": "SwiftCSCF",
+                "value": "1"
+              }
+            ]
+          }
+        },
+        {
+          "address": "aws_cloudwatch_metric_alarm.root_usage",
+          "mode": "managed",
+          "type": "aws_cloudwatch_metric_alarm",
+          "name": "root_usage",
+          "provider_name": "registry.terraform.io/hashicorp/aws",
+          "schema_version": 0,
+          "values": {
+            "alarm_name": "swift-root-usage",
+            "metric_name": "RootAccountUsage",
+            "namespace": "SwiftCSCF",
+            "alarm_actions": [
+              "arn:aws:sns:eu-west-1:123456789012:swift-security-alerts"
+            ],
+            "tags": {
+              "swift:zone": "secure",
+              "Project": "swift-cscf"
+            }
+          }
+        },
+        {
+          "address": "aws_cloudwatch_metric_alarm.iam_changes",
+          "mode": "managed",
+          "type": "aws_cloudwatch_metric_alarm",
+          "name": "iam_changes",
+          "provider_name": "registry.terraform.io/hashicorp/aws",
+          "schema_version": 0,
+          "values": {
+            "alarm_name": "swift-iam-changes",
+            "metric_name": "IAMPolicyChanges",
+            "namespace": "SwiftCSCF",
+            "alarm_actions": [
+              "arn:aws:sns:eu-west-1:123456789012:swift-security-alerts"
+            ],
+            "tags": {
+              "swift:zone": "secure",
+              "Project": "swift-cscf"
+            }
+          }
+        },
+        {
+          "address": "aws_cloudwatch_metric_alarm.signin_failures",
+          "mode": "managed",
+          "type": "aws_cloudwatch_metric_alarm",
+          "name": "signin_failures",
+          "provider_name": "registry.terraform.io/hashicorp/aws",
+          "schema_version": 0,
+          "values": {
+            "alarm_name": "swift-signin-failures",
+            "metric_name": "ConsoleSignInFailures",
+            "namespace": "SwiftCSCF",
+            "alarm_actions": [
+              "arn:aws:sns:eu-west-1:123456789012:swift-security-alerts"
+            ],
+            "tags": {
+              "swift:zone": "secure",
+              "Project": "swift-cscf"
+            }
+          }
+        },
+        {
+          "address": "aws_guardduty_detector.swift",
+          "mode": "managed",
+          "type": "aws_guardduty_detector",
+          "name": "swift",
+          "provider_name": "registry.terraform.io/hashicorp/aws",
+          "schema_version": 0,
+          "values": {
+            "enable": true,
+            "tags": {
+              "swift:zone": "secure",
+              "Project": "swift-cscf"
+            }
+          }
+        },
+        {
+          "address": "aws_config_configuration_recorder.swift",
+          "mode": "managed",
+          "type": "aws_config_configuration_recorder",
+          "name": "swift",
+          "provider_name": "registry.terraform.io/hashicorp/aws",
+          "schema_version": 0,
+          "values": {
+            "name": "swift-config",
+            "role_arn": "arn:aws:iam::123456789012:role/swift-config",
+            "recording_group": [
+              {
+                "all_supported": true
+              }
+            ]
+          }
+        },
+        {
+          "address": "aws_iam_role.flow_log",
+          "mode": "managed",
+          "type": "aws_iam_role",
+          "name": "flow_log",
+          "provider_name": "registry.terraform.io/hashicorp/aws",
+          "schema_version": 0,
+          "values": {
+            "name": "swift-flow-log",
+            "assume_role_policy": "{\"Version\": \"2012-10-17\", \"Statement\": [{\"Effect\": \"Allow\", \"Principal\": {\"Service\": \"vpc-flow-logs.amazonaws.com\"}, \"Action\": \"sts:AssumeRole\"}]}",
+            "tags": {
+              "swift:zone": "secure",
+              "Project": "swift-cscf"
+            }
+          }
+        },
+        {
+          "address": "aws_iam_role.trail_cw",
+          "mode": "managed",
+          "type": "aws_iam_role",
+          "name": "trail_cw",
+          "provider_name": "registry.terraform.io/hashicorp/aws",
+          "schema_version": 0,
+          "values": {
+            "name": "swift-trail-cw",
+            "assume_role_policy": "{\"Version\": \"2012-10-17\", \"Statement\": [{\"Effect\": \"Allow\", \"Principal\": {\"Service\": \"cloudtrail.amazonaws.com\"}, \"Action\": \"sts:AssumeRole\"}]}",
+            "tags": {
+              "swift:zone": "secure",
+              "Project": "swift-cscf"
+            }
+          }
+        },
+        {
+          "address": "aws_iam_role.config",
+          "mode": "managed",
+          "type": "aws_iam_role",
+          "name": "config",
+          "provider_name": "registry.terraform.io/hashicorp/aws",
+          "schema_version": 0,
+          "values": {
+            "name": "swift-config",
+            "assume_role_policy": "{\"Version\": \"2012-10-17\", \"Statement\": [{\"Effect\": \"Allow\", \"Principal\": {\"Service\": \"config.amazonaws.com\"}, \"Action\": \"sts:AssumeRole\"}]}",
+            "tags": {
+              "swift:zone": "secure",
+              "Project": "swift-cscf"
+            }
+          }
+        }
+      ],
+      "child_modules": []
+    }
+  }
+}

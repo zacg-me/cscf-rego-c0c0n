@@ -1,0 +1,48 @@
+{
+  "format_version": "1.2",
+  "terraform_version": "1.15.5",
+  "swift_account_id": "111122223333",
+  "planned_values": {
+    "root_module": {
+      "resources": [
+        {
+          "address": "aws_vpn_connection.backoffice",
+          "mode": "managed",
+          "type": "aws_vpn_connection",
+          "name": "backoffice",
+          "values": {
+            "tunnel1_phase2_encryption_algorithms": ["AES128", "AES256"],
+            "tunnel2_phase2_encryption_algorithms": ["AES256"],
+            "tunnel1_ike_versions": ["ikev1", "ikev2"],
+            "tunnel2_ike_versions": ["ikev2"],
+            "tags": { "swift:zone": "secure", "Project": "swift-cscf" }
+          }
+        },
+        {
+          "address": "aws_api_gateway_domain_name.backoffice_api",
+          "mode": "managed",
+          "type": "aws_api_gateway_domain_name",
+          "name": "backoffice_api",
+          "values": {
+            "domain_name": "backoffice.swift.example.com",
+            "security_policy": "TLS_1_2",
+            "tags": { "swift:zone": "secure", "Project": "swift-cscf" }
+          }
+        },
+        {
+          "address": "aws_dx_connection.backoffice_dx",
+          "mode": "managed",
+          "type": "aws_dx_connection",
+          "name": "backoffice_dx",
+          "values": {
+            "name": "swift-backoffice-dx",
+            "bandwidth": "1Gbps",
+            "encryption_mode": "no_encrypt",
+            "tags": { "swift:zone": "secure", "Project": "swift-cscf" }
+          }
+        }
+      ],
+      "child_modules": []
+    }
+  }
+}

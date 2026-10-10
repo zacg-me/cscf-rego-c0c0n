@@ -1,0 +1,5 @@
+# Exceptions are risk acceptances. In an institution, the owner here is the
+# risk or compliance function, and branch protection requires their review, so
+# no exception reaches the default branch without the risk owner's approval.
+# In this one-person repository it shows the pattern.
+/exceptions/ @zacg-me

@@ -1,0 +1,41 @@
+{
+  "format_version": "1.2",
+  "terraform_version": "1.15.5",
+  "swift_account_id": "111122223333",
+  "planned_values": {
+    "root_module": {
+      "resources": [
+        {
+          "address": "aws_cloudwatch_log_metric_filter.failed_auth",
+          "mode": "managed",
+          "type": "aws_cloudwatch_log_metric_filter",
+          "name": "failed_auth",
+          "values": {
+            "name": "swift-failed-authentication",
+            "pattern": "{ ($.errorCode = \"*AuthFailure*\") || ($.errorMessage = \"Failed authentication\") }",
+            "log_group_name": "/swift/security/auth",
+            "metric_transformation": [
+              { "name": "SwiftFailedAuthCount", "namespace": "Swift/Security", "value": "1" }
+            ]
+          }
+        },
+        {
+          "address": "aws_cloudwatch_metric_alarm.failed_auth",
+          "mode": "managed",
+          "type": "aws_cloudwatch_metric_alarm",
+          "name": "failed_auth",
+          "values": {
+            "alarm_name": "swift-failed-authentication-alarm",
+            "metric_name": "SwiftFailedAuthCount",
+            "namespace": "Swift/Security",
+            "comparison_operator": "GreaterThanOrEqualToThreshold",
+            "threshold": 5,
+            "evaluation_periods": 1,
+            "period": 300
+          }
+        }
+      ],
+      "child_modules": []
+    }
+  }
+}

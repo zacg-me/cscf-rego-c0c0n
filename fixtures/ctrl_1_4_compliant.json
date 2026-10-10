@@ -1,0 +1,116 @@
+{
+  "format_version": "1.2",
+  "terraform_version": "1.15.5",
+  "swift_account_id": "111122223333",
+  "planned_values": {
+    "root_module": {
+      "resources": [
+        {
+          "address": "aws_vpc_endpoint.s3",
+          "mode": "managed",
+          "type": "aws_vpc_endpoint",
+          "name": "s3",
+          "values": {
+            "service_name": "com.amazonaws.eu-west-1.s3",
+            "vpc_endpoint_type": "Gateway",
+            "vpc_id": "vpc-swift-001",
+            "tags": {
+              "swift:zone": "secure",
+              "Project": "swift-cscf"
+            }
+          }
+        },
+        {
+          "address": "aws_route.internal_tgw",
+          "mode": "managed",
+          "type": "aws_route",
+          "name": "internal_tgw",
+          "values": {
+            "destination_cidr_block": "10.50.0.0/16",
+            "transit_gateway_id": "tgw-0aa11bb22cc33dd44",
+            "nat_gateway_id": "",
+            "gateway_id": "",
+            "route_table_id": "rtb-swiftzone"
+          }
+        },
+        {
+          "address": "aws_security_group.jump_sg",
+          "mode": "managed",
+          "type": "aws_security_group",
+          "name": "jump_sg",
+          "values": {
+            "name": "swift-jump",
+            "id": "sg-jump0000000001",
+            "vpc_id": "vpc-swift-001",
+            "ingress": [
+              {
+                "from_port": 22,
+                "to_port": 22,
+                "protocol": "tcp",
+                "cidr_blocks": [
+                  "10.200.0.0/16"
+                ],
+                "ipv6_cidr_blocks": []
+              }
+            ],
+            "egress": [
+              {
+                "from_port": 443,
+                "to_port": 443,
+                "protocol": "tcp",
+                "cidr_blocks": [
+                  "10.100.0.0/16"
+                ],
+                "ipv6_cidr_blocks": [],
+                "description": "HTTPS to internal proxy only"
+              }
+            ],
+            "tags": {
+              "swift:zone": "secure",
+              "Project": "swift-cscf"
+            }
+          }
+        },
+        {
+          "address": "aws_instance.jump",
+          "mode": "managed",
+          "type": "aws_instance",
+          "name": "jump",
+          "values": {
+            "associate_public_ip_address": false,
+            "subnet_id": "subnet-swift-priv-001",
+            "vpc_security_group_ids": [
+              "sg-jump0000000001"
+            ],
+            "tags": {
+              "swift:zone": "secure",
+              "swift:role": "jump_server",
+              "Project": "swift-cscf"
+            }
+          }
+        },
+        {
+          "address": "aws_route_table.zone",
+          "mode": "managed",
+          "type": "aws_route_table",
+          "name": "zone",
+          "provider_name": "registry.terraform.io/hashicorp/aws",
+          "schema_version": 0,
+          "values": {
+            "id": "rtb-swiftzone",
+            "vpc_id": "vpc-swiftzone",
+            "tags": {
+              "swift:zone": "secure",
+              "Name": "swift-zone-rt"
+            },
+            "tags_all": {
+              "swift:zone": "secure",
+              "Name": "swift-zone-rt"
+            }
+          }
+        }
+      ],
+      "child_modules": []
+    }
+  }
+}

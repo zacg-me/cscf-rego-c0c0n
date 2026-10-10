@@ -1,0 +1,65 @@
+{
+  "format_version": "1.2",
+  "terraform_version": "1.15.5",
+  "swift_account_id": "123456789012",
+  "planned_values": {
+    "root_module": {
+      "resources": [
+        {
+          "address": "aws_s3_bucket.swift_data",
+          "mode": "managed",
+          "type": "aws_s3_bucket",
+          "name": "swift_data",
+          "values": {
+            "bucket": "swift-data-123456789012",
+            "id": "swift-data-123456789012",
+            "tags": {
+              "swift:zone": "secure"
+            },
+            "tags_all": {
+              "swift:zone": "secure"
+            }
+          }
+        },
+        {
+          "address": "aws_s3_bucket_policy.swift_data",
+          "mode": "managed",
+          "type": "aws_s3_bucket_policy",
+          "name": "swift_data",
+          "values": {
+            "bucket": "swift-data-123456789012",
+            "policy": "{\"Version\": \"2012-10-17\", \"Statement\": [{\"Sid\": \"DenyNonTLS\", \"Effect\": \"Deny\", \"Principal\": \"*\", \"Action\": \"s3:*\", \"Resource\": \"arn:aws:s3:::swift-data-123456789012/*\", \"Condition\": {\"Bool\": {\"aws:SecureTransport\": false}}}]}"
+          }
+        },
+        {
+          "address": "aws_iam_role.jump_server",
+          "mode": "managed",
+          "type": "aws_iam_role",
+          "name": "jump_server",
+          "values": {
+            "name": "jump-server",
+            "permissions_boundary": "arn:aws:iam::123456789012:policy/SwiftZoneBoundary",
+            "assume_role_policy": "{\"Version\": \"2012-10-17\", \"Statement\": [{\"Effect\": \"Allow\", \"Principal\": {\"AWS\": \"arn:aws:iam::123456789012:root\"}, \"Action\": \"sts:AssumeRole\", \"Condition\": {\"Bool\": {\"aws:MultiFactorAuthPresent\": true}}}]}",
+            "tags": {
+              "swift:zone": "secure"
+            },
+            "tags_all": {
+              "swift:zone": "secure"
+            }
+          }
+        },
+        {
+          "address": "aws_iam_role_policy.jump_mfa_deny",
+          "mode": "managed",
+          "type": "aws_iam_role_policy",
+          "name": "jump_mfa_deny",
+          "values": {
+            "name": "jump-mfa-deny",
+            "role": "jump-server",
+            "policy": "{\"Version\": \"2012-10-17\", \"Statement\": [{\"Sid\": \"DenyWithoutMFA\", \"Effect\": \"Deny\", \"Action\": \"*\", \"Resource\": \"*\", \"Condition\": {\"BoolIfExists\": {\"aws:MultiFactorAuthPresent\": false}}}]}"
+          }
+        }
+      ]
+    }
+  }
+}

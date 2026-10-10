@@ -1,0 +1,4653 @@
+{
+  "schema": "swift-cscf-resolvability/v1",
+  "account_id": "123456789012",
+  "region": "eu-west-1",
+  "swift_vpc": "aws_vpc.swift",
+  "swift_vpc_id": "aws_vpc-swift-id-known-after-apply",
+  "trust_boundary_accounts": [
+    "123456789012",
+    "210987654321"
+  ],
+  "summary": {
+    "r2_resolved_by_reference": 72,
+    "r2_self_identity": 170,
+    "r3_unresolvable": 5,
+    "provider_computed": 736,
+    "null_attributes_dropped": 256
+  },
+  "r2_resolved_by_reference": [
+    {
+      "resource": "aws_cloudtrail.swift",
+      "attribute": "cloud_watch_logs_group_arn",
+      "class": "R2",
+      "reference": "aws_cloudwatch_log_group.trail.arn",
+      "substituted": "arn:aws:cloudwatch:eu-west-1:123456789012:log_group//swift/cloudtrail"
+    },
+    {
+      "resource": "aws_cloudtrail.swift",
+      "attribute": "cloud_watch_logs_role_arn",
+      "class": "R2",
+      "reference": "aws_iam_role.trail_cw.arn",
+      "substituted": "arn:aws:iam:eu-west-1:123456789012:role/swift-cloudtrail-cw"
+    },
+    {
+      "resource": "aws_cloudtrail.swift",
+      "attribute": "kms_key_id",
+      "class": "R2",
+      "reference": "aws_kms_key.swift_logs.arn",
+      "substituted": "arn:aws:kms:eu-west-1:123456789012:key/swift_logs"
+    },
+    {
+      "resource": "aws_cloudtrail.swift",
+      "attribute": "s3_bucket_name",
+      "class": "R2",
+      "reference": "aws_s3_bucket.trail.id",
+      "substituted": "swift-audit-trail-logs-123456789012"
+    },
+    {
+      "resource": "aws_cloudwatch_log_group.flow_logs",
+      "attribute": "kms_key_id",
+      "class": "R2",
+      "reference": "aws_kms_key.swift_logs.arn",
+      "substituted": "arn:aws:kms:eu-west-1:123456789012:key/swift_logs"
+    },
+    {
+      "resource": "aws_cloudwatch_log_group.sessions",
+      "attribute": "kms_key_id",
+      "class": "R2",
+      "reference": "aws_kms_key.swift_logs.arn",
+      "substituted": "arn:aws:kms:eu-west-1:123456789012:key/swift_logs"
+    },
+    {
+      "resource": "aws_cloudwatch_log_group.trail",
+      "attribute": "kms_key_id",
+      "class": "R2",
+      "reference": "aws_kms_key.swift_logs.arn",
+      "substituted": "arn:aws:kms:eu-west-1:123456789012:key/swift_logs"
+    },
+    {
+      "resource": "aws_cloudwatch_log_group.vpn",
+      "attribute": "kms_key_id",
+      "class": "R2",
+      "reference": "aws_kms_key.swift_logs.arn",
+      "substituted": "arn:aws:kms:eu-west-1:123456789012:key/swift_logs"
+    },
+    {
+      "resource": "aws_cloudwatch_metric_alarm.iam_changes",
+      "attribute": "alarm_actions",
+      "class": "R2",
+      "reference": "aws_sns_topic.alerts.arn",
+      "substituted": [
+        "arn:aws:sns:eu-west-1:123456789012:topic/swift-security-alerts"
+      ]
+    },
+    {
+      "resource": "aws_cloudwatch_metric_alarm.root_usage",
+      "attribute": "alarm_actions",
+      "class": "R2",
+      "reference": "aws_sns_topic.alerts.arn",
+      "substituted": [
+        "arn:aws:sns:eu-west-1:123456789012:topic/swift-security-alerts"
+      ]
+    },
+    {
+      "resource": "aws_cloudwatch_metric_alarm.signin_failures",
+      "attribute": "alarm_actions",
+      "class": "R2",
+      "reference": "aws_sns_topic.alerts.arn",
+      "substituted": [
+        "arn:aws:sns:eu-west-1:123456789012:topic/swift-security-alerts"
+      ]
+    },
+    {
+      "resource": "aws_config_configuration_recorder.swift",
+      "attribute": "role_arn",
+      "class": "R2",
+      "reference": "aws_iam_role.config.arn",
+      "substituted": "arn:aws:iam:eu-west-1:123456789012:role/swift-config"
+    },
+    {
+      "resource": "aws_db_instance.swift",
+      "attribute": "kms_key_id",
+      "class": "R2",
+      "reference": "aws_kms_key.swift_data.arn",
+      "substituted": "arn:aws:kms:eu-west-1:123456789012:key/swift_data"
+    },
+    {
+      "resource": "aws_db_instance.swift",
+      "attribute": "vpc_security_group_ids",
+      "class": "R2",
+      "reference": "aws_security_group.swift_app.id",
+      "substituted": [
+        "aws_security_group-swift_app-id-known-after-apply"
+      ]
+    },
+    {
+      "resource": "aws_db_subnet_group.swift",
+      "attribute": "subnet_ids",
+      "class": "R2",
+      "reference": "aws_subnet.swift[*]",
+      "substituted": [
+        "aws_subnet-swift[0]-id-known-after-apply",
+        "aws_subnet-swift[1]-id-known-after-apply"
+      ]
+    },
+    {
+      "resource": "aws_default_network_acl.swift",
+      "attribute": "default_network_acl_id",
+      "class": "R2",
+      "reference": "aws_vpc.swift.default_network_acl_id",
+      "substituted": "aws_vpc-swift-default_network_acl_id-known-after-apply"
+    },
+    {
+      "resource": "aws_default_security_group.swift",
+      "attribute": "vpc_id",
+      "class": "R2",
+      "reference": "aws_vpc.swift.id",
+      "substituted": "aws_vpc-swift-id-known-after-apply"
+    },
+    {
+      "resource": "aws_ebs_volume.jump_data",
+      "attribute": "kms_key_id",
+      "class": "R2",
+      "reference": "aws_kms_key.swift_data.arn",
+      "substituted": "arn:aws:kms:eu-west-1:123456789012:key/swift_data"
+    },
+    {
+      "resource": "aws_ec2_client_vpn_authorization_rule.swift",
+      "attribute": "client_vpn_endpoint_id",
+      "class": "R2",
+      "reference": "aws_ec2_client_vpn_endpoint.swift.id",
+      "substituted": "aws_ec2_client_vpn_endpoint-swift-id-known-after-apply"
+    },
+    {
+      "resource": "aws_ecs_task_definition.swift",
+      "attribute": "execution_role_arn",
+      "class": "R2",
+      "reference": "aws_iam_role.swift_ecs.arn",
+      "substituted": "arn:aws:iam:eu-west-1:123456789012:role/swift-ecs-task"
+    },
+    {
+      "resource": "aws_ecs_task_definition.swift",
+      "attribute": "task_role_arn",
+      "class": "R2",
+      "reference": "aws_iam_role.swift_ecs.arn",
+      "substituted": "arn:aws:iam:eu-west-1:123456789012:role/swift-ecs-task"
+    },
+    {
+      "resource": "aws_efs_file_system_policy.swift",
+      "attribute": "file_system_id",
+      "class": "R2",
+      "reference": "aws_efs_file_system.swift.id",
+      "substituted": "aws_efs_file_system-swift-id-known-after-apply"
+    },
+    {
+      "resource": "aws_elasticache_subnet_group.swift",
+      "attribute": "subnet_ids",
+      "class": "R2",
+      "reference": "aws_subnet.swift[*]",
+      "substituted": [
+        "aws_subnet-swift[0]-id-known-after-apply",
+        "aws_subnet-swift[1]-id-known-after-apply"
+      ]
+    },
+    {
+      "resource": "aws_flow_log.swift",
+      "attribute": "iam_role_arn",
+      "class": "R2",
+      "reference": "aws_iam_role.flow_log.arn",
+      "substituted": "arn:aws:iam:eu-west-1:123456789012:role/swift-flow-log"
+    },
+    {
+      "resource": "aws_flow_log.swift",
+      "attribute": "log_destination",
+      "class": "R2",
+      "reference": "aws_cloudwatch_log_group.flow_logs.arn",
+      "substituted": "arn:aws:cloudwatch:eu-west-1:123456789012:log_group//swift/vpc-flow-logs"
+    },
+    {
+      "resource": "aws_flow_log.swift",
+      "attribute": "vpc_id",
+      "class": "R2",
+      "reference": "aws_vpc.swift.id",
+      "substituted": "aws_vpc-swift-id-known-after-apply"
+    },
+    {
+      "resource": "aws_iam_group_policy_attachment.swift_operators",
+      "attribute": "policy_arn",
+      "class": "R2",
+      "reference": "aws_iam_policy.swift_operator.arn",
+      "substituted": "arn:aws:iam:eu-west-1:123456789012:policy/swift-operator"
+    },
+    {
+      "resource": "aws_iam_role_policy.jump_mfa_deny",
+      "attribute": "role",
+      "class": "R2",
+      "reference": "aws_iam_role.jump_server.id",
+      "substituted": "swift-jump-server"
+    },
+    {
+      "resource": "aws_iam_role_policy_attachment.swift_app",
+      "attribute": "policy_arn",
+      "class": "R2",
+      "reference": "aws_iam_policy.swift_operator.arn",
+      "substituted": "arn:aws:iam:eu-west-1:123456789012:policy/swift-operator"
+    },
+    {
+      "resource": "aws_iam_role_policy_attachment.swift_ecs",
+      "attribute": "policy_arn",
+      "class": "R2",
+      "reference": "aws_iam_policy.swift_operator.arn",
+      "substituted": "arn:aws:iam:eu-west-1:123456789012:policy/swift-operator"
+    },
+    {
+      "resource": "aws_instance.jump_server",
+      "attribute": "subnet_id",
+      "class": "R2",
+      "reference": "aws_subnet.swift[0].id",
+      "substituted": "aws_subnet-swift[0]-id-known-after-apply"
+    },
+    {
+      "resource": "aws_instance.jump_server",
+      "attribute": "vpc_security_group_ids",
+      "class": "R2",
+      "reference": "aws_security_group.swift_app.id",
+      "substituted": [
+        "aws_security_group-swift_app-id-known-after-apply"
+      ]
+    },
+    {
+      "resource": "aws_lambda_function.swift",
+      "attribute": "role",
+      "class": "R2",
+      "reference": "aws_iam_role.swift_lambda.arn",
+      "substituted": "arn:aws:iam:eu-west-1:123456789012:role/swift-lambda"
+    },
+    {
+      "resource": "aws_lb.swift",
+      "attribute": "security_groups",
+      "class": "R2",
+      "reference": "aws_security_group.swift_app.id",
+      "substituted": [
+        "aws_security_group-swift_app-id-known-after-apply"
+      ]
+    },
+    {
+      "resource": "aws_lb.swift",
+      "attribute": "subnets",
+      "class": "R2",
+      "reference": "aws_subnet.swift[*]",
+      "substituted": [
+        "aws_subnet-swift[0]-id-known-after-apply",
+        "aws_subnet-swift[1]-id-known-after-apply"
+      ]
+    },
+    {
+      "resource": "aws_lb_listener.swift_https",
+      "attribute": "load_balancer_arn",
+      "class": "R2",
+      "reference": "aws_lb.swift.arn",
+      "substituted": "arn:aws:lb:eu-west-1:123456789012:lb/swift-internal-alb"
+    },
+    {
+      "resource": "aws_redshift_cluster.swift",
+      "attribute": "kms_key_id",
+      "class": "R2",
+      "reference": "aws_kms_key.swift_data.arn",
+      "substituted": "arn:aws:kms:eu-west-1:123456789012:key/swift_data"
+    },
+    {
+      "resource": "aws_redshift_cluster.swift",
+      "attribute": "vpc_security_group_ids",
+      "class": "R2",
+      "reference": "aws_security_group.swift_app.id",
+      "substituted": [
+        "aws_security_group-swift_app-id-known-after-apply"
+      ]
+    },
+    {
+      "resource": "aws_redshift_subnet_group.swift",
+      "attribute": "subnet_ids",
+      "class": "R2",
+      "reference": "aws_subnet.swift[*]",
+      "substituted": [
+        "aws_subnet-swift[0]-id-known-after-apply",
+        "aws_subnet-swift[1]-id-known-after-apply"
+      ]
+    },
+    {
+      "resource": "aws_route_table.swift",
+      "attribute": "vpc_id",
+      "class": "R2",
+      "reference": "aws_vpc.swift.id",
+      "substituted": "aws_vpc-swift-id-known-after-apply"
+    },
+    {
+      "resource": "aws_s3_bucket_lifecycle_configuration.trail",
+      "attribute": "bucket",
+      "class": "R2",
+      "reference": "aws_s3_bucket.trail.id",
+      "substituted": "swift-audit-trail-logs-123456789012"
+    },
+    {
+      "resource": "aws_s3_bucket_policy.swift_data_tls",
+      "attribute": "bucket",
+      "class": "R2",
+      "reference": "aws_s3_bucket.swift_data.id",
+      "substituted": "swift-data-exchange-123456789012"
+    },
+    {
+      "resource": "aws_s3_bucket_policy.trail",
+      "attribute": "bucket",
+      "class": "R2",
+      "reference": "aws_s3_bucket.trail.id",
+      "substituted": "swift-audit-trail-logs-123456789012"
+    },
+    {
+      "resource": "aws_s3_bucket_public_access_block.trail",
+      "attribute": "bucket",
+      "class": "R2",
+      "reference": "aws_s3_bucket.trail.id",
+      "substituted": "swift-audit-trail-logs-123456789012"
+    },
+    {
+      "resource": "aws_s3_bucket_server_side_encryption_configuration.trail",
+      "attribute": "bucket",
+      "class": "R2",
+      "reference": "aws_s3_bucket.trail.id",
+      "substituted": "swift-audit-trail-logs-123456789012"
+    },
+    {
+      "resource": "aws_s3_bucket_versioning.trail",
+      "attribute": "bucket",
+      "class": "R2",
+      "reference": "aws_s3_bucket.trail.id",
+      "substituted": "swift-audit-trail-logs-123456789012"
+    },
+    {
+      "resource": "aws_secretsmanager_secret.swift_db",
+      "attribute": "kms_key_id",
+      "class": "R2",
+      "reference": "aws_kms_key.swift_data.arn",
+      "substituted": "arn:aws:kms:eu-west-1:123456789012:key/swift_data"
+    },
+    {
+      "resource": "aws_secretsmanager_secret_policy.app",
+      "attribute": "secret_arn",
+      "class": "R2",
+      "reference": "aws_secretsmanager_secret.swift_db.arn",
+      "substituted": "arn:aws:secretsmanager:eu-west-1:123456789012:secret/swift/db/master"
+    },
+    {
+      "resource": "aws_secretsmanager_secret_rotation.swift_db",
+      "attribute": "secret_id",
+      "class": "R2",
+      "reference": "aws_secretsmanager_secret.swift_db.id",
+      "substituted": "swift/db/master"
+    },
+    {
+      "resource": "aws_security_group.swift_app",
+      "attribute": "vpc_id",
+      "class": "R2",
+      "reference": "aws_vpc.swift.id",
+      "substituted": "aws_vpc-swift-id-known-after-apply"
+    },
+    {
+      "resource": "aws_sns_topic.alerts",
+      "attribute": "kms_master_key_id",
+      "class": "R2",
+      "reference": "aws_kms_key.swift_logs.arn",
+      "substituted": "arn:aws:kms:eu-west-1:123456789012:key/swift_logs"
+    },
+    {
+      "resource": "aws_ssm_document.session_preferences",
+      "attribute": "content",
+      "class": "R2",
+      "reference": "aws_cloudwatch_log_group.sessions.name",
+      "substituted": "aws_cloudwatch_log_group-sessions-name-known-after-apply"
+    },
+    {
+      "resource": "aws_ssm_parameter.app_api_key",
+      "attribute": "key_id",
+      "class": "R2",
+      "reference": "aws_kms_key.swift_data.arn",
+      "substituted": "arn:aws:kms:eu-west-1:123456789012:key/swift_data"
+    },
+    {
+      "resource": "aws_vpc_endpoint.s3",
+      "attribute": "route_table_ids",
+      "class": "R2",
+      "reference": "aws_route_table.swift.id",
+      "substituted": "aws_route_table-swift-id-known-after-apply"
+    },
+    {
+      "resource": "aws_vpc_endpoint.s3",
+      "attribute": "vpc_id",
+      "class": "R2",
+      "reference": "aws_vpc.swift.id",
+      "substituted": "aws_vpc-swift-id-known-after-apply"
+    },
+    {
+      "resource": "aws_vpc_endpoint.ssm",
+      "attribute": "security_group_ids",
+      "class": "R2",
+      "reference": "aws_security_group.swift_app.id",
+      "substituted": [
+        "aws_security_group-swift_app-id-known-after-apply"
+      ]
+    },
+    {
+      "resource": "aws_vpc_endpoint.ssm",
+      "attribute": "subnet_ids",
+      "class": "R2",
+      "reference": "aws_subnet.swift[*]",
+      "substituted": [
+        "aws_subnet-swift[0]-id-known-after-apply",
+        "aws_subnet-swift[1]-id-known-after-apply"
+      ]
+    },
+    {
+      "resource": "aws_vpc_endpoint.ssm",
+      "attribute": "vpc_id",
+      "class": "R2",
+      "reference": "aws_vpc.swift.id",
+      "substituted": "aws_vpc-swift-id-known-after-apply"
+    },
+    {
+      "resource": "aws_vpn_connection.back_office",
+      "attribute": "customer_gateway_id",
+      "class": "R2",
+      "reference": "aws_customer_gateway.back_office.id",
+      "substituted": "aws_customer_gateway-back_office-id-known-after-apply"
+    },
+    {
+      "resource": "aws_vpn_connection.back_office",
+      "attribute": "vpn_gateway_id",
+      "class": "R2",
+      "reference": "aws_vpn_gateway.swift.id",
+      "substituted": "aws_vpn_gateway-swift-id-known-after-apply"
+    },
+    {
+      "resource": "aws_vpn_gateway.swift",
+      "attribute": "vpc_id",
+      "class": "R2",
+      "reference": "aws_vpc.swift.id",
+      "substituted": "aws_vpc-swift-id-known-after-apply"
+    },
+    {
+      "resource": "aws_api_gateway_domain_name.swift",
+      "attribute": "mutual_tls_authentication.0.truststore_uri",
+      "class": "R2",
+      "reference": "aws_s3_bucket.swift_data.id",
+      "substituted": "swift-data-exchange-123456789012"
+    },
+    {
+      "resource": "aws_instance.jump_server",
+      "attribute": "root_block_device.0.kms_key_id",
+      "class": "R2",
+      "reference": "aws_kms_key.swift_data.arn",
+      "substituted": "arn:aws:kms:eu-west-1:123456789012:key/swift_data"
+    },
+    {
+      "resource": "aws_msk_cluster.swift",
+      "attribute": "broker_node_group_info.0.client_subnets",
+      "class": "R2",
+      "reference": "aws_subnet.swift[*]",
+      "substituted": [
+        "aws_subnet-swift[0]-id-known-after-apply",
+        "aws_subnet-swift[1]-id-known-after-apply"
+      ]
+    },
+    {
+      "resource": "aws_msk_cluster.swift",
+      "attribute": "broker_node_group_info.0.security_groups",
+      "class": "R2",
+      "reference": "aws_security_group.swift_app.id",
+      "substituted": [
+        "aws_security_group-swift_app-id-known-after-apply"
+      ]
+    },
+    {
+      "resource": "aws_opensearch_domain.swift",
+      "attribute": "advanced_security_options.0.master_user_options.0.master_user_arn",
+      "class": "R2",
+      "reference": "aws_iam_role.swift_app.arn",
+      "substituted": "arn:aws:iam:eu-west-1:123456789012:role/swift-app-role"
+    },
+    {
+      "resource": "aws_opensearch_domain.swift",
+      "attribute": "cognito_options.0.identity_pool_id",
+      "class": "R2",
+      "reference": "aws_cognito_identity_pool.swift.id",
+      "substituted": "aws_cognito_identity_pool-swift-id-known-after-apply"
+    },
+    {
+      "resource": "aws_opensearch_domain.swift",
+      "attribute": "cognito_options.0.role_arn",
+      "class": "R2",
+      "reference": "aws_iam_role.opensearch_cognito.arn",
+      "substituted": "arn:aws:iam:eu-west-1:123456789012:role/swift-opensearch-cognito"
+    },
+    {
+      "resource": "aws_opensearch_domain.swift",
+      "attribute": "cognito_options.0.user_pool_id",
+      "class": "R2",
+      "reference": "aws_cognito_user_pool.swift.id",
+      "substituted": "swift-operators"
+    },
+    {
+      "resource": "aws_opensearch_domain.swift",
+      "attribute": "vpc_options.0.security_group_ids",
+      "class": "R2",
+      "reference": "aws_security_group.swift_app.id",
+      "substituted": [
+        "aws_security_group-swift_app-id-known-after-apply"
+      ]
+    },
+    {
+      "resource": "aws_opensearch_domain.swift",
+      "attribute": "vpc_options.0.subnet_ids",
+      "class": "R2",
+      "reference": "aws_subnet.swift[*]",
+      "substituted": [
+        "aws_subnet-swift[0]-id-known-after-apply",
+        "aws_subnet-swift[1]-id-known-after-apply"
+      ]
+    },
+    {
+      "resource": "aws_s3_bucket_server_side_encryption_configuration.trail",
+      "attribute": "rule.0.apply_server_side_encryption_by_default.0.kms_master_key_id",
+      "class": "R2",
+      "reference": "aws_kms_key.swift_logs.arn",
+      "substituted": "arn:aws:kms:eu-west-1:123456789012:key/swift_logs"
+    }
+  ],
+  "r2_self_identity": [
+    {
+      "resource": "aws_api_gateway_domain_name.swift",
+      "attribute": "id",
+      "class": "R2",
+      "reference": "aws_api_gateway_domain_name.swift.id",
+      "substituted": "api.swift.example.com"
+    },
+    {
+      "resource": "aws_api_gateway_domain_name.swift",
+      "attribute": "arn",
+      "class": "R2",
+      "reference": "aws_api_gateway_domain_name.swift.arn",
+      "substituted": "arn:aws:api:eu-west-1:123456789012:gateway_domain_name/api.swift.example.com"
+    },
+    {
+      "resource": "aws_cloudtrail.swift",
+      "attribute": "id",
+      "class": "R2",
+      "reference": "aws_cloudtrail.swift.id",
+      "substituted": "swift-audit-trail"
+    },
+    {
+      "resource": "aws_cloudtrail.swift",
+      "attribute": "arn",
+      "class": "R2",
+      "reference": "aws_cloudtrail.swift.arn",
+      "substituted": "arn:aws:cloudtrail:eu-west-1:123456789012:cloudtrail/swift-audit-trail"
+    },
+    {
+      "resource": "aws_cloudwatch_log_group.flow_logs",
+      "attribute": "id",
+      "class": "R2",
+      "reference": "aws_cloudwatch_log_group.flow_logs.id",
+      "substituted": "/swift/vpc-flow-logs"
+    },
+    {
+      "resource": "aws_cloudwatch_log_group.flow_logs",
+      "attribute": "arn",
+      "class": "R2",
+      "reference": "aws_cloudwatch_log_group.flow_logs.arn",
+      "substituted": "arn:aws:cloudwatch:eu-west-1:123456789012:log_group//swift/vpc-flow-logs"
+    },
+    {
+      "resource": "aws_cloudwatch_log_group.sessions",
+      "attribute": "id",
+      "class": "R2",
+      "reference": "aws_cloudwatch_log_group.sessions.id",
+      "substituted": "/swift/session-manager"
+    },
+    {
+      "resource": "aws_cloudwatch_log_group.sessions",
+      "attribute": "arn",
+      "class": "R2",
+      "reference": "aws_cloudwatch_log_group.sessions.arn",
+      "substituted": "arn:aws:cloudwatch:eu-west-1:123456789012:log_group//swift/session-manager"
+    },
+    {
+      "resource": "aws_cloudwatch_log_group.trail",
+      "attribute": "id",
+      "class": "R2",
+      "reference": "aws_cloudwatch_log_group.trail.id",
+      "substituted": "/swift/cloudtrail"
+    },
+    {
+      "resource": "aws_cloudwatch_log_group.trail",
+      "attribute": "arn",
+      "class": "R2",
+      "reference": "aws_cloudwatch_log_group.trail.arn",
+      "substituted": "arn:aws:cloudwatch:eu-west-1:123456789012:log_group//swift/cloudtrail"
+    },
+    {
+      "resource": "aws_cloudwatch_log_group.vpn",
+      "attribute": "id",
+      "class": "R2",
+      "reference": "aws_cloudwatch_log_group.vpn.id",
+      "substituted": "/swift/vpn"
+    },
+    {
+      "resource": "aws_cloudwatch_log_group.vpn",
+      "attribute": "arn",
+      "class": "R2",
+      "reference": "aws_cloudwatch_log_group.vpn.arn",
+      "substituted": "arn:aws:cloudwatch:eu-west-1:123456789012:log_group//swift/vpn"
+    },
+    {
+      "resource": "aws_cloudwatch_log_metric_filter.iam_changes",
+      "attribute": "id",
+      "class": "R2",
+      "reference": "aws_cloudwatch_log_metric_filter.iam_changes.id",
+      "substituted": "swift-iam-changes"
+    },
+    {
+      "resource": "aws_cloudwatch_log_metric_filter.root_usage",
+      "attribute": "id",
+      "class": "R2",
+      "reference": "aws_cloudwatch_log_metric_filter.root_usage.id",
+      "substituted": "swift-root-usage"
+    },
+    {
+      "resource": "aws_cloudwatch_log_metric_filter.signin_failures",
+      "attribute": "id",
+      "class": "R2",
+      "reference": "aws_cloudwatch_log_metric_filter.signin_failures.id",
+      "substituted": "swift-signin-failures"
+    },
+    {
+      "resource": "aws_cloudwatch_metric_alarm.iam_changes",
+      "attribute": "id",
+      "class": "R2",
+      "reference": "aws_cloudwatch_metric_alarm.iam_changes.id",
+      "substituted": "aws_cloudwatch_metric_alarm-iam_changes-id-known-after-apply"
+    },
+    {
+      "resource": "aws_cloudwatch_metric_alarm.iam_changes",
+      "attribute": "arn",
+      "class": "R2",
+      "reference": "aws_cloudwatch_metric_alarm.iam_changes.arn",
+      "substituted": "arn:aws:cloudwatch:eu-west-1:123456789012:metric_alarm/iam_changes"
+    },
+    {
+      "resource": "aws_cloudwatch_metric_alarm.root_usage",
+      "attribute": "id",
+      "class": "R2",
+      "reference": "aws_cloudwatch_metric_alarm.root_usage.id",
+      "substituted": "aws_cloudwatch_metric_alarm-root_usage-id-known-after-apply"
+    },
+    {
+      "resource": "aws_cloudwatch_metric_alarm.root_usage",
+      "attribute": "arn",
+      "class": "R2",
+      "reference": "aws_cloudwatch_metric_alarm.root_usage.arn",
+      "substituted": "arn:aws:cloudwatch:eu-west-1:123456789012:metric_alarm/root_usage"
+    },
+    {
+      "resource": "aws_cloudwatch_metric_alarm.signin_failures",
+      "attribute": "id",
+      "class": "R2",
+      "reference": "aws_cloudwatch_metric_alarm.signin_failures.id",
+      "substituted": "aws_cloudwatch_metric_alarm-signin_failures-id-known-after-apply"
+    },
+    {
+      "resource": "aws_cloudwatch_metric_alarm.signin_failures",
+      "attribute": "arn",
+      "class": "R2",
+      "reference": "aws_cloudwatch_metric_alarm.signin_failures.arn",
+      "substituted": "arn:aws:cloudwatch:eu-west-1:123456789012:metric_alarm/signin_failures"
+    },
+    {
+      "resource": "aws_cognito_identity_pool.swift",
+      "attribute": "id",
+      "class": "R2",
+      "reference": "aws_cognito_identity_pool.swift.id",
+      "substituted": "aws_cognito_identity_pool-swift-id-known-after-apply"
+    },
+    {
+      "resource": "aws_cognito_identity_pool.swift",
+      "attribute": "arn",
+      "class": "R2",
+      "reference": "aws_cognito_identity_pool.swift.arn",
+      "substituted": "arn:aws:cognito:eu-west-1:123456789012:identity_pool/swift"
+    },
+    {
+      "resource": "aws_cognito_user_pool.swift",
+      "attribute": "id",
+      "class": "R2",
+      "reference": "aws_cognito_user_pool.swift.id",
+      "substituted": "swift-operators"
+    },
+    {
+      "resource": "aws_cognito_user_pool.swift",
+      "attribute": "arn",
+      "class": "R2",
+      "reference": "aws_cognito_user_pool.swift.arn",
+      "substituted": "arn:aws:cognito:eu-west-1:123456789012:user_pool/swift-operators"
+    },
+    {
+      "resource": "aws_config_configuration_recorder.swift",
+      "attribute": "id",
+      "class": "R2",
+      "reference": "aws_config_configuration_recorder.swift.id",
+      "substituted": "swift-config"
+    },
+    {
+      "resource": "aws_customer_gateway.back_office",
+      "attribute": "id",
+      "class": "R2",
+      "reference": "aws_customer_gateway.back_office.id",
+      "substituted": "aws_customer_gateway-back_office-id-known-after-apply"
+    },
+    {
+      "resource": "aws_customer_gateway.back_office",
+      "attribute": "arn",
+      "class": "R2",
+      "reference": "aws_customer_gateway.back_office.arn",
+      "substituted": "arn:aws:customer:eu-west-1:123456789012:gateway/back_office"
+    },
+    {
+      "resource": "aws_db_instance.swift",
+      "attribute": "id",
+      "class": "R2",
+      "reference": "aws_db_instance.swift.id",
+      "substituted": "aws_db_instance-swift-id-known-after-apply"
+    },
+    {
+      "resource": "aws_db_instance.swift",
+      "attribute": "arn",
+      "class": "R2",
+      "reference": "aws_db_instance.swift.arn",
+      "substituted": "arn:aws:db:eu-west-1:123456789012:instance/swift"
+    },
+    {
+      "resource": "aws_db_parameter_group.mysql",
+      "attribute": "id",
+      "class": "R2",
+      "reference": "aws_db_parameter_group.mysql.id",
+      "substituted": "swift-mysql"
+    },
+    {
+      "resource": "aws_db_parameter_group.mysql",
+      "attribute": "arn",
+      "class": "R2",
+      "reference": "aws_db_parameter_group.mysql.arn",
+      "substituted": "arn:aws:db:eu-west-1:123456789012:parameter_group/swift-mysql"
+    },
+    {
+      "resource": "aws_db_parameter_group.postgres",
+      "attribute": "id",
+      "class": "R2",
+      "reference": "aws_db_parameter_group.postgres.id",
+      "substituted": "swift-postgres"
+    },
+    {
+      "resource": "aws_db_parameter_group.postgres",
+      "attribute": "arn",
+      "class": "R2",
+      "reference": "aws_db_parameter_group.postgres.arn",
+      "substituted": "arn:aws:db:eu-west-1:123456789012:parameter_group/swift-postgres"
+    },
+    {
+      "resource": "aws_db_subnet_group.swift",
+      "attribute": "id",
+      "class": "R2",
+      "reference": "aws_db_subnet_group.swift.id",
+      "substituted": "swift-db"
+    },
+    {
+      "resource": "aws_db_subnet_group.swift",
+      "attribute": "arn",
+      "class": "R2",
+      "reference": "aws_db_subnet_group.swift.arn",
+      "substituted": "arn:aws:db:eu-west-1:123456789012:subnet_group/swift-db"
+    },
+    {
+      "resource": "aws_default_network_acl.swift",
+      "attribute": "id",
+      "class": "R2",
+      "reference": "aws_default_network_acl.swift.id",
+      "substituted": "aws_default_network_acl-swift-id-known-after-apply"
+    },
+    {
+      "resource": "aws_default_network_acl.swift",
+      "attribute": "arn",
+      "class": "R2",
+      "reference": "aws_default_network_acl.swift.arn",
+      "substituted": "arn:aws:default:eu-west-1:123456789012:network_acl/swift"
+    },
+    {
+      "resource": "aws_default_security_group.swift",
+      "attribute": "id",
+      "class": "R2",
+      "reference": "aws_default_security_group.swift.id",
+      "substituted": "aws_default_security_group-swift-id-known-after-apply"
+    },
+    {
+      "resource": "aws_default_security_group.swift",
+      "attribute": "arn",
+      "class": "R2",
+      "reference": "aws_default_security_group.swift.arn",
+      "substituted": "arn:aws:default:eu-west-1:123456789012:security_group/swift"
+    },
+    {
+      "resource": "aws_dx_connection.back_office",
+      "attribute": "id",
+      "class": "R2",
+      "reference": "aws_dx_connection.back_office.id",
+      "substituted": "swift-back-office-dx"
+    },
+    {
+      "resource": "aws_dx_connection.back_office",
+      "attribute": "arn",
+      "class": "R2",
+      "reference": "aws_dx_connection.back_office.arn",
+      "substituted": "arn:aws:dx:eu-west-1:123456789012:connection/swift-back-office-dx"
+    },
+    {
+      "resource": "aws_ebs_volume.jump_data",
+      "attribute": "id",
+      "class": "R2",
+      "reference": "aws_ebs_volume.jump_data.id",
+      "substituted": "aws_ebs_volume-jump_data-id-known-after-apply"
+    },
+    {
+      "resource": "aws_ebs_volume.jump_data",
+      "attribute": "arn",
+      "class": "R2",
+      "reference": "aws_ebs_volume.jump_data.arn",
+      "substituted": "arn:aws:ebs:eu-west-1:123456789012:volume/jump_data"
+    },
+    {
+      "resource": "aws_ec2_client_vpn_authorization_rule.swift",
+      "attribute": "id",
+      "class": "R2",
+      "reference": "aws_ec2_client_vpn_authorization_rule.swift.id",
+      "substituted": "aws_ec2_client_vpn_authorization_rule-swift-id-known-after-apply"
+    },
+    {
+      "resource": "aws_ec2_client_vpn_endpoint.swift",
+      "attribute": "id",
+      "class": "R2",
+      "reference": "aws_ec2_client_vpn_endpoint.swift.id",
+      "substituted": "aws_ec2_client_vpn_endpoint-swift-id-known-after-apply"
+    },
+    {
+      "resource": "aws_ec2_client_vpn_endpoint.swift",
+      "attribute": "arn",
+      "class": "R2",
+      "reference": "aws_ec2_client_vpn_endpoint.swift.arn",
+      "substituted": "arn:aws:ec2:eu-west-1:123456789012:client_vpn_endpoint/swift"
+    },
+    {
+      "resource": "aws_ecs_task_definition.swift",
+      "attribute": "id",
+      "class": "R2",
+      "reference": "aws_ecs_task_definition.swift.id",
+      "substituted": "aws_ecs_task_definition-swift-id-known-after-apply"
+    },
+    {
+      "resource": "aws_ecs_task_definition.swift",
+      "attribute": "arn",
+      "class": "R2",
+      "reference": "aws_ecs_task_definition.swift.arn",
+      "substituted": "arn:aws:ecs:eu-west-1:123456789012:task_definition/swift"
+    },
+    {
+      "resource": "aws_efs_file_system.swift",
+      "attribute": "id",
+      "class": "R2",
+      "reference": "aws_efs_file_system.swift.id",
+      "substituted": "aws_efs_file_system-swift-id-known-after-apply"
+    },
+    {
+      "resource": "aws_efs_file_system.swift",
+      "attribute": "arn",
+      "class": "R2",
+      "reference": "aws_efs_file_system.swift.arn",
+      "substituted": "arn:aws:efs:eu-west-1:123456789012:file_system/swift"
+    },
+    {
+      "resource": "aws_efs_file_system_policy.swift",
+      "attribute": "id",
+      "class": "R2",
+      "reference": "aws_efs_file_system_policy.swift.id",
+      "substituted": "aws_efs_file_system_policy-swift-id-known-after-apply"
+    },
+    {
+      "resource": "aws_elasticache_replication_group.swift",
+      "attribute": "id",
+      "class": "R2",
+      "reference": "aws_elasticache_replication_group.swift.id",
+      "substituted": "aws_elasticache_replication_group-swift-id-known-after-apply"
+    },
+    {
+      "resource": "aws_elasticache_replication_group.swift",
+      "attribute": "arn",
+      "class": "R2",
+      "reference": "aws_elasticache_replication_group.swift.arn",
+      "substituted": "arn:aws:elasticache:eu-west-1:123456789012:replication_group/swift"
+    },
+    {
+      "resource": "aws_elasticache_subnet_group.swift",
+      "attribute": "id",
+      "class": "R2",
+      "reference": "aws_elasticache_subnet_group.swift.id",
+      "substituted": "swift-cache-subnet"
+    },
+    {
+      "resource": "aws_elasticache_subnet_group.swift",
+      "attribute": "arn",
+      "class": "R2",
+      "reference": "aws_elasticache_subnet_group.swift.arn",
+      "substituted": "arn:aws:elasticache:eu-west-1:123456789012:subnet_group/swift-cache-subnet"
+    },
+    {
+      "resource": "aws_flow_log.swift",
+      "attribute": "id",
+      "class": "R2",
+      "reference": "aws_flow_log.swift.id",
+      "substituted": "aws_flow_log-swift-id-known-after-apply"
+    },
+    {
+      "resource": "aws_flow_log.swift",
+      "attribute": "arn",
+      "class": "R2",
+      "reference": "aws_flow_log.swift.arn",
+      "substituted": "arn:aws:flow:eu-west-1:123456789012:log/swift"
+    },
+    {
+      "resource": "aws_guardduty_detector.swift",
+      "attribute": "id",
+      "class": "R2",
+      "reference": "aws_guardduty_detector.swift.id",
+      "substituted": "aws_guardduty_detector-swift-id-known-after-apply"
+    },
+    {
+      "resource": "aws_guardduty_detector.swift",
+      "attribute": "arn",
+      "class": "R2",
+      "reference": "aws_guardduty_detector.swift.arn",
+      "substituted": "arn:aws:guardduty:eu-west-1:123456789012:detector/swift"
+    },
+    {
+      "resource": "aws_iam_account_password_policy.swift",
+      "attribute": "id",
+      "class": "R2",
+      "reference": "aws_iam_account_password_policy.swift.id",
+      "substituted": "aws_iam_account_password_policy-swift-id-known-after-apply"
+    },
+    {
+      "resource": "aws_iam_group.swift_operators",
+      "attribute": "id",
+      "class": "R2",
+      "reference": "aws_iam_group.swift_operators.id",
+      "substituted": "swift-operators"
+    },
+    {
+      "resource": "aws_iam_group.swift_operators",
+      "attribute": "arn",
+      "class": "R2",
+      "reference": "aws_iam_group.swift_operators.arn",
+      "substituted": "arn:aws:iam:eu-west-1:123456789012:group/swift-operators"
+    },
+    {
+      "resource": "aws_iam_group_policy_attachment.swift_operators",
+      "attribute": "id",
+      "class": "R2",
+      "reference": "aws_iam_group_policy_attachment.swift_operators.id",
+      "substituted": "aws_iam_group_policy_attachment-swift_operators-id-known-after-apply"
+    },
+    {
+      "resource": "aws_iam_instance_profile.jump",
+      "attribute": "id",
+      "class": "R2",
+      "reference": "aws_iam_instance_profile.jump.id",
+      "substituted": "swift-jump-profile"
+    },
+    {
+      "resource": "aws_iam_instance_profile.jump",
+      "attribute": "arn",
+      "class": "R2",
+      "reference": "aws_iam_instance_profile.jump.arn",
+      "substituted": "arn:aws:iam:eu-west-1:123456789012:instance_profile/swift-jump-profile"
+    },
+    {
+      "resource": "aws_iam_policy.swift_deploy",
+      "attribute": "id",
+      "class": "R2",
+      "reference": "aws_iam_policy.swift_deploy.id",
+      "substituted": "swift-deploy"
+    },
+    {
+      "resource": "aws_iam_policy.swift_deploy",
+      "attribute": "arn",
+      "class": "R2",
+      "reference": "aws_iam_policy.swift_deploy.arn",
+      "substituted": "arn:aws:iam:eu-west-1:123456789012:policy/swift-deploy"
+    },
+    {
+      "resource": "aws_iam_policy.swift_operator",
+      "attribute": "id",
+      "class": "R2",
+      "reference": "aws_iam_policy.swift_operator.id",
+      "substituted": "swift-operator"
+    },
+    {
+      "resource": "aws_iam_policy.swift_operator",
+      "attribute": "arn",
+      "class": "R2",
+      "reference": "aws_iam_policy.swift_operator.arn",
+      "substituted": "arn:aws:iam:eu-west-1:123456789012:policy/swift-operator"
+    },
+    {
+      "resource": "aws_iam_policy.swift_policy_attacher",
+      "attribute": "id",
+      "class": "R2",
+      "reference": "aws_iam_policy.swift_policy_attacher.id",
+      "substituted": "swift-policy-attacher"
+    },
+    {
+      "resource": "aws_iam_policy.swift_policy_attacher",
+      "attribute": "arn",
+      "class": "R2",
+      "reference": "aws_iam_policy.swift_policy_attacher.arn",
+      "substituted": "arn:aws:iam:eu-west-1:123456789012:policy/swift-policy-attacher"
+    },
+    {
+      "resource": "aws_iam_policy.swift_policy_author",
+      "attribute": "id",
+      "class": "R2",
+      "reference": "aws_iam_policy.swift_policy_author.id",
+      "substituted": "swift-policy-author"
+    },
+    {
+      "resource": "aws_iam_policy.swift_policy_author",
+      "attribute": "arn",
+      "class": "R2",
+      "reference": "aws_iam_policy.swift_policy_author.arn",
+      "substituted": "arn:aws:iam:eu-west-1:123456789012:policy/swift-policy-author"
+    },
+    {
+      "resource": "aws_iam_policy.swift_provisioner",
+      "attribute": "id",
+      "class": "R2",
+      "reference": "aws_iam_policy.swift_provisioner.id",
+      "substituted": "swift-iam-provisioner"
+    },
+    {
+      "resource": "aws_iam_policy.swift_provisioner",
+      "attribute": "arn",
+      "class": "R2",
+      "reference": "aws_iam_policy.swift_provisioner.arn",
+      "substituted": "arn:aws:iam:eu-west-1:123456789012:policy/swift-iam-provisioner"
+    },
+    {
+      "resource": "aws_iam_role.config",
+      "attribute": "id",
+      "class": "R2",
+      "reference": "aws_iam_role.config.id",
+      "substituted": "swift-config"
+    },
+    {
+      "resource": "aws_iam_role.config",
+      "attribute": "arn",
+      "class": "R2",
+      "reference": "aws_iam_role.config.arn",
+      "substituted": "arn:aws:iam:eu-west-1:123456789012:role/swift-config"
+    },
+    {
+      "resource": "aws_iam_role.flow_log",
+      "attribute": "id",
+      "class": "R2",
+      "reference": "aws_iam_role.flow_log.id",
+      "substituted": "swift-flow-log"
+    },
+    {
+      "resource": "aws_iam_role.flow_log",
+      "attribute": "arn",
+      "class": "R2",
+      "reference": "aws_iam_role.flow_log.arn",
+      "substituted": "arn:aws:iam:eu-west-1:123456789012:role/swift-flow-log"
+    },
+    {
+      "resource": "aws_iam_role.jump_server",
+      "attribute": "id",
+      "class": "R2",
+      "reference": "aws_iam_role.jump_server.id",
+      "substituted": "swift-jump-server"
+    },
+    {
+      "resource": "aws_iam_role.jump_server",
+      "attribute": "arn",
+      "class": "R2",
+      "reference": "aws_iam_role.jump_server.arn",
+      "substituted": "arn:aws:iam:eu-west-1:123456789012:role/swift-jump-server"
+    },
+    {
+      "resource": "aws_iam_role.jump_ssm",
+      "attribute": "id",
+      "class": "R2",
+      "reference": "aws_iam_role.jump_ssm.id",
+      "substituted": "swift-jump-ssm"
+    },
+    {
+      "resource": "aws_iam_role.jump_ssm",
+      "attribute": "arn",
+      "class": "R2",
+      "reference": "aws_iam_role.jump_ssm.arn",
+      "substituted": "arn:aws:iam:eu-west-1:123456789012:role/swift-jump-ssm"
+    },
+    {
+      "resource": "aws_iam_role.opensearch_cognito",
+      "attribute": "id",
+      "class": "R2",
+      "reference": "aws_iam_role.opensearch_cognito.id",
+      "substituted": "swift-opensearch-cognito"
+    },
+    {
+      "resource": "aws_iam_role.opensearch_cognito",
+      "attribute": "arn",
+      "class": "R2",
+      "reference": "aws_iam_role.opensearch_cognito.arn",
+      "substituted": "arn:aws:iam:eu-west-1:123456789012:role/swift-opensearch-cognito"
+    },
+    {
+      "resource": "aws_iam_role.swift_app",
+      "attribute": "id",
+      "class": "R2",
+      "reference": "aws_iam_role.swift_app.id",
+      "substituted": "swift-app-role"
+    },
+    {
+      "resource": "aws_iam_role.swift_app",
+      "attribute": "arn",
+      "class": "R2",
+      "reference": "aws_iam_role.swift_app.arn",
+      "substituted": "arn:aws:iam:eu-west-1:123456789012:role/swift-app-role"
+    },
+    {
+      "resource": "aws_iam_role.swift_cross_account",
+      "attribute": "id",
+      "class": "R2",
+      "reference": "aws_iam_role.swift_cross_account.id",
+      "substituted": "swift-cross-account-audit"
+    },
+    {
+      "resource": "aws_iam_role.swift_cross_account",
+      "attribute": "arn",
+      "class": "R2",
+      "reference": "aws_iam_role.swift_cross_account.arn",
+      "substituted": "arn:aws:iam:eu-west-1:123456789012:role/swift-cross-account-audit"
+    },
+    {
+      "resource": "aws_iam_role.swift_ecs",
+      "attribute": "id",
+      "class": "R2",
+      "reference": "aws_iam_role.swift_ecs.id",
+      "substituted": "swift-ecs-task"
+    },
+    {
+      "resource": "aws_iam_role.swift_ecs",
+      "attribute": "arn",
+      "class": "R2",
+      "reference": "aws_iam_role.swift_ecs.arn",
+      "substituted": "arn:aws:iam:eu-west-1:123456789012:role/swift-ecs-task"
+    },
+    {
+      "resource": "aws_iam_role.swift_lambda",
+      "attribute": "id",
+      "class": "R2",
+      "reference": "aws_iam_role.swift_lambda.id",
+      "substituted": "swift-lambda"
+    },
+    {
+      "resource": "aws_iam_role.swift_lambda",
+      "attribute": "arn",
+      "class": "R2",
+      "reference": "aws_iam_role.swift_lambda.arn",
+      "substituted": "arn:aws:iam:eu-west-1:123456789012:role/swift-lambda"
+    },
+    {
+      "resource": "aws_iam_role.trail_cw",
+      "attribute": "id",
+      "class": "R2",
+      "reference": "aws_iam_role.trail_cw.id",
+      "substituted": "swift-cloudtrail-cw"
+    },
+    {
+      "resource": "aws_iam_role.trail_cw",
+      "attribute": "arn",
+      "class": "R2",
+      "reference": "aws_iam_role.trail_cw.arn",
+      "substituted": "arn:aws:iam:eu-west-1:123456789012:role/swift-cloudtrail-cw"
+    },
+    {
+      "resource": "aws_iam_role_policy.jump_mfa_deny",
+      "attribute": "id",
+      "class": "R2",
+      "reference": "aws_iam_role_policy.jump_mfa_deny.id",
+      "substituted": "swift-jump-mfa-deny"
+    },
+    {
+      "resource": "aws_iam_role_policy_attachment.swift_app",
+      "attribute": "id",
+      "class": "R2",
+      "reference": "aws_iam_role_policy_attachment.swift_app.id",
+      "substituted": "aws_iam_role_policy_attachment-swift_app-id-known-after-apply"
+    },
+    {
+      "resource": "aws_iam_role_policy_attachment.swift_ecs",
+      "attribute": "id",
+      "class": "R2",
+      "reference": "aws_iam_role_policy_attachment.swift_ecs.id",
+      "substituted": "aws_iam_role_policy_attachment-swift_ecs-id-known-after-apply"
+    },
+    {
+      "resource": "aws_iam_role_policy_attachment.swift_lambda",
+      "attribute": "id",
+      "class": "R2",
+      "reference": "aws_iam_role_policy_attachment.swift_lambda.id",
+      "substituted": "aws_iam_role_policy_attachment-swift_lambda-id-known-after-apply"
+    },
+    {
+      "resource": "aws_inspector2_enabler.swift",
+      "attribute": "id",
+      "class": "R2",
+      "reference": "aws_inspector2_enabler.swift.id",
+      "substituted": "aws_inspector2_enabler-swift-id-known-after-apply"
+    },
+    {
+      "resource": "aws_instance.jump_server",
+      "attribute": "id",
+      "class": "R2",
+      "reference": "aws_instance.jump_server.id",
+      "substituted": "aws_instance-jump_server-id-known-after-apply"
+    },
+    {
+      "resource": "aws_instance.jump_server",
+      "attribute": "arn",
+      "class": "R2",
+      "reference": "aws_instance.jump_server.arn",
+      "substituted": "arn:aws:instance:eu-west-1:123456789012:instance/jump_server"
+    },
+    {
+      "resource": "aws_kms_key.swift_data",
+      "attribute": "id",
+      "class": "R2",
+      "reference": "aws_kms_key.swift_data.id",
+      "substituted": "aws_kms_key-swift_data-id-known-after-apply"
+    },
+    {
+      "resource": "aws_kms_key.swift_data",
+      "attribute": "arn",
+      "class": "R2",
+      "reference": "aws_kms_key.swift_data.arn",
+      "substituted": "arn:aws:kms:eu-west-1:123456789012:key/swift_data"
+    },
+    {
+      "resource": "aws_kms_key.swift_logs",
+      "attribute": "id",
+      "class": "R2",
+      "reference": "aws_kms_key.swift_logs.id",
+      "substituted": "aws_kms_key-swift_logs-id-known-after-apply"
+    },
+    {
+      "resource": "aws_kms_key.swift_logs",
+      "attribute": "arn",
+      "class": "R2",
+      "reference": "aws_kms_key.swift_logs.arn",
+      "substituted": "arn:aws:kms:eu-west-1:123456789012:key/swift_logs"
+    },
+    {
+      "resource": "aws_lambda_function.swift",
+      "attribute": "id",
+      "class": "R2",
+      "reference": "aws_lambda_function.swift.id",
+      "substituted": "swift-processor"
+    },
+    {
+      "resource": "aws_lambda_function.swift",
+      "attribute": "arn",
+      "class": "R2",
+      "reference": "aws_lambda_function.swift.arn",
+      "substituted": "arn:aws:lambda:eu-west-1:123456789012:function/swift-processor"
+    },
+    {
+      "resource": "aws_lb.swift",
+      "attribute": "id",
+      "class": "R2",
+      "reference": "aws_lb.swift.id",
+      "substituted": "swift-internal-alb"
+    },
+    {
+      "resource": "aws_lb.swift",
+      "attribute": "arn",
+      "class": "R2",
+      "reference": "aws_lb.swift.arn",
+      "substituted": "arn:aws:lb:eu-west-1:123456789012:lb/swift-internal-alb"
+    },
+    {
+      "resource": "aws_lb_listener.swift_https",
+      "attribute": "id",
+      "class": "R2",
+      "reference": "aws_lb_listener.swift_https.id",
+      "substituted": "aws_lb_listener-swift_https-id-known-after-apply"
+    },
+    {
+      "resource": "aws_lb_listener.swift_https",
+      "attribute": "arn",
+      "class": "R2",
+      "reference": "aws_lb_listener.swift_https.arn",
+      "substituted": "arn:aws:lb:eu-west-1:123456789012:listener/swift_https"
+    },
+    {
+      "resource": "aws_msk_cluster.swift",
+      "attribute": "id",
+      "class": "R2",
+      "reference": "aws_msk_cluster.swift.id",
+      "substituted": "swift-kafka"
+    },
+    {
+      "resource": "aws_msk_cluster.swift",
+      "attribute": "arn",
+      "class": "R2",
+      "reference": "aws_msk_cluster.swift.arn",
+      "substituted": "arn:aws:msk:eu-west-1:123456789012:cluster/swift-kafka"
+    },
+    {
+      "resource": "aws_opensearch_domain.swift",
+      "attribute": "id",
+      "class": "R2",
+      "reference": "aws_opensearch_domain.swift.id",
+      "substituted": "swift-logs"
+    },
+    {
+      "resource": "aws_opensearch_domain.swift",
+      "attribute": "arn",
+      "class": "R2",
+      "reference": "aws_opensearch_domain.swift.arn",
+      "substituted": "arn:aws:opensearch:eu-west-1:123456789012:domain/swift-logs"
+    },
+    {
+      "resource": "aws_redshift_cluster.swift",
+      "attribute": "id",
+      "class": "R2",
+      "reference": "aws_redshift_cluster.swift.id",
+      "substituted": "aws_redshift_cluster-swift-id-known-after-apply"
+    },
+    {
+      "resource": "aws_redshift_cluster.swift",
+      "attribute": "arn",
+      "class": "R2",
+      "reference": "aws_redshift_cluster.swift.arn",
+      "substituted": "arn:aws:redshift:eu-west-1:123456789012:cluster/swift"
+    },
+    {
+      "resource": "aws_redshift_parameter_group.swift",
+      "attribute": "id",
+      "class": "R2",
+      "reference": "aws_redshift_parameter_group.swift.id",
+      "substituted": "swift-redshift"
+    },
+    {
+      "resource": "aws_redshift_parameter_group.swift",
+      "attribute": "arn",
+      "class": "R2",
+      "reference": "aws_redshift_parameter_group.swift.arn",
+      "substituted": "arn:aws:redshift:eu-west-1:123456789012:parameter_group/swift-redshift"
+    },
+    {
+      "resource": "aws_redshift_subnet_group.swift",
+      "attribute": "id",
+      "class": "R2",
+      "reference": "aws_redshift_subnet_group.swift.id",
+      "substituted": "swift-redshift"
+    },
+    {
+      "resource": "aws_redshift_subnet_group.swift",
+      "attribute": "arn",
+      "class": "R2",
+      "reference": "aws_redshift_subnet_group.swift.arn",
+      "substituted": "arn:aws:redshift:eu-west-1:123456789012:subnet_group/swift-redshift"
+    },
+    {
+      "resource": "aws_route_table.swift",
+      "attribute": "id",
+      "class": "R2",
+      "reference": "aws_route_table.swift.id",
+      "substituted": "aws_route_table-swift-id-known-after-apply"
+    },
+    {
+      "resource": "aws_route_table.swift",
+      "attribute": "arn",
+      "class": "R2",
+      "reference": "aws_route_table.swift.arn",
+      "substituted": "arn:aws:route:eu-west-1:123456789012:table/swift"
+    },
+    {
+      "resource": "aws_route_table_association.swift[0]",
+      "attribute": "id",
+      "class": "R2",
+      "reference": "aws_route_table_association.swift[0].id",
+      "substituted": "aws_route_table_association-swift[0]-id-known-after-apply"
+    },
+    {
+      "resource": "aws_route_table_association.swift[1]",
+      "attribute": "id",
+      "class": "R2",
+      "reference": "aws_route_table_association.swift[1].id",
+      "substituted": "aws_route_table_association-swift[1]-id-known-after-apply"
+    },
+    {
+      "resource": "aws_s3_bucket.swift_data",
+      "attribute": "id",
+      "class": "R2",
+      "reference": "aws_s3_bucket.swift_data.id",
+      "substituted": "swift-data-exchange-123456789012"
+    },
+    {
+      "resource": "aws_s3_bucket.swift_data",
+      "attribute": "arn",
+      "class": "R2",
+      "reference": "aws_s3_bucket.swift_data.arn",
+      "substituted": "arn:aws:s3:eu-west-1:123456789012:bucket/swift-data-exchange-123456789012"
+    },
+    {
+      "resource": "aws_s3_bucket.swift_dr_exchange",
+      "attribute": "id",
+      "class": "R2",
+      "reference": "aws_s3_bucket.swift_dr_exchange.id",
+      "substituted": "swift-dr-exchange-123456789012"
+    },
+    {
+      "resource": "aws_s3_bucket.swift_dr_exchange",
+      "attribute": "arn",
+      "class": "R2",
+      "reference": "aws_s3_bucket.swift_dr_exchange.arn",
+      "substituted": "arn:aws:s3:eu-west-1:123456789012:bucket/swift-dr-exchange-123456789012"
+    },
+    {
+      "resource": "aws_s3_bucket.trail",
+      "attribute": "id",
+      "class": "R2",
+      "reference": "aws_s3_bucket.trail.id",
+      "substituted": "swift-audit-trail-logs-123456789012"
+    },
+    {
+      "resource": "aws_s3_bucket.trail",
+      "attribute": "arn",
+      "class": "R2",
+      "reference": "aws_s3_bucket.trail.arn",
+      "substituted": "arn:aws:s3:eu-west-1:123456789012:bucket/swift-audit-trail-logs-123456789012"
+    },
+    {
+      "resource": "aws_s3_bucket_lifecycle_configuration.trail",
+      "attribute": "id",
+      "class": "R2",
+      "reference": "aws_s3_bucket_lifecycle_configuration.trail.id",
+      "substituted": "swift-audit-trail-logs-123456789012"
+    },
+    {
+      "resource": "aws_s3_bucket_policy.swift_data_tls",
+      "attribute": "id",
+      "class": "R2",
+      "reference": "aws_s3_bucket_policy.swift_data_tls.id",
+      "substituted": "swift-data-exchange-123456789012"
+    },
+    {
+      "resource": "aws_s3_bucket_policy.swift_dr_exchange",
+      "attribute": "id",
+      "class": "R2",
+      "reference": "aws_s3_bucket_policy.swift_dr_exchange.id",
+      "substituted": "swift-dr-exchange-123456789012"
+    },
+    {
+      "resource": "aws_s3_bucket_policy.trail",
+      "attribute": "id",
+      "class": "R2",
+      "reference": "aws_s3_bucket_policy.trail.id",
+      "substituted": "swift-audit-trail-logs-123456789012"
+    },
+    {
+      "resource": "aws_s3_bucket_public_access_block.trail",
+      "attribute": "id",
+      "class": "R2",
+      "reference": "aws_s3_bucket_public_access_block.trail.id",
+      "substituted": "swift-audit-trail-logs-123456789012"
+    },
+    {
+      "resource": "aws_s3_bucket_server_side_encryption_configuration.trail",
+      "attribute": "id",
+      "class": "R2",
+      "reference": "aws_s3_bucket_server_side_encryption_configuration.trail.id",
+      "substituted": "swift-audit-trail-logs-123456789012"
+    },
+    {
+      "resource": "aws_s3_bucket_versioning.trail",
+      "attribute": "id",
+      "class": "R2",
+      "reference": "aws_s3_bucket_versioning.trail.id",
+      "substituted": "swift-audit-trail-logs-123456789012"
+    },
+    {
+      "resource": "aws_secretsmanager_secret.swift_db",
+      "attribute": "id",
+      "class": "R2",
+      "reference": "aws_secretsmanager_secret.swift_db.id",
+      "substituted": "swift/db/master"
+    },
+    {
+      "resource": "aws_secretsmanager_secret.swift_db",
+      "attribute": "arn",
+      "class": "R2",
+      "reference": "aws_secretsmanager_secret.swift_db.arn",
+      "substituted": "arn:aws:secretsmanager:eu-west-1:123456789012:secret/swift/db/master"
+    },
+    {
+      "resource": "aws_secretsmanager_secret_policy.app",
+      "attribute": "id",
+      "class": "R2",
+      "reference": "aws_secretsmanager_secret_policy.app.id",
+      "substituted": "aws_secretsmanager_secret_policy-app-id-known-after-apply"
+    },
+    {
+      "resource": "aws_secretsmanager_secret_rotation.swift_db",
+      "attribute": "id",
+      "class": "R2",
+      "reference": "aws_secretsmanager_secret_rotation.swift_db.id",
+      "substituted": "aws_secretsmanager_secret_rotation-swift_db-id-known-after-apply"
+    },
+    {
+      "resource": "aws_security_group.swift_app",
+      "attribute": "id",
+      "class": "R2",
+      "reference": "aws_security_group.swift_app.id",
+      "substituted": "aws_security_group-swift_app-id-known-after-apply"
+    },
+    {
+      "resource": "aws_security_group.swift_app",
+      "attribute": "arn",
+      "class": "R2",
+      "reference": "aws_security_group.swift_app.arn",
+      "substituted": "arn:aws:security:eu-west-1:123456789012:group/swift_app"
+    },
+    {
+      "resource": "aws_sns_topic.alerts",
+      "attribute": "id",
+      "class": "R2",
+      "reference": "aws_sns_topic.alerts.id",
+      "substituted": "swift-security-alerts"
+    },
+    {
+      "resource": "aws_sns_topic.alerts",
+      "attribute": "arn",
+      "class": "R2",
+      "reference": "aws_sns_topic.alerts.arn",
+      "substituted": "arn:aws:sns:eu-west-1:123456789012:topic/swift-security-alerts"
+    },
+    {
+      "resource": "aws_ssm_association.patch_scan",
+      "attribute": "id",
+      "class": "R2",
+      "reference": "aws_ssm_association.patch_scan.id",
+      "substituted": "AWS-RunPatchBaseline"
+    },
+    {
+      "resource": "aws_ssm_association.patch_scan",
+      "attribute": "arn",
+      "class": "R2",
+      "reference": "aws_ssm_association.patch_scan.arn",
+      "substituted": "arn:aws:ssm:eu-west-1:123456789012:association/AWS-RunPatchBaseline"
+    },
+    {
+      "resource": "aws_ssm_document.session_preferences",
+      "attribute": "id",
+      "class": "R2",
+      "reference": "aws_ssm_document.session_preferences.id",
+      "substituted": "SSM-SessionManagerRunShell"
+    },
+    {
+      "resource": "aws_ssm_document.session_preferences",
+      "attribute": "arn",
+      "class": "R2",
+      "reference": "aws_ssm_document.session_preferences.arn",
+      "substituted": "arn:aws:ssm:eu-west-1:123456789012:document/SSM-SessionManagerRunShell"
+    },
+    {
+      "resource": "aws_ssm_parameter.app_api_key",
+      "attribute": "id",
+      "class": "R2",
+      "reference": "aws_ssm_parameter.app_api_key.id",
+      "substituted": "/swift/app/api_key"
+    },
+    {
+      "resource": "aws_ssm_parameter.app_api_key",
+      "attribute": "arn",
+      "class": "R2",
+      "reference": "aws_ssm_parameter.app_api_key.arn",
+      "substituted": "arn:aws:ssm:eu-west-1:123456789012:parameter//swift/app/api_key"
+    },
+    {
+      "resource": "aws_ssm_patch_baseline.swift",
+      "attribute": "id",
+      "class": "R2",
+      "reference": "aws_ssm_patch_baseline.swift.id",
+      "substituted": "swift-baseline"
+    },
+    {
+      "resource": "aws_ssm_patch_baseline.swift",
+      "attribute": "arn",
+      "class": "R2",
+      "reference": "aws_ssm_patch_baseline.swift.arn",
+      "substituted": "arn:aws:ssm:eu-west-1:123456789012:patch_baseline/swift-baseline"
+    },
+    {
+      "resource": "aws_subnet.swift[0]",
+      "attribute": "id",
+      "class": "R2",
+      "reference": "aws_subnet.swift[0].id",
+      "substituted": "aws_subnet-swift[0]-id-known-after-apply"
+    },
+    {
+      "resource": "aws_subnet.swift[0]",
+      "attribute": "arn",
+      "class": "R2",
+      "reference": "aws_subnet.swift[0].arn",
+      "substituted": "arn:aws:subnet:eu-west-1:123456789012:subnet/swift[0]"
+    },
+    {
+      "resource": "aws_subnet.swift[1]",
+      "attribute": "id",
+      "class": "R2",
+      "reference": "aws_subnet.swift[1].id",
+      "substituted": "aws_subnet-swift[1]-id-known-after-apply"
+    },
+    {
+      "resource": "aws_subnet.swift[1]",
+      "attribute": "arn",
+      "class": "R2",
+      "reference": "aws_subnet.swift[1].arn",
+      "substituted": "arn:aws:subnet:eu-west-1:123456789012:subnet/swift[1]"
+    },
+    {
+      "resource": "aws_vpc.swift",
+      "attribute": "id",
+      "class": "R2",
+      "reference": "aws_vpc.swift.id",
+      "substituted": "aws_vpc-swift-id-known-after-apply"
+    },
+    {
+      "resource": "aws_vpc.swift",
+      "attribute": "arn",
+      "class": "R2",
+      "reference": "aws_vpc.swift.arn",
+      "substituted": "arn:aws:vpc:eu-west-1:123456789012:vpc/swift"
+    },
+    {
+      "resource": "aws_vpc_endpoint.s3",
+      "attribute": "id",
+      "class": "R2",
+      "reference": "aws_vpc_endpoint.s3.id",
+      "substituted": "aws_vpc_endpoint-s3-id-known-after-apply"
+    },
+    {
+      "resource": "aws_vpc_endpoint.s3",
+      "attribute": "arn",
+      "class": "R2",
+      "reference": "aws_vpc_endpoint.s3.arn",
+      "substituted": "arn:aws:vpc:eu-west-1:123456789012:endpoint/s3"
+    },
+    {
+      "resource": "aws_vpc_endpoint.ssm",
+      "attribute": "id",
+      "class": "R2",
+      "reference": "aws_vpc_endpoint.ssm.id",
+      "substituted": "aws_vpc_endpoint-ssm-id-known-after-apply"
+    },
+    {
+      "resource": "aws_vpc_endpoint.ssm",
+      "attribute": "arn",
+      "class": "R2",
+      "reference": "aws_vpc_endpoint.ssm.arn",
+      "substituted": "arn:aws:vpc:eu-west-1:123456789012:endpoint/ssm"
+    },
+    {
+      "resource": "aws_vpn_connection.back_office",
+      "attribute": "id",
+      "class": "R2",
+      "reference": "aws_vpn_connection.back_office.id",
+      "substituted": "aws_vpn_connection-back_office-id-known-after-apply"
+    },
+    {
+      "resource": "aws_vpn_connection.back_office",
+      "attribute": "arn",
+      "class": "R2",
+      "reference": "aws_vpn_connection.back_office.arn",
+      "substituted": "arn:aws:vpn:eu-west-1:123456789012:connection/back_office"
+    },
+    {
+      "resource": "aws_vpn_gateway.swift",
+      "attribute": "id",
+      "class": "R2",
+      "reference": "aws_vpn_gateway.swift.id",
+      "substituted": "aws_vpn_gateway-swift-id-known-after-apply"
+    },
+    {
+      "resource": "aws_vpn_gateway.swift",
+      "attribute": "arn",
+      "class": "R2",
+      "reference": "aws_vpn_gateway.swift.arn",
+      "substituted": "arn:aws:vpn:eu-west-1:123456789012:gateway/swift"
+    }
+  ],
+  "r3_unresolvable": [
+    {
+      "resource": "aws_efs_file_system_policy.swift",
+      "attribute": "policy",
+      "class": "R3",
+      "reason": "document body unknown at plan time; JSON-parsing assertions over it cannot be evaluated",
+      "assigned_from": [
+        "aws_efs_file_system.swift.arn",
+        "aws_efs_file_system.swift"
+      ]
+    },
+    {
+      "resource": "aws_iam_policy.swift_deploy",
+      "attribute": "policy",
+      "class": "R3",
+      "reason": "document body unknown at plan time; JSON-parsing assertions over it cannot be evaluated",
+      "assigned_from": [
+        "aws_iam_role.swift_app.arn",
+        "aws_iam_role.swift_app"
+      ]
+    },
+    {
+      "resource": "aws_s3_bucket_policy.swift_data_tls",
+      "attribute": "policy",
+      "class": "R3",
+      "reason": "document body unknown at plan time; JSON-parsing assertions over it cannot be evaluated",
+      "assigned_from": [
+        "aws_s3_bucket.swift_data.arn",
+        "aws_s3_bucket.swift_data",
+        "aws_s3_bucket.swift_data.arn",
+        "aws_s3_bucket.swift_data"
+      ]
+    },
+    {
+      "resource": "aws_s3_bucket_policy.trail",
+      "attribute": "policy",
+      "class": "R3",
+      "reason": "document body unknown at plan time; JSON-parsing assertions over it cannot be evaluated",
+      "assigned_from": [
+        "aws_s3_bucket.trail.arn",
+        "aws_s3_bucket.trail",
+        "aws_s3_bucket.trail.arn",
+        "aws_s3_bucket.trail",
+        "aws_s3_bucket.trail.arn",
+        "aws_s3_bucket.trail",
+        "aws_s3_bucket.trail.arn",
+        "aws_s3_bucket.trail",
+        "aws_s3_bucket.trail.arn",
+        "aws_s3_bucket.trail",
+        "aws_s3_bucket.trail.arn",
+        "aws_s3_bucket.trail"
+      ]
+    },
+    {
+      "resource": "aws_secretsmanager_secret_policy.app",
+      "attribute": "policy",
+      "class": "R3",
+      "reason": "document body unknown at plan time; JSON-parsing assertions over it cannot be evaluated",
+      "assigned_from": [
+        "aws_iam_role.swift_app.arn",
+        "aws_iam_role.swift_app"
+      ]
+    }
+  ],
+  "provider_decided": [
+    {
+      "resource": "aws_api_gateway_domain_name.swift",
+      "type": "aws_api_gateway_domain_name",
+      "attribute": "certificate_upload_date"
+    },
+    {
+      "resource": "aws_api_gateway_domain_name.swift",
+      "type": "aws_api_gateway_domain_name",
+      "attribute": "cloudfront_domain_name"
+    },
+    {
+      "resource": "aws_api_gateway_domain_name.swift",
+      "type": "aws_api_gateway_domain_name",
+      "attribute": "cloudfront_zone_id"
+    },
+    {
+      "resource": "aws_api_gateway_domain_name.swift",
+      "type": "aws_api_gateway_domain_name",
+      "attribute": "domain_name_id"
+    },
+    {
+      "resource": "aws_api_gateway_domain_name.swift",
+      "type": "aws_api_gateway_domain_name",
+      "attribute": "ownership_verification_certificate_arn"
+    },
+    {
+      "resource": "aws_api_gateway_domain_name.swift",
+      "type": "aws_api_gateway_domain_name",
+      "attribute": "regional_domain_name"
+    },
+    {
+      "resource": "aws_api_gateway_domain_name.swift",
+      "type": "aws_api_gateway_domain_name",
+      "attribute": "regional_zone_id"
+    },
+    {
+      "resource": "aws_cloudtrail.swift",
+      "type": "aws_cloudtrail",
+      "attribute": "home_region"
+    },
+    {
+      "resource": "aws_cloudtrail.swift",
+      "type": "aws_cloudtrail",
+      "attribute": "sns_topic_arn"
+    },
+    {
+      "resource": "aws_cloudwatch_log_group.flow_logs",
+      "type": "aws_cloudwatch_log_group",
+      "attribute": "log_group_class"
+    },
+    {
+      "resource": "aws_cloudwatch_log_group.flow_logs",
+      "type": "aws_cloudwatch_log_group",
+      "attribute": "name_prefix"
+    },
+    {
+      "resource": "aws_cloudwatch_log_group.sessions",
+      "type": "aws_cloudwatch_log_group",
+      "attribute": "log_group_class"
+    },
+    {
+      "resource": "aws_cloudwatch_log_group.sessions",
+      "type": "aws_cloudwatch_log_group",
+      "attribute": "name_prefix"
+    },
+    {
+      "resource": "aws_cloudwatch_log_group.trail",
+      "type": "aws_cloudwatch_log_group",
+      "attribute": "log_group_class"
+    },
+    {
+      "resource": "aws_cloudwatch_log_group.trail",
+      "type": "aws_cloudwatch_log_group",
+      "attribute": "name_prefix"
+    },
+    {
+      "resource": "aws_cloudwatch_log_group.vpn",
+      "type": "aws_cloudwatch_log_group",
+      "attribute": "log_group_class"
+    },
+    {
+      "resource": "aws_cloudwatch_log_group.vpn",
+      "type": "aws_cloudwatch_log_group",
+      "attribute": "name_prefix"
+    },
+    {
+      "resource": "aws_cloudwatch_metric_alarm.iam_changes",
+      "type": "aws_cloudwatch_metric_alarm",
+      "attribute": "evaluate_low_sample_count_percentiles"
+    },
+    {
+      "resource": "aws_cloudwatch_metric_alarm.root_usage",
+      "type": "aws_cloudwatch_metric_alarm",
+      "attribute": "evaluate_low_sample_count_percentiles"
+    },
+    {
+      "resource": "aws_cloudwatch_metric_alarm.signin_failures",
+      "type": "aws_cloudwatch_metric_alarm",
+      "attribute": "evaluate_low_sample_count_percentiles"
+    },
+    {
+      "resource": "aws_cognito_user_pool.swift",
+      "type": "aws_cognito_user_pool",
+      "attribute": "admin_create_user_config"
+    },
+    {
+      "resource": "aws_cognito_user_pool.swift",
+      "type": "aws_cognito_user_pool",
+      "attribute": "creation_date"
+    },
+    {
+      "resource": "aws_cognito_user_pool.swift",
+      "type": "aws_cognito_user_pool",
+      "attribute": "custom_domain"
+    },
+    {
+      "resource": "aws_cognito_user_pool.swift",
+      "type": "aws_cognito_user_pool",
+      "attribute": "domain"
+    },
+    {
+      "resource": "aws_cognito_user_pool.swift",
+      "type": "aws_cognito_user_pool",
+      "attribute": "email_verification_message"
+    },
+    {
+      "resource": "aws_cognito_user_pool.swift",
+      "type": "aws_cognito_user_pool",
+      "attribute": "email_verification_subject"
+    },
+    {
+      "resource": "aws_cognito_user_pool.swift",
+      "type": "aws_cognito_user_pool",
+      "attribute": "endpoint"
+    },
+    {
+      "resource": "aws_cognito_user_pool.swift",
+      "type": "aws_cognito_user_pool",
+      "attribute": "estimated_number_of_users"
+    },
+    {
+      "resource": "aws_cognito_user_pool.swift",
+      "type": "aws_cognito_user_pool",
+      "attribute": "last_modified_date"
+    },
+    {
+      "resource": "aws_cognito_user_pool.swift",
+      "type": "aws_cognito_user_pool",
+      "attribute": "sign_in_policy"
+    },
+    {
+      "resource": "aws_cognito_user_pool.swift",
+      "type": "aws_cognito_user_pool",
+      "attribute": "sms_configuration"
+    },
+    {
+      "resource": "aws_cognito_user_pool.swift",
+      "type": "aws_cognito_user_pool",
+      "attribute": "sms_verification_message"
+    },
+    {
+      "resource": "aws_cognito_user_pool.swift",
+      "type": "aws_cognito_user_pool",
+      "attribute": "user_pool_tier"
+    },
+    {
+      "resource": "aws_cognito_user_pool.swift",
+      "type": "aws_cognito_user_pool",
+      "attribute": "username_configuration"
+    },
+    {
+      "resource": "aws_cognito_user_pool.swift",
+      "type": "aws_cognito_user_pool",
+      "attribute": "verification_message_template"
+    },
+    {
+      "resource": "aws_config_configuration_recorder.swift",
+      "type": "aws_config_configuration_recorder",
+      "attribute": "recording_mode"
+    },
+    {
+      "resource": "aws_db_instance.swift",
+      "type": "aws_db_instance",
+      "attribute": "address"
+    },
+    {
+      "resource": "aws_db_instance.swift",
+      "type": "aws_db_instance",
+      "attribute": "availability_zone"
+    },
+    {
+      "resource": "aws_db_instance.swift",
+      "type": "aws_db_instance",
+      "attribute": "backup_retention_period"
+    },
+    {
+      "resource": "aws_db_instance.swift",
+      "type": "aws_db_instance",
+      "attribute": "backup_target"
+    },
+    {
+      "resource": "aws_db_instance.swift",
+      "type": "aws_db_instance",
+      "attribute": "backup_window"
+    },
+    {
+      "resource": "aws_db_instance.swift",
+      "type": "aws_db_instance",
+      "attribute": "ca_cert_identifier"
+    },
+    {
+      "resource": "aws_db_instance.swift",
+      "type": "aws_db_instance",
+      "attribute": "character_set_name"
+    },
+    {
+      "resource": "aws_db_instance.swift",
+      "type": "aws_db_instance",
+      "attribute": "database_insights_mode"
+    },
+    {
+      "resource": "aws_db_instance.swift",
+      "type": "aws_db_instance",
+      "attribute": "db_name"
+    },
+    {
+      "resource": "aws_db_instance.swift",
+      "type": "aws_db_instance",
+      "attribute": "domain_fqdn"
+    },
+    {
+      "resource": "aws_db_instance.swift",
+      "type": "aws_db_instance",
+      "attribute": "endpoint"
+    },
+    {
+      "resource": "aws_db_instance.swift",
+      "type": "aws_db_instance",
+      "attribute": "engine_lifecycle_support"
+    },
+    {
+      "resource": "aws_db_instance.swift",
+      "type": "aws_db_instance",
+      "attribute": "engine_version_actual"
+    },
+    {
+      "resource": "aws_db_instance.swift",
+      "type": "aws_db_instance",
+      "attribute": "hosted_zone_id"
+    },
+    {
+      "resource": "aws_db_instance.swift",
+      "type": "aws_db_instance",
+      "attribute": "identifier_prefix"
+    },
+    {
+      "resource": "aws_db_instance.swift",
+      "type": "aws_db_instance",
+      "attribute": "iops"
+    },
+    {
+      "resource": "aws_db_instance.swift",
+      "type": "aws_db_instance",
+      "attribute": "latest_restorable_time"
+    },
+    {
+      "resource": "aws_db_instance.swift",
+      "type": "aws_db_instance",
+      "attribute": "license_model"
+    },
+    {
+      "resource": "aws_db_instance.swift",
+      "type": "aws_db_instance",
+      "attribute": "listener_endpoint"
+    },
+    {
+      "resource": "aws_db_instance.swift",
+      "type": "aws_db_instance",
+      "attribute": "maintenance_window"
+    },
+    {
+      "resource": "aws_db_instance.swift",
+      "type": "aws_db_instance",
+      "attribute": "master_user_secret"
+    },
+    {
+      "resource": "aws_db_instance.swift",
+      "type": "aws_db_instance",
+      "attribute": "master_user_secret_kms_key_id"
+    },
+    {
+      "resource": "aws_db_instance.swift",
+      "type": "aws_db_instance",
+      "attribute": "monitoring_role_arn"
+    },
+    {
+      "resource": "aws_db_instance.swift",
+      "type": "aws_db_instance",
+      "attribute": "multi_az"
+    },
+    {
+      "resource": "aws_db_instance.swift",
+      "type": "aws_db_instance",
+      "attribute": "nchar_character_set_name"
+    },
+    {
+      "resource": "aws_db_instance.swift",
+      "type": "aws_db_instance",
+      "attribute": "network_type"
+    },
+    {
+      "resource": "aws_db_instance.swift",
+      "type": "aws_db_instance",
+      "attribute": "option_group_name"
+    },
+    {
+      "resource": "aws_db_instance.swift",
+      "type": "aws_db_instance",
+      "attribute": "performance_insights_kms_key_id"
+    },
+    {
+      "resource": "aws_db_instance.swift",
+      "type": "aws_db_instance",
+      "attribute": "performance_insights_retention_period"
+    },
+    {
+      "resource": "aws_db_instance.swift",
+      "type": "aws_db_instance",
+      "attribute": "port"
+    },
+    {
+      "resource": "aws_db_instance.swift",
+      "type": "aws_db_instance",
+      "attribute": "replica_mode"
+    },
+    {
+      "resource": "aws_db_instance.swift",
+      "type": "aws_db_instance",
+      "attribute": "replicas"
+    },
+    {
+      "resource": "aws_db_instance.swift",
+      "type": "aws_db_instance",
+      "attribute": "resource_id"
+    },
+    {
+      "resource": "aws_db_instance.swift",
+      "type": "aws_db_instance",
+      "attribute": "snapshot_identifier"
+    },
+    {
+      "resource": "aws_db_instance.swift",
+      "type": "aws_db_instance",
+      "attribute": "status"
+    },
+    {
+      "resource": "aws_db_instance.swift",
+      "type": "aws_db_instance",
+      "attribute": "storage_throughput"
+    },
+    {
+      "resource": "aws_db_instance.swift",
+      "type": "aws_db_instance",
+      "attribute": "storage_type"
+    },
+    {
+      "resource": "aws_db_instance.swift",
+      "type": "aws_db_instance",
+      "attribute": "timezone"
+    },
+    {
+      "resource": "aws_db_parameter_group.mysql",
+      "type": "aws_db_parameter_group",
+      "attribute": "name_prefix"
+    },
+    {
+      "resource": "aws_db_parameter_group.postgres",
+      "type": "aws_db_parameter_group",
+      "attribute": "name_prefix"
+    },
+    {
+      "resource": "aws_db_subnet_group.swift",
+      "type": "aws_db_subnet_group",
+      "attribute": "name_prefix"
+    },
+    {
+      "resource": "aws_db_subnet_group.swift",
+      "type": "aws_db_subnet_group",
+      "attribute": "supported_network_types"
+    },
+    {
+      "resource": "aws_db_subnet_group.swift",
+      "type": "aws_db_subnet_group",
+      "attribute": "vpc_id"
+    },
+    {
+      "resource": "aws_default_network_acl.swift",
+      "type": "aws_default_network_acl",
+      "attribute": "owner_id"
+    },
+    {
+      "resource": "aws_default_network_acl.swift",
+      "type": "aws_default_network_acl",
+      "attribute": "vpc_id"
+    },
+    {
+      "resource": "aws_default_security_group.swift",
+      "type": "aws_default_security_group",
+      "attribute": "description"
+    },
+    {
+      "resource": "aws_default_security_group.swift",
+      "type": "aws_default_security_group",
+      "attribute": "egress"
+    },
+    {
+      "resource": "aws_default_security_group.swift",
+      "type": "aws_default_security_group",
+      "attribute": "ingress"
+    },
+    {
+      "resource": "aws_default_security_group.swift",
+      "type": "aws_default_security_group",
+      "attribute": "name"
+    },
+    {
+      "resource": "aws_default_security_group.swift",
+      "type": "aws_default_security_group",
+      "attribute": "name_prefix"
+    },
+    {
+      "resource": "aws_default_security_group.swift",
+      "type": "aws_default_security_group",
+      "attribute": "owner_id"
+    },
+    {
+      "resource": "aws_dx_connection.back_office",
+      "type": "aws_dx_connection",
+      "attribute": "aws_device"
+    },
+    {
+      "resource": "aws_dx_connection.back_office",
+      "type": "aws_dx_connection",
+      "attribute": "has_logical_redundancy"
+    },
+    {
+      "resource": "aws_dx_connection.back_office",
+      "type": "aws_dx_connection",
+      "attribute": "jumbo_frame_capable"
+    },
+    {
+      "resource": "aws_dx_connection.back_office",
+      "type": "aws_dx_connection",
+      "attribute": "macsec_capable"
+    },
+    {
+      "resource": "aws_dx_connection.back_office",
+      "type": "aws_dx_connection",
+      "attribute": "owner_account_id"
+    },
+    {
+      "resource": "aws_dx_connection.back_office",
+      "type": "aws_dx_connection",
+      "attribute": "partner_name"
+    },
+    {
+      "resource": "aws_dx_connection.back_office",
+      "type": "aws_dx_connection",
+      "attribute": "port_encryption_status"
+    },
+    {
+      "resource": "aws_dx_connection.back_office",
+      "type": "aws_dx_connection",
+      "attribute": "provider_name"
+    },
+    {
+      "resource": "aws_dx_connection.back_office",
+      "type": "aws_dx_connection",
+      "attribute": "vlan_id"
+    },
+    {
+      "resource": "aws_ebs_volume.jump_data",
+      "type": "aws_ebs_volume",
+      "attribute": "create_time"
+    },
+    {
+      "resource": "aws_ebs_volume.jump_data",
+      "type": "aws_ebs_volume",
+      "attribute": "iops"
+    },
+    {
+      "resource": "aws_ebs_volume.jump_data",
+      "type": "aws_ebs_volume",
+      "attribute": "snapshot_id"
+    },
+    {
+      "resource": "aws_ebs_volume.jump_data",
+      "type": "aws_ebs_volume",
+      "attribute": "throughput"
+    },
+    {
+      "resource": "aws_ebs_volume.jump_data",
+      "type": "aws_ebs_volume",
+      "attribute": "type"
+    },
+    {
+      "resource": "aws_ec2_client_vpn_endpoint.swift",
+      "type": "aws_ec2_client_vpn_endpoint",
+      "attribute": "client_connect_options"
+    },
+    {
+      "resource": "aws_ec2_client_vpn_endpoint.swift",
+      "type": "aws_ec2_client_vpn_endpoint",
+      "attribute": "client_login_banner_options"
+    },
+    {
+      "resource": "aws_ec2_client_vpn_endpoint.swift",
+      "type": "aws_ec2_client_vpn_endpoint",
+      "attribute": "client_route_enforcement_options"
+    },
+    {
+      "resource": "aws_ec2_client_vpn_endpoint.swift",
+      "type": "aws_ec2_client_vpn_endpoint",
+      "attribute": "disconnect_on_session_timeout"
+    },
+    {
+      "resource": "aws_ec2_client_vpn_endpoint.swift",
+      "type": "aws_ec2_client_vpn_endpoint",
+      "attribute": "dns_name"
+    },
+    {
+      "resource": "aws_ec2_client_vpn_endpoint.swift",
+      "type": "aws_ec2_client_vpn_endpoint",
+      "attribute": "security_group_ids"
+    },
+    {
+      "resource": "aws_ec2_client_vpn_endpoint.swift",
+      "type": "aws_ec2_client_vpn_endpoint",
+      "attribute": "self_service_portal_url"
+    },
+    {
+      "resource": "aws_ec2_client_vpn_endpoint.swift",
+      "type": "aws_ec2_client_vpn_endpoint",
+      "attribute": "vpc_id"
+    },
+    {
+      "resource": "aws_ecs_task_definition.swift",
+      "type": "aws_ecs_task_definition",
+      "attribute": "arn_without_revision"
+    },
+    {
+      "resource": "aws_ecs_task_definition.swift",
+      "type": "aws_ecs_task_definition",
+      "attribute": "enable_fault_injection"
+    },
+    {
+      "resource": "aws_ecs_task_definition.swift",
+      "type": "aws_ecs_task_definition",
+      "attribute": "revision"
+    },
+    {
+      "resource": "aws_efs_file_system.swift",
+      "type": "aws_efs_file_system",
+      "attribute": "availability_zone_id"
+    },
+    {
+      "resource": "aws_efs_file_system.swift",
+      "type": "aws_efs_file_system",
+      "attribute": "availability_zone_name"
+    },
+    {
+      "resource": "aws_efs_file_system.swift",
+      "type": "aws_efs_file_system",
+      "attribute": "creation_token"
+    },
+    {
+      "resource": "aws_efs_file_system.swift",
+      "type": "aws_efs_file_system",
+      "attribute": "dns_name"
+    },
+    {
+      "resource": "aws_efs_file_system.swift",
+      "type": "aws_efs_file_system",
+      "attribute": "kms_key_id"
+    },
+    {
+      "resource": "aws_efs_file_system.swift",
+      "type": "aws_efs_file_system",
+      "attribute": "name"
+    },
+    {
+      "resource": "aws_efs_file_system.swift",
+      "type": "aws_efs_file_system",
+      "attribute": "number_of_mount_targets"
+    },
+    {
+      "resource": "aws_efs_file_system.swift",
+      "type": "aws_efs_file_system",
+      "attribute": "owner_id"
+    },
+    {
+      "resource": "aws_efs_file_system.swift",
+      "type": "aws_efs_file_system",
+      "attribute": "performance_mode"
+    },
+    {
+      "resource": "aws_efs_file_system.swift",
+      "type": "aws_efs_file_system",
+      "attribute": "protection"
+    },
+    {
+      "resource": "aws_efs_file_system.swift",
+      "type": "aws_efs_file_system",
+      "attribute": "size_in_bytes"
+    },
+    {
+      "resource": "aws_elasticache_replication_group.swift",
+      "type": "aws_elasticache_replication_group",
+      "attribute": "apply_immediately"
+    },
+    {
+      "resource": "aws_elasticache_replication_group.swift",
+      "type": "aws_elasticache_replication_group",
+      "attribute": "auto_minor_version_upgrade"
+    },
+    {
+      "resource": "aws_elasticache_replication_group.swift",
+      "type": "aws_elasticache_replication_group",
+      "attribute": "cluster_enabled"
+    },
+    {
+      "resource": "aws_elasticache_replication_group.swift",
+      "type": "aws_elasticache_replication_group",
+      "attribute": "cluster_mode"
+    },
+    {
+      "resource": "aws_elasticache_replication_group.swift",
+      "type": "aws_elasticache_replication_group",
+      "attribute": "configuration_endpoint_address"
+    },
+    {
+      "resource": "aws_elasticache_replication_group.swift",
+      "type": "aws_elasticache_replication_group",
+      "attribute": "data_tiering_enabled"
+    },
+    {
+      "resource": "aws_elasticache_replication_group.swift",
+      "type": "aws_elasticache_replication_group",
+      "attribute": "engine_version"
+    },
+    {
+      "resource": "aws_elasticache_replication_group.swift",
+      "type": "aws_elasticache_replication_group",
+      "attribute": "engine_version_actual"
+    },
+    {
+      "resource": "aws_elasticache_replication_group.swift",
+      "type": "aws_elasticache_replication_group",
+      "attribute": "global_replication_group_id"
+    },
+    {
+      "resource": "aws_elasticache_replication_group.swift",
+      "type": "aws_elasticache_replication_group",
+      "attribute": "ip_discovery"
+    },
+    {
+      "resource": "aws_elasticache_replication_group.swift",
+      "type": "aws_elasticache_replication_group",
+      "attribute": "maintenance_window"
+    },
+    {
+      "resource": "aws_elasticache_replication_group.swift",
+      "type": "aws_elasticache_replication_group",
+      "attribute": "member_clusters"
+    },
+    {
+      "resource": "aws_elasticache_replication_group.swift",
+      "type": "aws_elasticache_replication_group",
+      "attribute": "network_type"
+    },
+    {
+      "resource": "aws_elasticache_replication_group.swift",
+      "type": "aws_elasticache_replication_group",
+      "attribute": "num_node_groups"
+    },
+    {
+      "resource": "aws_elasticache_replication_group.swift",
+      "type": "aws_elasticache_replication_group",
+      "attribute": "parameter_group_name"
+    },
+    {
+      "resource": "aws_elasticache_replication_group.swift",
+      "type": "aws_elasticache_replication_group",
+      "attribute": "primary_endpoint_address"
+    },
+    {
+      "resource": "aws_elasticache_replication_group.swift",
+      "type": "aws_elasticache_replication_group",
+      "attribute": "reader_endpoint_address"
+    },
+    {
+      "resource": "aws_elasticache_replication_group.swift",
+      "type": "aws_elasticache_replication_group",
+      "attribute": "replicas_per_node_group"
+    },
+    {
+      "resource": "aws_elasticache_replication_group.swift",
+      "type": "aws_elasticache_replication_group",
+      "attribute": "security_group_ids"
+    },
+    {
+      "resource": "aws_elasticache_replication_group.swift",
+      "type": "aws_elasticache_replication_group",
+      "attribute": "security_group_names"
+    },
+    {
+      "resource": "aws_elasticache_replication_group.swift",
+      "type": "aws_elasticache_replication_group",
+      "attribute": "snapshot_window"
+    },
+    {
+      "resource": "aws_elasticache_replication_group.swift",
+      "type": "aws_elasticache_replication_group",
+      "attribute": "transit_encryption_mode"
+    },
+    {
+      "resource": "aws_elasticache_subnet_group.swift",
+      "type": "aws_elasticache_subnet_group",
+      "attribute": "vpc_id"
+    },
+    {
+      "resource": "aws_flow_log.swift",
+      "type": "aws_flow_log",
+      "attribute": "log_format"
+    },
+    {
+      "resource": "aws_flow_log.swift",
+      "type": "aws_flow_log",
+      "attribute": "log_group_name"
+    },
+    {
+      "resource": "aws_guardduty_detector.swift",
+      "type": "aws_guardduty_detector",
+      "attribute": "account_id"
+    },
+    {
+      "resource": "aws_guardduty_detector.swift",
+      "type": "aws_guardduty_detector",
+      "attribute": "datasources"
+    },
+    {
+      "resource": "aws_guardduty_detector.swift",
+      "type": "aws_guardduty_detector",
+      "attribute": "finding_publishing_frequency"
+    },
+    {
+      "resource": "aws_iam_account_password_policy.swift",
+      "type": "aws_iam_account_password_policy",
+      "attribute": "expire_passwords"
+    },
+    {
+      "resource": "aws_iam_group.swift_operators",
+      "type": "aws_iam_group",
+      "attribute": "unique_id"
+    },
+    {
+      "resource": "aws_iam_instance_profile.jump",
+      "type": "aws_iam_instance_profile",
+      "attribute": "create_date"
+    },
+    {
+      "resource": "aws_iam_instance_profile.jump",
+      "type": "aws_iam_instance_profile",
+      "attribute": "name_prefix"
+    },
+    {
+      "resource": "aws_iam_instance_profile.jump",
+      "type": "aws_iam_instance_profile",
+      "attribute": "unique_id"
+    },
+    {
+      "resource": "aws_iam_policy.swift_deploy",
+      "type": "aws_iam_policy",
+      "attribute": "attachment_count"
+    },
+    {
+      "resource": "aws_iam_policy.swift_deploy",
+      "type": "aws_iam_policy",
+      "attribute": "name_prefix"
+    },
+    {
+      "resource": "aws_iam_policy.swift_deploy",
+      "type": "aws_iam_policy",
+      "attribute": "policy_id"
+    },
+    {
+      "resource": "aws_iam_policy.swift_operator",
+      "type": "aws_iam_policy",
+      "attribute": "attachment_count"
+    },
+    {
+      "resource": "aws_iam_policy.swift_operator",
+      "type": "aws_iam_policy",
+      "attribute": "name_prefix"
+    },
+    {
+      "resource": "aws_iam_policy.swift_operator",
+      "type": "aws_iam_policy",
+      "attribute": "policy_id"
+    },
+    {
+      "resource": "aws_iam_policy.swift_policy_attacher",
+      "type": "aws_iam_policy",
+      "attribute": "attachment_count"
+    },
+    {
+      "resource": "aws_iam_policy.swift_policy_attacher",
+      "type": "aws_iam_policy",
+      "attribute": "name_prefix"
+    },
+    {
+      "resource": "aws_iam_policy.swift_policy_attacher",
+      "type": "aws_iam_policy",
+      "attribute": "policy_id"
+    },
+    {
+      "resource": "aws_iam_policy.swift_policy_author",
+      "type": "aws_iam_policy",
+      "attribute": "attachment_count"
+    },
+    {
+      "resource": "aws_iam_policy.swift_policy_author",
+      "type": "aws_iam_policy",
+      "attribute": "name_prefix"
+    },
+    {
+      "resource": "aws_iam_policy.swift_policy_author",
+      "type": "aws_iam_policy",
+      "attribute": "policy_id"
+    },
+    {
+      "resource": "aws_iam_policy.swift_provisioner",
+      "type": "aws_iam_policy",
+      "attribute": "attachment_count"
+    },
+    {
+      "resource": "aws_iam_policy.swift_provisioner",
+      "type": "aws_iam_policy",
+      "attribute": "name_prefix"
+    },
+    {
+      "resource": "aws_iam_policy.swift_provisioner",
+      "type": "aws_iam_policy",
+      "attribute": "policy_id"
+    },
+    {
+      "resource": "aws_iam_role.config",
+      "type": "aws_iam_role",
+      "attribute": "create_date"
+    },
+    {
+      "resource": "aws_iam_role.config",
+      "type": "aws_iam_role",
+      "attribute": "inline_policy"
+    },
+    {
+      "resource": "aws_iam_role.config",
+      "type": "aws_iam_role",
+      "attribute": "managed_policy_arns"
+    },
+    {
+      "resource": "aws_iam_role.config",
+      "type": "aws_iam_role",
+      "attribute": "name_prefix"
+    },
+    {
+      "resource": "aws_iam_role.config",
+      "type": "aws_iam_role",
+      "attribute": "unique_id"
+    },
+    {
+      "resource": "aws_iam_role.flow_log",
+      "type": "aws_iam_role",
+      "attribute": "create_date"
+    },
+    {
+      "resource": "aws_iam_role.flow_log",
+      "type": "aws_iam_role",
+      "attribute": "inline_policy"
+    },
+    {
+      "resource": "aws_iam_role.flow_log",
+      "type": "aws_iam_role",
+      "attribute": "managed_policy_arns"
+    },
+    {
+      "resource": "aws_iam_role.flow_log",
+      "type": "aws_iam_role",
+      "attribute": "name_prefix"
+    },
+    {
+      "resource": "aws_iam_role.flow_log",
+      "type": "aws_iam_role",
+      "attribute": "unique_id"
+    },
+    {
+      "resource": "aws_iam_role.jump_server",
+      "type": "aws_iam_role",
+      "attribute": "create_date"
+    },
+    {
+      "resource": "aws_iam_role.jump_server",
+      "type": "aws_iam_role",
+      "attribute": "inline_policy"
+    },
+    {
+      "resource": "aws_iam_role.jump_server",
+      "type": "aws_iam_role",
+      "attribute": "managed_policy_arns"
+    },
+    {
+      "resource": "aws_iam_role.jump_server",
+      "type": "aws_iam_role",
+      "attribute": "name_prefix"
+    },
+    {
+      "resource": "aws_iam_role.jump_server",
+      "type": "aws_iam_role",
+      "attribute": "unique_id"
+    },
+    {
+      "resource": "aws_iam_role.jump_ssm",
+      "type": "aws_iam_role",
+      "attribute": "create_date"
+    },
+    {
+      "resource": "aws_iam_role.jump_ssm",
+      "type": "aws_iam_role",
+      "attribute": "inline_policy"
+    },
+    {
+      "resource": "aws_iam_role.jump_ssm",
+      "type": "aws_iam_role",
+      "attribute": "managed_policy_arns"
+    },
+    {
+      "resource": "aws_iam_role.jump_ssm",
+      "type": "aws_iam_role",
+      "attribute": "name_prefix"
+    },
+    {
+      "resource": "aws_iam_role.jump_ssm",
+      "type": "aws_iam_role",
+      "attribute": "unique_id"
+    },
+    {
+      "resource": "aws_iam_role.opensearch_cognito",
+      "type": "aws_iam_role",
+      "attribute": "create_date"
+    },
+    {
+      "resource": "aws_iam_role.opensearch_cognito",
+      "type": "aws_iam_role",
+      "attribute": "inline_policy"
+    },
+    {
+      "resource": "aws_iam_role.opensearch_cognito",
+      "type": "aws_iam_role",
+      "attribute": "managed_policy_arns"
+    },
+    {
+      "resource": "aws_iam_role.opensearch_cognito",
+      "type": "aws_iam_role",
+      "attribute": "name_prefix"
+    },
+    {
+      "resource": "aws_iam_role.opensearch_cognito",
+      "type": "aws_iam_role",
+      "attribute": "unique_id"
+    },
+    {
+      "resource": "aws_iam_role.swift_app",
+      "type": "aws_iam_role",
+      "attribute": "create_date"
+    },
+    {
+      "resource": "aws_iam_role.swift_app",
+      "type": "aws_iam_role",
+      "attribute": "inline_policy"
+    },
+    {
+      "resource": "aws_iam_role.swift_app",
+      "type": "aws_iam_role",
+      "attribute": "managed_policy_arns"
+    },
+    {
+      "resource": "aws_iam_role.swift_app",
+      "type": "aws_iam_role",
+      "attribute": "name_prefix"
+    },
+    {
+      "resource": "aws_iam_role.swift_app",
+      "type": "aws_iam_role",
+      "attribute": "unique_id"
+    },
+    {
+      "resource": "aws_iam_role.swift_cross_account",
+      "type": "aws_iam_role",
+      "attribute": "create_date"
+    },
+    {
+      "resource": "aws_iam_role.swift_cross_account",
+      "type": "aws_iam_role",
+      "attribute": "inline_policy"
+    },
+    {
+      "resource": "aws_iam_role.swift_cross_account",
+      "type": "aws_iam_role",
+      "attribute": "managed_policy_arns"
+    },
+    {
+      "resource": "aws_iam_role.swift_cross_account",
+      "type": "aws_iam_role",
+      "attribute": "name_prefix"
+    },
+    {
+      "resource": "aws_iam_role.swift_cross_account",
+      "type": "aws_iam_role",
+      "attribute": "unique_id"
+    },
+    {
+      "resource": "aws_iam_role.swift_ecs",
+      "type": "aws_iam_role",
+      "attribute": "create_date"
+    },
+    {
+      "resource": "aws_iam_role.swift_ecs",
+      "type": "aws_iam_role",
+      "attribute": "inline_policy"
+    },
+    {
+      "resource": "aws_iam_role.swift_ecs",
+      "type": "aws_iam_role",
+      "attribute": "managed_policy_arns"
+    },
+    {
+      "resource": "aws_iam_role.swift_ecs",
+      "type": "aws_iam_role",
+      "attribute": "name_prefix"
+    },
+    {
+      "resource": "aws_iam_role.swift_ecs",
+      "type": "aws_iam_role",
+      "attribute": "unique_id"
+    },
+    {
+      "resource": "aws_iam_role.swift_lambda",
+      "type": "aws_iam_role",
+      "attribute": "create_date"
+    },
+    {
+      "resource": "aws_iam_role.swift_lambda",
+      "type": "aws_iam_role",
+      "attribute": "inline_policy"
+    },
+    {
+      "resource": "aws_iam_role.swift_lambda",
+      "type": "aws_iam_role",
+      "attribute": "managed_policy_arns"
+    },
+    {
+      "resource": "aws_iam_role.swift_lambda",
+      "type": "aws_iam_role",
+      "attribute": "name_prefix"
+    },
+    {
+      "resource": "aws_iam_role.swift_lambda",
+      "type": "aws_iam_role",
+      "attribute": "unique_id"
+    },
+    {
+      "resource": "aws_iam_role.trail_cw",
+      "type": "aws_iam_role",
+      "attribute": "create_date"
+    },
+    {
+      "resource": "aws_iam_role.trail_cw",
+      "type": "aws_iam_role",
+      "attribute": "inline_policy"
+    },
+    {
+      "resource": "aws_iam_role.trail_cw",
+      "type": "aws_iam_role",
+      "attribute": "managed_policy_arns"
+    },
+    {
+      "resource": "aws_iam_role.trail_cw",
+      "type": "aws_iam_role",
+      "attribute": "name_prefix"
+    },
+    {
+      "resource": "aws_iam_role.trail_cw",
+      "type": "aws_iam_role",
+      "attribute": "unique_id"
+    },
+    {
+      "resource": "aws_iam_role_policy.jump_mfa_deny",
+      "type": "aws_iam_role_policy",
+      "attribute": "name_prefix"
+    },
+    {
+      "resource": "aws_instance.jump_server",
+      "type": "aws_instance",
+      "attribute": "availability_zone"
+    },
+    {
+      "resource": "aws_instance.jump_server",
+      "type": "aws_instance",
+      "attribute": "capacity_reservation_specification"
+    },
+    {
+      "resource": "aws_instance.jump_server",
+      "type": "aws_instance",
+      "attribute": "cpu_core_count"
+    },
+    {
+      "resource": "aws_instance.jump_server",
+      "type": "aws_instance",
+      "attribute": "cpu_options"
+    },
+    {
+      "resource": "aws_instance.jump_server",
+      "type": "aws_instance",
+      "attribute": "cpu_threads_per_core"
+    },
+    {
+      "resource": "aws_instance.jump_server",
+      "type": "aws_instance",
+      "attribute": "disable_api_stop"
+    },
+    {
+      "resource": "aws_instance.jump_server",
+      "type": "aws_instance",
+      "attribute": "disable_api_termination"
+    },
+    {
+      "resource": "aws_instance.jump_server",
+      "type": "aws_instance",
+      "attribute": "ebs_block_device"
+    },
+    {
+      "resource": "aws_instance.jump_server",
+      "type": "aws_instance",
+      "attribute": "ebs_optimized"
+    },
+    {
+      "resource": "aws_instance.jump_server",
+      "type": "aws_instance",
+      "attribute": "enable_primary_ipv6"
+    },
+    {
+      "resource": "aws_instance.jump_server",
+      "type": "aws_instance",
+      "attribute": "enclave_options"
+    },
+    {
+      "resource": "aws_instance.jump_server",
+      "type": "aws_instance",
+      "attribute": "ephemeral_block_device"
+    },
+    {
+      "resource": "aws_instance.jump_server",
+      "type": "aws_instance",
+      "attribute": "host_id"
+    },
+    {
+      "resource": "aws_instance.jump_server",
+      "type": "aws_instance",
+      "attribute": "host_resource_group_arn"
+    },
+    {
+      "resource": "aws_instance.jump_server",
+      "type": "aws_instance",
+      "attribute": "instance_initiated_shutdown_behavior"
+    },
+    {
+      "resource": "aws_instance.jump_server",
+      "type": "aws_instance",
+      "attribute": "instance_lifecycle"
+    },
+    {
+      "resource": "aws_instance.jump_server",
+      "type": "aws_instance",
+      "attribute": "instance_market_options"
+    },
+    {
+      "resource": "aws_instance.jump_server",
+      "type": "aws_instance",
+      "attribute": "instance_state"
+    },
+    {
+      "resource": "aws_instance.jump_server",
+      "type": "aws_instance",
+      "attribute": "ipv6_address_count"
+    },
+    {
+      "resource": "aws_instance.jump_server",
+      "type": "aws_instance",
+      "attribute": "ipv6_addresses"
+    },
+    {
+      "resource": "aws_instance.jump_server",
+      "type": "aws_instance",
+      "attribute": "key_name"
+    },
+    {
+      "resource": "aws_instance.jump_server",
+      "type": "aws_instance",
+      "attribute": "maintenance_options"
+    },
+    {
+      "resource": "aws_instance.jump_server",
+      "type": "aws_instance",
+      "attribute": "network_interface"
+    },
+    {
+      "resource": "aws_instance.jump_server",
+      "type": "aws_instance",
+      "attribute": "outpost_arn"
+    },
+    {
+      "resource": "aws_instance.jump_server",
+      "type": "aws_instance",
+      "attribute": "password_data"
+    },
+    {
+      "resource": "aws_instance.jump_server",
+      "type": "aws_instance",
+      "attribute": "placement_group"
+    },
+    {
+      "resource": "aws_instance.jump_server",
+      "type": "aws_instance",
+      "attribute": "placement_partition_number"
+    },
+    {
+      "resource": "aws_instance.jump_server",
+      "type": "aws_instance",
+      "attribute": "primary_network_interface_id"
+    },
+    {
+      "resource": "aws_instance.jump_server",
+      "type": "aws_instance",
+      "attribute": "private_dns"
+    },
+    {
+      "resource": "aws_instance.jump_server",
+      "type": "aws_instance",
+      "attribute": "private_dns_name_options"
+    },
+    {
+      "resource": "aws_instance.jump_server",
+      "type": "aws_instance",
+      "attribute": "private_ip"
+    },
+    {
+      "resource": "aws_instance.jump_server",
+      "type": "aws_instance",
+      "attribute": "public_dns"
+    },
+    {
+      "resource": "aws_instance.jump_server",
+      "type": "aws_instance",
+      "attribute": "public_ip"
+    },
+    {
+      "resource": "aws_instance.jump_server",
+      "type": "aws_instance",
+      "attribute": "secondary_private_ips"
+    },
+    {
+      "resource": "aws_instance.jump_server",
+      "type": "aws_instance",
+      "attribute": "security_groups"
+    },
+    {
+      "resource": "aws_instance.jump_server",
+      "type": "aws_instance",
+      "attribute": "spot_instance_request_id"
+    },
+    {
+      "resource": "aws_instance.jump_server",
+      "type": "aws_instance",
+      "attribute": "user_data"
+    },
+    {
+      "resource": "aws_instance.jump_server",
+      "type": "aws_instance",
+      "attribute": "user_data_base64"
+    },
+    {
+      "resource": "aws_kms_key.swift_data",
+      "type": "aws_kms_key",
+      "attribute": "key_id"
+    },
+    {
+      "resource": "aws_kms_key.swift_data",
+      "type": "aws_kms_key",
+      "attribute": "multi_region"
+    },
+    {
+      "resource": "aws_kms_key.swift_data",
+      "type": "aws_kms_key",
+      "attribute": "policy"
+    },
+    {
+      "resource": "aws_kms_key.swift_data",
+      "type": "aws_kms_key",
+      "attribute": "rotation_period_in_days"
+    },
+    {
+      "resource": "aws_kms_key.swift_logs",
+      "type": "aws_kms_key",
+      "attribute": "key_id"
+    },
+    {
+      "resource": "aws_kms_key.swift_logs",
+      "type": "aws_kms_key",
+      "attribute": "multi_region"
+    },
+    {
+      "resource": "aws_kms_key.swift_logs",
+      "type": "aws_kms_key",
+      "attribute": "rotation_period_in_days"
+    },
+    {
+      "resource": "aws_lambda_function.swift",
+      "type": "aws_lambda_function",
+      "attribute": "architectures"
+    },
+    {
+      "resource": "aws_lambda_function.swift",
+      "type": "aws_lambda_function",
+      "attribute": "code_sha256"
+    },
+    {
+      "resource": "aws_lambda_function.swift",
+      "type": "aws_lambda_function",
+      "attribute": "ephemeral_storage"
+    },
+    {
+      "resource": "aws_lambda_function.swift",
+      "type": "aws_lambda_function",
+      "attribute": "invoke_arn"
+    },
+    {
+      "resource": "aws_lambda_function.swift",
+      "type": "aws_lambda_function",
+      "attribute": "last_modified"
+    },
+    {
+      "resource": "aws_lambda_function.swift",
+      "type": "aws_lambda_function",
+      "attribute": "logging_config"
+    },
+    {
+      "resource": "aws_lambda_function.swift",
+      "type": "aws_lambda_function",
+      "attribute": "qualified_arn"
+    },
+    {
+      "resource": "aws_lambda_function.swift",
+      "type": "aws_lambda_function",
+      "attribute": "qualified_invoke_arn"
+    },
+    {
+      "resource": "aws_lambda_function.swift",
+      "type": "aws_lambda_function",
+      "attribute": "signing_job_arn"
+    },
+    {
+      "resource": "aws_lambda_function.swift",
+      "type": "aws_lambda_function",
+      "attribute": "signing_profile_version_arn"
+    },
+    {
+      "resource": "aws_lambda_function.swift",
+      "type": "aws_lambda_function",
+      "attribute": "source_code_hash"
+    },
+    {
+      "resource": "aws_lambda_function.swift",
+      "type": "aws_lambda_function",
+      "attribute": "source_code_size"
+    },
+    {
+      "resource": "aws_lambda_function.swift",
+      "type": "aws_lambda_function",
+      "attribute": "tracing_config"
+    },
+    {
+      "resource": "aws_lambda_function.swift",
+      "type": "aws_lambda_function",
+      "attribute": "version"
+    },
+    {
+      "resource": "aws_lb.swift",
+      "type": "aws_lb",
+      "attribute": "arn_suffix"
+    },
+    {
+      "resource": "aws_lb.swift",
+      "type": "aws_lb",
+      "attribute": "dns_name"
+    },
+    {
+      "resource": "aws_lb.swift",
+      "type": "aws_lb",
+      "attribute": "enforce_security_group_inbound_rules_on_private_link_traffic"
+    },
+    {
+      "resource": "aws_lb.swift",
+      "type": "aws_lb",
+      "attribute": "ip_address_type"
+    },
+    {
+      "resource": "aws_lb.swift",
+      "type": "aws_lb",
+      "attribute": "name_prefix"
+    },
+    {
+      "resource": "aws_lb.swift",
+      "type": "aws_lb",
+      "attribute": "subnet_mapping"
+    },
+    {
+      "resource": "aws_lb.swift",
+      "type": "aws_lb",
+      "attribute": "vpc_id"
+    },
+    {
+      "resource": "aws_lb.swift",
+      "type": "aws_lb",
+      "attribute": "zone_id"
+    },
+    {
+      "resource": "aws_lb_listener.swift_https",
+      "type": "aws_lb_listener",
+      "attribute": "mutual_authentication"
+    },
+    {
+      "resource": "aws_lb_listener.swift_https",
+      "type": "aws_lb_listener",
+      "attribute": "routing_http_request_x_amzn_mtls_clientcert_header_name"
+    },
+    {
+      "resource": "aws_lb_listener.swift_https",
+      "type": "aws_lb_listener",
+      "attribute": "routing_http_request_x_amzn_mtls_clientcert_issuer_header_name"
+    },
+    {
+      "resource": "aws_lb_listener.swift_https",
+      "type": "aws_lb_listener",
+      "attribute": "routing_http_request_x_amzn_mtls_clientcert_leaf_header_name"
+    },
+    {
+      "resource": "aws_lb_listener.swift_https",
+      "type": "aws_lb_listener",
+      "attribute": "routing_http_request_x_amzn_mtls_clientcert_serial_number_header_name"
+    },
+    {
+      "resource": "aws_lb_listener.swift_https",
+      "type": "aws_lb_listener",
+      "attribute": "routing_http_request_x_amzn_mtls_clientcert_subject_header_name"
+    },
+    {
+      "resource": "aws_lb_listener.swift_https",
+      "type": "aws_lb_listener",
+      "attribute": "routing_http_request_x_amzn_mtls_clientcert_validity_header_name"
+    },
+    {
+      "resource": "aws_lb_listener.swift_https",
+      "type": "aws_lb_listener",
+      "attribute": "routing_http_request_x_amzn_tls_cipher_suite_header_name"
+    },
+    {
+      "resource": "aws_lb_listener.swift_https",
+      "type": "aws_lb_listener",
+      "attribute": "routing_http_request_x_amzn_tls_version_header_name"
+    },
+    {
+      "resource": "aws_lb_listener.swift_https",
+      "type": "aws_lb_listener",
+      "attribute": "routing_http_response_access_control_allow_credentials_header_value"
+    },
+    {
+      "resource": "aws_lb_listener.swift_https",
+      "type": "aws_lb_listener",
+      "attribute": "routing_http_response_access_control_allow_headers_header_value"
+    },
+    {
+      "resource": "aws_lb_listener.swift_https",
+      "type": "aws_lb_listener",
+      "attribute": "routing_http_response_access_control_allow_methods_header_value"
+    },
+    {
+      "resource": "aws_lb_listener.swift_https",
+      "type": "aws_lb_listener",
+      "attribute": "routing_http_response_access_control_allow_origin_header_value"
+    },
+    {
+      "resource": "aws_lb_listener.swift_https",
+      "type": "aws_lb_listener",
+      "attribute": "routing_http_response_access_control_expose_headers_header_value"
+    },
+    {
+      "resource": "aws_lb_listener.swift_https",
+      "type": "aws_lb_listener",
+      "attribute": "routing_http_response_access_control_max_age_header_value"
+    },
+    {
+      "resource": "aws_lb_listener.swift_https",
+      "type": "aws_lb_listener",
+      "attribute": "routing_http_response_content_security_policy_header_value"
+    },
+    {
+      "resource": "aws_lb_listener.swift_https",
+      "type": "aws_lb_listener",
+      "attribute": "routing_http_response_server_enabled"
+    },
+    {
+      "resource": "aws_lb_listener.swift_https",
+      "type": "aws_lb_listener",
+      "attribute": "routing_http_response_strict_transport_security_header_value"
+    },
+    {
+      "resource": "aws_lb_listener.swift_https",
+      "type": "aws_lb_listener",
+      "attribute": "routing_http_response_x_content_type_options_header_value"
+    },
+    {
+      "resource": "aws_lb_listener.swift_https",
+      "type": "aws_lb_listener",
+      "attribute": "routing_http_response_x_frame_options_header_value"
+    },
+    {
+      "resource": "aws_lb_listener.swift_https",
+      "type": "aws_lb_listener",
+      "attribute": "tcp_idle_timeout_seconds"
+    },
+    {
+      "resource": "aws_msk_cluster.swift",
+      "type": "aws_msk_cluster",
+      "attribute": "bootstrap_brokers"
+    },
+    {
+      "resource": "aws_msk_cluster.swift",
+      "type": "aws_msk_cluster",
+      "attribute": "bootstrap_brokers_public_sasl_iam"
+    },
+    {
+      "resource": "aws_msk_cluster.swift",
+      "type": "aws_msk_cluster",
+      "attribute": "bootstrap_brokers_public_sasl_scram"
+    },
+    {
+      "resource": "aws_msk_cluster.swift",
+      "type": "aws_msk_cluster",
+      "attribute": "bootstrap_brokers_public_tls"
+    },
+    {
+      "resource": "aws_msk_cluster.swift",
+      "type": "aws_msk_cluster",
+      "attribute": "bootstrap_brokers_sasl_iam"
+    },
+    {
+      "resource": "aws_msk_cluster.swift",
+      "type": "aws_msk_cluster",
+      "attribute": "bootstrap_brokers_sasl_scram"
+    },
+    {
+      "resource": "aws_msk_cluster.swift",
+      "type": "aws_msk_cluster",
+      "attribute": "bootstrap_brokers_tls"
+    },
+    {
+      "resource": "aws_msk_cluster.swift",
+      "type": "aws_msk_cluster",
+      "attribute": "bootstrap_brokers_vpc_connectivity_sasl_iam"
+    },
+    {
+      "resource": "aws_msk_cluster.swift",
+      "type": "aws_msk_cluster",
+      "attribute": "bootstrap_brokers_vpc_connectivity_sasl_scram"
+    },
+    {
+      "resource": "aws_msk_cluster.swift",
+      "type": "aws_msk_cluster",
+      "attribute": "bootstrap_brokers_vpc_connectivity_tls"
+    },
+    {
+      "resource": "aws_msk_cluster.swift",
+      "type": "aws_msk_cluster",
+      "attribute": "cluster_uuid"
+    },
+    {
+      "resource": "aws_msk_cluster.swift",
+      "type": "aws_msk_cluster",
+      "attribute": "current_version"
+    },
+    {
+      "resource": "aws_msk_cluster.swift",
+      "type": "aws_msk_cluster",
+      "attribute": "storage_mode"
+    },
+    {
+      "resource": "aws_msk_cluster.swift",
+      "type": "aws_msk_cluster",
+      "attribute": "zookeeper_connect_string"
+    },
+    {
+      "resource": "aws_msk_cluster.swift",
+      "type": "aws_msk_cluster",
+      "attribute": "zookeeper_connect_string_tls"
+    },
+    {
+      "resource": "aws_opensearch_domain.swift",
+      "type": "aws_opensearch_domain",
+      "attribute": "access_policies"
+    },
+    {
+      "resource": "aws_opensearch_domain.swift",
+      "type": "aws_opensearch_domain",
+      "attribute": "advanced_options"
+    },
+    {
+      "resource": "aws_opensearch_domain.swift",
+      "type": "aws_opensearch_domain",
+      "attribute": "auto_tune_options"
+    },
+    {
+      "resource": "aws_opensearch_domain.swift",
+      "type": "aws_opensearch_domain",
+      "attribute": "dashboard_endpoint"
+    },
+    {
+      "resource": "aws_opensearch_domain.swift",
+      "type": "aws_opensearch_domain",
+      "attribute": "dashboard_endpoint_v2"
+    },
+    {
+      "resource": "aws_opensearch_domain.swift",
+      "type": "aws_opensearch_domain",
+      "attribute": "domain_endpoint_v2_hosted_zone_id"
+    },
+    {
+      "resource": "aws_opensearch_domain.swift",
+      "type": "aws_opensearch_domain",
+      "attribute": "domain_id"
+    },
+    {
+      "resource": "aws_opensearch_domain.swift",
+      "type": "aws_opensearch_domain",
+      "attribute": "endpoint"
+    },
+    {
+      "resource": "aws_opensearch_domain.swift",
+      "type": "aws_opensearch_domain",
+      "attribute": "endpoint_v2"
+    },
+    {
+      "resource": "aws_opensearch_domain.swift",
+      "type": "aws_opensearch_domain",
+      "attribute": "ip_address_type"
+    },
+    {
+      "resource": "aws_opensearch_domain.swift",
+      "type": "aws_opensearch_domain",
+      "attribute": "kibana_endpoint"
+    },
+    {
+      "resource": "aws_opensearch_domain.swift",
+      "type": "aws_opensearch_domain",
+      "attribute": "off_peak_window_options"
+    },
+    {
+      "resource": "aws_opensearch_domain.swift",
+      "type": "aws_opensearch_domain",
+      "attribute": "software_update_options"
+    },
+    {
+      "resource": "aws_redshift_cluster.swift",
+      "type": "aws_redshift_cluster",
+      "attribute": "aqua_configuration_status"
+    },
+    {
+      "resource": "aws_redshift_cluster.swift",
+      "type": "aws_redshift_cluster",
+      "attribute": "availability_zone"
+    },
+    {
+      "resource": "aws_redshift_cluster.swift",
+      "type": "aws_redshift_cluster",
+      "attribute": "cluster_namespace_arn"
+    },
+    {
+      "resource": "aws_redshift_cluster.swift",
+      "type": "aws_redshift_cluster",
+      "attribute": "cluster_nodes"
+    },
+    {
+      "resource": "aws_redshift_cluster.swift",
+      "type": "aws_redshift_cluster",
+      "attribute": "cluster_parameter_group_name"
+    },
+    {
+      "resource": "aws_redshift_cluster.swift",
+      "type": "aws_redshift_cluster",
+      "attribute": "cluster_public_key"
+    },
+    {
+      "resource": "aws_redshift_cluster.swift",
+      "type": "aws_redshift_cluster",
+      "attribute": "cluster_revision_number"
+    },
+    {
+      "resource": "aws_redshift_cluster.swift",
+      "type": "aws_redshift_cluster",
+      "attribute": "cluster_type"
+    },
+    {
+      "resource": "aws_redshift_cluster.swift",
+      "type": "aws_redshift_cluster",
+      "attribute": "default_iam_role_arn"
+    },
+    {
+      "resource": "aws_redshift_cluster.swift",
+      "type": "aws_redshift_cluster",
+      "attribute": "dns_name"
+    },
+    {
+      "resource": "aws_redshift_cluster.swift",
+      "type": "aws_redshift_cluster",
+      "attribute": "endpoint"
+    },
+    {
+      "resource": "aws_redshift_cluster.swift",
+      "type": "aws_redshift_cluster",
+      "attribute": "enhanced_vpc_routing"
+    },
+    {
+      "resource": "aws_redshift_cluster.swift",
+      "type": "aws_redshift_cluster",
+      "attribute": "iam_roles"
+    },
+    {
+      "resource": "aws_redshift_cluster.swift",
+      "type": "aws_redshift_cluster",
+      "attribute": "logging"
+    },
+    {
+      "resource": "aws_redshift_cluster.swift",
+      "type": "aws_redshift_cluster",
+      "attribute": "master_password_secret_arn"
+    },
+    {
+      "resource": "aws_redshift_cluster.swift",
+      "type": "aws_redshift_cluster",
+      "attribute": "master_password_secret_kms_key_id"
+    },
+    {
+      "resource": "aws_redshift_cluster.swift",
+      "type": "aws_redshift_cluster",
+      "attribute": "preferred_maintenance_window"
+    },
+    {
+      "resource": "aws_redshift_cluster.swift",
+      "type": "aws_redshift_cluster",
+      "attribute": "snapshot_copy"
+    },
+    {
+      "resource": "aws_route_table.swift",
+      "type": "aws_route_table",
+      "attribute": "owner_id"
+    },
+    {
+      "resource": "aws_route_table.swift",
+      "type": "aws_route_table",
+      "attribute": "propagating_vgws"
+    },
+    {
+      "resource": "aws_route_table.swift",
+      "type": "aws_route_table",
+      "attribute": "route"
+    },
+    {
+      "resource": "aws_route_table_association.swift[0]",
+      "type": "aws_route_table_association",
+      "attribute": "route_table_id"
+    },
+    {
+      "resource": "aws_route_table_association.swift[0]",
+      "type": "aws_route_table_association",
+      "attribute": "subnet_id"
+    },
+    {
+      "resource": "aws_route_table_association.swift[1]",
+      "type": "aws_route_table_association",
+      "attribute": "route_table_id"
+    },
+    {
+      "resource": "aws_route_table_association.swift[1]",
+      "type": "aws_route_table_association",
+      "attribute": "subnet_id"
+    },
+    {
+      "resource": "aws_s3_bucket.swift_data",
+      "type": "aws_s3_bucket",
+      "attribute": "acceleration_status"
+    },
+    {
+      "resource": "aws_s3_bucket.swift_data",
+      "type": "aws_s3_bucket",
+      "attribute": "acl"
+    },
+    {
+      "resource": "aws_s3_bucket.swift_data",
+      "type": "aws_s3_bucket",
+      "attribute": "bucket_domain_name"
+    },
+    {
+      "resource": "aws_s3_bucket.swift_data",
+      "type": "aws_s3_bucket",
+      "attribute": "bucket_prefix"
+    },
+    {
+      "resource": "aws_s3_bucket.swift_data",
+      "type": "aws_s3_bucket",
+      "attribute": "bucket_regional_domain_name"
+    },
+    {
+      "resource": "aws_s3_bucket.swift_data",
+      "type": "aws_s3_bucket",
+      "attribute": "cors_rule"
+    },
+    {
+      "resource": "aws_s3_bucket.swift_data",
+      "type": "aws_s3_bucket",
+      "attribute": "grant"
+    },
+    {
+      "resource": "aws_s3_bucket.swift_data",
+      "type": "aws_s3_bucket",
+      "attribute": "hosted_zone_id"
+    },
+    {
+      "resource": "aws_s3_bucket.swift_data",
+      "type": "aws_s3_bucket",
+      "attribute": "lifecycle_rule"
+    },
+    {
+      "resource": "aws_s3_bucket.swift_data",
+      "type": "aws_s3_bucket",
+      "attribute": "logging"
+    },
+    {
+      "resource": "aws_s3_bucket.swift_data",
+      "type": "aws_s3_bucket",
+      "attribute": "object_lock_configuration"
+    },
+    {
+      "resource": "aws_s3_bucket.swift_data",
+      "type": "aws_s3_bucket",
+      "attribute": "object_lock_enabled"
+    },
+    {
+      "resource": "aws_s3_bucket.swift_data",
+      "type": "aws_s3_bucket",
+      "attribute": "policy"
+    },
+    {
+      "resource": "aws_s3_bucket.swift_data",
+      "type": "aws_s3_bucket",
+      "attribute": "region"
+    },
+    {
+      "resource": "aws_s3_bucket.swift_data",
+      "type": "aws_s3_bucket",
+      "attribute": "replication_configuration"
+    },
+    {
+      "resource": "aws_s3_bucket.swift_data",
+      "type": "aws_s3_bucket",
+      "attribute": "request_payer"
+    },
+    {
+      "resource": "aws_s3_bucket.swift_data",
+      "type": "aws_s3_bucket",
+      "attribute": "server_side_encryption_configuration"
+    },
+    {
+      "resource": "aws_s3_bucket.swift_data",
+      "type": "aws_s3_bucket",
+      "attribute": "versioning"
+    },
+    {
+      "resource": "aws_s3_bucket.swift_data",
+      "type": "aws_s3_bucket",
+      "attribute": "website"
+    },
+    {
+      "resource": "aws_s3_bucket.swift_data",
+      "type": "aws_s3_bucket",
+      "attribute": "website_domain"
+    },
+    {
+      "resource": "aws_s3_bucket.swift_data",
+      "type": "aws_s3_bucket",
+      "attribute": "website_endpoint"
+    },
+    {
+      "resource": "aws_s3_bucket.swift_dr_exchange",
+      "type": "aws_s3_bucket",
+      "attribute": "acceleration_status"
+    },
+    {
+      "resource": "aws_s3_bucket.swift_dr_exchange",
+      "type": "aws_s3_bucket",
+      "attribute": "acl"
+    },
+    {
+      "resource": "aws_s3_bucket.swift_dr_exchange",
+      "type": "aws_s3_bucket",
+      "attribute": "bucket_domain_name"
+    },
+    {
+      "resource": "aws_s3_bucket.swift_dr_exchange",
+      "type": "aws_s3_bucket",
+      "attribute": "bucket_prefix"
+    },
+    {
+      "resource": "aws_s3_bucket.swift_dr_exchange",
+      "type": "aws_s3_bucket",
+      "attribute": "bucket_regional_domain_name"
+    },
+    {
+      "resource": "aws_s3_bucket.swift_dr_exchange",
+      "type": "aws_s3_bucket",
+      "attribute": "cors_rule"
+    },
+    {
+      "resource": "aws_s3_bucket.swift_dr_exchange",
+      "type": "aws_s3_bucket",
+      "attribute": "grant"
+    },
+    {
+      "resource": "aws_s3_bucket.swift_dr_exchange",
+      "type": "aws_s3_bucket",
+      "attribute": "hosted_zone_id"
+    },
+    {
+      "resource": "aws_s3_bucket.swift_dr_exchange",
+      "type": "aws_s3_bucket",
+      "attribute": "lifecycle_rule"
+    },
+    {
+      "resource": "aws_s3_bucket.swift_dr_exchange",
+      "type": "aws_s3_bucket",
+      "attribute": "logging"
+    },
+    {
+      "resource": "aws_s3_bucket.swift_dr_exchange",
+      "type": "aws_s3_bucket",
+      "attribute": "object_lock_configuration"
+    },
+    {
+      "resource": "aws_s3_bucket.swift_dr_exchange",
+      "type": "aws_s3_bucket",
+      "attribute": "object_lock_enabled"
+    },
+    {
+      "resource": "aws_s3_bucket.swift_dr_exchange",
+      "type": "aws_s3_bucket",
+      "attribute": "policy"
+    },
+    {
+      "resource": "aws_s3_bucket.swift_dr_exchange",
+      "type": "aws_s3_bucket",
+      "attribute": "region"
+    },
+    {
+      "resource": "aws_s3_bucket.swift_dr_exchange",
+      "type": "aws_s3_bucket",
+      "attribute": "replication_configuration"
+    },
+    {
+      "resource": "aws_s3_bucket.swift_dr_exchange",
+      "type": "aws_s3_bucket",
+      "attribute": "request_payer"
+    },
+    {
+      "resource": "aws_s3_bucket.swift_dr_exchange",
+      "type": "aws_s3_bucket",
+      "attribute": "server_side_encryption_configuration"
+    },
+    {
+      "resource": "aws_s3_bucket.swift_dr_exchange",
+      "type": "aws_s3_bucket",
+      "attribute": "versioning"
+    },
+    {
+      "resource": "aws_s3_bucket.swift_dr_exchange",
+      "type": "aws_s3_bucket",
+      "attribute": "website"
+    },
+    {
+      "resource": "aws_s3_bucket.swift_dr_exchange",
+      "type": "aws_s3_bucket",
+      "attribute": "website_domain"
+    },
+    {
+      "resource": "aws_s3_bucket.swift_dr_exchange",
+      "type": "aws_s3_bucket",
+      "attribute": "website_endpoint"
+    },
+    {
+      "resource": "aws_s3_bucket.trail",
+      "type": "aws_s3_bucket",
+      "attribute": "acceleration_status"
+    },
+    {
+      "resource": "aws_s3_bucket.trail",
+      "type": "aws_s3_bucket",
+      "attribute": "acl"
+    },
+    {
+      "resource": "aws_s3_bucket.trail",
+      "type": "aws_s3_bucket",
+      "attribute": "bucket_domain_name"
+    },
+    {
+      "resource": "aws_s3_bucket.trail",
+      "type": "aws_s3_bucket",
+      "attribute": "bucket_prefix"
+    },
+    {
+      "resource": "aws_s3_bucket.trail",
+      "type": "aws_s3_bucket",
+      "attribute": "bucket_regional_domain_name"
+    },
+    {
+      "resource": "aws_s3_bucket.trail",
+      "type": "aws_s3_bucket",
+      "attribute": "cors_rule"
+    },
+    {
+      "resource": "aws_s3_bucket.trail",
+      "type": "aws_s3_bucket",
+      "attribute": "grant"
+    },
+    {
+      "resource": "aws_s3_bucket.trail",
+      "type": "aws_s3_bucket",
+      "attribute": "hosted_zone_id"
+    },
+    {
+      "resource": "aws_s3_bucket.trail",
+      "type": "aws_s3_bucket",
+      "attribute": "lifecycle_rule"
+    },
+    {
+      "resource": "aws_s3_bucket.trail",
+      "type": "aws_s3_bucket",
+      "attribute": "logging"
+    },
+    {
+      "resource": "aws_s3_bucket.trail",
+      "type": "aws_s3_bucket",
+      "attribute": "object_lock_configuration"
+    },
+    {
+      "resource": "aws_s3_bucket.trail",
+      "type": "aws_s3_bucket",
+      "attribute": "policy"
+    },
+    {
+      "resource": "aws_s3_bucket.trail",
+      "type": "aws_s3_bucket",
+      "attribute": "region"
+    },
+    {
+      "resource": "aws_s3_bucket.trail",
+      "type": "aws_s3_bucket",
+      "attribute": "replication_configuration"
+    },
+    {
+      "resource": "aws_s3_bucket.trail",
+      "type": "aws_s3_bucket",
+      "attribute": "request_payer"
+    },
+    {
+      "resource": "aws_s3_bucket.trail",
+      "type": "aws_s3_bucket",
+      "attribute": "server_side_encryption_configuration"
+    },
+    {
+      "resource": "aws_s3_bucket.trail",
+      "type": "aws_s3_bucket",
+      "attribute": "versioning"
+    },
+    {
+      "resource": "aws_s3_bucket.trail",
+      "type": "aws_s3_bucket",
+      "attribute": "website"
+    },
+    {
+      "resource": "aws_s3_bucket.trail",
+      "type": "aws_s3_bucket",
+      "attribute": "website_domain"
+    },
+    {
+      "resource": "aws_s3_bucket.trail",
+      "type": "aws_s3_bucket",
+      "attribute": "website_endpoint"
+    },
+    {
+      "resource": "aws_s3_bucket_lifecycle_configuration.trail",
+      "type": "aws_s3_bucket_lifecycle_configuration",
+      "attribute": "expected_bucket_owner"
+    },
+    {
+      "resource": "aws_secretsmanager_secret.swift_db",
+      "type": "aws_secretsmanager_secret",
+      "attribute": "name_prefix"
+    },
+    {
+      "resource": "aws_secretsmanager_secret.swift_db",
+      "type": "aws_secretsmanager_secret",
+      "attribute": "policy"
+    },
+    {
+      "resource": "aws_secretsmanager_secret.swift_db",
+      "type": "aws_secretsmanager_secret",
+      "attribute": "replica"
+    },
+    {
+      "resource": "aws_secretsmanager_secret_rotation.swift_db",
+      "type": "aws_secretsmanager_secret_rotation",
+      "attribute": "rotation_enabled"
+    },
+    {
+      "resource": "aws_security_group.swift_app",
+      "type": "aws_security_group",
+      "attribute": "name"
+    },
+    {
+      "resource": "aws_security_group.swift_app",
+      "type": "aws_security_group",
+      "attribute": "owner_id"
+    },
+    {
+      "resource": "aws_sns_topic.alerts",
+      "type": "aws_sns_topic",
+      "attribute": "beginning_archive_time"
+    },
+    {
+      "resource": "aws_sns_topic.alerts",
+      "type": "aws_sns_topic",
+      "attribute": "fifo_throughput_scope"
+    },
+    {
+      "resource": "aws_sns_topic.alerts",
+      "type": "aws_sns_topic",
+      "attribute": "name_prefix"
+    },
+    {
+      "resource": "aws_sns_topic.alerts",
+      "type": "aws_sns_topic",
+      "attribute": "owner"
+    },
+    {
+      "resource": "aws_sns_topic.alerts",
+      "type": "aws_sns_topic",
+      "attribute": "policy"
+    },
+    {
+      "resource": "aws_sns_topic.alerts",
+      "type": "aws_sns_topic",
+      "attribute": "signature_version"
+    },
+    {
+      "resource": "aws_sns_topic.alerts",
+      "type": "aws_sns_topic",
+      "attribute": "tracing_config"
+    },
+    {
+      "resource": "aws_ssm_association.patch_scan",
+      "type": "aws_ssm_association",
+      "attribute": "association_id"
+    },
+    {
+      "resource": "aws_ssm_association.patch_scan",
+      "type": "aws_ssm_association",
+      "attribute": "document_version"
+    },
+    {
+      "resource": "aws_ssm_document.session_preferences",
+      "type": "aws_ssm_document",
+      "attribute": "created_date"
+    },
+    {
+      "resource": "aws_ssm_document.session_preferences",
+      "type": "aws_ssm_document",
+      "attribute": "default_version"
+    },
+    {
+      "resource": "aws_ssm_document.session_preferences",
+      "type": "aws_ssm_document",
+      "attribute": "description"
+    },
+    {
+      "resource": "aws_ssm_document.session_preferences",
+      "type": "aws_ssm_document",
+      "attribute": "document_version"
+    },
+    {
+      "resource": "aws_ssm_document.session_preferences",
+      "type": "aws_ssm_document",
+      "attribute": "hash"
+    },
+    {
+      "resource": "aws_ssm_document.session_preferences",
+      "type": "aws_ssm_document",
+      "attribute": "hash_type"
+    },
+    {
+      "resource": "aws_ssm_document.session_preferences",
+      "type": "aws_ssm_document",
+      "attribute": "latest_version"
+    },
+    {
+      "resource": "aws_ssm_document.session_preferences",
+      "type": "aws_ssm_document",
+      "attribute": "owner"
+    },
+    {
+      "resource": "aws_ssm_document.session_preferences",
+      "type": "aws_ssm_document",
+      "attribute": "parameter"
+    },
+    {
+      "resource": "aws_ssm_document.session_preferences",
+      "type": "aws_ssm_document",
+      "attribute": "platform_types"
+    },
+    {
+      "resource": "aws_ssm_document.session_preferences",
+      "type": "aws_ssm_document",
+      "attribute": "schema_version"
+    },
+    {
+      "resource": "aws_ssm_document.session_preferences",
+      "type": "aws_ssm_document",
+      "attribute": "status"
+    },
+    {
+      "resource": "aws_ssm_parameter.app_api_key",
+      "type": "aws_ssm_parameter",
+      "attribute": "data_type"
+    },
+    {
+      "resource": "aws_ssm_parameter.app_api_key",
+      "type": "aws_ssm_parameter",
+      "attribute": "has_value_wo"
+    },
+    {
+      "resource": "aws_ssm_parameter.app_api_key",
+      "type": "aws_ssm_parameter",
+      "attribute": "insecure_value"
+    },
+    {
+      "resource": "aws_ssm_parameter.app_api_key",
+      "type": "aws_ssm_parameter",
+      "attribute": "tier"
+    },
+    {
+      "resource": "aws_ssm_parameter.app_api_key",
+      "type": "aws_ssm_parameter",
+      "attribute": "version"
+    },
+    {
+      "resource": "aws_ssm_patch_baseline.swift",
+      "type": "aws_ssm_patch_baseline",
+      "attribute": "json"
+    },
+    {
+      "resource": "aws_ssm_patch_baseline.swift",
+      "type": "aws_ssm_patch_baseline",
+      "attribute": "rejected_patches_action"
+    },
+    {
+      "resource": "aws_subnet.swift[0]",
+      "type": "aws_subnet",
+      "attribute": "availability_zone_id"
+    },
+    {
+      "resource": "aws_subnet.swift[0]",
+      "type": "aws_subnet",
+      "attribute": "ipv6_cidr_block_association_id"
+    },
+    {
+      "resource": "aws_subnet.swift[0]",
+      "type": "aws_subnet",
+      "attribute": "owner_id"
+    },
+    {
+      "resource": "aws_subnet.swift[0]",
+      "type": "aws_subnet",
+      "attribute": "private_dns_hostname_type_on_launch"
+    },
+    {
+      "resource": "aws_subnet.swift[0]",
+      "type": "aws_subnet",
+      "attribute": "vpc_id"
+    },
+    {
+      "resource": "aws_subnet.swift[1]",
+      "type": "aws_subnet",
+      "attribute": "availability_zone_id"
+    },
+    {
+      "resource": "aws_subnet.swift[1]",
+      "type": "aws_subnet",
+      "attribute": "ipv6_cidr_block_association_id"
+    },
+    {
+      "resource": "aws_subnet.swift[1]",
+      "type": "aws_subnet",
+      "attribute": "owner_id"
+    },
+    {
+      "resource": "aws_subnet.swift[1]",
+      "type": "aws_subnet",
+      "attribute": "private_dns_hostname_type_on_launch"
+    },
+    {
+      "resource": "aws_subnet.swift[1]",
+      "type": "aws_subnet",
+      "attribute": "vpc_id"
+    },
+    {
+      "resource": "aws_vpc.swift",
+      "type": "aws_vpc",
+      "attribute": "default_network_acl_id"
+    },
+    {
+      "resource": "aws_vpc.swift",
+      "type": "aws_vpc",
+      "attribute": "default_route_table_id"
+    },
+    {
+      "resource": "aws_vpc.swift",
+      "type": "aws_vpc",
+      "attribute": "default_security_group_id"
+    },
+    {
+      "resource": "aws_vpc.swift",
+      "type": "aws_vpc",
+      "attribute": "dhcp_options_id"
+    },
+    {
+      "resource": "aws_vpc.swift",
+      "type": "aws_vpc",
+      "attribute": "enable_network_address_usage_metrics"
+    },
+    {
+      "resource": "aws_vpc.swift",
+      "type": "aws_vpc",
+      "attribute": "ipv6_association_id"
+    },
+    {
+      "resource": "aws_vpc.swift",
+      "type": "aws_vpc",
+      "attribute": "ipv6_cidr_block"
+    },
+    {
+      "resource": "aws_vpc.swift",
+      "type": "aws_vpc",
+      "attribute": "ipv6_cidr_block_network_border_group"
+    },
+    {
+      "resource": "aws_vpc.swift",
+      "type": "aws_vpc",
+      "attribute": "main_route_table_id"
+    },
+    {
+      "resource": "aws_vpc.swift",
+      "type": "aws_vpc",
+      "attribute": "owner_id"
+    },
+    {
+      "resource": "aws_vpc_endpoint.s3",
+      "type": "aws_vpc_endpoint",
+      "attribute": "cidr_blocks"
+    },
+    {
+      "resource": "aws_vpc_endpoint.s3",
+      "type": "aws_vpc_endpoint",
+      "attribute": "dns_entry"
+    },
+    {
+      "resource": "aws_vpc_endpoint.s3",
+      "type": "aws_vpc_endpoint",
+      "attribute": "dns_options"
+    },
+    {
+      "resource": "aws_vpc_endpoint.s3",
+      "type": "aws_vpc_endpoint",
+      "attribute": "ip_address_type"
+    },
+    {
+      "resource": "aws_vpc_endpoint.s3",
+      "type": "aws_vpc_endpoint",
+      "attribute": "network_interface_ids"
+    },
+    {
+      "resource": "aws_vpc_endpoint.s3",
+      "type": "aws_vpc_endpoint",
+      "attribute": "owner_id"
+    },
+    {
+      "resource": "aws_vpc_endpoint.s3",
+      "type": "aws_vpc_endpoint",
+      "attribute": "policy"
+    },
+    {
+      "resource": "aws_vpc_endpoint.s3",
+      "type": "aws_vpc_endpoint",
+      "attribute": "prefix_list_id"
+    },
+    {
+      "resource": "aws_vpc_endpoint.s3",
+      "type": "aws_vpc_endpoint",
+      "attribute": "private_dns_enabled"
+    },
+    {
+      "resource": "aws_vpc_endpoint.s3",
+      "type": "aws_vpc_endpoint",
+      "attribute": "requester_managed"
+    },
+    {
+      "resource": "aws_vpc_endpoint.s3",
+      "type": "aws_vpc_endpoint",
+      "attribute": "security_group_ids"
+    },
+    {
+      "resource": "aws_vpc_endpoint.s3",
+      "type": "aws_vpc_endpoint",
+      "attribute": "service_region"
+    },
+    {
+      "resource": "aws_vpc_endpoint.s3",
+      "type": "aws_vpc_endpoint",
+      "attribute": "state"
+    },
+    {
+      "resource": "aws_vpc_endpoint.s3",
+      "type": "aws_vpc_endpoint",
+      "attribute": "subnet_configuration"
+    },
+    {
+      "resource": "aws_vpc_endpoint.s3",
+      "type": "aws_vpc_endpoint",
+      "attribute": "subnet_ids"
+    },
+    {
+      "resource": "aws_vpc_endpoint.ssm",
+      "type": "aws_vpc_endpoint",
+      "attribute": "cidr_blocks"
+    },
+    {
+      "resource": "aws_vpc_endpoint.ssm",
+      "type": "aws_vpc_endpoint",
+      "attribute": "dns_entry"
+    },
+    {
+      "resource": "aws_vpc_endpoint.ssm",
+      "type": "aws_vpc_endpoint",
+      "attribute": "dns_options"
+    },
+    {
+      "resource": "aws_vpc_endpoint.ssm",
+      "type": "aws_vpc_endpoint",
+      "attribute": "ip_address_type"
+    },
+    {
+      "resource": "aws_vpc_endpoint.ssm",
+      "type": "aws_vpc_endpoint",
+      "attribute": "network_interface_ids"
+    },
+    {
+      "resource": "aws_vpc_endpoint.ssm",
+      "type": "aws_vpc_endpoint",
+      "attribute": "owner_id"
+    },
+    {
+      "resource": "aws_vpc_endpoint.ssm",
+      "type": "aws_vpc_endpoint",
+      "attribute": "policy"
+    },
+    {
+      "resource": "aws_vpc_endpoint.ssm",
+      "type": "aws_vpc_endpoint",
+      "attribute": "prefix_list_id"
+    },
+    {
+      "resource": "aws_vpc_endpoint.ssm",
+      "type": "aws_vpc_endpoint",
+      "attribute": "requester_managed"
+    },
+    {
+      "resource": "aws_vpc_endpoint.ssm",
+      "type": "aws_vpc_endpoint",
+      "attribute": "route_table_ids"
+    },
+    {
+      "resource": "aws_vpc_endpoint.ssm",
+      "type": "aws_vpc_endpoint",
+      "attribute": "service_region"
+    },
+    {
+      "resource": "aws_vpc_endpoint.ssm",
+      "type": "aws_vpc_endpoint",
+      "attribute": "state"
+    },
+    {
+      "resource": "aws_vpc_endpoint.ssm",
+      "type": "aws_vpc_endpoint",
+      "attribute": "subnet_configuration"
+    },
+    {
+      "resource": "aws_vpn_connection.back_office",
+      "type": "aws_vpn_connection",
+      "attribute": "core_network_arn"
+    },
+    {
+      "resource": "aws_vpn_connection.back_office",
+      "type": "aws_vpn_connection",
+      "attribute": "core_network_attachment_arn"
+    },
+    {
+      "resource": "aws_vpn_connection.back_office",
+      "type": "aws_vpn_connection",
+      "attribute": "customer_gateway_configuration"
+    },
+    {
+      "resource": "aws_vpn_connection.back_office",
+      "type": "aws_vpn_connection",
+      "attribute": "enable_acceleration"
+    },
+    {
+      "resource": "aws_vpn_connection.back_office",
+      "type": "aws_vpn_connection",
+      "attribute": "local_ipv4_network_cidr"
+    },
+    {
+      "resource": "aws_vpn_connection.back_office",
+      "type": "aws_vpn_connection",
+      "attribute": "local_ipv6_network_cidr"
+    },
+    {
+      "resource": "aws_vpn_connection.back_office",
+      "type": "aws_vpn_connection",
+      "attribute": "outside_ip_address_type"
+    },
+    {
+      "resource": "aws_vpn_connection.back_office",
+      "type": "aws_vpn_connection",
+      "attribute": "preshared_key_arn"
+    },
+    {
+      "resource": "aws_vpn_connection.back_office",
+      "type": "aws_vpn_connection",
+      "attribute": "preshared_key_storage"
+    },
+    {
+      "resource": "aws_vpn_connection.back_office",
+      "type": "aws_vpn_connection",
+      "attribute": "remote_ipv4_network_cidr"
+    },
+    {
+      "resource": "aws_vpn_connection.back_office",
+      "type": "aws_vpn_connection",
+      "attribute": "remote_ipv6_network_cidr"
+    },
+    {
+      "resource": "aws_vpn_connection.back_office",
+      "type": "aws_vpn_connection",
+      "attribute": "routes"
+    },
+    {
+      "resource": "aws_vpn_connection.back_office",
+      "type": "aws_vpn_connection",
+      "attribute": "static_routes_only"
+    },
+    {
+      "resource": "aws_vpn_connection.back_office",
+      "type": "aws_vpn_connection",
+      "attribute": "transit_gateway_attachment_id"
+    },
+    {
+      "resource": "aws_vpn_connection.back_office",
+      "type": "aws_vpn_connection",
+      "attribute": "tunnel1_address"
+    },
+    {
+      "resource": "aws_vpn_connection.back_office",
+      "type": "aws_vpn_connection",
+      "attribute": "tunnel1_bgp_asn"
+    },
+    {
+      "resource": "aws_vpn_connection.back_office",
+      "type": "aws_vpn_connection",
+      "attribute": "tunnel1_bgp_holdtime"
+    },
+    {
+      "resource": "aws_vpn_connection.back_office",
+      "type": "aws_vpn_connection",
+      "attribute": "tunnel1_cgw_inside_address"
+    },
+    {
+      "resource": "aws_vpn_connection.back_office",
+      "type": "aws_vpn_connection",
+      "attribute": "tunnel1_inside_cidr"
+    },
+    {
+      "resource": "aws_vpn_connection.back_office",
+      "type": "aws_vpn_connection",
+      "attribute": "tunnel1_inside_ipv6_cidr"
+    },
+    {
+      "resource": "aws_vpn_connection.back_office",
+      "type": "aws_vpn_connection",
+      "attribute": "tunnel1_log_options"
+    },
+    {
+      "resource": "aws_vpn_connection.back_office",
+      "type": "aws_vpn_connection",
+      "attribute": "tunnel1_preshared_key"
+    },
+    {
+      "resource": "aws_vpn_connection.back_office",
+      "type": "aws_vpn_connection",
+      "attribute": "tunnel1_vgw_inside_address"
+    },
+    {
+      "resource": "aws_vpn_connection.back_office",
+      "type": "aws_vpn_connection",
+      "attribute": "tunnel2_address"
+    },
+    {
+      "resource": "aws_vpn_connection.back_office",
+      "type": "aws_vpn_connection",
+      "attribute": "tunnel2_bgp_asn"
+    },
+    {
+      "resource": "aws_vpn_connection.back_office",
+      "type": "aws_vpn_connection",
+      "attribute": "tunnel2_bgp_holdtime"
+    },
+    {
+      "resource": "aws_vpn_connection.back_office",
+      "type": "aws_vpn_connection",
+      "attribute": "tunnel2_cgw_inside_address"
+    },
+    {
+      "resource": "aws_vpn_connection.back_office",
+      "type": "aws_vpn_connection",
+      "attribute": "tunnel2_inside_cidr"
+    },
+    {
+      "resource": "aws_vpn_connection.back_office",
+      "type": "aws_vpn_connection",
+      "attribute": "tunnel2_inside_ipv6_cidr"
+    },
+    {
+      "resource": "aws_vpn_connection.back_office",
+      "type": "aws_vpn_connection",
+      "attribute": "tunnel2_log_options"
+    },
+    {
+      "resource": "aws_vpn_connection.back_office",
+      "type": "aws_vpn_connection",
+      "attribute": "tunnel2_preshared_key"
+    },
+    {
+      "resource": "aws_vpn_connection.back_office",
+      "type": "aws_vpn_connection",
+      "attribute": "tunnel2_vgw_inside_address"
+    },
+    {
+      "resource": "aws_vpn_connection.back_office",
+      "type": "aws_vpn_connection",
+      "attribute": "tunnel_inside_ip_version"
+    },
+    {
+      "resource": "aws_vpn_connection.back_office",
+      "type": "aws_vpn_connection",
+      "attribute": "vgw_telemetry"
+    },
+    {
+      "resource": "aws_vpn_gateway.swift",
+      "type": "aws_vpn_gateway",
+      "attribute": "amazon_side_asn"
+    },
+    {
+      "resource": "aws_api_gateway_domain_name.swift",
+      "type": "aws_api_gateway_domain_name",
+      "attribute": "endpoint_configuration.0.ip_address_type"
+    },
+    {
+      "resource": "aws_config_configuration_recorder.swift",
+      "type": "aws_config_configuration_recorder",
+      "attribute": "recording_group.0.exclusion_by_resource_types"
+    },
+    {
+      "resource": "aws_config_configuration_recorder.swift",
+      "type": "aws_config_configuration_recorder",
+      "attribute": "recording_group.0.recording_strategy"
+    },
+    {
+      "resource": "aws_ec2_client_vpn_endpoint.swift",
+      "type": "aws_ec2_client_vpn_endpoint",
+      "attribute": "connection_log_options.0.cloudwatch_log_stream"
+    },
+    {
+      "resource": "aws_instance.jump_server",
+      "type": "aws_instance",
+      "attribute": "metadata_options.0.instance_metadata_tags"
+    },
+    {
+      "resource": "aws_instance.jump_server",
+      "type": "aws_instance",
+      "attribute": "root_block_device.0.device_name"
+    },
+    {
+      "resource": "aws_instance.jump_server",
+      "type": "aws_instance",
+      "attribute": "root_block_device.0.iops"
+    },
+    {
+      "resource": "aws_instance.jump_server",
+      "type": "aws_instance",
+      "attribute": "root_block_device.0.tags_all"
+    },
+    {
+      "resource": "aws_instance.jump_server",
+      "type": "aws_instance",
+      "attribute": "root_block_device.0.throughput"
+    },
+    {
+      "resource": "aws_instance.jump_server",
+      "type": "aws_instance",
+      "attribute": "root_block_device.0.volume_id"
+    },
+    {
+      "resource": "aws_lb_listener.swift_https",
+      "type": "aws_lb_listener",
+      "attribute": "default_action.0.order"
+    },
+    {
+      "resource": "aws_msk_cluster.swift",
+      "type": "aws_msk_cluster",
+      "attribute": "broker_node_group_info.0.connectivity_info"
+    },
+    {
+      "resource": "aws_msk_cluster.swift",
+      "type": "aws_msk_cluster",
+      "attribute": "encryption_info.0.encryption_at_rest_kms_key_arn"
+    },
+    {
+      "resource": "aws_opensearch_domain.swift",
+      "type": "aws_opensearch_domain",
+      "attribute": "advanced_security_options.0.anonymous_auth_enabled"
+    },
+    {
+      "resource": "aws_opensearch_domain.swift",
+      "type": "aws_opensearch_domain",
+      "attribute": "cluster_config.0.cold_storage_options"
+    },
+    {
+      "resource": "aws_opensearch_domain.swift",
+      "type": "aws_opensearch_domain",
+      "attribute": "cluster_config.0.node_options"
+    },
+    {
+      "resource": "aws_opensearch_domain.swift",
+      "type": "aws_opensearch_domain",
+      "attribute": "ebs_options.0.iops"
+    },
+    {
+      "resource": "aws_opensearch_domain.swift",
+      "type": "aws_opensearch_domain",
+      "attribute": "ebs_options.0.throughput"
+    },
+    {
+      "resource": "aws_opensearch_domain.swift",
+      "type": "aws_opensearch_domain",
+      "attribute": "ebs_options.0.volume_type"
+    },
+    {
+      "resource": "aws_opensearch_domain.swift",
+      "type": "aws_opensearch_domain",
+      "attribute": "encrypt_at_rest.0.kms_key_id"
+    },
+    {
+      "resource": "aws_opensearch_domain.swift",
+      "type": "aws_opensearch_domain",
+      "attribute": "vpc_options.0.availability_zones"
+    },
+    {
+      "resource": "aws_opensearch_domain.swift",
+      "type": "aws_opensearch_domain",
+      "attribute": "vpc_options.0.vpc_id"
+    },
+    {
+      "resource": "aws_s3_bucket_versioning.trail",
+      "type": "aws_s3_bucket_versioning",
+      "attribute": "versioning_configuration.0.mfa_delete"
+    }
+  ]
+}

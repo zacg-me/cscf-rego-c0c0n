@@ -1,0 +1,135 @@
+{
+  "format_version": "1.2",
+  "terraform_version": "1.15.5",
+  "swift_account_id": "111122223333",
+  "planned_values": {
+    "root_module": {
+      "resources": [
+        {
+          "address": "aws_instance.reporting_host",
+          "type": "aws_instance",
+          "name": "reporting_host",
+          "values": {
+            "instance_type": "m5.large",
+            "key_name": "cr2041-debug-key",
+            "iam_instance_profile": "",
+            "tenancy": "default",
+            "associate_public_ip_address": false,
+            "subnet_id": "subnet-swift-priv-001",
+            "metadata_options": [
+              {
+                "http_endpoint": "enabled",
+                "http_tokens": "optional",
+                "http_put_response_hop_limit": 2
+              }
+            ],
+            "root_block_device": [
+              {
+                "encrypted": false,
+                "volume_type": "gp3"
+              }
+            ],
+            "tags": {
+              "swift:zone": "secure",
+              "swift:role": "reporting",
+              "Project": "swift-cscf"
+            }
+          }
+        },
+        {
+          "address": "aws_route.pkg_downloads",
+          "type": "aws_route",
+          "name": "pkg_downloads",
+          "values": {
+            "destination_cidr_block": "0.0.0.0/0",
+            "nat_gateway_id": "nat-0cr20410000abcd0",
+            "route_table_id": "rtb-swiftzone"
+          }
+        },
+        {
+          "address": "aws_db_instance.reporting_db",
+          "type": "aws_db_instance",
+          "name": "reporting_db",
+          "values": {
+            "engine": "postgres",
+            "publicly_accessible": true,
+            "username": "reportadmin",
+            "password": "Rep0rt!ng2041",
+            "manage_master_user_password": false,
+            "iam_database_authentication_enabled": false,
+            "tags": {
+              "swift:zone": "secure",
+              "Project": "swift-cscf"
+            }
+          }
+        },
+        {
+          "address": "aws_s3_bucket_public_access_block.exports",
+          "type": "aws_s3_bucket_public_access_block",
+          "name": "exports",
+          "values": {
+            "bucket": "swift-reporting-exports",
+            "block_public_acls": true,
+            "block_public_policy": false,
+            "ignore_public_acls": true,
+            "restrict_public_buckets": false
+          }
+        },
+        {
+          "address": "aws_lambda_function.exporter",
+          "type": "aws_lambda_function",
+          "name": "exporter",
+          "values": {
+            "function_name": "swift-report-exporter",
+            "environment": [
+              {
+                "variables": {
+                  "DB_HOST": "reporting_db",
+                  "DB_PASSWORD": "Rep0rt!ng2041"
+                }
+              }
+            ],
+            "tags": {
+              "swift:zone": "secure",
+              "Project": "swift-cscf"
+            }
+          }
+        },
+        {
+          "address": "aws_secretsmanager_secret.reporting",
+          "type": "aws_secretsmanager_secret",
+          "name": "reporting",
+          "values": {
+            "name": "swift/reporting/db",
+            "kms_key_id": "",
+            "tags": {
+              "swift:zone": "secure",
+              "Project": "swift-cscf"
+            }
+          }
+        },
+        {
+          "address": "aws_route_table.zone",
+          "mode": "managed",
+          "type": "aws_route_table",
+          "name": "zone",
+          "provider_name": "registry.terraform.io/hashicorp/aws",
+          "schema_version": 0,
+          "values": {
+            "id": "rtb-swiftzone",
+            "vpc_id": "vpc-swiftzone",
+            "tags": {
+              "swift:zone": "secure",
+              "Name": "swift-zone-rt"
+            },
+            "tags_all": {
+              "swift:zone": "secure",
+              "Name": "swift-zone-rt"
+            }
+          }
+        }
+      ],
+      "child_modules": []
+    }
+  }
+}

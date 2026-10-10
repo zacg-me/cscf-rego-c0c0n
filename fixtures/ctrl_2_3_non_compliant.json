@@ -1,0 +1,57 @@
+{
+  "format_version": "1.2",
+  "terraform_version": "1.15.5",
+  "swift_account_id": "111122223333",
+  "planned_values": {
+    "root_module": {
+      "resources": [
+        {
+          "address": "aws_db_instance.swift_db",
+          "mode": "managed",
+          "type": "aws_db_instance",
+          "name": "swift_db",
+          "values": {
+            "engine": "postgres",
+            "publicly_accessible": true,
+            "tags": { "swift:zone": "secure", "Project": "swift-cscf" }
+          }
+        },
+        {
+          "address": "aws_s3_bucket_public_access_block.swift_data",
+          "mode": "managed",
+          "type": "aws_s3_bucket_public_access_block",
+          "name": "swift_data",
+          "values": {
+            "bucket": "swift-data-exchange",
+            "block_public_acls": true,
+            "block_public_policy": false,
+            "ignore_public_acls": true,
+            "restrict_public_buckets": false
+          }
+        },
+        {
+          "address": "aws_opensearch_domain.swift_search",
+          "mode": "managed",
+          "type": "aws_opensearch_domain",
+          "name": "swift_search",
+          "values": {
+            "domain_name": "swift-search",
+            "tags": { "swift:zone": "secure", "Project": "swift-cscf" }
+          }
+        },
+        {
+          "address": "aws_ecs_task_definition.swift_task",
+          "mode": "managed",
+          "type": "aws_ecs_task_definition",
+          "name": "swift_task",
+          "values": {
+            "family": "swift-connector",
+            "container_definitions": "[{\"name\":\"connector\",\"image\":\"swift/connector:1.0\",\"privileged\":true}]",
+            "tags": { "swift:zone": "secure", "Project": "swift-cscf" }
+          }
+        }
+      ],
+      "child_modules": []
+    }
+  }
+}

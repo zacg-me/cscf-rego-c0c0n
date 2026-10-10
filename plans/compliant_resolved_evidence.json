@@ -1,0 +1,234 @@
+{
+  "schema": "swift-cscf-evidence/v1",
+  "generated_at": "2026-10-10T04:23:35.316058+00:00",
+  "cscf_version": "v2026",
+  "plan_file": "compliant_resolved_plan.json",
+  "plan_sha256": "8a50e8a30504b7b2603954f9da9beea976f2616bd6b8196436b56b5b8b25686f",
+  "opa_version": "1.17.0",
+  "library": {
+    "version": "2.1.2",
+    "digest": "sha256:4661dd9ef9f0f5c727d775d014a3896a7bd286048bbfc6da09f10d676b75424e",
+    "files": 20
+  },
+  "controls": [
+    {
+      "control": "1.1",
+      "module": "ctrl_1_1",
+      "rules_fired": 0,
+      "violation_instances": 0,
+      "assertions": [],
+      "violations": []
+    },
+    {
+      "control": "1.2",
+      "module": "ctrl_1_2",
+      "rules_fired": 0,
+      "violation_instances": 0,
+      "assertions": [],
+      "violations": []
+    },
+    {
+      "control": "1.3",
+      "module": "ctrl_1_3",
+      "rules_fired": 0,
+      "violation_instances": 0,
+      "assertions": [],
+      "violations": []
+    },
+    {
+      "control": "1.4",
+      "module": "ctrl_1_4",
+      "rules_fired": 0,
+      "violation_instances": 0,
+      "assertions": [],
+      "violations": []
+    },
+    {
+      "control": "2.1",
+      "module": "ctrl_2_1",
+      "rules_fired": 0,
+      "violation_instances": 0,
+      "assertions": [],
+      "violations": []
+    },
+    {
+      "control": "2.2",
+      "module": "ctrl_2_2",
+      "rules_fired": 0,
+      "violation_instances": 0,
+      "assertions": [],
+      "violations": []
+    },
+    {
+      "control": "2.3",
+      "module": "ctrl_2_3",
+      "rules_fired": 0,
+      "violation_instances": 0,
+      "assertions": [],
+      "violations": []
+    },
+    {
+      "control": "2.4",
+      "module": "ctrl_2_4",
+      "rules_fired": 0,
+      "violation_instances": 0,
+      "assertions": [],
+      "violations": []
+    },
+    {
+      "control": "2.6",
+      "module": "ctrl_2_6",
+      "rules_fired": 0,
+      "violation_instances": 0,
+      "assertions": [],
+      "violations": []
+    },
+    {
+      "control": "2.7",
+      "module": "ctrl_2_7",
+      "rules_fired": 0,
+      "violation_instances": 0,
+      "assertions": [],
+      "violations": []
+    },
+    {
+      "control": "4.1",
+      "module": "ctrl_4_1",
+      "rules_fired": 0,
+      "violation_instances": 0,
+      "assertions": [],
+      "violations": []
+    },
+    {
+      "control": "4.2",
+      "module": "ctrl_4_2",
+      "rules_fired": 0,
+      "violation_instances": 0,
+      "assertions": [],
+      "violations": []
+    },
+    {
+      "control": "5.1",
+      "module": "ctrl_5_1",
+      "rules_fired": 0,
+      "violation_instances": 0,
+      "assertions": [],
+      "violations": []
+    },
+    {
+      "control": "5.4",
+      "module": "ctrl_5_4",
+      "rules_fired": 0,
+      "violation_instances": 0,
+      "assertions": [],
+      "violations": []
+    },
+    {
+      "control": "6.4",
+      "module": "ctrl_6_4",
+      "rules_fired": 0,
+      "violation_instances": 0,
+      "assertions": [],
+      "violations": []
+    }
+  ],
+  "summary": {
+    "total_violation_instances": 0,
+    "distinct_assertions_fired": 0,
+    "controls_with_violations": 0,
+    "result": "PASS",
+    "undetermined_instances": 10,
+    "undetermined_assertions": 7
+  },
+  "plan_scope": "full",
+  "undetermined": [
+    {
+      "control": "1.1",
+      "assertion": "1.1-A15",
+      "resource": "aws_s3_bucket_policy.swift_data_tls",
+      "attribute": "policy",
+      "kind": "unresolved-value",
+      "reason": "the attribute this assertion reads is unknown at plan time; the verdict changes when it is given a value, so the plan does not determine it"
+    },
+    {
+      "control": "1.1",
+      "assertion": "1.1-A15",
+      "resource": "aws_s3_bucket_policy.trail",
+      "attribute": "policy",
+      "kind": "unresolved-value",
+      "reason": "the attribute this assertion reads is unknown at plan time; the verdict changes when it is given a value, so the plan does not determine it"
+    },
+    {
+      "control": "2.1",
+      "assertion": "2.1-A12",
+      "resource": "aws_efs_file_system_policy.swift",
+      "attribute": "policy",
+      "kind": "unresolved-value",
+      "reason": "the attribute this assertion reads is unknown at plan time; the verdict changes when it is given a value, so the plan does not determine it"
+    },
+    {
+      "control": "2.1",
+      "assertion": "2.1-A16",
+      "resource": "aws_s3_bucket_policy.swift_data_tls",
+      "attribute": "policy",
+      "kind": "unresolved-value",
+      "reason": "the attribute this assertion reads is unknown at plan time; the verdict changes when it is given a value, so the plan does not determine it"
+    },
+    {
+      "control": "2.1",
+      "assertion": "2.1-A16",
+      "resource": "aws_s3_bucket_policy.trail",
+      "attribute": "policy",
+      "kind": "unresolved-value",
+      "reason": "the attribute this assertion reads is unknown at plan time; the verdict changes when it is given a value, so the plan does not determine it"
+    },
+    {
+      "control": "5.1",
+      "assertion": "5.1-A1",
+      "resource": "aws_iam_policy.swift_deploy",
+      "attribute": "policy",
+      "kind": "unresolved-value",
+      "reason": "the attribute this assertion reads is unknown at plan time; the verdict changes when it is given a value, so the plan does not determine it"
+    },
+    {
+      "control": "5.1",
+      "assertion": "5.1-A11",
+      "resource": "aws_s3_bucket_policy.swift_data_tls",
+      "attribute": "policy",
+      "kind": "unresolved-value",
+      "reason": "the attribute this assertion reads is unknown at plan time; the verdict changes when it is given a value, so the plan does not determine it"
+    },
+    {
+      "control": "5.1",
+      "assertion": "5.1-A11",
+      "resource": "aws_s3_bucket_policy.trail",
+      "attribute": "policy",
+      "kind": "unresolved-value",
+      "reason": "the attribute this assertion reads is unknown at plan time; the verdict changes when it is given a value, so the plan does not determine it"
+    },
+    {
+      "control": "5.4",
+      "assertion": "5.4-A3",
+      "resource": "aws_secretsmanager_secret_policy.app",
+      "attribute": "policy",
+      "kind": "unresolved-value",
+      "reason": "the attribute this assertion reads is unknown at plan time; the verdict changes when it is given a value, so the plan does not determine it"
+    },
+    {
+      "control": "6.4",
+      "assertion": "6.4-A17",
+      "resource": "aws_s3_bucket_policy.trail",
+      "attribute": "policy",
+      "kind": "unresolved-value",
+      "reason": "the attribute this assertion reads is unknown at plan time; the verdict changes when it is given a value, so the plan does not determine it"
+    }
+  ],
+  "signature": {
+    "algorithm": "Ed25519",
+    "key_id": "b922bdc0a6699e3e",
+    "canonicalisation": "json: sorted keys, compact separators, UTF-8, signature block removed",
+    "digest_sha256": "10490a3e94bdeef29156a6c8d254e9eaaa70cff07094473408899e68e5c62758",
+    "signed_at": "2026-10-10T04:23:37.972887+00:00",
+    "value": "AfBK58X3OyfBpCRfxRwdUJrCOJePsH07HClu8ce25eKjRfpJFUCgbyzWdpaiHB7PQXWbuh7EAZUFJsLXPPfDDw=="
+  }
+}
